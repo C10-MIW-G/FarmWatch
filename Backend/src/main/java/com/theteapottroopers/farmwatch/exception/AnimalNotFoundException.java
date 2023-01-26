@@ -1,7 +1,7 @@
 package com.theteapottroopers.farmwatch.exception;
 
 /**
- * @Author is Berend Boksma <b.boksma@st.hanze.nl>
+ * @author Berend Boksma <b.boksma@st.hanze.nl>
  * <p>
  * An Animal not found exception
  */
