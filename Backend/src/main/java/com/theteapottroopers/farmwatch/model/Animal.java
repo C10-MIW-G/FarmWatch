@@ -21,7 +21,7 @@ public class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String UUID;
+    private String uuid;
 
     private String name;
 }
