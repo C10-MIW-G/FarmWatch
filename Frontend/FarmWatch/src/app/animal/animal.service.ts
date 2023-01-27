@@ -14,4 +14,7 @@ export class AnimalService {
     return this.http.get<Animal[]>(`${this.apiServerUrl}/animal/all`)
   }
 
+  public getAnimal(uuid: string): Observable<Animal> {
+    return this.http.get<Animal>(`${this.apiServerUrl}/animal/find/${uuid}`)
+  }
 }

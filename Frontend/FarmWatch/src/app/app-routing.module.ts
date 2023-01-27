@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnimalComponent } from './animal/animal.component';
+import { AnimalOverviewComponent } from './animal/animalOverview.component';
 
 const routes: Routes = [
-  { path: 'animal-component', component: AnimalComponent }
+  { path: 'animal/all', component: AnimalOverviewComponent },
+  { path: 'animal/find/:uuid', component: AnimalComponent}
 ];
 
 
