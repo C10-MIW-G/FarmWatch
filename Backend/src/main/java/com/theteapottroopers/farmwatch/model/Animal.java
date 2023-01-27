@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 /**
  * @author Berend <b.boksma@st.hanze.nl>
@@ -24,4 +25,13 @@ public class Animal {
     private String uuid;
 
     private String name;
+
+    public Animal() {
+    }
+
+    public Animal(String uuid, String name) {
+        this.id = id;
+        this.name = name;
+        this.uuid = uuid;
+    }
 }

@@ -1,6 +1,8 @@
 package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.repository.AnimalRepository;
+import com.theteapottroopers.farmwatch.seeds.AnimalSeeder;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,11 @@ import java.util.List;
 public class AnimalResource {
 
     private final AnimalService animalService;
+    private final AnimalRepository animalRepository;
 
-    public AnimalResource(AnimalService animalService) {
+    public AnimalResource(AnimalService animalService, AnimalRepository animalRepository) {
         this.animalService = animalService;
+        this.animalRepository = animalRepository;
     }
 
     @GetMapping("/all")
@@ -37,4 +41,13 @@ public class AnimalResource {
         Animal animal = animalService.findAnimalByUuid(uuid);
         return new ResponseEntity<>(animal, HttpStatus.OK);
     }
+
+    @PostMapping("/seed")
+    public ResponseEntity<?> seedAnimals(){
+
+        AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
+        animalSeeder.SeedAnimals();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
