@@ -4,7 +4,7 @@ import { AnimalComponent } from './animal/animal.component';
 import { AnimalOverviewComponent } from './animal/animalOverview.component';
 
 const routes: Routes = [
-  { path: 'animal/all', component: AnimalOverviewComponent },
+  { path: '', component: AnimalOverviewComponent },
   { path: 'animal/find/:uuid', component: AnimalComponent}
 ];
 
