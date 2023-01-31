@@ -28,5 +28,7 @@ public class Animal {
     private Long id;
     private String name;
 
-
+    public Animal(String name) {
+        this.name = name;
+    }
 }
