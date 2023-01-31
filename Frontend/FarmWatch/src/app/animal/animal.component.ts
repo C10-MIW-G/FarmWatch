@@ -12,20 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 export class AnimalComponent implements OnInit{
   
     public animal?: Animal;
-    public uuid!: string;
+    public id!: number;
 
     constructor(private animalService : AnimalService, private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
-            this.uuid = params['uuid'];
+            this.id = params['id'];
         });
     }
   
     ngOnInit(): void {
-        this.getAnimal(this.uuid);
+        this.getAnimal(this.id);
     }
 
-    public getAnimal(uuid: string): void {
-        this.animalService.getAnimal(uuid).subscribe(
+    public getAnimal(id: number): void {
+        this.animalService.getAnimal(id).subscribe(
           (response: Animal) => {
             this.animal = response;
           },
