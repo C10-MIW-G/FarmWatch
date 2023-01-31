@@ -47,9 +47,9 @@ public class AnimalResource {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Animal> getAnimalById(@PathVariable("id") Long id){
-        Animal animal = animalService.findAnimalById(id);
-        return new ResponseEntity<>(animal, HttpStatus.OK);
+    public ResponseEntity<AnimalDto> getAnimalById(@PathVariable("id") Long id){
+        AnimalDto animalDto = animalMapper.toAnimalDto(animalService.findAnimalById(id));
+        return new ResponseEntity<>(animalDto, HttpStatus.OK);
     }
 
     @PostMapping("/seed")
