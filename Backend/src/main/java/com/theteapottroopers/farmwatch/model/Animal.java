@@ -1,13 +1,14 @@
 package com.theteapottroopers.farmwatch.model;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.util.UUID;
+
 
 /**
  * @author Berend <b.boksma@st.hanze.nl>
@@ -27,7 +28,6 @@ public class Animal {
     }
 
     public Animal(String name) {
-        this.id = id;
         this.name = name;
     }
 }

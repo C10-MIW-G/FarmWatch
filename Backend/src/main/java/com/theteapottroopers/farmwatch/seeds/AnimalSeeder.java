@@ -45,7 +45,7 @@ public class AnimalSeeder {
         animalsToSeed.add(animal8);
 
         for (Animal animal : animalsToSeed) {
-            Optional<Animal> animalToSeed= animalRepository.findById(animal.getId());
+            Optional<Animal> animalToSeed = animalRepository.findAnimalByName(animal.getName());
             if(!animalToSeed.isPresent()){
                 animalRepository.save(animal);
             }
