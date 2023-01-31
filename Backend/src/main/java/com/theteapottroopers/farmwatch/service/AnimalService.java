@@ -16,12 +16,14 @@ import java.util.List;
 
 @Service
 public class AnimalService {
+
     private final AnimalRepository animalRepository;
 
     @Autowired
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
     }
+
 
     public Animal findAnimalById(Long id){
         return animalRepository.findById(id).orElseThrow(() -> new AnimalNotFoundException(
@@ -31,5 +33,6 @@ public class AnimalService {
     public List<Animal> findAllAnimals(){
         return animalRepository.findAll();
     }
+
 
 }

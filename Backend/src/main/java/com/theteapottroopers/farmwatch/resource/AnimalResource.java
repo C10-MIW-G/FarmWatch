@@ -1,5 +1,7 @@
 package com.theteapottroopers.farmwatch.resource;
 
+import com.theteapottroopers.farmwatch.dto.AnimalDto;
+import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
 import com.theteapottroopers.farmwatch.seeds.AnimalSeeder;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,19 +24,26 @@ import java.util.List;
 @RequestMapping("/animal")
 public class AnimalResource {
 
-    private final AnimalService animalService;
     private final AnimalRepository animalRepository;
+    private final AnimalService animalService;
+    private final AnimalMapper animalMapper;
 
     public AnimalResource(AnimalService animalService, AnimalRepository animalRepository) {
         this.animalService = animalService;
         this.animalRepository = animalRepository;
+        animalMapper = new AnimalMapper();
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Animal>> getAllAnimals(){
-        List<Animal> animals = animalService.findAllAnimals();
 
-        return new ResponseEntity<>(animals, HttpStatus.OK);
+
+    @GetMapping("/all")
+    public ResponseEntity<List<AnimalDto>> getAllAnimals(){
+        List<Animal> animals = animalService.findAllAnimals();
+        List<AnimalDto> animalDtos = new ArrayList<>();
+        for (Animal animal: animals) {
+            animalDtos.add(animalMapper.toAnimalDto(animal));
+        }
+        return new ResponseEntity<>(animalDtos, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
