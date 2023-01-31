@@ -36,9 +36,9 @@ public class AnimalResource {
         return new ResponseEntity<>(animals, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{uuid}")
-    public ResponseEntity<Animal> getAnimalByUuid(@PathVariable("uuid") String uuid){
-        Animal animal = animalService.findAnimalByUuid(uuid);
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Animal> getAnimalById(@PathVariable("id") Long id){
+        Animal animal = animalService.findAnimalById(id);
         return new ResponseEntity<>(animal, HttpStatus.OK);
     }
 

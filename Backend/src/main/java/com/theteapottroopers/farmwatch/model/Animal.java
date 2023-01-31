@@ -21,17 +21,13 @@ import java.util.UUID;
 public class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String uuid;
-
     private String name;
 
     public Animal() {
     }
 
-    public Animal(String uuid, String name) {
+    public Animal(String name) {
         this.id = id;
         this.name = name;
-        this.uuid = uuid;
     }
 }

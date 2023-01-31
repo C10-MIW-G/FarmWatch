@@ -23,9 +23,9 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    public Animal findAnimalByUuid(String uuid){
-        return animalRepository.findAnimalByUuid(uuid).orElseThrow(() -> new AnimalNotFoundException(
-                "Animal by id " + uuid + " was not found!"));
+    public Animal findAnimalById(Long id){
+        return animalRepository.findById(id).orElseThrow(() -> new AnimalNotFoundException(
+                "Animal by id " + id + " was not found!"));
     }
 
     public List<Animal> findAllAnimals(){

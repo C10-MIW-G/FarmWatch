@@ -26,14 +26,14 @@ public class AnimalSeeder {
 
         List<Animal> animalsToSeed = new ArrayList<>();
 
-        Animal animal1 = new Animal("0001", "Kip");
-        Animal animal2 = new Animal("0002", "Ezel");
-        Animal animal3 = new Animal("0003", "Paard");
-        Animal animal4 = new Animal("0004", "Konijn");
-        Animal animal5 = new Animal("0005", "Schildpad");
-        Animal animal6 = new Animal("0006", "Hert");
-        Animal animal7 = new Animal("0007", "Koe");
-        Animal animal8 = new Animal("0008", "Haan");
+        Animal animal1 = new Animal("Kip");
+        Animal animal2 = new Animal("Ezel");
+        Animal animal3 = new Animal("Paard");
+        Animal animal4 = new Animal("Konijn");
+        Animal animal5 = new Animal("Schildpad");
+        Animal animal6 = new Animal("Hert");
+        Animal animal7 = new Animal("Koe");
+        Animal animal8 = new Animal("Haan");
 
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
@@ -45,7 +45,7 @@ public class AnimalSeeder {
         animalsToSeed.add(animal8);
 
         for (Animal animal : animalsToSeed) {
-            Optional<Animal> animalToSeed= animalRepository.findAnimalByUuid(animal.getUuid());
+            Optional<Animal> animalToSeed= animalRepository.findById(animal.getId());
             if(!animalToSeed.isPresent()){
                 animalRepository.save(animal);
             }
