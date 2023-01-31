@@ -1,7 +1,9 @@
 package com.theteapottroopers.farmwatch.model;
 
 import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -17,6 +19,8 @@ import jakarta.persistence.Id;
  */
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Animal {
@@ -24,10 +28,5 @@ public class Animal {
     private Long id;
     private String name;
 
-    public Animal() {
-    }
 
-    public Animal(String name) {
-        this.name = name;
-    }
 }
