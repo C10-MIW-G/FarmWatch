@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.security.user;
 
 public enum Role {
 
-    USER,
-    ADMIN
+    ROLE_USER,
+    ROLE_CARETAKER,
+    ROLE_ADMIN
 }
