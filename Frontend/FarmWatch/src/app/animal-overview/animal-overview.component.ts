@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {Animal} from './animal';
-import {AnimalService} from './animal.service';
+import {AnimalOverview} from './animal-overview';
+import {AnimalOverviewService} from './animal-overview.service';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-animal',
-  templateUrl: './animalOverview.component.html',
-  styleUrls: ['./animal.component.css']
+  templateUrl: './animal-overview.component.html',
+  styleUrls: ['./animal-overview.component.css']
 })
 export class AnimalOverviewComponent implements OnInit{
   
-  public animals: Animal[] = [];
+  public animals: AnimalOverview[] = [];
 
-  constructor(private animalService : AnimalService) {}
+  constructor(private animalOverviewService : AnimalOverviewService) {}
 
   ngOnInit(): void {
     this.getAnimals();  
@@ -21,8 +21,8 @@ export class AnimalOverviewComponent implements OnInit{
 
 
   public getAnimals(): void {
-    this.animalService.getAnimals().subscribe(
-      (response: Animal[]) => {
+    this.animalOverviewService.getAnimals().subscribe(
+      (response: AnimalOverview[]) => {
         this.animals = response;
       },
       (error: HttpErrorResponse) => {

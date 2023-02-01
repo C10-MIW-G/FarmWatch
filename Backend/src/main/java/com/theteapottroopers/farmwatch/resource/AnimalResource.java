@@ -36,7 +36,7 @@ public class AnimalResource {
 
 
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<List<AnimalDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();
         List<AnimalDto> animalDtos = new ArrayList<>();

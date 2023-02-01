@@ -1,18 +1,16 @@
-<h1>Animal Details {{animal?.name}}</h1>
+<h1>Animal Overview</h1>
 
 <div class="container" id="main-container">
     <div class="row">
-        <div class="col-md-6 col-xl-3">
+        <div *ngFor="let animal of animals" class="col-md-6 col-xl-3">
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6 card-title align-self-center mb-0">
-                        <h5>{{animal?.name}}</h5>
-                        <table>
-                            
-                        </table>
+                        <h5>{{animal.name}}</h5>
+                        <a routerLink="/animal/{{animal.id}}">{{animal.id}}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>    
+</div>   

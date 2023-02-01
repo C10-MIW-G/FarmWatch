@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimalOverviewComponent } from './animalOverview.component';
+import { AnimalOverviewComponent } from './animal-overview.component';
 
-describe('AnimalComponent', () => {
+describe('AnimalOverviewComponent', () => {
   let component: AnimalOverviewComponent;
   let fixture: ComponentFixture<AnimalOverviewComponent>;
 

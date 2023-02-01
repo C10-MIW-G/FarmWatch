@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AnimalOverviewComponent } from './animal/animalOverview.component';
+import { AnimalOverviewComponent } from './animal-overview/animal-overview.component';
+import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnimalOverviewComponent
+    AnimalOverviewComponent,
+    AnimalDetailComponent
   ],
   imports: [
     BrowserModule,
