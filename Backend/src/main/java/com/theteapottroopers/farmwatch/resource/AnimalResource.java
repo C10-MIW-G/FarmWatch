@@ -54,9 +54,7 @@ public class AnimalResource {
 
     @PostMapping("/seed")
     public ResponseEntity<?> seedAnimals(){
-
-        AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
-        animalSeeder.SeedAnimals();
+        animalService.seedAnimals();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
