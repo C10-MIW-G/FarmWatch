@@ -33,9 +33,7 @@ public class AnimalResource {
         this.animalRepository = animalRepository;
         animalMapper = new AnimalMapper();
     }
-
-
-
+    
     @GetMapping()
     public ResponseEntity<List<AnimalDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();

@@ -17,5 +17,4 @@ public class AnimalDto {
 
     private Long id;
     private String name;
-
 }
