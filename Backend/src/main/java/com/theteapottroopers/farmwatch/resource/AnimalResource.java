@@ -36,7 +36,7 @@ public class AnimalResource {
 
 
 
-    @GetMapping("/all")
+    @GetMapping("")
     public ResponseEntity<List<AnimalDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();
         List<AnimalDto> animalDtos = new ArrayList<>();
@@ -46,7 +46,7 @@ public class AnimalResource {
         return new ResponseEntity<>(animalDtos, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<AnimalDto> getAnimalById(@PathVariable("id") Long id){
         AnimalDto animalDto = animalMapper.toAnimalDto(animalService.findAnimalById(id));
         return new ResponseEntity<>(animalDto, HttpStatus.OK);
