@@ -6,14 +6,9 @@ h1 {
     width: 50%;
 }
 
-h5 {
-    width: 90%;
-    display: inline-block;
-  }
-
 .list-group {
     margin: auto;
-    width: 50%;
+    width: 500px;
 }
 
 a {
