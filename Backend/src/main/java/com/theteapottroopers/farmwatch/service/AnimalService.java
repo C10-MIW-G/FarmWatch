@@ -35,6 +35,10 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
+    public void deleteAnimal(Long id){
+        animalRepository.deleteById(id);
+    }
+
     public void seedAnimals(){
         AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
         animalSeeder.SeedAnimals();
