@@ -6,12 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalOverviewComponent } from './animal-overview/animal-overview.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalOverviewComponent,
-    AnimalDetailComponent
+    AnimalDetailComponent, 
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +26,7 @@ import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
