@@ -10,8 +10,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./animal-overview.component.css']
 })
 export class AnimalOverviewComponent implements OnInit{
-  
   public animals: AnimalOverview[] = [];
+  public deleteAnimal!: AnimalOverview;
 
   constructor(private animalOverviewService : AnimalOverviewService) {}
 
@@ -30,4 +30,17 @@ export class AnimalOverviewComponent implements OnInit{
       }
     );
   }
+
+  public onDeleteAnimal(AnimalOverviewId: number): void {
+    this.animalOverviewService.deleteAnimal(AnimalOverviewId).subscribe(
+      (response: void) => {
+          console.log(response);
+          this.getAnimals();
+      },
+      (error: HttpErrorResponse) => {
+          alert(error.message);
+      }
+    );
+  }
+  
 }

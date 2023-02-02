@@ -1,10 +1,13 @@
 <h1 >Animal Overview</h1>
 <br>
 <div *ngFor="let animal of animals" class="list-group">
-    <div class="card" style="width: 300px">
+    <div class="card" style="width: 1000px">
         <h5><a routerLink="/animal/{{animal.id}}">{{animal.name}}</a></h5> 
+        <button class="btn btn-danger" (click)="onDeleteAnimal(animal.id)" style="width: 10%;">Delete</button>
     </div>
 </div>
+
+
 <router-outlet></router-outlet>
 
 
