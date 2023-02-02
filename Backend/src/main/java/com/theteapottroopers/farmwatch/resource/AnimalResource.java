@@ -55,6 +55,11 @@ public class AnimalResource {
         animalService.deleteAnimal(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PostMapping
+    public ResponseEntity<?> addAnimal(@RequestBody AnimalDto animalDto){
+        animalService.addAnimal(animalMapper.toAnimal(animalDto));
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
     @PostMapping("/seed")
     public ResponseEntity<?> seedAnimals(){
