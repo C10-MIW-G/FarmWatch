@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { AuthGuard } from './_auth/auth.guard';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     AnimalDetailComponent, 
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     FormsModule,
     HttpClientModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
