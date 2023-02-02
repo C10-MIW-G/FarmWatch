@@ -12,4 +12,6 @@ public class AnimalMapper {
        return new AnimalDto(animal.getId(), animal.getName());
     }
 
+    public Animal toAnimal(AnimalDto animalDto) {return new Animal(animalDto.getName());}
+
 }

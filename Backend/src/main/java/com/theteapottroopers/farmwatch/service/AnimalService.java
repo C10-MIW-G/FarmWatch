@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.service;
 
+import com.theteapottroopers.farmwatch.dto.AnimalDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
@@ -44,6 +45,9 @@ public class AnimalService {
         animalSeeder.SeedAnimals();
     }
 
-    //TODO methode save allAnimals
+    public void addAnimal(Animal animal){
+        animalRepository.save(animal);
+    }
+
 
 }
