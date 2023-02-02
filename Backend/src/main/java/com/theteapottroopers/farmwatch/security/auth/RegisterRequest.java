@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- *
+ * Register request message
  */
 @Data
 @Builder

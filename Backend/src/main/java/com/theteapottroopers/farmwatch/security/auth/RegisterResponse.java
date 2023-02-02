@@ -8,13 +8,16 @@ import lombok.NoArgsConstructor;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- * Authentication request message
+ * Authentication Response message
  */
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class RegisterResponse{
+    private String token;
     private String username;
-    private String password;
+    private String email;
+    private String role;
 }
