@@ -50,6 +50,13 @@ public class AnimalResource {
         animalService.deleteAnimal(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    @PutMapping
+    public ResponseEntity<AnimalDto> updateAnimal(@RequestBody AnimalDto animalDto){
+        Animal updateAnimal = animalService.updateAnimal(animalDto);
+        AnimalDto updateAnimalDto = animalMapper.toAnimalDto(updateAnimal);
+        return new ResponseEntity<>(updateAnimalDto, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<?> addAnimal(@RequestBody AnimalDto animalDto){

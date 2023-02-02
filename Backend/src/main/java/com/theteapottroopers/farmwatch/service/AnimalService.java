@@ -26,7 +26,6 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-
     public Animal findAnimalById(Long id){
         return animalRepository.findById(id).orElseThrow(() -> new AnimalNotFoundException(
                 "Animal by id " + id + " was not found!"));
@@ -44,10 +43,15 @@ public class AnimalService {
         AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
         animalSeeder.SeedAnimals();
     }
+    public Animal updateAnimal(AnimalDto animalDto){
+        Animal existingAnimal = animalRepository.findById(animalDto.getId()).get();
+        existingAnimal.setName(animalDto.getName());
+        Animal updatedAnimal = animalRepository.save(existingAnimal);
+        return updatedAnimal;
+    }
 
     public void addAnimal(Animal animal){
         animalRepository.save(animal);
     }
-
-
+    
 }
