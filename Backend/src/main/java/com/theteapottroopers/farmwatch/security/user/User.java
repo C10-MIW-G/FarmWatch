@@ -23,7 +23,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue
     private Long id;

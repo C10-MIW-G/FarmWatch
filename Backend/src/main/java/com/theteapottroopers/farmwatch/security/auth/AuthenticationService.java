@@ -1,6 +1,5 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.security.config.JwtService;
 import com.theteapottroopers.farmwatch.security.user.Role;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;

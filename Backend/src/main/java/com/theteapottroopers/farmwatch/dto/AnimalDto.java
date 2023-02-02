@@ -14,11 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AnimalDto {
-
     private Long id;
     private String name;
-
-    public AnimalDto(String name) {
-        this.name = name;
-    }
 }
