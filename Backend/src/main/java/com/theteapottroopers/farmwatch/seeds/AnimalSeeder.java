@@ -6,16 +6,14 @@ import com.theteapottroopers.farmwatch.repository.AnimalRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 /**
- * @Author: M.S. Pilat <pilat_m@msn.com>
+ * @author M.S. Pilat <pilat_m@msn.com>
  * <p>
  * dit programma doet iets
  */
 
 public class AnimalSeeder {
-
     private final AnimalRepository animalRepository;
 
     public AnimalSeeder(AnimalRepository animalRepository) {
@@ -23,7 +21,6 @@ public class AnimalSeeder {
     }
 
     public void SeedAnimals() {
-
         List<Animal> animalsToSeed = new ArrayList<>();
 
         Animal animal1 = new Animal("Clara de Kip");
@@ -46,10 +43,9 @@ public class AnimalSeeder {
 
         for (Animal animal : animalsToSeed) {
             Optional<Animal> animalToSeed = animalRepository.findAnimalByName(animal.getName());
-            if(!animalToSeed.isPresent()){
+            if(animalToSeed.isEmpty()){
                 animalRepository.save(animal);
             }
         }
     }
-
 }
