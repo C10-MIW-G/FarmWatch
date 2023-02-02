@@ -23,4 +23,8 @@ a:hover {
     color: blue;
 }
 
+.button {
+    margin: auto;
+    width: 50%;
+}
 
