@@ -26,14 +26,14 @@ public class AnimalSeeder {
 
         List<Animal> animalsToSeed = new ArrayList<>();
 
-        Animal animal1 = new Animal("Kip");
-        Animal animal2 = new Animal("Ezel");
-        Animal animal3 = new Animal("Paard");
-        Animal animal4 = new Animal("Konijn");
-        Animal animal5 = new Animal("Schildpad");
-        Animal animal6 = new Animal("Hert");
-        Animal animal7 = new Animal("Koe");
-        Animal animal8 = new Animal("Haan");
+        Animal animal1 = new Animal("Clara de Kip");
+        Animal animal2 = new Animal("Benjamin de Ezel");
+        Animal animal3 = new Animal("Hugo het Paard");
+        Animal animal4 = new Animal("Patrick het Konijn");
+        Animal animal5 = new Animal("Shelly het Schildpad");
+        Animal animal6 = new Animal("Peter het Hert");
+        Animal animal7 = new Animal("Brownie de Koe");
+        Animal animal8 = new Animal("Jimmy de Haan");
 
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
