@@ -3,8 +3,6 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.AnimalDto;
 import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
-import com.theteapottroopers.farmwatch.repository.AnimalRepository;
-import com.theteapottroopers.farmwatch.seeds.AnimalSeeder;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +21,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/animal")
 public class AnimalResource {
-
-    private final AnimalRepository animalRepository;
     private final AnimalService animalService;
     private final AnimalMapper animalMapper;
 
-    public AnimalResource(AnimalService animalService, AnimalRepository animalRepository) {
+    public AnimalResource(AnimalService animalService) {
         this.animalService = animalService;
-        this.animalRepository = animalRepository;
         animalMapper = new AnimalMapper();
     }
     
@@ -55,7 +50,7 @@ public class AnimalResource {
         animalService.deleteAnimal(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    
     @PutMapping
     public ResponseEntity<AnimalDto> updateAnimal(@RequestBody AnimalDto animalDto){
         Animal updateAnimal = animalService.updateAnimal(animalDto);
@@ -74,5 +69,4 @@ public class AnimalResource {
         animalService.seedAnimals();
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
