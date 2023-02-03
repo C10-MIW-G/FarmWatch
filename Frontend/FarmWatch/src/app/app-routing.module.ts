@@ -14,11 +14,10 @@ const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
   { path: 'animal/:id', component: AnimalDetailComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER']}},
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'animal/update/:id', component: UpdateAnimalComponent},
-  { path: 'admindashboard', component: AdminDashboardComponent}
+  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}}
 ];
 
 
