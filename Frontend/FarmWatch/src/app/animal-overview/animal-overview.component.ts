@@ -21,7 +21,7 @@ export class AnimalOverviewComponent implements OnInit{
   ngOnInit(): void {
     this.getAnimals(); 
     this.isAuthorized = this.storageService.isLoggedIn();
-    if(this.storageService.getRole() == 'USER') {
+    if(this.storageService.getRole() == 'ADMIN') {
       this.isAuthorized = true; 
     } else {
       this.isAuthorized = false;
