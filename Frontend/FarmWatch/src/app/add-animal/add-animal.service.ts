@@ -9,7 +9,7 @@ export class AddAnimalService {
 
   constructor(private http: HttpClient) { }
 
-  public create(data: any): Observable<any>{
+  public createAnimal(data: any): Observable<any>{
     return this.http.post(`${this.apiServerUrl}/animal`, data);
   }
 }
