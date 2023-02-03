@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- * Wat doet deze klasse?
+ * Handles user requests
  */
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
