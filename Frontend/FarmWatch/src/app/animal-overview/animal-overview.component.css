@@ -52,6 +52,7 @@ body{margin-top:20px;
     .badge-soft-success {
         color: #63ad6f !important;
         background-color: rgba(99,173,111,.1);
+        font-size: large;
     }
     
     .badge-soft-primary {
@@ -77,3 +78,15 @@ body{margin-top:20px;
     .bg-soft-primary {
         background-color: rgba(59,118,225,.25)!important;
     }
+
+    .name-column { 
+        font-size: x-large;
+    }
+    .action-column{
+        text-align: center;
+    }
+    .btn {
+        color:black;
+        margin: 2px;
+    }
+

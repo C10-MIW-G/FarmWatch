@@ -5,13 +5,13 @@
     <div class="row align-items-center">
         <div class="col-md-6">
             <div class="mb-3">
-                <h5 class="card-title">Animal overview<span class="text-muted fw-normal ms-2"></span></h5>
+                <h1 class="card-title">Animal overview<span class="text-muted fw-normal ms-2"></span></h1>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+            <div class="d-flex flex-wrap align-items-auto justify-content-end gap-2 mb-3">
                 <div>
-                    <a routerLink="animal" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary" *ngIf="isAuthorized"><i class="bx bx-plus me-1"></i> Add New</a>
+                    <a routerLink="animal" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary" *ngIf="isAuthorized">Add</a>
                 </div>
             </div>
         </div>
@@ -23,8 +23,8 @@
                     <table class="table project-list-table table-nowrap align-middle table-borderless">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col" style="width: 200px;" *ngIf="isAuthorized">Action</th>
+                                <th class="name-column" scope="col">Name</th>
+                                <th class="action-column" scope="col"style="width: 100px"  *ngIf="isAuthorized">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,8 +33,8 @@
                                 <td>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
-                                            <button class="btn btn-secondary tooltips" (click)="onDeleteAnimal(animal.id)" *ngIf="isAuthorized"><i class="fa fa-times"></i></button>
-                                            <span class="btn btn-secondary tooltips" *ngIf="isAuthorized"><a routerLink="/animal/update/{{animal.id}}" ><i class="fa fa-pencil"></i></a></span>
+                                            <button class="btn btn-secondary tooltips" (click)="onDeleteAnimal(animal.id)" *ngIf="isAuthorized"><i class="fa fa-times" style='color: white'></i></button>
+                                            <button class="btn btn-secondary tooltips" *ngIf="isAuthorized"><a routerLink="/animal/update/{{animal.id}}" ><i class="fa fa-pencil" style='color: white'></i></a></button>
                                         </li>
                                     </ul>
                                 </td>
