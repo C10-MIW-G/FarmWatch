@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from 'src/app/animal-overview/animal-overview';
 import {UpdateAnimalService} from './update-animal.service';
-import { NgForm } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 

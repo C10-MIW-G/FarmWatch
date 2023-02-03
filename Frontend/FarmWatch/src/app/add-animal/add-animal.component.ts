@@ -21,7 +21,7 @@ export class AddAnimalComponent {
   } 
 
   onSubmit() {
-    this.addAnimalService.create(this.animal).subscribe(result => this.gotoUserList());}
+    this.addAnimalService.createAnimal(this.animal).subscribe(result => this.gotoUserList());}
 
   gotoUserList() {
     (error: HttpErrorResponse) => {
