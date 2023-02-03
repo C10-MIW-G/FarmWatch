@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="d-flex flex-wrap align-items-auto justify-content-end gap-2 mb-3">
+            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                 <div>
                     <a routerLink="animal" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary" *ngIf="isAuthorized">Add</a>
                 </div>
@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th class="name-column" scope="col">Name</th>
-                                <th class="action-column" scope="col"style="width: 100px"  *ngIf="isAuthorized">Action</th>
+                                <th class="name-column" scope="col"style="width: 100px"  *ngIf="isAuthorized">Action</th>
                             </tr>
                         </thead>
                         <tbody>
