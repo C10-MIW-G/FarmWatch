@@ -34,7 +34,7 @@
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
                                             <button class="btn btn-secondary tooltips" (click)="onDeleteAnimal(animal.id)" *ngIf="isAuthorized"><i class="fa fa-times"></i></button>
-                                            <span class="btn btn-secondary tooltips" *ngIf="isAuthorized"><a routerLink="/animal/update/{{animal.id}}" ><i class="fa fa-pencil"></i></a></span>
+                                            <button class="btn btn-secondary tooltips" *ngIf="isAuthorized"><a routerLink="/animal/update/{{animal.id}}" ><i class="fa fa-pencil"></i></a></button>
                                         </li>
                                     </ul>
                                 </td>
