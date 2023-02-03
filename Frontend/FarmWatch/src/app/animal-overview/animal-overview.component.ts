@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from './animal-overview';
 import {AnimalOverviewService} from './animal-overview.service';
+import { UpdateAnimalComponent } from '../update-animal/update-animal.component';
+import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { StorageService } from '../_services/storage.service';
 

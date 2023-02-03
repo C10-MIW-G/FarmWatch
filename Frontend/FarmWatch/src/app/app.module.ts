@@ -13,6 +13,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { AuthGuard } from './_auth/auth.guard';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
+import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddAnimalComponent } from './add-animal/add-animal.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UpdateAnimalComponent
   ],
   imports: [
     BrowserModule,

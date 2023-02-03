@@ -50,7 +50,7 @@ public class AnimalResource {
         animalService.deleteAnimal(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+
     @PutMapping
     public ResponseEntity<AnimalDto> updateAnimal(@RequestBody AnimalDto animalDto){
         Animal updateAnimal = animalService.updateAnimal(animalDto);

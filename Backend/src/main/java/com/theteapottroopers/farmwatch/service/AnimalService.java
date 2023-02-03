@@ -53,5 +53,4 @@ public class AnimalService {
     public void addAnimal(Animal animal){
         animalRepository.save(animal);
     }
-    
 }
