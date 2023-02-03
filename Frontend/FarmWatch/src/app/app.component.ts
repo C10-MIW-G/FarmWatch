@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from './_services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'FarmWatch';
+  
+  constructor(private storageService: StorageService){};
+
+  public isLoggedIn(): boolean{
+    return this.storageService.isLoggedIn();
+  }
+
+  public logout(){
+    this.storageService.clean();
+  }
 }

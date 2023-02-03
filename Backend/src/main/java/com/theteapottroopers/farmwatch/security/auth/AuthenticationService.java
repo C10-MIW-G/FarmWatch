@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- *
+ * Handles the register and login requests
  */
 @Service
 @RequiredArgsConstructor
@@ -23,7 +23,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public RegisterResponse register(RegisterRequest request) {
 
         User user = User.builder()
                 .firstname(request.getFirstname())
@@ -35,7 +35,7 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
         String jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
+        return RegisterResponse.builder()
                 .token(jwtToken)
                 .build();
     }
@@ -52,6 +52,9 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .email(user.getEmail())
+                .username(user.getUsername())
+                .role(user.getRole().toString().substring(5))
                 .build();
     }
 }

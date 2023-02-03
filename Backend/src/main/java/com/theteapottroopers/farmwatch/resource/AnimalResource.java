@@ -17,7 +17,7 @@ import java.util.List;
  * This is the resource for the animal.
  */
 
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/animal")
 public class AnimalResource {
