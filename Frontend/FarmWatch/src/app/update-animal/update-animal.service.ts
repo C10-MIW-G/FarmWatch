@@ -12,7 +12,7 @@ export class UpdateAnimalService {
   constructor(private http: HttpClient) { }
 
   public updateAnimal(animal: AnimalOverview): Observable<AnimalOverview>{
-    return this.http.put<AnimalOverview>(`${this.apiServerUrl}`, animal);
+    return this.http.put<AnimalOverview>(`${this.apiServerUrl}/animal`, animal);
   }
 
   public getAnimalDetail(id: number): Observable<AnimalDetail> {
