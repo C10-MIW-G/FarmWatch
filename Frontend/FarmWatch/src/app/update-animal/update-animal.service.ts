@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AnimalOverview } from 'src/app/animal-overview/animal-overview';
+import { environment } from 'src/environments/environment';
+import { AnimalDetail } from 'src/app/animal-detail/animal-detail';
+
+@Injectable({providedIn: 'root'})
+export class UpdateAnimalService {
+  private apiServerUrl = environment.apiBaseUrl;
+
+  constructor(private http: HttpClient) { }
+
+  public updateAnimal(animal: AnimalOverview): Observable<AnimalOverview>{
+    return this.http.put<AnimalOverview>(`${this.apiServerUrl}`, animal);
+  }
+
+  public getAnimalDetail(id: number): Observable<AnimalDetail> {
+    return this.http.get<AnimalDetail>(`${this.apiServerUrl}/animal/${id}`)
+  }
+
+}

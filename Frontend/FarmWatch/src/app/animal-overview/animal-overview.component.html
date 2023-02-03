@@ -34,6 +34,7 @@
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
                                             <button class="btn btn-secondary tooltips" (click)="onDeleteAnimal(animal.id)"><i class="fa fa-times"></i></button>
+                                            <span class="badge badge-soft-success mb-0"><a routerLink="/animal/update/{{animal.id}}">{{animal.name}}</a></span>
                                         </li>
                                     </ul>
                                 </td>

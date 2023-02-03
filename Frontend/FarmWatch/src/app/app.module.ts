@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalOverviewComponent } from './animal-overview/animal-overview.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
+import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalOverviewComponent,
-    AnimalDetailComponent
+    AnimalDetailComponent,
+    UpdateAnimalComponent
   ],
   imports: [
     BrowserModule,
