@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from './animal-overview';
 import {AnimalOverviewService} from './animal-overview.service';
-import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-animal',
@@ -12,11 +12,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AnimalOverviewComponent implements OnInit{
   public animals: AnimalOverview[] = [];
   public deleteAnimal!: AnimalOverview;
+  public isAuthorized: boolean = false; 
 
-  constructor(private animalOverviewService : AnimalOverviewService) {}
+  constructor(private animalOverviewService : AnimalOverviewService, private storageService: StorageService) {}
 
   ngOnInit(): void {
-    this.getAnimals();  
+    this.getAnimals(); 
+    this.isAuthorized = this.storageService.isLoggedIn();
+    if(this.storageService.getRole() == 'USER') {
+      this.isAuthorized = true; 
+    } else {
+      this.isAuthorized = false;
+    }
   }
 
 
