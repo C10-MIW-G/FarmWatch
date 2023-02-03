@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- *
+ * Configuration for the authentication
  */
 @Configuration
 @RequiredArgsConstructor
