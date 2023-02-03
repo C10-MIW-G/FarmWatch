@@ -3,10 +3,6 @@ import { AnimalToAdd } from './add-animal';
 import { AddAnimalService } from './add-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import {NgForm} from '@angular/forms';
-
-
-
 
 @Component({
   selector: 'app-add-animal',
@@ -24,17 +20,14 @@ export class AddAnimalComponent {
     this.animal = new AnimalToAdd()
   } 
 
-  // newAnimal(): void {
-  //   this.animal = {
-  //     id: 0,
-  //     name: '',
-  //   };
-  // }
   onSubmit() {
     this.addAnimalService.create(this.animal).subscribe(result => this.gotoUserList());}
 
   gotoUserList() {
-    this.router.navigate(['']);
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+    this.router.navigate([''])
   }
 }
 

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'add-animal', component: AddAnimalComponent}
+  { path: 'animal', component: AddAnimalComponent}
 ];
 
 
