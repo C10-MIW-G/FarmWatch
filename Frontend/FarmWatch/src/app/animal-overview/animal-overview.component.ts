@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from './animal-overview';
 import {AnimalOverviewService} from './animal-overview.service';
 import { UpdateAnimalComponent } from '../update-animal/update-animal.component';
+import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { StorageService } from '../_services/storage.service';
+import { StorageService } from '../security/_services/storage.service';
 
 @Component({
   selector: 'app-animal',
@@ -18,8 +19,9 @@ export class AnimalOverviewComponent implements OnInit{
   constructor(private animalOverviewService : AnimalOverviewService, private storageService: StorageService) {}
 
   ngOnInit(): void {
-    this.getAnimals();
-    if(this.storageService.getRole() == 'USER' || this.storageService.getRole() == 'ADMIN') {
+    this.getAnimals(); 
+    this.isAuthorized = this.storageService.isLoggedIn();
+    if(this.storageService.getRole() == 'USER') {
       this.isAuthorized = true; 
     } else {
       this.isAuthorized = false;

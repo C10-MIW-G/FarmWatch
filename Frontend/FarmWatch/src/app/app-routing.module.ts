@@ -6,7 +6,7 @@ import { AnimalOverviewComponent } from './animal-overview/animal-overview.compo
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './_auth/auth.guard';
+import { AuthGuard } from './security/_auth/auth.guard';
 import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
