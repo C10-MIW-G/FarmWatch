@@ -17,7 +17,7 @@ import java.util.function.Function;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- *
+ * Service responsible for JWT
  */
 @Service
 public class JwtService {

@@ -19,7 +19,7 @@ import java.io.IOException;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- *
+ * A JWT Authentication filter for every HTTP request
  */
 @Component
 @RequiredArgsConstructor
@@ -41,6 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
+
 
         jwt = authHeader.substring(7);
         username = jwtService.extractUsername(jwt);
