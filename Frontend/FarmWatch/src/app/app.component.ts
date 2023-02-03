@@ -19,4 +19,8 @@ export class AppComponent {
   public logout(){
     this.storageService.clean();
   }
+
+  public getRole(): string{
+    return this.storageService.getRole();
+  }
 }
