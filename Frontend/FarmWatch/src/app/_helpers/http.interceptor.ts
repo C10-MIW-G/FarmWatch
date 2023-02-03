@@ -20,7 +20,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     })
 
     if(this.storageService.isLoggedIn()){
-      req.headers.append('Authorization', 'Bearer ' + this.storageService.getUser().token)
+      req = req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + this.storageService.getUser().token)
+      })
     }
 
     return next.handle(req).pipe(
