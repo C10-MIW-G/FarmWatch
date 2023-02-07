@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/animal/**").permitAll()
                 .requestMatchers("/animal").permitAll()
                 .requestMatchers("/ticket").permitAll()
+                .requestMatchers("/ticket/message").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -2,24 +2,28 @@ package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.model.Ticket;
+import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.service.AnimalService;
+import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.apache.catalina.User;
 
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- * Wat doet deze klasse?
+ * Does DTO <-> Model conversion for Ticket
  */
 public class TicketMapper {
 
     private final UserService userService;
     private final AnimalService animalService;
+    private final TicketMessageService ticketMessageService;
 
-    public TicketMapper(UserService userService, AnimalService animalService) {
+    public TicketMapper(UserService userService, AnimalService animalService, TicketMessageService ticketMessageService) {
         this.userService = userService;
         this.animalService = animalService;
+        this.ticketMessageService = ticketMessageService;
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
@@ -34,6 +38,7 @@ public class TicketMapper {
                 .reportedByUserId(ticket.getReportedBy().getId())
                 .assignedToUserId((ticket.getAssignedTo() != null) ?
                         ticket.getAssignedTo().getId() : null)
+                .ticketMessages(ticket.getTicketMessages())
                 .build();
         return ticketDtoAllBuilder;
     }

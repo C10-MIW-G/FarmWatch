@@ -6,6 +6,7 @@ import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.service.AnimalService;
+import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,10 @@ public class TicketResource {
     private final TicketService ticketService;
     private final TicketMapper ticketMapper;
 
-    public TicketResource(TicketService ticketService, UserService userService, AnimalService animalService) {
+    public TicketResource(TicketService ticketService, UserService userService,
+                          AnimalService animalService, TicketMessageService ticketMessageService) {
         this.ticketService = ticketService;
-        this.ticketMapper = new TicketMapper(userService, animalService);
+        this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageService);
     }
 
     @GetMapping
