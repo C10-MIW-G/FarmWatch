@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AnimalOverview} from './animal-overview';
-import {AnimalOverviewService} from './animal-overview.service';
+import {AnimalOverview} from '../../model/animal-overview';
+import {AnimalOverviewService} from '../../service/animal-overview.service';
 import { UpdateAnimalComponent } from '../update-animal/update-animal.component';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { StorageService } from '../security/_services/storage.service';
+import { StorageService } from '../../security/_services/storage.service';
 
 @Component({
   selector: 'app-animal',

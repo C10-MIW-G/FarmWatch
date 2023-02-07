@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { AnimalToAdd } from './add-animal';
-import { AddAnimalService } from './add-animal.service';
+import { AnimalToAdd } from '../../model/add-animal';
+import { AddAnimalService } from '../../service/add-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 

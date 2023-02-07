@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user/user';
-import { AdminDashboardService } from './admin-dashboard.service';
+import { User } from '../../model/user';
+import { AdminDashboardService } from '../../service/admin-dashboard.service';
 
 @Component({
   selector: 'app-admin-dashboard',
