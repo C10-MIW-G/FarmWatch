@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { AnimalDetail } from "./animal-detail";
-import { AnimalDetailService } from "./animal-detail.service";
+import { AnimalDetail } from "../../model/animal-detail";
+import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

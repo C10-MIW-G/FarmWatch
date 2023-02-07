@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AnimalOverview} from 'src/app/animal-overview/animal-overview';
-import {UpdateAnimalService} from './update-animal.service';
+import {AnimalOverview} from 'src/app/model/animal-overview';
+import {UpdateAnimalService} from '../../service/update-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
