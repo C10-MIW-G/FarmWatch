@@ -8,8 +8,8 @@
       <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 20px;">Admin Dashboard</a>
     </ul>
     <ul class="my-2 my-lg-0">
-      <button *ngIf="!isLoggedIn()" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login">Login</button>
-      <button *ngIf="isLoggedIn()" class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()">Logout</button>
+      <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Login</button>
+      <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="logout()">Logout</button>
     </ul>
   </div>
 </nav>
