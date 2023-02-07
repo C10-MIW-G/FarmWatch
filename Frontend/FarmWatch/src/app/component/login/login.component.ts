@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const { username, password, captchaToken } = this.form;
 
-    this.authService.login(username, password).subscribe({
+    this.authService.login(username, password, captchaToken).subscribe({
       next: data => {
         this.storageService.saveUser(data);
 
