@@ -33,11 +33,9 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         // TODO check captcha token.
         HttpClient client = HttpClient.newHttpClient();
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append()
         HttpRequest captchaCheck = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.google.com/recaptcha/api/siteverify"))
-                .POST(HttpRequest.BodyPublishers.ofString())
+                .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
         try {
             HttpResponse<String> response = client.send(captchaCheck, HttpResponse.BodyHandlers.ofString());
@@ -46,7 +44,6 @@ public class AuthenticationController {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 }
