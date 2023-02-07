@@ -15,12 +15,13 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient, private storageService: StorageService) {}
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string, captchaToken : String): Observable<any> {
     return this.http.post(
       AUTH_API + 'authenticate',
       {
         username,
         password,
+        captchaToken
       },
       httpOptions
     );

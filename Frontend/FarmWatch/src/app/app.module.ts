@@ -14,6 +14,8 @@ import { AuthGuard } from './security/_auth/auth.guard';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { UpdateAnimalComponent } from './update-animal/update-animal.component';
+import { environment } from '../environments/environment';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,15 @@ import { UpdateAnimalComponent } from './update-animal/update-animal.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
-  providers: [httpInterceptorProviders, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [httpInterceptorProviders, AuthGuard , {
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: environment.recaptcha.siteKey,
+    } as RecaptchaSettings,}], 
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

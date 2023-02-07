@@ -46,6 +46,8 @@
           </div>
         </div>
       </div>
+      <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      <br>
       <div class="form-group">
         <button class="btn btn-primary btn-block">
           Login
