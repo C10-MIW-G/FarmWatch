@@ -2,14 +2,12 @@ package com.theteapottroopers.farmwatch.security.auth;
 
 import lombok.RequiredArgsConstructor;
 
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+
 
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
@@ -22,7 +20,7 @@ import java.net.http.HttpResponse;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
-    private final String captchaKey = "6LeKLl0kAAAAANJ5-3s9PLySY-r_Ln13epzRtN3d";
+
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request){
@@ -31,19 +29,12 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-        // TODO check captcha token.
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest captchaCheck = HttpRequest.newBuilder()
-                .uri(URI.create("https://www.google.com/recaptcha/api/siteverify"))
-                .POST(HttpRequest.BodyPublishers.noBody())
-                .build();
-        try {
-            HttpResponse<String> response = client.send(captchaCheck, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        CaptchaChecker captchaChecker = new CaptchaChecker();
+        if (captchaChecker.verify(request.getCaptchaToken()) == true){
+            return ResponseEntity.ok(authenticationService.authenticate(request));
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(authenticationService.authenticate(request));
+
     }
 }
