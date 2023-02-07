@@ -20,7 +20,7 @@ import { UpdateAnimalComponent } from './update-animal/update-animal.component';
     AppComponent,
     AnimalOverviewComponent,
     AnimalDetailComponent,
-    AddAnimalComponent, 
+    AddAnimalComponent,  
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
