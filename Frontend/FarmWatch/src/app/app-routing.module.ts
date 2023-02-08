@@ -9,6 +9,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { AuthGuard } from './security/_auth/auth.guard';
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'animal/update/:id', component: UpdateAnimalComponent},
-  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}}
+  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'ticket/new', component: CreateTicketComponent}
 ];
 
 
