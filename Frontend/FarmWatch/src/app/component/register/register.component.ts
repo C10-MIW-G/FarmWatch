@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     });
     setTimeout(() => {
       this.router.navigate(['login']);
-  }, 1500);  
+  }, 1000);  
 
   }
 }
