@@ -14,6 +14,8 @@ import { AuthGuard } from './security/_auth/auth.guard';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { AddAnimalComponent } from './component/add-animal/add-animal.component';
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
+import { environment } from '../environments/environment';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -34,10 +36,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,,
     MatSidenavModule,
     BrowserAnimationsModule
   ],
-  providers: [httpInterceptorProviders, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [httpInterceptorProviders, AuthGuard , {
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: environment.recaptcha.siteKey,
+    } as RecaptchaSettings,}], 
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
