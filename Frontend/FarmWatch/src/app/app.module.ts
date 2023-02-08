@@ -37,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     RecaptchaModule,
-    RecaptchaFormsModule,,
+    RecaptchaFormsModule,
     MatSidenavModule,
     BrowserAnimationsModule
   ],

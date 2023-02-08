@@ -20,13 +20,13 @@ h1 {
 }
 
 .sidenav-left {
-    background-color: rgb(17, 255, 0);
-    width: 300px;
+    background-color: rgb(119, 119, 119);
+    width: 250px;
 }
 
 .sidenav-right {
-    background-color: rgb(186, 79, 141);
-    width: 300px;
+    background-color: rgb(119, 119, 119);
+    width: 250px;
     
 }
 
