@@ -16,6 +16,8 @@ import { AddAnimalComponent } from './component/add-animal/add-animal.component'
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
 import { environment } from '../environments/environment';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSet
     HttpClientModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    MatSidenavModule,
+    BrowserAnimationsModule
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,
