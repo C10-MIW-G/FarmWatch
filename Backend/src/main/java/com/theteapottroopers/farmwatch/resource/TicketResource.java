@@ -1,9 +1,8 @@
 package com.theteapottroopers.farmwatch.resource;
 
-import com.theteapottroopers.farmwatch.dto.AnimalDto;
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
-import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.TicketMessageService;
@@ -19,7 +18,7 @@ import java.util.List;
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
- * Wat doet deze klasse?
+ * Handles Ticket requests
  */
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
@@ -32,7 +31,8 @@ public class TicketResource {
     public TicketResource(TicketService ticketService, UserService userService,
                           AnimalService animalService, TicketMessageService ticketMessageService) {
         this.ticketService = ticketService;
-        this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageService);
+        TicketMessageMapper ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
+        this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageMapper);
     }
 
     @GetMapping
@@ -42,6 +42,7 @@ public class TicketResource {
         for (Ticket ticket: allTickets) {
             allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
         }
+        System.out.println(allTicketDtos);
         return new ResponseEntity<>(allTicketDtos, HttpStatus.OK);
     }
 

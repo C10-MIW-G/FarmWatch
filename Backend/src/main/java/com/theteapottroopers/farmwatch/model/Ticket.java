@@ -3,11 +3,8 @@ package com.theteapottroopers.farmwatch.model;
 import com.theteapottroopers.farmwatch.security.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
@@ -42,5 +39,5 @@ public class Ticket {
     @JoinColumn(name = "assigned_to_user_id")
     private User assignedTo;
     @OneToMany(mappedBy = "ticket")
-    private Set<TicketMessage> ticketMessages;
+    private List<TicketMessage> ticketMessages;
 }
