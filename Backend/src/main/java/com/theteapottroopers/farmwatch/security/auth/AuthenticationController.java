@@ -24,17 +24,18 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request){
-        return ResponseEntity.ok(authenticationService.register(request));
+        CaptchaChecker captchaChecker = new CaptchaChecker();
+        if (captchaChecker.verify(request.getCaptchaToken()) == true){
+            return ResponseEntity.ok(authenticationService.register(request));
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-        CaptchaChecker captchaChecker = new CaptchaChecker();
-        if (captchaChecker.verify(request.getCaptchaToken()) == true){
-            return ResponseEntity.ok(authenticationService.authenticate(request));
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+
+        return ResponseEntity.ok(authenticationService.authenticate(request));
 
     }
 }

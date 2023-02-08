@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,21 +13,22 @@ export class RegisterComponent implements OnInit {
     lastname: null,
     username: null,
     email: null,
-    password: null
+    password: null,
+    captchaToken: null,
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    const { firstname, lastname, email, username, password } = this.form;
+    const { firstname, lastname, email, username, password, captchaToken } = this.form;
 
-    this.authService.register(firstname, lastname, email, username, password).subscribe({
+    this.authService.register(firstname, lastname, email, username, password, captchaToken).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
@@ -37,5 +39,9 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     });
+    setTimeout(() => {
+      this.router.navigate(['login']);
+  }, 1500);  
+
   }
 }
