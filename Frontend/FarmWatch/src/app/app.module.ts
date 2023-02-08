@@ -14,6 +14,8 @@ import { AuthGuard } from './security/_auth/auth.guard';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { AddAnimalComponent } from './component/add-animal/add-animal.component';
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UpdateAnimalComponent } from './component/update-animal/update-animal.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    BrowserAnimationsModule
   ],
   providers: [httpInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { AnimalDetail } from "../../model/animal-detail";
 import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
     selector: 'app-animal',
     templateUrl: './animal-detail.component.html',
