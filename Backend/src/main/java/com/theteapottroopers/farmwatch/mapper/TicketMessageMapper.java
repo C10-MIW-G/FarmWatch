@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
+import com.theteapottroopers.farmwatch.dto.TicketMessageDtoId;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
@@ -39,5 +40,12 @@ public class TicketMessageMapper {
                         ticketService.findTicketById(ticketMessageDtoAll.getTicketId()) : null))
                 .build();
         return ticketMessageBuilder;
+    }
+
+    public TicketMessageDtoId toTicketMessageDtoId(TicketMessage ticketMessage){
+        TicketMessageDtoId ticketMessageDtoIdBuilder = TicketMessageDtoId.builder()
+                .id(ticketMessage.getId())
+                .build();
+        return ticketMessageDtoIdBuilder;
     }
 }

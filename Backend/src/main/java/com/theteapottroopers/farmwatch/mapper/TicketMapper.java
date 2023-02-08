@@ -1,7 +1,7 @@
 package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
-import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
+import com.theteapottroopers.farmwatch.dto.TicketMessageDtoId;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.AnimalService;
@@ -27,7 +27,7 @@ public class TicketMapper {
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
-        List<TicketMessageDtoAll> ticketMessagesDtoList = getTicketMessagesToDtoAll(ticket);
+        List<TicketMessageDtoId> ticketMessagesDtoIdList = getTicketMessagesToDtoId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
                 .title(ticket.getTitle())
@@ -39,17 +39,17 @@ public class TicketMapper {
                 .reportedByUserId(ticket.getReportedBy().getId())
                 .assignedToUserId((ticket.getAssignedTo() != null) ?
                         ticket.getAssignedTo().getId() : null)
-                .ticketMessages(ticketMessagesDtoList)
+                .ticketMessageIds(ticketMessagesDtoIdList)
                 .build();
         return ticketDtoAllBuilder;
     }
 
-    private List<TicketMessageDtoAll> getTicketMessagesToDtoAll(Ticket ticket) {
-        List<TicketMessageDtoAll> ticketMessagesDtoList = new ArrayList<>();
+    private List<TicketMessageDtoId> getTicketMessagesToDtoId(Ticket ticket) {
+        List<TicketMessageDtoId> ticketMessagesDtoIdList = new ArrayList<>();
         for(TicketMessage ticketMessage : ticket.getTicketMessages()){
-            ticketMessagesDtoList.add(ticketMessageMapper.toTicketMessageDtoAll(ticketMessage));
+            ticketMessagesDtoIdList.add(ticketMessageMapper.toTicketMessageDtoId(ticketMessage));
         }
-        return ticketMessagesDtoList;
+        return ticketMessagesDtoIdList;
     }
 
     public Ticket toTicket(TicketDtoAll ticketDtoAll) {
