@@ -18,6 +18,7 @@ import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSet
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
 
 
 
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     ProfileComponent,
     AdminDashboardComponent,
-    UpdateAnimalComponent
+    UpdateAnimalComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
