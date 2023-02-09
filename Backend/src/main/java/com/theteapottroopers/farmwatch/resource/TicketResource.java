@@ -11,6 +11,7 @@ import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class TicketResource {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<?> addTicket(@RequestBody TicketDtoNew ticketDtoNew){
         ticketService.addTicket(ticketMapper.toTicketFromNew(ticketDtoNew));
         return new ResponseEntity<>(HttpStatus.CREATED);
