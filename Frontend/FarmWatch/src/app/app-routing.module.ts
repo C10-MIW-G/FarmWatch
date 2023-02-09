@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { AddAnimalComponent } from './component/add-animal/add-animal.component';
 import { AnimalDetailComponent } from './component/animal-detail/animal-detail.component';
 import { AnimalOverviewComponent } from './component/animal-overview/animal-overview.component';
@@ -22,9 +22,14 @@ const routes: Routes = [
   { path: 'ticket/new', component: CreateTicketComponent}
 ];
 
+const routerOptions: ExtraOptions = {
+  anchorScrolling: 'enabled', 
+  onSameUrlNavigation: 'reload',
+};
+
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
