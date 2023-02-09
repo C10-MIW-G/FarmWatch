@@ -16,9 +16,14 @@ import { UpdateAnimalComponent } from './component/update-animal/update-animal.c
 import { environment } from '../environments/environment';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CreateTicketComponent } from './create-ticket/create-ticket.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -31,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     ProfileComponent,
     AdminDashboardComponent,
-    UpdateAnimalComponent
+    UpdateAnimalComponent,
+    CreateTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecaptchaModule,
     RecaptchaFormsModule,
     MatSidenavModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,

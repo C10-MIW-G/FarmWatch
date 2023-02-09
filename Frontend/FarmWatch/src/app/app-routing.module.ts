@@ -9,7 +9,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { AuthGuard } from './security/_auth/auth.guard';
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
-import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
+import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
