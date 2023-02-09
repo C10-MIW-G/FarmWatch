@@ -1,32 +1,53 @@
+
 # FarmWatch
 
-A web application which bring the community back to the community zoo.
+"A web application that brings the community back to the community zoo."
 
-## Prerequisites
+This web application boasts a dynamic front-end implemented using Angular and a robust backend powered by Spring Boot. The combination of these technologies results in a seamless user experience. The Angular front-end provides an interactive and responsive interface, while the Spring Boot backend efficiently handles and manages data.
+
+The application utilizes a MySQL database for storage and retrieval of information, ensuring reliable and fast performance. Adhering to a microservices architecture, the application is broken down into smaller, more manageable components, making maintenance, testing, and deployment easier while improving overall performance.
+
+Security is a top priority in this web application, with authentication and authorization methods in place to protect user data at all times. In conclusion, this web application combines the strengths of Angular and Spring Boot to deliver a feature-rich and high-performing solution to its users.
+
+## How to install
 
 To get up and running it is important to install the correct software and packages on your system. In this section you will read everything you need to know about what you need to install and how you need to install it!
 
-	- Use IntelliJ IDEA or a similar IDE for the prject project backend.
-	- Use Microsoft Visual Studio Code or similar for working on the project frontend.
-	- Clone this repository into a folder of your choosing on your local machine.
-	- Follow the remaining install instructions below.
+### Prerequisites
+-   npm (version 6.x or later)
+-   Angular CLI (version 15.x or later)
+-   Java (version 17 or later)
+-   Maven (version 3.5 or later)
+-   MySQL Server (version 8.x or later)
 
 ### Installing
+#### Frontend
+To start the installing clone the github repository to a local folder of your choosing.
+1.  Clone the repository to your local machine using the following command:
+`git clone https://github.com/<username>/<repository>.git` 
+2.  Open the backend folder in your local folder using IntelliJ or similar IDE. Open de pom.xml and download and install all missing dependencies.
+3. Run the application.
+4. The backend is now ready to use. 
 
-The first thing the get up and running is the backend of the project.
-	- Open the frontend folder in the repository with your IDE.
-The backend of this application is build with Java Springboot. To get the backend up and running please follow the next steps.
+#### Backend
 
-The frontend of this application is build with Angular. To get the frontend up and running please follow the next steps.
-// TODO
+1.  Open the frontend folder in your local folder using Microsoft Visual Code or similar IDE.
+2.  Open the terminal and run the following command to install the packages:
+`npm install`
+3.  Open the terminal and run the following command
+`ng serve`
+4. The frontend is now ready to use.
 
+## Built With 
+#### Frameworks
+![Spring](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+ #### IDE's
+![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+#### Tools
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+#### Languages
+![JAVA](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-
-## Built With
-
-- ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)[Java](https://java.com)
-- ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)[SpringBoot](https://spring.io/projects/spring-boot)
-- ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)[Angular](https://angular.io)
 
 ## Authors
 
