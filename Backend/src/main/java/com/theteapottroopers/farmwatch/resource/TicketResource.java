@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
+import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
 import com.theteapottroopers.farmwatch.model.Ticket;
@@ -47,8 +48,8 @@ public class TicketResource {
     }
 
     @PostMapping
-    public ResponseEntity<?> addTicket(@RequestBody TicketDtoAll ticketDtoAll){
-        ticketService.addTicket(ticketMapper.toTicket(ticketDtoAll));
+    public ResponseEntity<?> addTicket(@RequestBody TicketDtoNew ticketDtoNew){
+        ticketService.addTicket(ticketMapper.toTicketFromNew(ticketDtoNew));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

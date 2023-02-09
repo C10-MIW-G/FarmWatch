@@ -28,6 +28,7 @@ public class UserResource {
     private final UserService userService;
     private final UserMapper userMapper;
 
+
     public UserResource(UserService userService) {
         this.userService = userService;
         this.userMapper = new UserMapper();
