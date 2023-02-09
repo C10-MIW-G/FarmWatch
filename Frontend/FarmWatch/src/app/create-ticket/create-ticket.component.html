@@ -16,6 +16,24 @@
                 </mat-form-field>
             </div>
             <div class="form-group">
+                <mat-label>Animal</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select 
+                    class="form-control"
+                    name="animalId"
+                    [(ngModel)] = "form.animalId"
+                    animalId
+                    #animalId="ngModel">
+                        <mat-option>
+                            I don't know
+                        </mat-option>
+                        <mat-option *ngFor="let animal of animals" [value]="animal.id">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
                 <mat-label>Description</mat-label>
                 <mat-form-field appearance="outline">
                     <textarea matInput rows="10" style="height: 100%;"
@@ -30,5 +48,8 @@
             </div>
             <button mat-raised-button color="primary" type="submit">Submit ticket</button>
         </form>
+    </div>
+    <div class="col-md-12 d-flex align-items-center justify-content-center">
+        <span><h4 *ngIf="created">Thankyou, the ticket has been received</h4></span>
     </div>
 </div>
