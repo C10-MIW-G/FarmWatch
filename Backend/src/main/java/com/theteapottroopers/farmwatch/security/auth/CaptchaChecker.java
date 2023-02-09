@@ -1,5 +1,8 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
@@ -15,9 +18,12 @@ import java.net.URL;
 
 public class CaptchaChecker {
 
-    private static final String API_URL = "https://www.google.com/recaptcha/api/siteverify";
     private static final String CAPTCHA_KEY = "6LeKLl0kAAAAANJ5-3s9PLySY-r_Ln13epzRtN3d";
-    public static final String VALIDATION_STRING = "success";
+    private static final String API_URL = "https://www.google.com/recaptcha/api/siteverify";
+    private static final String VALIDATION_STRING = "success";
+
+    public CaptchaChecker() {
+    }
 
     public boolean verify(String userCaptcha){
 

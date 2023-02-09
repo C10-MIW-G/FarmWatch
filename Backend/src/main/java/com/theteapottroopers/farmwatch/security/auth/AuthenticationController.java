@@ -21,21 +21,19 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
-
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request){
         CaptchaChecker captchaChecker = new CaptchaChecker();
-        if (captchaChecker.verify(request.getCaptchaToken()) == true){
+
+        if (captchaChecker.verify(request.getCaptchaToken())){
             return ResponseEntity.ok(authenticationService.register(request));
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-
         return ResponseEntity.ok(authenticationService.authenticate(request));
-
     }
 }
