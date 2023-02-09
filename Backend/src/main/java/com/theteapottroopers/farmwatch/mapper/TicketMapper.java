@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
+import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoId;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
@@ -62,6 +63,19 @@ public class TicketMapper {
                 .reportedBy(userService.findUserById(ticketDtoAll.getReportedByUserId()))
                 .assignedTo((ticketDtoAll.getAssignedToUserId() != null ?
                         userService.findUserById(ticketDtoAll.getAssignedToUserId()) : null))
+                .build();
+        return ticketAllBuilder;
+    }
+
+    public Ticket toTicketFromNew(TicketDtoNew ticketDtoNew){
+        Ticket ticketAllBuilder = Ticket.builder()
+                .title(ticketDtoNew.getTitle())
+                .description(ticketDtoNew.getDescription())
+                .status("requested")
+                .animal((ticketDtoNew.getAnimalId() != null) ?
+                        animalService.findAnimalById(ticketDtoNew.getAnimalId()) : null)
+                .reportedBy(userService.findUserByUsername(ticketDtoNew.getReportUsername()))
+                .assignedTo((null))
                 .build();
         return ticketAllBuilder;
     }
