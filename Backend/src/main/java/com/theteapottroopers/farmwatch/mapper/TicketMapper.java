@@ -53,20 +53,6 @@ public class TicketMapper {
         return ticketMessagesDtoIdList;
     }
 
-    public Ticket toTicket(TicketDtoAll ticketDtoAll) {
-        Ticket ticketAllBuilder = Ticket.builder()
-                .title(ticketDtoAll.getTitle())
-                .description(ticketDtoAll.getDescription())
-                .status(ticketDtoAll.getStatus())
-                .animal((ticketDtoAll.getAnimalId() != null) ?
-                        animalService.findAnimalById(ticketDtoAll.getAnimalId()) : null)
-                .reportedBy(userService.findUserById(ticketDtoAll.getReportedByUserId()))
-                .assignedTo((ticketDtoAll.getAssignedToUserId() != null ?
-                        userService.findUserById(ticketDtoAll.getAssignedToUserId()) : null))
-                .build();
-        return ticketAllBuilder;
-    }
-
     public Ticket toTicketFromNew(TicketDtoNew ticketDtoNew){
         Ticket ticketAllBuilder = Ticket.builder()
                 .title(ticketDtoNew.getTitle())
