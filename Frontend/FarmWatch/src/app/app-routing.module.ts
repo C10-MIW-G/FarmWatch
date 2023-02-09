@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'animal/update/:id', component: UpdateAnimalComponent},
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
-  { path: 'ticket/new', component: CreateTicketComponent}
+  { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}}
 ];
 
 const routerOptions: ExtraOptions = {

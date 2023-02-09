@@ -21,18 +21,7 @@ public class TicketMessageMapper {
         this.ticketService = ticketService;
     }
 
-    public TicketMessageDtoAll toTicketMessageDtoAll(TicketMessage ticketMessage){
-        TicketMessageDtoAll ticketMessageDtoAllBuilder = TicketMessageDtoAll.builder()
-                .id(ticketMessage.getId())
-                .sendByUserId(ticketMessage.getSendBy().getId())
-                .messageLocalDateTime(ticketMessage.getMessageDateTime())
-                .message(ticketMessage.getMessage())
-                .ticketId(ticketMessage.getId())
-                .build();
-        return ticketMessageDtoAllBuilder;
-    }
-
-    public TicketMessage toTicketMessage(TicketMessageDtoAll ticketMessageDtoAll){
+    public TicketMessage toTicketMessage(TicketMessageDtoAll ticketMessageDtoAll) {
         TicketMessage ticketMessageBuilder = TicketMessage.builder()
                 .sendBy(userService.findUserById(ticketMessageDtoAll.getSendByUserId()))
                 .message(ticketMessageDtoAll.getMessage())

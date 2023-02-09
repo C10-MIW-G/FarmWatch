@@ -1,13 +1,8 @@
 package com.theteapottroopers.farmwatch.service;
 
-import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.exception.TicketNotFoundException;
-import com.theteapottroopers.farmwatch.exception.UserNotFoundException;
-import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.repository.TicketRepository;
-
-import com.theteapottroopers.farmwatch.security.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

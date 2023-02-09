@@ -2,9 +2,6 @@ package com.theteapottroopers.farmwatch.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
