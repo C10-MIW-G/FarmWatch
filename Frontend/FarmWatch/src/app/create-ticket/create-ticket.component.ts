@@ -23,6 +23,7 @@ export class CreateTicketComponent implements OnInit{
   reportUsername= '';
   errorMessage = '';
   animals: AnimalOverview[] = [];
+  created = false;
 
   constructor(private createTicketService: CreateTicketService, private route: ActivatedRoute, 
     private router: Router, private storageService: StorageService, private animalOverviewService: AnimalOverviewService) { }
@@ -37,8 +38,7 @@ export class CreateTicketComponent implements OnInit{
     this.createTicketService.createTicket(title, description, animalId, this.reportUsername).subscribe({
       next: data => {
         console.log(data);
-        this.router.navigate(['/']);
-        
+        this.created = true;
       },
       error: err => {
         console.log(err);
