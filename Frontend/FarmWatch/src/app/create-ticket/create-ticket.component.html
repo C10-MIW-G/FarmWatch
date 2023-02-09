@@ -16,6 +16,21 @@
                 </mat-form-field>
             </div>
             <div class="form-group">
+                <mat-label>Animal</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select 
+                    class="form-control"
+                    name="animalId"
+                    [(ngModel)] = "form.animalId"
+                    animalId
+                    #animalId="ngModel">
+                        <mat-option *ngFor="let animal of animals" [value]="animal.id">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
                 <mat-label>Description</mat-label>
                 <mat-form-field appearance="outline">
                     <textarea matInput rows="10" style="height: 100%;"
