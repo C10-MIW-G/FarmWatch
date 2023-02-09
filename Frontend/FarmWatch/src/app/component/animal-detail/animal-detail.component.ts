@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { AnimalDetail } from "../../model/animal-detail";
 import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from '../../security/_services/storage.service';
 
 @Component({
     selector: 'app-animal',
@@ -15,7 +16,9 @@ export class AnimalDetailComponent implements OnInit {
     public isAuthorized: boolean = false; 
 
     constructor(private animalDetailService : AnimalDetailService, 
-      private route: ActivatedRoute, private router: Router) {
+      private route: ActivatedRoute, 
+      private router: Router, 
+      private storageService: StorageService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -23,7 +26,13 @@ export class AnimalDetailComponent implements OnInit {
   
     ngOnInit(): void {
         this.getAnimalDetail(this.id);
-    }
+        this.isAuthorized = this.storageService.isLoggedIn();
+        if(this.storageService.getRole() == 'ADMIN') {
+          this.isAuthorized = true; 
+        } else {
+          this.isAuthorized = false;
+        }
+      }
 
     public getAnimalDetail(id: number): void {
         this.animalDetailService.getAnimalDetail(id).subscribe(
