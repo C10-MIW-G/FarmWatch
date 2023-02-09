@@ -1,49 +1,52 @@
-<!-- <mat-sidenav-container class="sidenav-container" id="top">
+<mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
         <h5>Jump to section:</h5>
-        <a class="btn btn-secondary tooltips" (click)="onClick('top')">Return</a>
-        <br>
-        <a class="btn btn-secondary tooltips" (click)="onClick('middle')">Middle</a>
-        <br>
-        <a class="btn btn-secondary tooltips" (click)="onClick('bottom')">Bottom</a>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         <br>
-<h1>Details for {{animalDetail?.name}}</h1>
-
-<div class="container" id="main-container">
-    <div class="row">
-        <div class="col-md-6 col-xl-3">
-            <div class="card m-b-30">
-                <div class="card-body row">
-                    <div class="col-6 card-title align-self-center mb-0">
-                        <h5 id="middle">{{animalDetail?.name}}</h5>
-                        <table>
-                            
-                        </table>
-                    </div>
-                </div>
+        <div class="container bootdey flex-grow-1 container-p-y">
+            <div class="card mb-4">
+              <div class="card-body">
+                <table class="table user-view-table m-0">
+                  <tbody>
+                    <tr></tr>
+                    <tr>
+                      <td>Username:</td>
+                      <td>{{user?.username}}</td>
+                    </tr>
+                    <tr>
+                      <td>Firstname:</td>
+                      <td>{{user?.firstname}}</td>
+                    </tr>
+                    <tr>
+                      <td>Lastname:</td>
+                      <td>{{user?.lastname}}</td>
+                    </tr>
+                    <tr>
+                        <td>email:</td>
+                        <td>{{user?.email}}</td>
+                    </tr>
+                    <tr>
+                      <td>Role:</td>
+                      <td>{{user?.role}}</td>
+                    </tr>
+                    <tr><td></td><td></td></tr>
+                  </tbody>
+                </table>
+              </div>    
             </div>
-        </div>
-    </div>
-</div>
-
-<h1>The chicken (Gallus gallus domesticus) is a domesticated junglefowl species, with attributes of wild species such as the grey and the Ceylon junglefowl[1] that are originally from Southeastern Asia. Rooster or cock is a term for an adult male bird, and a younger male may be called a cockerel. A male that has been castrated is a capon. An adult female bird is called a hen and a sexually immature female is called a pullet. Humans now keep chickens primarily as a source of food (consuming both their meat and eggs) and as pets. Traditionally they were also bred for cockfighting, which is still practiced in some places. The chicken domesticated for its meat are Broilers and for its eggs are Layers.
-
-    Chickens are one of the most common and widespread domestic animals, with a total population of 23.7 billion as of 2018,[2] up from more than 19 billion in 2011. There are more chickens in the world than any other bird. There are numerous cultural references to chickens – in myth, folklore and religion, and in language and literature.[citation needed]
-    
-    Genetic studies have pointed to multiple maternal origin theories of within South Asia, Southeast Asia, and East Asia,[3] but the clade found in the Americas, Europe, the Middle East and Africa originated from the Indian subcontinent. From ancient India, the chicken spread to the Eastern Mediterranean. They appear in Egypt in the mid-15th century BC, with the "bird that gives birth every day" having come from the land between Syria and Shinar, Babylonia, according to the annals of Thutmose III.[4][5][6] They are known in Greece from the 5th century BC.[7][8]</h1>
+          </div>
 
 <div id="bottom"></div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
         <div>
-            <h5>Actions</h5>
-            <button class="btn btn-secondary tooltips" routerLink="/animal/update/{{id}}">Edit</button>
+            <p class="text-center">Actions</p>
+            <button class="btn btn-warning tooltips btn-block text-light "><i class="fa fa-times" style='color: white'></i> Edit</button>
             <br>
-            <button class="btn btn-secondary tooltips" (click)="onDeleteAnimal(id)">Delete</button> 
+            <button class="btn btn-danger tooltips btn-block" ><i class="fa fa-pencil" style='color: white'></i> Delete</button> 
         </div>
     </mat-sidenav>
-</mat-sidenav-container> -->
+</mat-sidenav-container>
