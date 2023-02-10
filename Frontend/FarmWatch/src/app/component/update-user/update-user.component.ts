@@ -14,13 +14,15 @@ import { Router } from '@angular/router';
 export class UpdateUserComponent {
   public user!: User;
   public id!: number;
-  public isAuthorized: boolean = false; 
+  public role: string = ""
+  public isAuthorized: boolean = false;
+  public canChangePassword: boolean = false; 
 
-  constructor(private userService : UserService,
-    private userDetailService: UserService,
+  constructor(
+    private userService: UserService,
     private route: ActivatedRoute,
     private router : Router,
-    private storageService: StorageService) {
+    public storageService: StorageService) {
       this.route.params.subscribe(params => {
           this.id = params['id'];
       });
@@ -45,10 +47,29 @@ export class UpdateUserComponent {
       , error => console.log(error));
     }
 
-    public getUser(id: number): void {
-      this.userDetailService.getUserDetail(id).subscribe(
+    private formattedRole(): void {
+      if(this.user.role === "ROLE_ADMIN"){
+        this.role = 'administrator';
+        return;
+      } else if (this.user.role === "ROLE_USER") {
+        this.role = 'user';
+        return;
+      }  
+      this.role = 'caretaker';
+    }
+
+    private allowedToChangePassword(): void{
+      if(this.storageService.getRole() === 'USER'){
+        this.canChangePassword = true;
+      }  
+    }
+
+    private getUser(id: number): void {
+      this.userService.getUserDetail(id).subscribe(
         (response: User) => {
           this.user = response;
+          this.formattedRole();
+          this.allowedToChangePassword();
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
