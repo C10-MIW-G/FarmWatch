@@ -2,8 +2,12 @@
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/5.15.4/css/font-awesome.min.css';
 
 h1 {
-    margin: auto;
-    width: 50%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    margin: 0 auto;
 }
 
 .sidenav-content {

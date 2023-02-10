@@ -1,15 +1,13 @@
 package com.theteapottroopers.farmwatch.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.time.LocalDate;
 
 
 /**
@@ -27,8 +25,19 @@ public class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String commonName;
+    private String species;
+    @Column(length=1000)
+    private String description;
+    private LocalDate dateOfBirth;
+    private String imageUrl;
 
-    public Animal(String name) {
+    public Animal(String name, String commonName, String species, String description, LocalDate dateOfBirth, String imageUrl) {
         this.name = name;
+        this.commonName = commonName;
+        this.species = species;
+        this.description = description;
+        this.dateOfBirth = dateOfBirth;
+        this.imageUrl = imageUrl;
     }
 }

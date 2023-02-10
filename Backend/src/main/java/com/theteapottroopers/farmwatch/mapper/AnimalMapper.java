@@ -8,8 +8,21 @@ import com.theteapottroopers.farmwatch.model.Animal;
  */
 public class AnimalMapper {
     public AnimalDto toAnimalDto(Animal animal){
-       return new AnimalDto(animal.getId(), animal.getName());
+       return new AnimalDto(
+               animal.getId(),
+               animal.getName(),
+               animal.getCommonName(),
+               animal.getSpecies(),
+               animal.getDescription(),
+               animal.getDateOfBirth(),
+               animal.getImageUrl());
     }
 
-    public Animal toAnimal(AnimalDto animalDto) {return new Animal(animalDto.getName());}
+    public Animal toAnimal(AnimalDto animalDto) {return new Animal(
+            animalDto.getName(),
+            animalDto.getCommonName(),
+            animalDto.getSpecies(),
+            animalDto.getDescription(),
+            animalDto.getDateOfBirth(),
+            animalDto.getImageUrl());}
 }

@@ -63,6 +63,10 @@ export class AnimalDetailComponent implements OnInit {
       this.router.navigate( ['/animal/', this.id ], {fragment});
     }
 
+    public toTop(): void {
+      window.scroll({top: 0, left: 0})
+    }
+
 
    
 

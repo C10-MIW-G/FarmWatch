@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 /**
  * @author Eelke Mulder
  */
@@ -16,4 +18,9 @@ import lombok.Setter;
 public class AnimalDto {
     private Long id;
     private String name;
+    private String commonName;
+    private String species;
+    private String description;
+    private LocalDate dateOfBirth;
+    private String imageUrl;
 }
