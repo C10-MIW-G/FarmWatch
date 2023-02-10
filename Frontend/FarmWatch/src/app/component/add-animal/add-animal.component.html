@@ -18,6 +18,36 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label">Common name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="commonName" name="commonName" required #name="ngModel" [(ngModel)]="animal.commonName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Common species</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="species" name="species" required #name="ngModel" [(ngModel)]="animal.species">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">description</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="description" name="description" required #name="ngModel" [(ngModel)]="animal.description">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Date of birth</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required #name="ngModel" [(ngModel)]="animal.dateOfBirth">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Image url</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="imageUrl" name="imageUrl" required #name="ngModel" [(ngModel)]="animal.imageUrl">
+            </div>
+          </div>
+          <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
               <button type="submit" [disabled]="!animalForm.form.valid" class="btn btn-primary">Submit</button>
             </div>

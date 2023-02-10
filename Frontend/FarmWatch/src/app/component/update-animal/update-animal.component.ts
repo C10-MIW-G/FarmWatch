@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AnimalOverview} from 'src/app/model/animal-overview';
+import { AnimalDetail } from 'src/app/model/animal-detail';
 import {UpdateAnimalService} from '../../service/update-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'src/app/service/notifier.service';
@@ -11,7 +11,7 @@ import { NotifierService } from 'src/app/service/notifier.service';
   styleUrls: ['./update-animal.component.css']
 })
 export class UpdateAnimalComponent implements OnInit{
-  public updateAnimal!: AnimalOverview;
+  public updateAnimal!: AnimalDetail;
   public id!: number;
 
   constructor(private updateAnimalService : UpdateAnimalService,
