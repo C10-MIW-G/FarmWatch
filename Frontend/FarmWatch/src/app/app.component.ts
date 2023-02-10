@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageService } from './security/_services/storage.service';
+import { NotifierService } from './service/notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ export class AppComponent {
 
   title = 'FarmWatch';
   
-  constructor(private storageService: StorageService){};
+  constructor(private storageService: StorageService, private toast: NotifierService, private router: Router){};
 
   public isLoggedIn(): boolean{
     return this.storageService.isLoggedIn();
@@ -18,7 +20,8 @@ export class AppComponent {
 
   public logout(){
     this.storageService.clean();
-    window.location.reload();
+    this.router.navigate(['login']);
+    this.toast.ShowSucces("New notification", "Logged out succesfully");
   }
 
   public getRole(): string{

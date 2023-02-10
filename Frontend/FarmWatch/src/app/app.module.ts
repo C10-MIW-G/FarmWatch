@@ -26,7 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { MatButtonModule } from '@angular/material/button';
     AdminDashboardComponent,
     UpdateAnimalComponent,
     UserDetailComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-right",
+      preventDuplicates: true,
+      easing: "ease-in",
+      easeTime: 750,
+      timeOut: 3000
+    })
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,
