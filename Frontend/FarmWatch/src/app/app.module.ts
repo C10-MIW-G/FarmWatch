@@ -21,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CreateTicketComponent } from './create-ticket/create-ticket.component';
+import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';

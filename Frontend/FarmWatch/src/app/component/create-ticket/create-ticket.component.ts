@@ -4,10 +4,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateTicket } from 'src/app/model/create-ticket';
 import { CreateTicketService } from 'src/app/service/create-ticket.service';
-import { AnimalOverview } from '../model/animal-overview';
-import { StorageService } from '../security/_services/storage.service';
-import { AnimalOverviewService } from '../service/animal-overview.service';
-import { NotifierService } from '../service/notifier.service';
+import { AnimalOverview } from '../../model/animal-overview';
+import { StorageService } from '../../security/_services/storage.service';
+import { AnimalOverviewService } from '../../service/animal-overview.service';
+import { NotifierService } from '../../service/notifier.service';
 
 @Component({
   selector: 'app-create-ticket',
