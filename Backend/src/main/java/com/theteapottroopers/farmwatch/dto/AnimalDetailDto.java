@@ -10,12 +10,11 @@ import java.time.LocalDate;
 /**
  * @author Eelke Mulder
  */
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class AnimalDto {
+public class AnimalDetailDto {
     private Long id;
     private String name;
     private String commonName;

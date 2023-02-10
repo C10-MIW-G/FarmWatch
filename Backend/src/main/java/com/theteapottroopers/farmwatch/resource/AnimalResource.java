@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.resource;
 
-import com.theteapottroopers.farmwatch.dto.AnimalDto;
+import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
+import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.AnimalService;
@@ -30,19 +31,19 @@ public class AnimalResource {
     }
     
     @GetMapping()
-    public ResponseEntity<List<AnimalDto>> getAllAnimals(){
+    public ResponseEntity<List<AnimalOverviewDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();
-        List<AnimalDto> animalDtos = new ArrayList<>();
+        List<AnimalOverviewDto> animalOverviewDtos = new ArrayList<>();
         for (Animal animal: animals) {
-            animalDtos.add(animalMapper.toAnimalDto(animal));
+            animalOverviewDtos.add(animalMapper.toAnimalOverviewDto(animal));
         }
-        return new ResponseEntity<>(animalDtos, HttpStatus.OK);
+        return new ResponseEntity<>(animalOverviewDtos, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AnimalDto> getAnimalById(@PathVariable("id") Long id){
-        AnimalDto animalDto = animalMapper.toAnimalDto(animalService.findAnimalById(id));
-        return new ResponseEntity<>(animalDto, HttpStatus.OK);
+    public ResponseEntity<AnimalDetailDto> getAnimalById(@PathVariable("id") Long id){
+        AnimalDetailDto animalDetailDto = animalMapper.toAnimalDetailDto(animalService.findAnimalById(id));
+        return new ResponseEntity<>(animalDetailDto, HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
@@ -52,15 +53,15 @@ public class AnimalResource {
     }
 
     @PutMapping
-    public ResponseEntity<AnimalDto> updateAnimal(@RequestBody AnimalDto animalDto){
-        Animal updateAnimal = animalService.updateAnimal(animalDto);
-        AnimalDto updateAnimalDto = animalMapper.toAnimalDto(updateAnimal);
-        return new ResponseEntity<>(updateAnimalDto, HttpStatus.OK);
+    public ResponseEntity<AnimalDetailDto> updateAnimal(@RequestBody AnimalDetailDto animalDetailDto){
+        Animal updateAnimal = animalService.updateAnimal(animalDetailDto);
+        AnimalDetailDto updateAnimalDetailDto = animalMapper.toAnimalDetailDto(updateAnimal);
+        return new ResponseEntity<>(updateAnimalDetailDto, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<?> addAnimal(@RequestBody AnimalDto animalDto){
-        animalService.addAnimal(animalMapper.toAnimal(animalDto));
+    public ResponseEntity<?> addAnimal(@RequestBody AnimalDetailDto animalDetailDto){
+        animalService.addAnimal(animalMapper.toAnimal(animalDetailDto));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
