@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { StorageService } from '../../security/_services/storage.service';
 import { Router } from '@angular/router';
+import { NotifierService } from 'src/app/service/notifier.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,10 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
+  constructor(private authService: AuthService, 
+              private storageService: StorageService, 
+              private router: Router,
+              private toast: NotifierService) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -36,14 +40,18 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().role;
-        this.reloadPage();
+        this.toast.ShowSucces("New Notification", "Logged in succesfully");
+        setTimeout(() => {
+          this.router.navigate(['']);
+      }, 1000);  
       },
       error: err => {
         this.errorMessage = err;
         this.isLoginFailed = true;
+        this.toast.ShowError("New Notification", "Login failed")
       }
     });
-    this.router.navigate(['']);
+    
   }
 
   reloadPage(): void {

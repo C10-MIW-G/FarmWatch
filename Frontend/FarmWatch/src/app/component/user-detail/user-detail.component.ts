@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { User } from "src/app/model/user";
-import { UserDetailService } from "src/app/service/user-detail.service";
+import { UserService } from "src/app/service/user.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../../security/_services/storage.service';
 
@@ -15,7 +15,7 @@ export class UserDetailComponent implements OnInit{
     public id!: number;
     public isAuthorized: boolean = false; 
 
-    constructor(private userDetailService : UserDetailService, 
+    constructor(private userDetailService : UserService, 
       private route: ActivatedRoute, 
       private storageService: StorageService) {
         this.route.params.subscribe(params => {

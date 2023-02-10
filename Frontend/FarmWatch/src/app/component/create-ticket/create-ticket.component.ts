@@ -4,9 +4,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateTicket } from 'src/app/model/create-ticket';
 import { CreateTicketService } from 'src/app/service/create-ticket.service';
-import { AnimalOverview } from '../model/animal-overview';
-import { StorageService } from '../security/_services/storage.service';
-import { AnimalOverviewService } from '../service/animal-overview.service';
+import { AnimalOverview } from '../../model/animal-overview';
+import { StorageService } from '../../security/_services/storage.service';
+import { AnimalOverviewService } from '../../service/animal-overview.service';
+import { NotifierService } from '../../service/notifier.service';
 
 @Component({
   selector: 'app-create-ticket',
@@ -26,7 +27,8 @@ export class CreateTicketComponent implements OnInit{
   created = false;
 
   constructor(private createTicketService: CreateTicketService, private route: ActivatedRoute, 
-    private router: Router, private storageService: StorageService, private animalOverviewService: AnimalOverviewService) { }
+    private router: Router, private storageService: StorageService, private animalOverviewService: AnimalOverviewService,
+    private toast: NotifierService) { }
   ngOnInit(): void {
     this.getAnimals();
   }
@@ -39,10 +41,12 @@ export class CreateTicketComponent implements OnInit{
       next: data => {
         console.log(data);
         this.created = true;
+        this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
       },
       error: err => {
         console.log(err);
         this.errorMessage = err.error;
+        this.toast.ShowError("New Notification", "Creating a new ticket failed");
       }
     });
   }

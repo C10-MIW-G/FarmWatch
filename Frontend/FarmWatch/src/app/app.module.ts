@@ -21,12 +21,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CreateTicketComponent } from './create-ticket/create-ticket.component';
+import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
     AdminDashboardComponent,
     UpdateAnimalComponent,
     UserDetailComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-right",
+      preventDuplicates: true,
+      easing: "ease-in",
+      easeTime: 750,
+      timeOut: 3000
+    })
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,

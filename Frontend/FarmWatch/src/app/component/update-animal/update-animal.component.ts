@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from 'src/app/model/animal-overview';
 import {UpdateAnimalService} from '../../service/update-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotifierService } from 'src/app/service/notifier.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class UpdateAnimalComponent implements OnInit{
 
   constructor(private updateAnimalService : UpdateAnimalService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private toast: NotifierService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -29,6 +31,7 @@ export class UpdateAnimalComponent implements OnInit{
   onSubmit(){
     this.updateAnimalService.updateAnimal(this.updateAnimal ).subscribe( data =>{
       this.goToAnimalOverview();
+      this.toast.ShowInfo("New notification", "Succesfully updated " + this.updateAnimal.name)
     }
     , error => console.log(error));
   }

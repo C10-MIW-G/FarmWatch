@@ -4,6 +4,7 @@ import { AnimalDetail } from "../../model/animal-detail";
 import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../../security/_services/storage.service';
+import { NotifierService } from "src/app/service/notifier.service";
 
 @Component({
     selector: 'app-animal',
@@ -18,7 +19,8 @@ export class AnimalDetailComponent implements OnInit {
     constructor(private animalDetailService : AnimalDetailService, 
       private route: ActivatedRoute, 
       private router: Router, 
-      private storageService: StorageService) {
+      private storageService: StorageService,
+      private toast: NotifierService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -50,7 +52,8 @@ export class AnimalDetailComponent implements OnInit {
       this.animalDetailService.deleteAnimal(AnimalDetailId).subscribe(
         (response: void) => {
             console.log(response);
-            this.router.navigate( ['/']);
+            this.router.navigate(['/']);
+            this.toast.ShowInfo("New Notification", this.animalDetail?.name + "deleted succesfully")
         },
         (error: HttpErrorResponse) => {
             alert(error.message);
@@ -61,6 +64,7 @@ export class AnimalDetailComponent implements OnInit {
 
     public onClick(fragment: string): void {
       this.router.navigate( ['/animal/', this.id ], {fragment});
+
     }
 
     public toTop(): void {
