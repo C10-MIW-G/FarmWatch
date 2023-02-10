@@ -42,6 +42,9 @@ export class CreateTicketComponent implements OnInit{
         console.log(data);
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
+        setTimeout(() => {
+          this.router.navigate(['/']);
+      }, 1000); 
       },
       error: err => {
         console.log(err);
