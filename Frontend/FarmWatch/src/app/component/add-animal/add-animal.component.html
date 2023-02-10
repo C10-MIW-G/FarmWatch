@@ -2,7 +2,7 @@
 <br>
 <div class="container bootstrap snippets bootdeys">
 <div class="row">
-  <div class="col-xs-12 col-sm-9">
+  <div class="col-xs-12 col-sm-9 mx-auto">
     <form #animalForm="ngForm" (ngSubmit)="onSubmit()" novalidate class="form-horizontal">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -15,6 +15,36 @@
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="name" name="name" required #name="ngModel" [(ngModel)]="animal.name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Common name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="commonName" name="commonName" required #name="ngModel" [(ngModel)]="animal.commonName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Common species</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="species" name="species" required #name="ngModel" [(ngModel)]="animal.species">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="description" name="description" required #name="ngModel" [(ngModel)]="animal.description">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Date of birth</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required #name="ngModel" [(ngModel)]="animal.dateOfBirth">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Image url</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="imageUrl" name="imageUrl" required #name="ngModel" [(ngModel)]="animal.imageUrl">
             </div>
           </div>
           <div class="form-group">

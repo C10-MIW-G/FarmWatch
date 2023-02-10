@@ -11,8 +11,8 @@ export class UpdateAnimalService {
 
   constructor(private http: HttpClient) { }
 
-  public updateAnimal(animal: AnimalOverview): Observable<AnimalOverview>{
-    return this.http.put<AnimalOverview>(`${this.apiServerUrl}/animal`, animal);
+  public updateAnimal(animal: AnimalDetail): Observable<AnimalDetail>{
+    return this.http.put<AnimalDetail>(`${this.apiServerUrl}/animal`, animal);
   }
 
   public getAnimalDetail(id: number): Observable<AnimalDetail> {

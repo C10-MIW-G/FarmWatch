@@ -4,10 +4,21 @@
 h1 {
     width: 100%;
     margin: 0 auto;
+    text-align: center;
+}
+
+.card-img-top {
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .card {
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: rgb(255, 255, 255);
+    
 }
 
 .sidenav-content {

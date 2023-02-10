@@ -47,6 +47,11 @@ public class AnimalService {
     public Animal updateAnimal(AnimalDetailDto animalDetailDto){
         Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
         existingAnimal.setName(animalDetailDto.getName());
+        existingAnimal.setCommonName(animalDetailDto.getCommonName());
+        existingAnimal.setSpecies(animalDetailDto.getSpecies());
+        existingAnimal.setDescription(animalDetailDto.getDescription());
+        existingAnimal.setDateOfBirth(animalDetailDto.getDateOfBirth());
+        existingAnimal.setImageUrl(animalDetailDto.getImageUrl());
         Animal updatedAnimal = animalRepository.save(existingAnimal);
         return updatedAnimal;
     }

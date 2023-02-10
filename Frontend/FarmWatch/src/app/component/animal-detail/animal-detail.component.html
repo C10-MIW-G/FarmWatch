@@ -2,19 +2,19 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
-        <p class="text-center">Jump to section:</p>
+        <p class="text-center">Jump to section</p>
         <a class="btn btn-primary tooltips btn-block" (click)="toTop()">{{animalDetail?.name}}'s details</a>
         <br>
         <a class="btn btn-primary tooltips btn-block" (click)="onClick('meet')">Meet {{animalDetail?.name}}</a>
         <br>
-        <a class="btn btn-primary tooltips btn-block" (click)="onClick('ticket')">{{animalDetail?.name}}'s Tickets</a>
+        <a class="btn btn-primary tooltips btn-block" *ngIf="isAuthorized" (click)="onClick('ticket')">{{animalDetail?.name}}'s Tickets</a>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         <br>
 
 
 <div class="card" style="width: 50rem;">
-    <h1>Details for {{animalDetail?.name}}</h1>
+    <h1>{{animalDetail?.name}}</h1>
     <br>
     <img class="card-img-top" src="{{animalDetail?.imageUrl}}" alt="Card image cap">
     <div class="card-body">
@@ -33,38 +33,10 @@
         <h5 class="card-title">Born on: </h5>
         <p class="card-text">{{animalDetail?.dateOfBirth}}</p>
       </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+</div>
+
   <br>
   <div id="meet"></div>
-  <br>
-  <br>
-  <br>
   <div class="card" style="width: 50rem;">
     <h1>Meet {{animalDetail?.name}}!</h1>
     <div class="card-body">
@@ -72,142 +44,25 @@
     </div>
   </div>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  
   <div id="ticket"></div>
-  <br>
-  <br>
-  <br>
-  <div class="card" style="width: 50rem;">
-    <h1>Tickets involving {{animalDetail?.name}}!</h1>
+
+  <div class="card"  *ngIf="isAuthorized" style="width: 50rem;">
+    <h1>Tickets involving {{animalDetail?.name}}</h1>
     <div class="card-body">
         <p class="card-text">Fortunately, {{animalDetail?.name}} has no tickets at this moment.</p>
     </div>
   </div>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
 <div id="bottom"></div>
     </mat-sidenav-content> 
-    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" *ngIf="isAuthorized" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
         <div>
-            <p class="text-center" *ngIf="isAuthorized">Actions</p>
-            <button class="btn btn-warning tooltips btn-block text-light " *ngIf="isAuthorized" routerLink="/animal/update/{{id}}"><i class="fa fa-times" style='color: white'></i> Edit</button>
+            <p class="text-center">Actions</p>
+            <button class="btn btn-warning tooltips btn-block text-light " routerLink="/animal/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
             <br>
-            <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="onDeleteAnimal(id)"><i class="fa fa-pencil" style='color: white'></i> Delete</button> 
+            <button class="btn btn-danger tooltips btn-block" (click)="onDeleteAnimal(id)"><i class="fa fa-times" style='color: white'></i> Delete</button> 
         </div>
     </mat-sidenav>
 </mat-sidenav-container>
