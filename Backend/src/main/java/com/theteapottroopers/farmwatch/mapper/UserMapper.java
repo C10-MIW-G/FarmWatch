@@ -20,7 +20,7 @@ public class UserMapper {
                 user.getFirstname(),
                 user.getLastname(),
                 user.getEmail(),
-                user.getEmail(),
+                user.getUsername(),
                 user.getRole());
     }
 
@@ -32,7 +32,7 @@ public class UserMapper {
                     user.getFirstname(),
                     user.getLastname(),
                     user.getEmail(),
-                    user.getEmail(),
+                    user.getUsername(),
                     user.getRole())
             );
         }

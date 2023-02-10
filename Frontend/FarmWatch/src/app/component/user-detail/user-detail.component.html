@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container" id="top">
+    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
+    [fixedBottomGap]="0">
+        <h5>Jump to section:</h5>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <br>
+        <div class="container bootdey flex-grow-1 container-p-y">
+            <div class="card mb-4">
+              <div class="card-body">
+                <table class="table user-view-table m-0">
+                  <tbody>
+                    <tr></tr>
+                    <tr>
+                      <td>Username:</td>
+                      <td>{{user?.username}}</td>
+                    </tr>
+                    <tr>
+                      <td>Firstname:</td>
+                      <td>{{user?.firstname}}</td>
+                    </tr>
+                    <tr>
+                      <td>Lastname:</td>
+                      <td>{{user?.lastname}}</td>
+                    </tr>
+                    <tr>
+                        <td>email:</td>
+                        <td>{{user?.email}}</td>
+                    </tr>
+                    <tr>
+                      <td>Role:</td>
+                      <td>{{user?.role}}</td>
+                    </tr>
+                    <tr><td></td><td></td></tr>
+                  </tbody>
+                </table>
+              </div>    
+            </div>
+          </div>
+
+<div id="bottom"></div>
+    </mat-sidenav-content> 
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+    [fixedBottomGap]="0">
+        <div>
+            <p class="text-center">Actions</p>
+            <button class="btn btn-warning tooltips btn-block text-light "><i class="fa fa-times" style='color: white'></i> Edit</button>
+            <br>
+            <button class="btn btn-danger tooltips btn-block" ><i class="fa fa-pencil" style='color: white'></i> Delete</button> 
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>
