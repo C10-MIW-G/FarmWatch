@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { Router } from '@angular/router';
+import { NotifierService } from 'src/app/service/notifier.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toast: NotifierService) { }
 
   ngOnInit(): void {
   }
@@ -34,10 +35,12 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.toast.ShowSucces("New Notification", "Your account has been registered succesfully!")
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+        this.toast.ShowError("New Notification", "Registration failed!")
       }
     });
     setTimeout(() => {
