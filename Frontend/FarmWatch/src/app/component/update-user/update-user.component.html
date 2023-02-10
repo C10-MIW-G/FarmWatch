@@ -1,4 +1,11 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<mat-sidenav-container class="sidenav-container" id="top">
+  <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
+  [fixedBottomGap]="0">
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+      <br>
 <br>
 <div class="container">
 <div class="row flex-lg-nowrap">
@@ -8,13 +15,6 @@
         <div class="card">
           <div class="card-body">
             <div class="e-profile">
-              <div class="row">
-                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                  <div class="text-center text-sm-right">
-                    <span class="badge badge-secondary"><i class="role">administrator</i></span>
-                  </div>
-                </div>
-              </div>
               <ul class="nav nav-tabs">
                 <li class="nav-item"><a href="" class="active nav-link">User profile</a></li>
               </ul>
@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="form-control" type="text" name="name" value="John Smith">
+                                    <input class="form-control" type="text" name="name" value={{user.username}}>
                                 </div>
                             </div>
                           </div>
@@ -35,13 +35,13 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Firstname</label>
-                              <input class="form-control" type="text" name="name" value="John Smith">
+                              <input class="form-control" type="text" name="name" value={{user.firstname}}>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Lastname</label>
-                              <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                              <input class="form-control" type="text" name="username" placeholder="name" value={{user.lastname}}>
                             </div>
                           </div>
                         </div>
@@ -49,20 +49,20 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" type="text" placeholder="user@example.com">
+                              <input class="form-control" type="text" value={{user.email}}>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                                 <label>Role</label>
-                                <input class="form-control" type="text" name="name" value="John Smith">
+                                <input class="form-control" type="text" name="name" value={{role}}>
                             </div>
                           </div>
 
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row" *ngIf="canChangePassword">
                       <div class="col-12 col-sm-6 mb-3">
                         <div class="mb-2"><b>Change Password</b></div>
                         <div class="row">
@@ -82,11 +82,6 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <button class="btn btn-primary" type="submit">Update user</button>
-                      </div>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -99,3 +94,15 @@
   </div>
 </div>
 </div>
+<div id="bottom"></div>
+    </mat-sidenav-content> 
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+    [fixedBottomGap]="0">
+    <br>    
+    <div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-primary" type="submit">Update user</button>
+      </div>
+    </div>
+    </mat-sidenav>
+</mat-sidenav-container>
