@@ -1,5 +1,6 @@
-<div class="main-container">
-    <div class="col-md-12 d-flex align-items-center justify-content-center">
+<div class="main-container ">
+    <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
+        <h3>New Ticket</h3>
         <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
             <div class="form-group">
                 <mat-label>Title</mat-label>
@@ -24,9 +25,7 @@
                     [(ngModel)] = "form.animalId"
                     animalId
                     #animalId="ngModel">
-                        <mat-option>
-                            I don't know
-                        </mat-option>
+                    <mat-option value="">I don't know</mat-option>
                         <mat-option *ngFor="let animal of animals" [value]="animal.id">
                             {{animal.name}}
                         </mat-option>
@@ -50,6 +49,6 @@
         </form>
     </div>
     <div class="col-md-12 d-flex align-items-center justify-content-center">
-        <span><h4 *ngIf="created">Thankyou, the ticket has been received</h4></span>
+        <span><h4 *ngIf="created">Thank you, the ticket has been received</h4></span>
     </div>
 </div>

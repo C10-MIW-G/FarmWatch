@@ -11,3 +11,7 @@ mat-form-field {
 textarea {
     max-height: 200px;
 }
+
+.new-ticket-form mat-label{
+    font-size: 18px;
+}
