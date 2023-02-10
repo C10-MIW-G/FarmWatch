@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.service;
 
-import com.theteapottroopers.farmwatch.dto.AnimalDto;
+import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
+import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
@@ -43,9 +44,9 @@ public class AnimalService {
         AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
         animalSeeder.SeedAnimals();
     }
-    public Animal updateAnimal(AnimalDto animalDto){
-        Animal existingAnimal = animalRepository.findById(animalDto.getId()).get();
-        existingAnimal.setName(animalDto.getName());
+    public Animal updateAnimal(AnimalDetailDto animalDetailDto){
+        Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
+        existingAnimal.setName(animalDetailDto.getName());
         Animal updatedAnimal = animalRepository.save(existingAnimal);
         return updatedAnimal;
     }
