@@ -31,7 +31,7 @@ public class TicketResource {
     private final TicketMapper ticketMapper;
 
     public TicketResource(TicketService ticketService, UserService userService,
-                          AnimalService animalService, TicketMessageService ticketMessageService) {
+                          AnimalService animalService) {
         this.ticketService = ticketService;
         TicketMessageMapper ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
         this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageMapper);
