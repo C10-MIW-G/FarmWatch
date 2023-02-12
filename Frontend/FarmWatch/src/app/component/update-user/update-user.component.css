@@ -1,17 +1,9 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/5.15.4/css/font-awesome.min.css';
 
-.role {
-    font-size: large;
-}
-
 h1 {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.card {
-    margin: 0 auto;
+    margin: auto;
+    width: 50%;
 }
 
 .sidenav-content {
@@ -31,7 +23,5 @@ h1 {
     padding: 10px 20px 10px 20px;
     
 }
-
-
 
 

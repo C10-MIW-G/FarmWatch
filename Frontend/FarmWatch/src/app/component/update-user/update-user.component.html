@@ -20,14 +20,19 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form" novalidate="">
+                  <form 
+                  *ngIf="!isSuccessful"
+                  name="form"
+                  (ngSubmit)="f.form.valid && onSubmit()"
+                  #f="ngForm"
+                  novalidateclass="form">
                     <div class="row">
                       <div class="col">
                         <div class="col">
                             <div class="row">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="form-control" type="text" name="name" value={{user.username}}>
+                                    <input class="form-control" type="text" name="username" [(ngModel)] = "user.username" value={{user.username}}>
                                 </div>
                             </div>
                           </div>
@@ -35,13 +40,28 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Firstname</label>
-                              <input class="form-control" type="text" name="name" value={{user.firstname}}>
+                              <input 
+                              type="text"
+                              class="form-control"
+                              name="firstname"
+                              [(ngModel)]="user.firstname"
+                              required
+                              firstname
+                              #firstname="ngModel"
+                              [ngClass]="{ 'is-invalid': f.submitted && firstname.errors }"
+                              value={{user.firstname}}>
+                              <div class="invalid-feedback" *ngIf="firstname.errors && f.submitted">
+                                <div *ngIf="firstname.errors['required']">Firstname is required</div>
+                                <div *ngIf="firstname.errors['firstname']">
+                                  Firstname must be a valid Firstname
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Lastname</label>
-                              <input class="form-control" type="text" name="username" placeholder="name" value={{user.lastname}}>
+                              <input class="form-control" type="text" name="lastname" [(ngModel)] = "user.lastname" value={{user.lastname}}>
                             </div>
                           </div>
                         </div>
@@ -49,16 +69,25 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" type="text" value={{user.email}}>
+                              <input class="form-control" type="text" name="email" [(ngModel)] = "user.email" value={{user.email}}>
                             </div>
                           </div>
                           <div class="col">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <label>Role</label>
                             <div class="form-group">
-                                <label>Role</label>
-                                <input class="form-control" type="text" name="name" value={{role}}>
+                              <div class="dropdown">
+                                <div class="dropdown-content">
+                                  <select name="cars" id="cars">
+                                    <option *ngFor="let role of roles" [(ngModel)] = "user.role" value="{{role.value}}">{{role.name}}</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -77,11 +106,13 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" placeholder="••••••"></div>
+                              <input class="form-control" type="password" placeholder="••••••">
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <button class = "btn btn-primary" type ="submit">Save</button>
                   </form>
                 </div>
               </div>
@@ -90,7 +121,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
@@ -98,11 +128,5 @@
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
-    <br>    
-    <div>
-      <div class="col d-flex justify-content-end">
-        <button class="btn btn-primary" type="submit">Update user</button>
-      </div>
-    </div>
     </mat-sidenav>
 </mat-sidenav-container>
