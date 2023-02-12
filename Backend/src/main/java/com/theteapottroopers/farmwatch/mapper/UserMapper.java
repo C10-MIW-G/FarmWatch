@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserMapper {
 
-    public UserDto toUserDTO(User user){
+    public UserDto toUserDto(User user){
         return new UserDto(
                 user.getId(),
                 user.getFirstname(),
