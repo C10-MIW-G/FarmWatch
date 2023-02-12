@@ -1,52 +1,97 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 <mat-sidenav-container class="sidenav-container" id="top">
-    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
-    [fixedBottomGap]="0">
-        <h5>Jump to section:</h5>
-    </mat-sidenav>
-    <mat-sidenav-content class="sidenav-content">
-        <br>
-        <div class="container bootdey flex-grow-1 container-p-y">
-            <div class="card mb-4">
-              <div class="card-body">
-                <table class="table user-view-table m-0">
-                  <tbody>
-                    <tr></tr>
-                    <tr>
-                      <td>Username:</td>
-                      <td>{{user?.username}}</td>
-                    </tr>
-                    <tr>
-                      <td>Firstname:</td>
-                      <td>{{user?.firstname}}</td>
-                    </tr>
-                    <tr>
-                      <td>Lastname:</td>
-                      <td>{{user?.lastname}}</td>
-                    </tr>
-                    <tr>
-                        <td>email:</td>
-                        <td>{{user?.email}}</td>
-                    </tr>
-                    <tr>
-                      <td>Role:</td>
-                      <td>{{user?.role}}</td>
-                    </tr>
-                    <tr><td></td><td></td></tr>
-                  </tbody>
-                </table>
-              </div>    
+  <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
+  [fixedBottomGap]="0">
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+      <br>
+<br>
+<div class="container">
+<div class="row flex-lg-nowrap">
+  <div class="col">
+    <div class="row">
+      <div class="col mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              <ul class="nav nav-tabs">
+                <li class="nav-item"><a href="" class="active nav-link">User profile</a></li>
+              </ul>
+              <div class="tab-content pt-3">
+                <div class="tab-pane active">
+                  <form class="form" novalidate="">
+                    <div class="row">
+                      <div class="col">
+                        <div class="col">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="form-control" type="text" name="name" value={{user?.username}} readonly>
+                                </div>
+                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Firstname</label>
+                              <input class="form-control" type="text" name="name" value={{user?.firstname}} readonly>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Lastname</label>
+                              <input class="form-control" type="text" name="username" placeholder="name" value={{user?.lastname}} readonly>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control" type="text" value={{user?.email}} readonly>
+                            </div>
+                          </div>
+                          <div class="col">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <label>Role</label>
+                            <div class="form-group">
+                              <div class="dropdown">
+                                <div class="dropdown-content">
+                                  <input class="form-control" type="text" value={{formattedRole}} readonly>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</div>
+</div>
 <div id="bottom"></div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
-        <div>
-            <p class="text-center">Actions</p>
-            <button class="btn btn-warning tooltips btn-block text-light " *ngIf="isAuthorized" routerLink="/user/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
-            <br>
-            <button class="btn btn-danger tooltips btn-block" ><i class="fa fa-times" style='color: white'></i> Delete</button> 
-        </div>
+    <div>
+      <p class="text-center">Actions</p>
+      <button class="btn btn-warning tooltips btn-block text-light " routerLink="/user/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
+      <br>
+      <button class="btn btn-danger tooltips btn-block" (click)="onDeleteUser(id)"><i class="fa fa-times" style='color: white'></i> Delete</button> 
+    </div>
     </mat-sidenav>
 </mat-sidenav-container>

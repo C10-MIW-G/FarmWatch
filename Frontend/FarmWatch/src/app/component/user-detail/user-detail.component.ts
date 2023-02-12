@@ -14,6 +14,7 @@ export class UserDetailComponent implements OnInit{
     public user?: User;
     public id!: number;
     public isAuthorized: boolean = false; 
+    public formattedRole: string = "";
 
     constructor(private userDetailService : UserService, 
       private route: ActivatedRoute, 
@@ -37,11 +38,22 @@ export class UserDetailComponent implements OnInit{
       this.userDetailService.getUserDetail(id).subscribe(
         (response: User) => {
           this.user = response;
+          if(this.user.role === 'ROLE_ADMIN'){
+            this.formattedRole = 'Administrator'
+          } else if (this.user.role === 'ROLE_USER'){
+            this.formattedRole = 'User'
+          } else {
+            this.formattedRole = 'Caretaker'
+          }
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
         }
       );
-  }
+    }
+
+    public onDeleteUser(id: number): void {
+
+    }
 }
 
