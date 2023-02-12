@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.service;
 
+import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.exception.UserNotFoundException;
 import com.theteapottroopers.farmwatch.model.Animal;
@@ -37,5 +38,16 @@ public class UserService {
     public User findUserByUsername(String username){
         return userRepository.findUserByUsername(username).orElseThrow(() -> new UserNotFoundException(
                 "User by username " + username + " was not found!"));
+    }
+
+    public User updateUser(UserDto userDto) {
+        User userToUpdate = userRepository.findById(userDto.getId()).get();
+        userToUpdate.setFirstname(userDto.getFirstname());
+        userToUpdate.setLastname(userDto.getLastname());
+        userToUpdate.setUsername(userDto.getUsername());
+        userToUpdate.setEmail(userDto.getEmail());
+        userToUpdate.setRole(userDto.getRole());
+        User updatedUser = userRepository.save(userToUpdate);
+        return updatedUser;
     }
 }
