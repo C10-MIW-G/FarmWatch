@@ -17,23 +17,30 @@
     </tr>
     <tr>
         <th>Animal ID</th>
-        <td>{{ticket?.animalId}}</td>
+        <td>{{ticket?.animalId || "Not specified"}}</td>
     </tr>
     <tr>
         <th>Report User ID</th>
-        <td>{{ticket?.reportedByUserId}}</td>
+        <td>{{reportedByUsername}}</td>
     </tr>
     <tr>
         <th>Assigned To ID</th>
-        <td>{{ticket?.assignedToUserId}}</td>
+        <td>{{ticket?.assignedToUserId || "Not assigned"}}</td>
     </tr>
     <tr>
         <th>Ticket Messages</th>
-        <ng-container *ngFor="let ticketMessage of ticketMessages">
-            <tr>
-                <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
-                <td>{{ticketMessage.message}}</td>
-            </tr>
+        <ng-container *ngIf="ticketMessages; else noMessages">
+            <ng-container *ngFor="let ticketMessage of ticketMessages">
+                <tr>
+                    <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
+                    <td>{{ticketMessage.message}}</td>
+                </tr>
+            </ng-container>
         </ng-container>
+        <ng-template #noMessages>
+            <tr>
+                <td>No messages</td>
+            </tr>
+        </ng-template>
     </tr>
 </table>
