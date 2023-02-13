@@ -1,6 +1,8 @@
 
 # FarmWatch
 
+![FarmWatch](https://github.com/C10-MIW-G/FarmWatch/blob/main/Docs/farmwatchbanner.png)
+
 "A web application that brings the community back to the community zoo."
 
 This web application boasts a dynamic front-end implemented using Angular and a robust backend powered by Spring Boot. The combination of these technologies results in a seamless user experience. The Angular front-end provides an interactive and responsive interface, while the Spring Boot backend efficiently handles and manages data.
