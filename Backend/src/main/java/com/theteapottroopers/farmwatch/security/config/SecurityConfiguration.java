@@ -37,6 +37,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/animal").permitAll()
                 .requestMatchers("/ticket").permitAll()
                 .requestMatchers("/ticket/message").permitAll()
+                .requestMatchers( "/ticket/**").permitAll()
                 //TODO: deze permit weghalen
                 .requestMatchers("/user/**").permitAll()
                 .anyRequest()

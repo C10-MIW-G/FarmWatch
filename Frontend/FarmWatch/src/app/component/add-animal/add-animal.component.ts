@@ -22,9 +22,18 @@ export class AddAnimalComponent {
   } 
 
   onSubmit() {
-    this.addAnimalService.createAnimal(this.animal).subscribe(result => this.gotoUserList());
-    this.toast.ShowInfo("New notification", "Succesfully added a new animal");
+    this.addAnimalService.createAnimal(this.animal).subscribe({
+      next: response => {
+        this.gotoUserList();
+        this.toast.ShowSucces("New notification", "Succesfully added a new animal");
+    },
+      error: error => {
+        this.toast.ShowError("New notification", "Failed to add a new animall");
+      }
+    });
   }
+
+  
 
   gotoUserList() {
     (error: HttpErrorResponse) => {

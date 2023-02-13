@@ -5,6 +5,7 @@ import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
 import com.theteapottroopers.farmwatch.model.Ticket;
+import com.theteapottroopers.farmwatch.repository.TicketMessageRepository;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
@@ -29,12 +30,15 @@ public class TicketResource {
 
     private final TicketService ticketService;
     private final TicketMapper ticketMapper;
+    private final TicketMessageRepository ticketMessageRepository;
 
     public TicketResource(TicketService ticketService, UserService userService,
-                          AnimalService animalService) {
+                          AnimalService animalService,
+                          TicketMessageRepository ticketMessageRepository) {
         this.ticketService = ticketService;
         TicketMessageMapper ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
         this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageMapper);
+        this.ticketMessageRepository = ticketMessageRepository;
     }
 
     @GetMapping
@@ -44,7 +48,6 @@ public class TicketResource {
         for (Ticket ticket: allTickets) {
             allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
         }
-        System.out.println(allTicketDtos);
         return new ResponseEntity<>(allTicketDtos, HttpStatus.OK);
     }
 
@@ -53,5 +56,12 @@ public class TicketResource {
     public ResponseEntity<?> addTicket(@RequestBody TicketDtoNew ticketDtoNew){
         ticketService.addTicket(ticketMapper.toTicketFromNew(ticketDtoNew));
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<TicketDtoAll> getTicketById(@PathVariable("id") Long id){
+        Ticket ticket = ticketService.findTicketById(id);
+        TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
+        return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
     }
 }
