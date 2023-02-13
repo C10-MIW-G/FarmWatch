@@ -20,17 +20,21 @@ To get up and running it is important to install the correct software and packag
 -   Maven (version 3.5 or later)
 -   MySQL Server (version 8.x or later)
 
-### Installing
-#### Frontend
-To start the installing clone the github repository to a local folder of your choosing.
-1.  Clone the repository to your local machine using the following command:
-`git clone https://github.com/<username>/<repository>.git` 
-2.  Open the backend folder in your local folder using IntelliJ or similar IDE. Open de pom.xml and download and install all missing dependencies.
-3. Run the application.
-4. The backend is now ready to use. 
+### Getting started
+#### Installation
+To start the installing clone the github repository, or download the to a local folder of your choosing.
+1. Clone the repository to your local machine using the following command:
+`git clone https://github.com/<username>/<repository>.git`  
+or  download and extract the repository .zip to the folder of your choosing.
+2. Open MySQL and run the sql commands found in: [local_folder]/docs/farmwatch_startup_SQL.txt
+3. The database tables and user has been created!
 
 #### Backend
+1.  Open the backend folder in your local folder using IntelliJ or a similar IDE. Open de pom.xml and download and install all missing dependencies.
+2. Run the application.
+3. The backend is now ready to use. 
 
+#### Frontend
 1.  Open the frontend folder in your local folder using Microsoft Visual Code or similar IDE.
 2.  Open the terminal and run the following command to install the packages:
 `npm install`
