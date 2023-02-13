@@ -24,13 +24,13 @@
                         <thead>
                             <tr>
                                 <th class="name-column" scope="col">Name</th>
-                                <th class="name-column" scope="col"*ngIf="isAuthorized">Animal</th>
+                                <th class="name-column" scope="col">Animal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let animal of animals">
                                 <td><span class="badge badge-soft-success mb-0"><a routerLink="/animal/{{animal.id}}">{{animal.name}}</a></span></td>
-                                <td><span class="badge badge-soft-success mb-0">{{animal.commonName}}</span></td>
+                                <td><span class="">{{animal.commonName}}</span></td>
                             </tr>
                         </tbody>
                     </table>
