@@ -21,7 +21,7 @@ To get up and running it is important to install the correct software and packag
 #### Installation
 To start the installing clone the github repository, or download the to a local folder of your choosing.
 1. Clone the repository to your local machine using the following command:
-`git clone https://github.com/<username>/<repository>.git`  
+`git clone https://github.com/C10-MIW-G/FarmWatch.git`  
 or  download and extract the repository .zip to the folder of your choosing.
 2. Open MySQL and run the sql commands found in: [local_folder]/docs/farmwatch_startup_SQL.txt
 3. The database tables and user has been created!
