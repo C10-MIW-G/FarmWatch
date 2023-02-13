@@ -28,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ToastrModule } from 'ngx-toastr';
     UpdateAnimalComponent,
     UserDetailComponent,
     CreateTicketComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
