@@ -38,9 +38,10 @@
                                     name="username"
                                     [(ngModel)]="user.username"
                                     required
+                                    username
+                                    #username="ngModel"
                                     minlength="3"
                                     maxlength="20"
-                                    #username="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && username.errors }" 
                                     value={{user.username}}>
                                     <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
@@ -130,44 +131,17 @@
                               <label>Role</label>
                               <div class="dropdown">
                                 <div class="dropdown-content">
-                                  <select>
-                                    <option 
-                                    *ngFor="let role of roles" 
-                                    type="role" 
-                                    class="form-control" 
-                                    name="role" 
-                                    [(ngModel)]="user.role" 
-                                    value={{role.value}}
-                                    [ngClass]="{ 'is-invalid': f.submitted}"
-                                    >{{role.name}}
-                                    </option>
+                                  <select [(ngModel)]="user.role" type="role" class="form-control" name="user.role">
+                                    <option *ngFor="let role of roles" value={{role.value}}>{{role.name}}</option>
                                   </select>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row" *ngIf="canChangePassword">
-                      <div class="col-12 col-sm-6 mb-3">
-                        <div class="mb-2"><b>Change Password</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>New Password</label>
-                              <input 
-                              class="form-control" type="password" placeholder="••••••">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" placeholder="••••••">
-                            </div>
-                          </div>
+                          <div class="col"></div>
+                          <div class="col"></div>
+                          <div class="col"></div>
+                          <div class="col"></div>
                         </div>
                       </div>
                     </div>
