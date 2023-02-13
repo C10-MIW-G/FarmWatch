@@ -29,18 +29,16 @@
     </tr>
     <tr>
         <th>Ticket Messages</th>
-        <ng-container *ngIf="ticketMessages; else noMessages">
-            <ng-container *ngFor="let ticketMessage of ticketMessages">
-                <tr>
-                    <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
-                    <td>{{ticketMessage.message}}</td>
-                </tr>
-            </ng-container>
-        </ng-container>
-        <ng-template #noMessages>
+        <ng-container *ngIf="!ticketMessages || ticketMessages.length === 0">
             <tr>
                 <td>No messages</td>
             </tr>
-        </ng-template>
+        </ng-container>
+        <ng-container *ngFor="let ticketMessage of ticketMessages">
+            <tr>
+                <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
+                <td>{{ticketMessage.message}}</td>
+            </tr>
+        </ng-container>
     </tr>
 </table>
