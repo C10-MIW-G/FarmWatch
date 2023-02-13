@@ -1,7 +1,10 @@
 package com.theteapottroopers.farmwatch.resource;
 
+import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
 import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
+import com.theteapottroopers.farmwatch.model.Ticket;
+import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
@@ -25,6 +28,13 @@ public class TicketMessageResource {
     public TicketMessageResource(TicketService ticketService, TicketMessageService ticketMessageService, UserService userService) {
         this.ticketMessageService = ticketMessageService;
         this.ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<TicketMessageDtoAll> getTicketById(@PathVariable("id") Long id){
+        TicketMessage ticketMessage = ticketMessageService.findTicketMessageById(id);
+        TicketMessageDtoAll ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
+        return new ResponseEntity<>(ticketMessageDtoAll, HttpStatus.OK);
     }
 
     @PostMapping
