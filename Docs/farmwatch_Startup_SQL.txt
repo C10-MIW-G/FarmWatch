@@ -1,0 +1,5 @@
+CREATE SCHEMA farmwatch;
+
+CREATE USER 'farmwatchUser'@'localhost' IDENTIFIED BY 'farmwatchPassword';
+
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on farmwatch.* TO 'farmwatchUser'@'localhost' WITH GRANT OPTION;
