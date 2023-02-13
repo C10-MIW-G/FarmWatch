@@ -19,7 +19,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -28,6 +27,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
     UpdateAnimalComponent,
     UserDetailComponent,
     CreateTicketComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
       preventDuplicates: true,

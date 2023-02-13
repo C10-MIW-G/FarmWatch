@@ -1,60 +1,63 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<br>
-<div class="container bootstrap snippets bootdeys">
-<div class="row">
-  <div class="col-xs-12 col-sm-9 mx-auto">
-    <form #animalForm="ngForm" (ngSubmit)="onSubmit()" novalidate class="form-horizontal">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        <h2 class="panel-title">Add a new animal</h2>
-        </div>
+<div class="col-md-6 offset-md-3">
+  <br>
+  <h3> Add Animal </h3>
+  <form (ngSubmit) = "onSubmit()">
+  
+      <div class="form-group">
+          <input type="hidden" class ="form-control" id = "id"
+              [(ngModel)] = "animal.id" name = "id">
       </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="name" required #name="ngModel" [(ngModel)]="animal.name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Common name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="commonName" name="commonName" required #name="ngModel" [(ngModel)]="animal.commonName">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Common species</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="species" name="species" required #name="ngModel" [(ngModel)]="animal.species">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="description" name="description" required #name="ngModel" [(ngModel)]="animal.description">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Date of birth</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required #name="ngModel" [(ngModel)]="animal.dateOfBirth">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Image url</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="imageUrl" name="imageUrl" required #name="ngModel" [(ngModel)]="animal.imageUrl">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-              <button type="submit" [disabled]="!animalForm.form.valid" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-        </div>
+
+      <div class="form-group">
+          <label> Animal name:</label>
+          <input type="text" class ="form-control" id = "name"
+              [(ngModel)] = "animal.name" name = "name">
       </div>
-    </form>
-  </div>
-</div>
-</div>
+
+      <div class="form-group">
+          <label> Common name:</label>
+          <input type="text" class ="form-control" id = "commonName"
+              [(ngModel)] = "animal.commonName" name = "commonName">
+      </div>
+
+      <div class="form-group">
+          <label> Species:</label>
+          <input type="text" class ="form-control" id = "species"
+              [(ngModel)] = "animal.species" name = "species">
+      </div>
+
+      <div class="form-group">
+          <label> Description:</label>
+          <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
+          [(ngModel)] = "animal.description" name = "description"></textarea>
+          
+      </div>
+
+      <div class="form-group-date">
+          <label>Date of birth:</label>
+          <div class="input-group">
+            <input
+              matInput
+              [matDatepicker]="picker"
+              class="form-control"
+              id="dateOfBirth"
+              [(ngModel)]="animal.dateOfBirth"
+              name="dateOfBirth"
+              readonly="true"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          </div>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+
+      <div class="form-group">
+          <label> Image url:</label>
+          <input type="text" class ="form-control" id = "imageUrl"
+              [(ngModel)] = "animal.imageUrl" name = "imageUrl">
+      </div>
+  
+  
+      <button class = "btn btn-primary" type ="submit">Submit</button>
+  
+  </form>
+</div> 

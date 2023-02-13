@@ -28,7 +28,7 @@ public class TicketMapper {
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
-        List<Long> ticketMessagesDtoIdList = getTicketMessagesToDtoId(ticket);
+        List<Long> ticketMessagesDtoIdList = getTicketMessagesId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
                 .title(ticket.getTitle())
@@ -45,7 +45,7 @@ public class TicketMapper {
         return ticketDtoAllBuilder;
     }
 
-    private List<Long> getTicketMessagesToDtoId(Ticket ticket) {
+    private List<Long> getTicketMessagesId(Ticket ticket) {
         List<Long> ticketMessagesDtoIdList = new ArrayList<>();
         for(TicketMessage ticketMessage : ticket.getTicketMessages()){
             ticketMessagesDtoIdList.add(ticketMessage.getId());
@@ -61,7 +61,7 @@ public class TicketMapper {
                 .animal((ticketDtoNew.getAnimalId() != null) ?
                         animalService.findAnimalById(ticketDtoNew.getAnimalId()) : null)
                 .reportedBy(userService.findUserByUsername(ticketDtoNew.getReportUsername()))
-                .assignedTo((null))
+                .assignedTo(null)
                 .build();
         return ticketAllBuilder;
     }

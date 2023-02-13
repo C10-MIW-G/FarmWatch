@@ -3,4 +3,5 @@ export interface TicketMessage {
     sendByUserId: number;
     messageLocalDateTime: string;
     message: string;
+    ticketId: number;
 }
