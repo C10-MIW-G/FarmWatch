@@ -39,7 +39,6 @@ export class CreateTicketComponent implements OnInit{
 
     this.createTicketService.createTicket(title, description, animalId, this.reportUsername).subscribe({
       next: data => {
-        console.log(data);
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
         setTimeout(() => {
@@ -47,8 +46,6 @@ export class CreateTicketComponent implements OnInit{
       }, 1000); 
       },
       error: err => {
-        console.log(err);
-        this.errorMessage = err.error;
         this.toast.ShowError("New Notification", "Creating a new ticket failed");
       }
     });

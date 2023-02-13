@@ -49,14 +49,17 @@ export class UpdateUserComponent implements OnInit{
     }
   
     onSubmit(){
-      this.userService.updateUser(this.user).subscribe( data =>{
+    this.userService.updateUser(this.user).subscribe({next: data => {
         setTimeout(() => {
           this.router.navigate(['/admindashboard']);
-          this.toast.ShowInfo("New notification", "Succesfully updated ")
-      }, 1000); 
+          this.toast.ShowSucces("New notification", "Succesfully updated ")
+      }, 1000);
+      },
+      error: err => {
+        this.toast.ShowError("New Notification", "Updating " + this.user.username + "failed!")
       }
-      , error => console.log(error));
-    }
+    });
+  }
 
     private formattedRoles(): void {
       let index = 0;

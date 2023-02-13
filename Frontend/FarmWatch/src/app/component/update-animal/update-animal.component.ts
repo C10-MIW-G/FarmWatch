@@ -29,17 +29,18 @@ export class UpdateAnimalComponent implements OnInit{
 
   
   onSubmit(){
-    this.updateAnimalService.updateAnimal(this.updateAnimal ).subscribe( data =>{
-      this.goToAnimalOverview();
-      this.toast.ShowInfo("New notification", "Succesfully updated " + this.updateAnimal.name)
-    }
-    , error => console.log(error));
+    this.updateAnimalService.updateAnimal(this.updateAnimal ).subscribe({
+      next: data => {
+        this.goToAnimalOverview();
+        this.toast.ShowSucces("New notification", "Succesfully updated " + this.updateAnimal.name);
+      },
+      error: err => {
+        this.toast.ShowError("New Notification", "Updating " + this.updateAnimal.name + "failed!")
+      }
+    });
   }
 
   goToAnimalOverview(){
     this.router.navigate(['/']);
   }
-
-
-
 }
