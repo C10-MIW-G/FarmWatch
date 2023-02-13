@@ -52,7 +52,7 @@ export class UpdateUserComponent implements OnInit{
     this.userService.updateUser(this.user).subscribe({next: data => {
         setTimeout(() => {
           this.router.navigate(['/admindashboard']);
-          this.toast.ShowSucces("New Notification", "Succesfully updated ")
+          this.toast.ShowSucces("New Notification", "Succesfully updated " + this.user.username)
       }, 1000);
       },
       error: err => {
