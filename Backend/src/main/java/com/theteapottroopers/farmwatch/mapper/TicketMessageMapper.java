@@ -30,11 +30,4 @@ public class TicketMessageMapper {
                 .build();
         return ticketMessageBuilder;
     }
-
-    public TicketMessageDtoId toTicketMessageDtoId(TicketMessage ticketMessage){
-        TicketMessageDtoId ticketMessageDtoIdBuilder = TicketMessageDtoId.builder()
-                .id(ticketMessage.getId())
-                .build();
-        return ticketMessageDtoIdBuilder;
-    }
 }
