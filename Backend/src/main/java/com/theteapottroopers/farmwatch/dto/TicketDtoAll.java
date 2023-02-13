@@ -25,5 +25,5 @@ public class TicketDtoAll {
     private Long animalId;
     private Long reportedByUserId;
     private Long assignedToUserId;
-    private List<TicketMessageDtoId> ticketMessageIds;
+    private List<Long> ticketMessageIds;
 }

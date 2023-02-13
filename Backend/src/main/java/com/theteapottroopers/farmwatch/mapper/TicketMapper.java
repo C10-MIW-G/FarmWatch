@@ -28,7 +28,7 @@ public class TicketMapper {
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
-        List<TicketMessageDtoId> ticketMessagesDtoIdList = getTicketMessagesToDtoId(ticket);
+        List<Long> ticketMessagesDtoIdList = getTicketMessagesToDtoId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
                 .title(ticket.getTitle())
@@ -45,10 +45,10 @@ public class TicketMapper {
         return ticketDtoAllBuilder;
     }
 
-    private List<TicketMessageDtoId> getTicketMessagesToDtoId(Ticket ticket) {
-        List<TicketMessageDtoId> ticketMessagesDtoIdList = new ArrayList<>();
+    private List<Long> getTicketMessagesToDtoId(Ticket ticket) {
+        List<Long> ticketMessagesDtoIdList = new ArrayList<>();
         for(TicketMessage ticketMessage : ticket.getTicketMessages()){
-            ticketMessagesDtoIdList.add(ticketMessageMapper.toTicketMessageDtoId(ticketMessage));
+            ticketMessagesDtoIdList.add(ticketMessage.getId());
         }
         return ticketMessagesDtoIdList;
     }

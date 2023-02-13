@@ -53,10 +53,10 @@ export class AnimalDetailComponent implements OnInit {
         (response: void) => {
             console.log(response);
             this.router.navigate(['/']);
-            this.toast.ShowInfo("New Notification", this.animalDetail?.name + "deleted succesfully")
+            this.toast.ShowSucces("New Notification", this.animalDetail?.name + " deleted succesfully")
         },
         (error: HttpErrorResponse) => {
-            alert(error.message);
+            this.toast.ShowError("New Notification", this.animalDetail?.name + " could not be deleted")
         }
       );
       }
