@@ -18,7 +18,7 @@ import java.util.List;
 public class TicketDtoAll {
 
     private Long id;
-    private String title;
+    private String subject;
     private String description;
     private String status;
     private LocalDateTime reportDateTime;
