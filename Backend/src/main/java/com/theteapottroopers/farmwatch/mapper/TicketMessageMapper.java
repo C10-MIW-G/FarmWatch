@@ -1,8 +1,6 @@
 package com.theteapottroopers.farmwatch.mapper;
 
-import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
-import com.theteapottroopers.farmwatch.dto.TicketMessageDtoId;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
@@ -24,7 +22,7 @@ public class TicketMessageMapper {
 
     public TicketMessage toTicketMessage(TicketMessageDtoAll ticketMessageDtoAll) {
         TicketMessage ticketMessageBuilder = TicketMessage.builder()
-                .sendBy(userService.findUserById(ticketMessageDtoAll.getSendByUserId()))
+                .sendBy(userService.findUserById(ticketMessageDtoAll.getSendByUser().getId()))
                 .message(ticketMessageDtoAll.getMessage())
                 .ticket((ticketMessageDtoAll.getTicketId() != null ?
                         ticketService.findTicketById(ticketMessageDtoAll.getTicketId()) : null))
@@ -35,7 +33,8 @@ public class TicketMessageMapper {
     public TicketMessageDtoAll toTicketMessageDtoAll(TicketMessage ticketMessage){
         TicketMessageDtoAll ticketMessageDtoAll = TicketMessageDtoAll.builder()
                 .id(ticketMessage.getId())
-                .sendByUserId(ticketMessage.getSendBy().getId())
+                .sendByUser(new TicketMessageDtoAll.UserDtoUsername(
+                        ticketMessage.getSendBy().getId(), ticketMessage.getSendBy().getUsername()))
                 .messageLocalDateTime(ticketMessage.getMessageDateTime())
                 .message(ticketMessage.getMessage())
                 .ticketId(ticketMessage.getTicket().getId())
