@@ -30,8 +30,8 @@ export class AppComponent {
     return this.storageService.getRole();
   }
 
-  public getUsername(): string{
+  public getUserId(): string{
     let currentUser = this.storageService.getUser();
-    return currentUser.name;
+    return currentUser.id;
   }
 }
