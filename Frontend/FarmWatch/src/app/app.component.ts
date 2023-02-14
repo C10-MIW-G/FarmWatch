@@ -11,26 +11,6 @@ import { faCoffee, faUser } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  faUser = faUser;
-  title = 'FarmWatch';
-  
-  constructor(private storageService: StorageService, private toast: NotifierService, private router: Router){};
 
-  public isLoggedIn(): boolean{
-    return this.storageService.isLoggedIn();
-  }
-
-  public logout(){
-    this.storageService.clean();
-    this.router.navigate(['login']);
-    this.toast.ShowSucces("New notification", "Logged out succesfully");
-  }
-
-  public getRole(): string{
-    return this.storageService.getRole();
-  }
-
-  public getUserId(): string{
-    return this.storageService.getUser().id;
-  }
+  title = 'FarmWatch'; 
 }

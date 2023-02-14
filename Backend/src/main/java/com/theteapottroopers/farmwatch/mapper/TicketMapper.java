@@ -2,7 +2,6 @@ package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
-import com.theteapottroopers.farmwatch.dto.TicketMessageDtoId;
 import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.AnimalService;
@@ -33,14 +32,32 @@ public class TicketMapper {
                 .description(ticket.getDescription())
                 .status(ticket.getStatus())
                 .reportDateTime(ticket.getReportDateTime())
-                .animalId((ticket.getAnimal() != null) ?
-                        ticket.getAnimal().getId() : null)
-                .reportedByUserId(ticket.getReportedBy().getId())
-                .assignedToUserId((ticket.getAssignedTo() != null) ?
-                        ticket.getAssignedTo().getId() : null)
+                .animal((ticket.getAnimal() != null) ?
+                        getAnimalFromTicket(ticket) : null)
+                .reportedByUser(getReportedByUserFromTicket(ticket))
+                .assignedToUser((ticket.getAssignedTo() != null) ?
+                        getAssignedToUserFromTicket(ticket) : null)
                 .ticketMessageIds(ticketMessagesDtoIdList)
                 .build();
         return ticketDtoAllBuilder;
+    }
+
+    private static TicketDtoAll.UserDtoUsername getAssignedToUserFromTicket(Ticket ticket) {
+        return new TicketDtoAll.UserDtoUsername(
+                ticket.getAssignedTo().getId(),
+                ticket.getAssignedTo().getUsername());
+    }
+
+    private static TicketDtoAll.UserDtoUsername getReportedByUserFromTicket(Ticket ticket) {
+        return new TicketDtoAll.UserDtoUsername(
+                ticket.getReportedBy().getId(),
+                ticket.getReportedBy().getUsername());
+    }
+
+    private static TicketDtoAll.AnimalDtoAnimalName getAnimalFromTicket(Ticket ticket) {
+        return new TicketDtoAll.AnimalDtoAnimalName(
+                ticket.getAnimal().getId(),
+                ticket.getAnimal().getName());
     }
 
     private List<Long> getTicketMessagesId(Ticket ticket) {

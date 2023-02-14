@@ -32,6 +32,7 @@ import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.c
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -49,7 +50,9 @@ import { UserUpdateComponent } from './component/user-update/user-update.compone
     CreateTicketComponent,
     AdminUpdateUserComponent,
     TicketDetailComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    TicketDetailComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

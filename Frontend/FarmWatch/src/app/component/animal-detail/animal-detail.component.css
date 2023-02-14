@@ -1,43 +1,4 @@
-@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
-@import 'https://maxcdn.bootstrapcdn.com/font-awesome/5.15.4/css/font-awesome.min.css';
 
-h1 {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.card-img-top {
-    border-radius: 8px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.card {
-    margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-color: rgb(255, 255, 255);
-    
-}
-
-.sidenav-content {
-    padding-bottom: 10px;
-    background-color: rgb(255, 255, 255);
-}
-
-.sidenav-left {
-    background-color: rgb(255, 255, 255);
-    width: 250px;
-    padding: 10px 20px 10px 20px;
-}
-
-.sidenav-right {
-    background-color: rgb(255, 255, 255);
-    width: 250px;
-    padding: 10px 20px 10px 20px;
-    
-}
 
 
 
