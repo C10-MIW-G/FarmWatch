@@ -11,7 +11,7 @@
             <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Subject</label>
                         <input matInput type="text" class="form-control" name="title" [(ngModel)]="form.title" required
                             title #title="ngModel">
                     </div>
