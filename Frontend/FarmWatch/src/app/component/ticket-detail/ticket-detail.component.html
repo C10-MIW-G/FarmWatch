@@ -16,16 +16,16 @@
         <td>{{ticket?.status}}</td>
     </tr>
     <tr>
-        <th>Animal ID</th>
-        <td>{{ticket?.animalId || "Not specified"}}</td>
+        <th>Animal name</th>
+        <td>{{ticket?.animal || "Not specified"}}</td>
     </tr>
     <tr>
-        <th>Report User ID</th>
-        <td>{{reportedByUsername}}</td>
+        <th>Reported By User</th>
+        <td>{{ticket?.reportedByUser?.username}}</td>
     </tr>
     <tr>
-        <th>Assigned To ID</th>
-        <td>{{ticket?.assignedToUserId || "Not assigned"}}</td>
+        <th>Assigned To User</th>
+        <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
     </tr>
     <tr>
         <th>Ticket Messages</th>

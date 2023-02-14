@@ -22,8 +22,26 @@ public class TicketDtoAll {
     private String description;
     private String status;
     private LocalDateTime reportDateTime;
-    private Long animalId;
-    private Long reportedByUserId;
-    private Long assignedToUserId;
+    private AnimalDtoAnimalName animal;
+    private UserDtoUsername reportedByUser;
+    private UserDtoUsername assignedToUser;
     private List<Long> ticketMessageIds;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UserDtoUsername{
+        private Long id;
+        private String username;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class AnimalDtoAnimalName{
+        private Long id;
+        private String name;
+    }
 }

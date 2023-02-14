@@ -4,8 +4,18 @@ export interface Ticket {
     description: string;
     status: string;
     reportDateTime: string;
-    animalId: number;
-    reportedByUserId: number;
-    assignedToUserId: number;
+    animal: {
+        id: number;
+        name: string;    
+    };
+    reportedByUser: {
+        id: number;
+        username: string; 
+    };
+    assignedToUser: {
+        id: number;
+        username: string; 
+    };
     ticketMessageIds: number[];
 }
+
