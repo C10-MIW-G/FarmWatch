@@ -21,6 +21,10 @@
         <div class="label">Email:</div>
         <div class="value">{{user?.email}}</div>
       </div>
+      <div class="row">
+        <div class="label">Role:</div>
+        <div class="value">{{formattedRole}}</div>
+      </div>
     </div>
     <div id="bottom"></div>
   </mat-sidenav-content>
@@ -29,7 +33,7 @@
     [fixedBottomGap]="0">
     <div>
       <p class="text-center">Actions</p>
-      <button class="btn btn-warning tooltips btn-block text-light " routerLink="/user/update"><i
+      <button class="btn btn-warning tooltips btn-block text-light " routerLink="/user/update/{{id}}"><i
           class="fa fa-pencil" style='color: white'></i> Edit</button>
     </div>
   </mat-sidenav>

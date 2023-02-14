@@ -7,7 +7,7 @@
         <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Admin Dashboard</a>
         <a routerLink="/ticket/new" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Ticket Management</a>
       </ul>
-      <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/user/update">{{getUserName()}}</button>
+      <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/user/details">{{getUserName()}}</button>
       <ul class="my-2 my-lg-0">
         <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Log In</button>
         <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="logout()">Log out</button>

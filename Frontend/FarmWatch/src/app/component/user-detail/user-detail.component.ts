@@ -1,59 +1,38 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/model/user";
-import { UserService } from "src/app/service/user.service";
-import { ActivatedRoute, Router } from '@angular/router';
-import { StorageService } from '../../security/_services/storage.service';
+import { Component } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/model/user';
+import { ActivatedRoute } from '@angular/router';
+import { StorageService } from 'src/app/security/_services/storage.service';
+import { HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit{
-    public user?: User;
-    public id!: number;
-    public isAuthorized: boolean = false; 
-    public formattedRole: string = "";
+export class UserDetailComponent {
+  public user?: User;
+  public id!: number;
 
-    constructor(private userDetailService : UserService, 
-      private route: ActivatedRoute, 
-      private storageService: StorageService) {
-        this.route.params.subscribe(params => {
-            this.id = params['id'];
-        });
-    }
+  constructor(private userDetailService : UserService, 
+    private route: ActivatedRoute, 
+    private storageService: StorageService) {
+    this.id = storageService.getUser().id;
+  }
 
-    ngOnInit(): void {
-      this.getUser(this.id);
-      this.isAuthorized = this.storageService.isLoggedIn();
-      if(this.storageService.getRole() == 'ADMIN') {
-        this.isAuthorized = true; 
-      } else {
-        this.isAuthorized = false;
+  ngOnInit(): void {
+    this.getUser(this.id);
+  }
+
+  public getUser(id: number): void {
+    this.userDetailService.getUserDetail(id).subscribe(
+      (response: User) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
-    }
+    );
+  }
 
-    public getUser(id: number): void {
-      this.userDetailService.getUserDetail(id).subscribe(
-        (response: User) => {
-          this.user = response;
-          if(this.user.role === 'ROLE_ADMIN'){
-            this.formattedRole = 'Administrator'
-          } else if (this.user.role === 'ROLE_USER'){
-            this.formattedRole = 'User'
-          } else {
-            this.formattedRole = 'Caretaker'
-          }
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      );
-    }
-
-    public onDeleteUser(id: number): void {
-
-    }
 }
-
