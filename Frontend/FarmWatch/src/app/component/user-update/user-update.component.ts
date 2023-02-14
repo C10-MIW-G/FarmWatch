@@ -43,7 +43,7 @@ export class UserUpdateComponent implements OnInit{
     onSubmit(){
       this.userService.updateUser(this.user).subscribe({next: data => {
         setTimeout(() => {
-          this.router.navigate(['/update']);
+          this.router.navigate(['']);
           this.toast.ShowSucces("New Notification", "Succesfully updated " + this.user.username)
       }, 1000);
       },

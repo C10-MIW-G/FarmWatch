@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { StorageService } from '../security/_services/storage.service';
 import { NotifierService } from '../service/notifier.service';
 
@@ -10,8 +9,6 @@ import { NotifierService } from '../service/notifier.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
-  faUser = faUser;
 
   constructor(private storageService: StorageService, 
               private toast: NotifierService, 
@@ -32,8 +29,8 @@ export class NavbarComponent {
     return this.storageService.getRole();
   }
 
-  public getUsername(): string{
-    let currentUser = this.storageService.getUser();
-    return currentUser.name;
+  public getUserName(): string{
+    return this.storageService.getUserName();
   }
+
 }
