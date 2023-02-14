@@ -30,15 +30,11 @@ public class TicketResource {
 
     private final TicketService ticketService;
     private final TicketMapper ticketMapper;
-    private final TicketMessageRepository ticketMessageRepository;
 
     public TicketResource(TicketService ticketService, UserService userService,
-                          AnimalService animalService,
-                          TicketMessageRepository ticketMessageRepository) {
+                          AnimalService animalService) {
         this.ticketService = ticketService;
-        TicketMessageMapper ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
-        this.ticketMapper = new TicketMapper(userService, animalService, ticketMessageMapper);
-        this.ticketMessageRepository = ticketMessageRepository;
+        this.ticketMapper = new TicketMapper(userService, animalService);
     }
 
     @GetMapping

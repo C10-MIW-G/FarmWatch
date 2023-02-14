@@ -12,6 +12,7 @@ import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashb
 import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
   { path: 'user/update/:id', component: UpdateUserComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'ticket/:id', component: TicketDetailComponent}
 ];
 
 const routerOptions: ExtraOptions = {

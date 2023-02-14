@@ -28,6 +28,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
     UserDetailComponent,
     CreateTicketComponent,
     UpdateUserComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatIconModule,
     MatButtonModule,
     FontAwesomeModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
       preventDuplicates: true,

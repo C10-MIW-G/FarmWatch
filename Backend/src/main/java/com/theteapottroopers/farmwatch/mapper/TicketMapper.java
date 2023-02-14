@@ -19,19 +19,17 @@ public class TicketMapper {
 
     private final UserService userService;
     private final AnimalService animalService;
-    private final TicketMessageMapper ticketMessageMapper;
 
-    public TicketMapper(UserService userService, AnimalService animalService, TicketMessageMapper ticketMessageMapper) {
+    public TicketMapper(UserService userService, AnimalService animalService) {
         this.userService = userService;
         this.animalService = animalService;
-        this.ticketMessageMapper = ticketMessageMapper;
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
-        List<Long> ticketMessagesDtoIdList = getTicketMessagesToDtoId(ticket);
+        List<Long> ticketMessagesDtoIdList = getTicketMessagesId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
-                .title(ticket.getTitle())
+                .subject(ticket.getSubject())
                 .description(ticket.getDescription())
                 .status(ticket.getStatus())
                 .reportDateTime(ticket.getReportDateTime())
@@ -45,7 +43,7 @@ public class TicketMapper {
         return ticketDtoAllBuilder;
     }
 
-    private List<Long> getTicketMessagesToDtoId(Ticket ticket) {
+    private List<Long> getTicketMessagesId(Ticket ticket) {
         List<Long> ticketMessagesDtoIdList = new ArrayList<>();
         for(TicketMessage ticketMessage : ticket.getTicketMessages()){
             ticketMessagesDtoIdList.add(ticketMessage.getId());
@@ -55,13 +53,13 @@ public class TicketMapper {
 
     public Ticket toTicketFromNew(TicketDtoNew ticketDtoNew){
         Ticket ticketAllBuilder = Ticket.builder()
-                .title(ticketDtoNew.getTitle())
+                .subject(ticketDtoNew.getSubject())
                 .description(ticketDtoNew.getDescription())
                 .status("requested")
                 .animal((ticketDtoNew.getAnimalId() != null) ?
                         animalService.findAnimalById(ticketDtoNew.getAnimalId()) : null)
                 .reportedBy(userService.findUserByUsername(ticketDtoNew.getReportUsername()))
-                .assignedTo((null))
+                .assignedTo(null)
                 .build();
         return ticketAllBuilder;
     }

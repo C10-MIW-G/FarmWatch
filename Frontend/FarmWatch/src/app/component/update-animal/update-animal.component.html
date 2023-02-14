@@ -28,15 +28,27 @@
 
         <div class="form-group">
             <label> Description:</label>
-            <input type="text" class ="form-control" id = "description"
-                [(ngModel)] = "updateAnimal.description" name = "description">
+            <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
+            [(ngModel)] = "updateAnimal.description" name = "description"></textarea>
+            
         </div>
 
-        <div class="form-group">
-            <label> Date of birth:</label>
-            <input type="text" class ="form-control" id = "dateOfBirth"
-                [(ngModel)] = "updateAnimal.dateOfBirth" name = "dateOfBirth">
-        </div>
+        <div class="form-group-date">
+            <label>Date of birth:</label>
+            <div class="input-group">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                class="form-control"
+                id="dateOfBirth"
+                [(ngModel)]="updateAnimal.dateOfBirth"
+                name="dateOfBirth"
+                readonly="true"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            </div>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
 
         <div class="form-group">
             <label> Image url:</label>
