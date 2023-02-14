@@ -31,7 +31,6 @@ export class AppComponent {
   }
 
   public getUserId(): string{
-    let currentUser = this.storageService.getUser();
-    return currentUser.id;
+    return this.storageService.getUser().id;
   }
 }

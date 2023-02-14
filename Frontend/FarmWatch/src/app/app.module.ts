@@ -26,11 +26,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { AdminUpdateUserComponent } from './component/admin-update-user/admin-update-user-component';
 import { ToastrModule } from 'ngx-toastr';
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { UserUpdateComponent } from './component/user-update/user-update.component';
 
 
 @NgModule({
@@ -46,8 +47,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     UpdateAnimalComponent,
     UserDetailComponent,
     CreateTicketComponent,
-    UpdateUserComponent,
-    TicketDetailComponent
+    AdminUpdateUserComponent,
+    TicketDetailComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

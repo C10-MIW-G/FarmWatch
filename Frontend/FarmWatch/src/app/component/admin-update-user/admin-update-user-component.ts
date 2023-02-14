@@ -10,10 +10,10 @@ import { NotifierService } from 'src/app/service/notifier.service';
 
 @Component({
   selector: 'app-update-user',
-  templateUrl: './update-user.component.html',
-  styleUrls: ['./update-user.component.css']
+  templateUrl: './admin-update-user.component.html',
+  styleUrls: ['./admin-update-user.component.css']
 })
-export class UpdateUserComponent implements OnInit{
+export class AdminUpdateUserComponent implements OnInit{
   public user!: User;
   public id!: number;
   public isAuthorized: boolean = false;
