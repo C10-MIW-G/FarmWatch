@@ -3,6 +3,8 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
       
+        <h3 class="card-title">User overview<span class="text-muted fw-normal ms-2"></span></h3>
+
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
 <br>
@@ -10,7 +12,7 @@
     <div class="row align-items-center">
         <div class="col-md-6">
             <div class="mb-3">
-                <h1 class="card-title">User overview<span class="text-muted fw-normal ms-2"></span></h1>
+                
             </div>
         </div>
     </div>
@@ -30,7 +32,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let user of users">
-                                <td><span class="badge badge-soft-success mb-0" routerLink="/user/{{user.id}}">{{user.username}}</span></td>
+                                <td><a class="badge badge-soft-success mb-0" routerLink="/user/{{user.id}}">{{user.username}}</a></td>
                                 <td><span class="">{{user.firstname}}</span></td>
                                 <td><span class="">{{user.lastname}}</span></td>
                                 <td><span class="">{{user.email}}</span></td>
