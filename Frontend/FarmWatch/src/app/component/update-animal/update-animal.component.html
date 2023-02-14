@@ -1,6 +1,13 @@
+<mat-sidenav-container class="sidenav-container" id="top">
+    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+      
+        <h3 class="card-title">Edit animal<span class="text-muted fw-normal ms-2"></span></h3>
+
+
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
 <div class="col-md-6 offset-md-3">
     <br>
-    <h3> Edit Animal </h3>
     <form (ngSubmit) = "onSubmit()">
     
         <div class="form-group">
@@ -61,3 +68,7 @@
     
     </form>
 </div> 
+</mat-sidenav-content>
+<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+</mat-sidenav>
+</mat-sidenav-container>
