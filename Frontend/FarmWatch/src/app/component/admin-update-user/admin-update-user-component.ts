@@ -9,7 +9,7 @@ import { NotifierService } from 'src/app/service/notifier.service';
 
 
 @Component({
-  selector: 'app-update-user',
+  selector: 'app-admin-update-user',
   templateUrl: './admin-update-user.component.html',
   styleUrls: ['./admin-update-user.component.css']
 })

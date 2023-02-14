@@ -17,7 +17,7 @@ import java.util.List;
  * The service for the user requests
  */
 @Service
-public class UserService {
+public class    UserService {
 
     private final UserRepository userRepository;
 
