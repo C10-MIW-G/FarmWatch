@@ -1,4 +1,3 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
   <a class="navbar-brand" style="color:white;">FarmWatch</a>
 
@@ -8,8 +7,12 @@
       <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 20px;">Admin Dashboard</a>
       <a routerLink="/ticket/new" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 20px;">New Ticket</a>
     </ul>
-    <ul class="my-2 my-lg-0">
-      <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/register">Register</button>
+    <ul class="my-2 my-lg-0" *ngIf="!isLoggedIn()">
+      <button class="btn btn-secondary my-2 my-sm-0" routerLink="/register">Register</button>
+    </ul>
+    <fa-icon [icon]="faUser" ></fa-icon> 
+    <ul class="my-2 my-lg-0" *ngIf="isLoggedIn()">
+      <button class="btn btn-secondary my-2 my-sm-0" routerLink="/register">Settings</button>
     </ul>
     <ul class="my-2 my-lg-0">
       <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Login</button>

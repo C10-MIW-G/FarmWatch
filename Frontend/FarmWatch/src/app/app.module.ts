@@ -19,7 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -42,7 +42,7 @@ import { ToastrModule } from 'ngx-toastr';
     UpdateAnimalComponent,
     UserDetailComponent,
     CreateTicketComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +59,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    FontAwesomeModule, 
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
       preventDuplicates: true,
