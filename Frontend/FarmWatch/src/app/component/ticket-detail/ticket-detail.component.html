@@ -1,44 +1,49 @@
-<table class="table">
-    <tr>
-        <th>Ticket ID</th>
-        <td>{{ticket?.id}}</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td>{{ticket?.title}}</td>
-    </tr>
-    <tr>
-        <th>Report Date</th>
-        <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
-    </tr>
-    <tr>
-        <th>Status</th>
-        <td>{{ticket?.status}}</td>
-    </tr>
-    <tr>
-        <th>Animal name</th>
-        <td>{{ticket?.animal || "Not specified"}}</td>
-    </tr>
-    <tr>
-        <th>Reported By User</th>
-        <td>{{ticket?.reportedByUser?.username}}</td>
-    </tr>
-    <tr>
-        <th>Assigned To User</th>
-        <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
-    </tr>
-    <tr>
-        <th>Ticket Messages</th>
-        <ng-container *ngIf="!ticketMessages || ticketMessages.length === 0">
-            <tr>
-                <td>No messages</td>
-            </tr>
-        </ng-container>
-        <ng-container *ngFor="let ticketMessage of ticketMessages">
-            <tr>
-                <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
-                <td>{{ticketMessage.message}}</td>
-            </tr>
-        </ng-container>
-    </tr>
-</table>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Ticket ID</th>
+            <td>{{ticket?.id}}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ticket?.subject}}</td>
+        </tr>
+        <tr>
+            <th>Report Date</th>
+            <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ticket?.status}}</td>
+        </tr>
+        <tr>
+            <th>Animal name</th>
+            <td>{{ticket?.animal || "Not specified"}}</td>
+        </tr>
+        <tr>
+            <th>Reported By User</th>
+            <td>{{ticket?.reportedByUser?.username}}</td>
+        </tr>
+        <tr>
+            <th>Assigned To User</th>
+            <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Ticket Messages</th>
+            <ng-container *ngIf="!ticketMessages || ticketMessages.length === 0">
+                <tr>
+                    <td>No messages</td>
+                </tr>
+            </ng-container>
+            <ng-container *ngFor="let ticketMessage of ticketMessages">
+                <tr>
+                    <td>{{ticketMessage.sendByUser.username}}</td>
+                    <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
+                    <td>{{ticketMessage.message}}</td>
+                </tr>
+            </ng-container>
+        </tr>
+    </table>
+</div>

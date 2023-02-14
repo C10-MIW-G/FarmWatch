@@ -16,8 +16,17 @@ import java.time.LocalDateTime;
 @Setter
 public class TicketMessageDtoAll {
     private Long id;
-    private Long sendByUserId;
+    private UserDtoUsername sendByUser;
     private LocalDateTime messageLocalDateTime;
     private String message;
     private Long ticketId;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UserDtoUsername{
+        private Long id;
+        private String username;
+    }
 }
