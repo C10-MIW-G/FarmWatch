@@ -1,74 +1,71 @@
 <mat-sidenav-container class="sidenav-container" id="top">
-    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-      
+
+    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
+        [fixedBottomGap]="0">
+
         <h3 class="card-title">Edit animal<span class="text-muted fw-normal ms-2"></span></h3>
-
-
     </mat-sidenav>
+
     <mat-sidenav-content class="sidenav-content">
-<div class="col-md-6 offset-md-3">
-    <br>
-    <form (ngSubmit) = "onSubmit()">
-    
-        <div class="form-group">
-            <input type="hidden" class ="form-control" id = "id"
-                [(ngModel)] = "updateAnimal.id" name = "id">
+        <div class="col-md-6 offset-md-3">
+            <br>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="id" [(ngModel)]="updateAnimal.id" name="id">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> Animal name:</label>
+                            <input type="text" class="form-control" id="name" [(ngModel)]="updateAnimal.name"
+                                name="name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date of birth:</label>
+                            <div class="input-group">
+                                <input matInput [matDatepicker]="picker" class="form-control" id="dateOfBirth"
+                                    [(ngModel)]="updateAnimal.dateOfBirth" name="dateOfBirth" readonly="true" />
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            </div>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> Species:</label>
+                            <input type="text" class="form-control" id="species" [(ngModel)]="updateAnimal.species"
+                                name="species">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> Common name:</label>
+                            <input type="text" class="form-control" id="commonName"
+                                [(ngModel)]="updateAnimal.commonName" name="commonName">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label> Description:</label>
+                    <textarea name="textarea" style="height:150px;" class="form-control" id="description"
+                        [(ngModel)]="updateAnimal.description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label> Image url:</label>
+                    <input type="text" class="form-control" id="imageUrl" [(ngModel)]="updateAnimal.imageUrl"
+                        name="imageUrl">
+                </div>
+                <button class="btn btn-primary" type="submit" style="float: right;">Submit</button>
+            </form>
         </div>
+    </mat-sidenav-content>
 
-        <div class="form-group">
-            <label> Animal name:</label>
-            <input type="text" class ="form-control" id = "name"
-                [(ngModel)] = "updateAnimal.name" name = "name">
-        </div>
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+        [fixedBottomGap]="0">
+    </mat-sidenav>
 
-        <div class="form-group">
-            <label> Common name:</label>
-            <input type="text" class ="form-control" id = "commonName"
-                [(ngModel)] = "updateAnimal.commonName" name = "commonName">
-        </div>
-
-        <div class="form-group">
-            <label> Species:</label>
-            <input type="text" class ="form-control" id = "species"
-                [(ngModel)] = "updateAnimal.species" name = "species">
-        </div>
-
-        <div class="form-group">
-            <label> Description:</label>
-            <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
-            [(ngModel)] = "updateAnimal.description" name = "description"></textarea>
-            
-        </div>
-
-        <div class="form-group-date">
-            <label>Date of birth:</label>
-            <div class="input-group">
-              <input
-                matInput
-                [matDatepicker]="picker"
-                class="form-control"
-                id="dateOfBirth"
-                [(ngModel)]="updateAnimal.dateOfBirth"
-                name="dateOfBirth"
-                readonly="true"
-              />
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            </div>
-            <mat-datepicker #picker></mat-datepicker>
-          </div>
-
-        <div class="form-group">
-            <label> Image url:</label>
-            <input type="text" class ="form-control" id = "imageUrl"
-                [(ngModel)] = "updateAnimal.imageUrl" name = "imageUrl">
-        </div>
-    
-    
-        <button class = "btn btn-primary" type ="submit">Submit</button>
-    
-    </form>
-</div> 
-</mat-sidenav-content>
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-</mat-sidenav>
 </mat-sidenav-container>

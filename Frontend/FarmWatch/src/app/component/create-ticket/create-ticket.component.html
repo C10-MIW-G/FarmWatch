@@ -1,63 +1,43 @@
-<mat-sidenav-container class="sidenav-container" id="top">  
-    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-      
+<mat-sidenav-container class="sidenav-container" id="top">
+    
+    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
+        [fixedBottomGap]="0">
         <h3 class="card-title">Create new ticket<span class="text-muted fw-normal ms-2"></span></h3>
-
     </mat-sidenav>
+
     <mat-sidenav-content class="sidenav-content">
-<br>
-<div class="container">
-    <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
-        <h3>New Ticket</h3>
-        <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
-            <div class="form-group">
-                <mat-label>Title</mat-label>
-                <mat-form-field appearance="outline">
-                    <input matInput
-                    type="text"
-                    class="form-control"
-                    name="title"
-                    [(ngModel)]="form.title"
-                    required
-                    title
-                    #title="ngModel"
-                    >
-                </mat-form-field>
+        <br>
+        <div class="container">
+            <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
+                <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input matInput type="text" class="form-control" name="title" [(ngModel)]="form.title" required
+                            title #title="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label>Animal</label>
+                        <select class="form-control" name="animalId" [(ngModel)]="form.animalId" animalId
+                            #animalId="ngModel">
+                            <option value="">I don't know</option>
+                            <option *ngFor="let animal of animals" [value]="animal.id">
+                                {{animal.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea matInput rows="10" style="height: 100%;" class="form-control" name="description"
+                            [(ngModel)]="form.description" required description #description="ngModel"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit" style="float: right">Submit ticket</button>
+                </form>
             </div>
-            <div class="form-group">
-                <mat-label>Animal</mat-label>
-                <mat-form-field appearance="outline">
-                    <mat-select 
-                    class="form-control"
-                    name="animalId"
-                    [(ngModel)] = "form.animalId"
-                    animalId
-                    #animalId="ngModel">
-                    <mat-option value="">I don't know</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal.id">
-                            {{animal.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-label>Description</mat-label>
-                <mat-form-field appearance="outline">
-                    <textarea matInput rows="10" style="height: 100%;"
-                    class="form-control"
-                    name="description"
-                    [(ngModel)]="form.description"
-                    required
-                    description
-                    #description="ngModel"
-                    ></textarea>
-                </mat-form-field>
-            </div>
-            <button mat-raised-button color="primary" type="submit">Submit ticket</button>
-        </form>
-    </div>
-</div>
-</mat-sidenav-content>
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-</mat-sidenav>
+        </div>
+    </mat-sidenav-content>
+   
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+        [fixedBottomGap]="0">
+    </mat-sidenav>
+
 </mat-sidenav-container>

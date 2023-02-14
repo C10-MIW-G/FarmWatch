@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketMessage } from 'src/app/model/ticket-message';
+import { StorageService } from 'src/app/security/_services/storage.service';
+import { NotifierService } from 'src/app/service/notifier.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { TicketMessageService } from 'src/app/service/ticket-message.service';
-import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -15,14 +17,23 @@ export class TicketDetailComponent implements OnInit {
 
   id!: number;
   ticket?: Ticket;
-  ticketMessages?: TicketMessage[] = [];
+  ticketMessages?: TicketMessage[] = [];  
+  newTicketMessageForm: any = {
+    ticketId: null,
+    message: null,
+    sendByUser: {
+      id: null
+    }
+  };
 
   constructor(private ticketDetailService: TicketDetailService,
     private ticketMessageService: TicketMessageService,
-    private route: ActivatedRoute){
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-  });
+    private storageService: StorageService,
+    private route: ActivatedRoute,
+    private toast: NotifierService){
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+      });
   }
   
   ngOnInit(): void {
@@ -51,5 +62,19 @@ export class TicketDetailComponent implements OnInit {
   public addTicketMessage(ticketMessage: TicketMessage): void {
     this.ticketMessages!.push(ticketMessage);
     this.ticketMessages?.sort((a, b) => b.messageLocalDateTime.localeCompare(a.messageLocalDateTime));
+  }
+
+  onSubmit(){
+    this.newTicketMessageForm.sendByUser.id = this.storageService.getUser().id;
+    this.newTicketMessageForm.ticketId = this.id;
+    this.ticketMessageService.addTicketMessage(this.newTicketMessageForm).subscribe({next: () => {
+      this.toast.ShowSucces("New Notification", "Message submitted successfully!")
+      this.getTicket(this.id)
+      this.newTicketMessageForm.message = '';
+    },
+    error: err => {
+      this.toast.ShowError("New Notification", "Adding new message failed!")
+    }
+    });
   }
 }
