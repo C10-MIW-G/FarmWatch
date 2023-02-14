@@ -15,6 +15,10 @@
     width: 80%;
 }
 
+.new-ticket-message-container{
+    margin-bottom: 20px;
+}
+
 .comment {
     display: block;
     position: relative;
@@ -141,5 +145,3 @@
         display: none
     }
 }
-
-
