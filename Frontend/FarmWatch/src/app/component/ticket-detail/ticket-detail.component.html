@@ -5,60 +5,62 @@
 
     </mat-sidenav>
 <mat-sidenav-content class="sidenav-content">
-<div class="container">
+<div class="container d-flex flex-column">
     <div class="row">
       <div class="col">
-        <table class="table">
-            <tr>
-                <th>Ticket ID</th>
-                <td>{{ticket?.id}}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ticket?.subject}}</td>
-            </tr>
-            <tr>
-                <th>Report Date</th>
-                <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ticket?.status}}</td>
-            </tr>
-            <tr>
-                <th>Animal name</th>
-                <td>{{ticket?.animal || "Not specified"}}</td>
-            </tr>
-            <tr>
-                <th>Reported By User</th>
-                <td>{{ticket?.reportedByUser?.username}}</td>
-            </tr>
-            <tr>
-                <th>Assigned To User</th>
-                <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
-            </tr>
-        </table>
+        <div class="ticket-container mx-auto">
+            <table class="table">
+                <tr>
+                    <th>Ticket ID</th>
+                    <td>{{ticket?.id}}</td>
+                    <th>Subject</th>
+                    <td>{{ticket?.subject}}</td>
+                    <th>Report Date</th>
+                    <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ticket?.status}}</td>
+                </tr>
+                <tr>
+                    <th>Animal name</th>
+                    <td>{{ticket?.animal || "Not specified"}}</td>
+                </tr>
+                <tr>
+                    <th>Reported By User</th>
+                    <td>{{ticket?.reportedByUser?.username}}</td>
+                </tr>
+                <tr>
+                    <th>Assigned To User</th>
+                    <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td colspan="4">{{ticket?.description}}</td>
+                </tr>
+            </table>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <table>
-            <tr>
-                <th>Ticket Messages</th>
+        <div class="ticket-messages-container mx-auto">
+            <span>Ticket Messages</span>
+            <div class="ticket-message-container mx-auto">
                 <ng-container *ngIf="!ticketMessages || ticketMessages.length === 0">
-                    <tr>
-                        <td>No messages</td>
-                    </tr>
+                        No messages
                 </ng-container>
                 <ng-container *ngFor="let ticketMessage of ticketMessages">
-                    <tr>
-                        <td>{{ticketMessage.sendByUser.username}}</td>
-                        <td>{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy hh:mm"}}</td>
-                        <td>{{ticketMessage.message}}</td>
-                    </tr>
+                    <div class="comment">
+                        <div class="comment-author-ava"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar"></div>
+                        <div class="comment-body">
+                            <p class="comment-text">{{ticketMessage.message}}</p>
+                            <div class="comment-footer"><span class="comment-meta">{{ticketMessage.sendByUser.username}}, {{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span></div>
+                        </div>
+                    </div>
                 </ng-container>
-            </tr>
-        </table>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -66,3 +68,4 @@
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
 </mat-sidenav>
 </mat-sidenav-container>
+

@@ -42,9 +42,14 @@ export class TicketDetailComponent implements OnInit {
   public getTicketMessages(ticketMessageIds: number[]){
     for(let ticketMessageId of ticketMessageIds){
       this.ticketMessageService.getTicketMessage(ticketMessageId).subscribe({
-        next: ticketMessage => this.ticketMessages!.push(ticketMessage),
+        next: ticketMessage => this.addTicketMessage(ticketMessage),
         error: error => console.log(error)
       });
     }
+  }
+
+  public addTicketMessage(ticketMessage: TicketMessage): void {
+    this.ticketMessages!.push(ticketMessage);
+    this.ticketMessages?.sort((a, b) => b.messageLocalDateTime.localeCompare(a.messageLocalDateTime));
   }
 }
