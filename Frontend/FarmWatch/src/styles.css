@@ -30,8 +30,8 @@ h3{
     margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
-    border-color: rgb(255, 255, 255);
-    
+    border-color: rgb(238, 237, 237);
+    background-color: #f7f7f7;
 }
 
 .sidenav-content {
