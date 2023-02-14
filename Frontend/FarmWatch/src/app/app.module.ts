@@ -30,7 +30,8 @@ import { UpdateUserComponent } from './component/update-user/update-user.compone
 import { ToastrModule } from 'ngx-toastr';
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatNativeDateModule} from '@angular/material/core';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     UserDetailComponent,
     CreateTicketComponent,
     UpdateUserComponent,
-    TicketDetailComponent
+    TicketDetailComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

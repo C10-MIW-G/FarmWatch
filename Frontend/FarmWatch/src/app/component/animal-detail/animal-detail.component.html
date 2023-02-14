@@ -1,27 +1,28 @@
 
+<!-- Container -->
+
+<!-- Left Sidebar Start-->
 <mat-sidenav-container class="sidenav-container" id="top">
-    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
-    [fixedBottomGap]="0">
-        <p class="text-center">Jump to section</p>
-        <a class="btn btn-primary tooltips btn-block" (click)="toTop()">{{animalDetail?.name}}'s details</a>
-        <br>
-        <a class="btn btn-primary tooltips btn-block" (click)="onClick('meet')">Meet {{animalDetail?.name}}</a>
-        <br>
-        <a class="btn btn-primary tooltips btn-block" *ngIf="isAuthorized" (click)="onClick('ticket')">{{animalDetail?.name}}'s Tickets</a>
-    </mat-sidenav>
-    <mat-sidenav-content class="sidenav-content">
-        <br>
-
-
-<div class="card" style="width: 50rem;">
+    <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+      <p class="text-center">Jump to section</p>
+      <a class="btn btn-primary tooltips btn-block" (click)="toTop()">{{animalDetail?.name}}'s details</a>        <br>
+      <a class="btn btn-primary tooltips btn-block" (click)="onClick('meet')">Meet {{animalDetail?.name}}</a>
+      <br>
+      <a class="btn btn-primary tooltips btn-block" *ngIf="isAuthorized" (click)="onClick('ticket')">{{animalDetail?.name}}'s Tickets</a>
+</mat-sidenav>
+<!-- Left Sidebar End-->
+    
+<!-- Center Content Start-->
+<mat-sidenav-content class="sidenav-content">
+  <div class="card" style="width: 50rem;">
     <h1>{{animalDetail?.name}}</h1>
     <br>
     <img class="card-img-top" src="{{animalDetail?.imageUrl}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Name: </h5>
-      <p class="card-text">{{animalDetail?.name}}</p>
-    </div>
-    <div class="card-body">
+      <div class="card-body">
+        <h5 class="card-title">Name: </h5>
+        <p class="card-text">{{animalDetail?.name}}</p>
+      </div>
+      <div class="card-body">
         <h5 class="card-title">Animal: </h5>
         <p class="card-text">{{animalDetail?.commonName}}</p>
       </div>
@@ -34,6 +35,7 @@
         <p class="card-text">{{animalDetail?.dateOfBirth}}</p>
       </div>
 </div>
+
 
   <br>
   <div id="meet"></div>
@@ -52,17 +54,21 @@
     <div class="card-body">
         <p class="card-text">Fortunately, {{animalDetail?.name}} has no tickets at this moment.</p>
     </div>
-  </div>
-  <br>
-<div id="bottom"></div>
-    </mat-sidenav-content> 
-    <mat-sidenav mode="side" opened position="end" class="sidenav-right" *ngIf="isAuthorized" [fixedInViewport]="true" [fixedTopGap]="56"
-    [fixedBottomGap]="0">
-        <div>
-            <p class="text-center">Actions</p>
-            <button class="btn btn-warning tooltips btn-block text-light " routerLink="/animal/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
-            <br>
-            <button class="btn btn-danger tooltips btn-block" (click)="onDeleteAnimal(id)"><i class="fa fa-times" style='color: white'></i> Delete</button> 
-        </div>
+    </div>
+      <br>
+    <div id="bottom"></div>
+  </mat-sidenav-content> 
+
+<!-- Center Content End-->
+
+<!-- Right Sidebar Start-->
+  <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+    <div>
+      <p class="text-center">Actions</p>
+        <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"  routerLink="/animal/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
+        <br>
+       <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="onDeleteAnimal(id)"><i class="fa fa-times" style='color: white'></i> Delete</button> 
+    </div>
     </mat-sidenav>
 </mat-sidenav-container>
+<!-- Right Sidebar End-->
