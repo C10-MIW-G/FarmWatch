@@ -23,10 +23,10 @@ const routes: Routes = [
   { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'animal/update/:id', component: UpdateAnimalComponent},
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'user/update',component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
   { path: 'user/update/:id', component: AdminUpdateUserComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
-  { path: 'user/update',component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
   { path: 'ticket/:id', component: TicketDetailComponent}
 ];
 
