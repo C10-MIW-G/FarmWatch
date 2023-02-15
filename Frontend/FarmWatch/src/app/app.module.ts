@@ -29,11 +29,12 @@ import { AdminUpdateUserComponent } from './component/admin-update-user/admin-up
 import { ToastrModule } from 'ngx-toastr';
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatNativeDateModule} from '@angular/material/core';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { TicketOverviewComponent } from './component/ticket-overview/ticket-overview.component';
+import { MatDialogModule} from '@angular/material/dialog'
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { TicketOverviewComponent } from './component/ticket-overview/ticket-over
     FontAwesomeModule, 
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
       preventDuplicates: true,
