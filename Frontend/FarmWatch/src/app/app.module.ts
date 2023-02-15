@@ -25,7 +25,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminUpdateUserComponent } from './component/admin-update-user/admin-update-user-component';
 import { ToastrModule } from 'ngx-toastr';
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { MatDatepickerModule} from '@angular/material/datepicker';
@@ -49,7 +48,6 @@ import { MatDialogModule} from '@angular/material/dialog'
     AdminDashboardComponent,
     UpdateAnimalComponent,
     CreateTicketComponent,
-    AdminUpdateUserComponent,
     TicketDetailComponent,
     UserUpdateComponent,
     TicketDetailComponent,

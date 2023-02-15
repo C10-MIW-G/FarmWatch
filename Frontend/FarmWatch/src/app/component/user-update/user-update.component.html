@@ -56,6 +56,16 @@
                 </div>
               </div>
             </div>
+            <div class="form-group" *ngIf="isAdmin">
+              <label>Role</label>
+              <div class="dropdown">
+                <div class="dropdown-content">
+                  <select [(ngModel)]="user.role" type="role" class="form-control" name="user.role">
+                    <option *ngFor="let role of roles" value={{role.value}}>{{role.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             <button class="btn btn-primary" style="float: right" type="submit">Save</button>
           </form>
         </div>          
