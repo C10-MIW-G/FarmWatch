@@ -14,6 +14,7 @@ import { AdminUpdateUserComponent } from './component/admin-update-user/admin-up
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { TicketOverviewComponent } from './component/ticket-overview/ticket-overview.component';
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
@@ -28,7 +29,9 @@ const routes: Routes = [
   { path: 'user/update/:id', component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
-  { path: 'ticket/:id', component: TicketDetailComponent}
+  { path: 'user/update/:id', component: AdminUpdateUserComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'ticket/:id', component: TicketDetailComponent},
+  { path: 'ticket', component: TicketOverviewComponent}
 ];
 
 const routerOptions: ExtraOptions = {

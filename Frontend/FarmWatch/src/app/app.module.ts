@@ -33,6 +33,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { TicketOverviewComponent } from './component/ticket-overview/ticket-overview.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { UserDetailComponent } from './component/user-detail/user-detail.compone
     UserUpdateComponent,
     TicketDetailComponent,
     NavbarComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    TicketOverviewComponent
   ],
   imports: [
     BrowserModule,
