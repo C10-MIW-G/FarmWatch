@@ -16,6 +16,7 @@ export class UserDetailComponent {
   public id!: number;
   public currentPath: String;
   public userPagePath: String = "details";
+  public updatePath: String = "/user/update";
   public formattedRole: string = "";
 
   constructor(private userDetailService : UserService, 
@@ -29,6 +30,7 @@ export class UserDetailComponent {
       } else {
         this.route.params.subscribe(params => {
           this.id = params['id'];
+          this.updatePath = this.updatePath + "/" + this.id.toString();
         });
       }
   }

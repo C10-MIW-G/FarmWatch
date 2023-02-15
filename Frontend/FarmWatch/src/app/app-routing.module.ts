@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/update',component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
   { path: 'user/details',component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
+  { path: 'user/update/:id', component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
   { path: 'user/update/:id', component: AdminUpdateUserComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
