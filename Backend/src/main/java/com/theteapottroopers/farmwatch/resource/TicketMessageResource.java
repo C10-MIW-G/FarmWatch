@@ -39,7 +39,9 @@ public class TicketMessageResource {
 
     @PostMapping
     public ResponseEntity<?> addTicketMessage(@RequestBody TicketMessageDtoAll ticketMessageDtoAll){
-        ticketMessageService.addTicketMessage(ticketMessageMapper.toTicketMessage(ticketMessageDtoAll));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        TicketMessage ticketMessage = ticketMessageMapper.toTicketMessage(ticketMessageDtoAll);
+        ticketMessageService.addTicketMessage(ticketMessage);
+        ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
+        return new ResponseEntity<>(ticketMessageDtoAll,HttpStatus.CREATED);
     }
 }

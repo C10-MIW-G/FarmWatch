@@ -70,9 +70,9 @@ export class TicketDetailComponent implements OnInit {
     this.newTicketMessageForm.ticketId = this.id;
     this.ticketMessageService.addTicketMessage(this.newTicketMessageForm).subscribe(
       {
-        next: () => {
+        next: (ticketMessage) => {
           this.toast.ShowSucces("New Notification", "Message submitted successfully!")
-          this.getTicket(this.id);
+          this.addTicketMessage(ticketMessage);
           this.newTicketMessageForm.message = '';
         },
         error: err => {
