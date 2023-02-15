@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/security/_services/storage.service';
 import { HttpErrorResponse} from '@angular/common/http';
 import { Location } from '@angular/common';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-user-detail',
@@ -55,6 +56,11 @@ export class UserDetailComponent {
         alert(error.message);
       }
     );
+  }
+
+  public fullName():String {
+    const fullname: string = this.user ? `${this.user.firstname} ${this.user.lastname}` : '';
+    return fullname;
   }
 
 }
