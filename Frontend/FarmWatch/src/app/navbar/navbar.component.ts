@@ -43,10 +43,15 @@ export class NavbarComponent {
   public openDialog(){
     if(!this.dialogOpen){
       this.dialog.open(LoginComponent);
-      this.dialogOpen = true;
+      this.dialogOpen = !this.dialogOpen;
     } else {
       this.dialog.closeAll();
-      this.dialogOpen = false;
+      this.dialogOpen = !this.dialogOpen;
     }
+    
+    this.dialog.afterAllClosed.subscribe(event => 
+            {
+              this.dialogOpen = false;
+            });
   }
 }
