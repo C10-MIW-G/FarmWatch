@@ -10,7 +10,7 @@
       </ul>
       <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/user/details">{{getUserName()}}</button>
       <ul class="my-2 my-lg-0">
-        <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Log In</button>
+        <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()">Log In</button>
         <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="logout()">Log out</button>
       </ul>
       <ul class="my-2 my-lg-0" *ngIf="!isLoggedIn()">

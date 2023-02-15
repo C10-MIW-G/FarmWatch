@@ -1,16 +1,6 @@
-<!-- Left Sidebar Start-->
-<mat-sidenav-container class="sidenav-container" id="top">
-  <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-
-</mat-sidenav>
-<!-- Left Sidebar End-->
-
-<!-- Center Content Start-->
-<mat-sidenav-content class="sidenav-content">
-<div class="container">
-  <div class="col-md-12">
-    <div class="card card-container">
-      <form
+<h1 mat-dialog-title>Log In</h1>
+<div mat-dialog-content>
+     <form
         *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -63,17 +53,9 @@
         </div>
       </form>
       <div class="alert alert-success" *ngIf="isLoggedIn">
-        Logged in successfully.
-      </div>
-    </div>
-  </div>
+        Welcome {{form.username}}!
+      </div> 
 </div>
-</mat-sidenav-content> 
-<!-- Center Content End-->
-
-<!-- Right Sidebar Start-->
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-
-</mat-sidenav>
-</mat-sidenav-container>
-<!-- Right Sidebar End-->
+<div *ngIf="isLoggedIn" mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Close</button>
+</div>
