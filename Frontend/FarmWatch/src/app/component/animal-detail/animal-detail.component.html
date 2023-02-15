@@ -16,7 +16,7 @@
 <!-- Center Content Start-->
 <mat-sidenav-content class="sidenav-content">
   <br>
-  <div class="card" style="width: 50rem;">
+  <div class="card" style="width: 50rem; background-color: white; border: none">
     <h1>{{animalDetail?.name}}</h1>
     <br>
     <div class="row">
@@ -24,7 +24,6 @@
     <img class="card-img-top" src="{{animalDetail?.imageUrl}}" alt="Card image cap">
     </div>
     <div class="col-md-4">
-      
         <h5 class="card-title">Name: </h5>
         <p class="card-text">{{animalDetail?.name}}</p>
       
@@ -39,26 +38,21 @@
       
         <h5 class="card-title">Born on: </h5>
         <p class="card-text">{{animalDetail?.dateOfBirth| date: "dd-MM-yyyy"}}</p>
-      
     </div>
     </div>
-</div>
-
-
 
   <br>
-  <div id="meet"></div>
-  <div class="card" style="width: 50rem;">
+  
     <h1>Meet {{animalDetail?.name}}!</h1>
     <div class="card-body">
         <p class="card-text">{{animalDetail?.description}}</p>
     </div>
-  </div>
+ 
   <br>
+</div>
   
-  <div id="ticket"></div>
 
-  <div class="card"  *ngIf="isAuthorized" style="width: 50rem;">
+  <div class="card"  *ngIf="isAuthorized" style="width: 50rem; background-color: white; border: none">
     <h1>Tickets involving {{animalDetail?.name}}</h1>
     <div class="card-body">
         <p class="card-text">Fortunately, {{animalDetail?.name}} has no tickets at this moment.</p>
