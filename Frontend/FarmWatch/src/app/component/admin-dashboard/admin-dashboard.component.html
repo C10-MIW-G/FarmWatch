@@ -35,17 +35,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <ng-container *ngFor="let user of users">
-                                        <ng-container *ngIf="isCurrentUser(user)">
-                                            <tr>
-                                                <td><a routerLink="/user/{{user.id}}"><b>{{user.username}}</b></a></td>
-                                                <td><span>{{user.firstname}}</span></td>
-                                                <td><span>{{user.lastname}}</span></td>
-                                                <td><span>{{user.email}}</span></td>
-                                                <td><span>{{user.role.substr(5)}}</span></td>
-                                            </tr>
-                                        </ng-container>
-                                    </ng-container>
+                                    <tr *ngFor="let user of users">
+                                        <td><a routerLink="/user/{{user.id}}"><b>{{user.username}}</b></a></td>
+                                        <td><span>{{user.firstname}}</span></td>
+                                        <td><span>{{user.lastname}}</span></td>
+                                        <td><span>{{user.email}}</span></td>
+                                        <td><span>{{user.role.substr(5)}}</span></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
