@@ -17,7 +17,7 @@ import { Location } from '@angular/common';
 export class UserUpdateComponent implements OnInit{
   public user!: User;
   public id!: number;
-  private isAdmin: boolean = false; 
+  public isAdmin: boolean = false; 
   public isAuthorized: boolean = false;
   public canChangePassword: boolean = false;
   public isSuccessful: boolean = false;
@@ -51,7 +51,7 @@ export class UserUpdateComponent implements OnInit{
     ngOnInit(): void {
       this.getUser(this.id)
       this.isAuthorized = this.storageService.isLoggedIn();
-      if (this.user.role === 'ROLE_ADMIN') {
+      if (this.storageService.getRole() === 'ADMIN') {
         this.isAdmin = true;
       }
     }
