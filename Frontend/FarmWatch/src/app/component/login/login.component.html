@@ -1,7 +1,6 @@
 <h1 mat-dialog-title>Log In</h1>
 <div mat-dialog-content>
      <form
-        *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
@@ -52,9 +51,6 @@
           </div>
         </div>
       </form>
-      <div class="alert alert-success" *ngIf="isLoggedIn">
-        Welcome {{form.username}}!
-      </div> 
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

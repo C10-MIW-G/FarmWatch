@@ -3,6 +3,7 @@ import { AuthService } from '../../security/_services/auth.service';
 import { StorageService } from '../../security/_services/storage.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'src/app/service/notifier.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, 
               private storageService: StorageService, 
               private router: Router,
-              private toast: NotifierService) { }
+              private toast: NotifierService,
+              private dialog: MatDialog 
+              ) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe({
       next: data => {
+        this.dialog.closeAll();
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
