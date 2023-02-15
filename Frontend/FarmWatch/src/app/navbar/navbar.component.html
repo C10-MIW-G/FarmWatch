@@ -1,8 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
     <a class="navbar-brand">FarmWatch</a>
-  
-    <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-2 ">
         <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Animals</a>
         <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Dashboard</a>
         <a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Tickets</a>
@@ -21,7 +19,6 @@
            <button class="dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
           </div>
        </div>
-    </div>
   </nav>
   <div class="nav-padding"></div>
   
