@@ -6,6 +6,7 @@
         <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">All Animals</a>
         <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Admin Dashboard</a>
         <a routerLink="/ticket/new" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Ticket Management</a>
+        <a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Tickets</a>
       </ul>
       <button *ngIf="isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" routerLink="/user/details">{{getUserName()}}</button>
       <ul class="my-2 my-lg-0">
