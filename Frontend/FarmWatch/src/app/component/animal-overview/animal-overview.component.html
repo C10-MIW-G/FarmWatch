@@ -33,8 +33,7 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let animal of animals">
-                                        <td><span><a
-                                                    routerLink="/animal/{{animal.id}}"><b>{{animal.name}}</b></a></span>
+                                        <td><span><a routerLink="/animal/{{animal.id}}"><b>{{animal.name}}</b></a></span>
                                         </td>
                                         <td><span>{{animal.commonName}}</span></td>
                                     </tr>
@@ -51,9 +50,8 @@
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
         <div>
-            <p class="text-center">Actions</p>
             <a routerLink="animal" data-bs-toggle="modal" data-bs-target=".add-new"
-                class="btn btn-success tooltips btn-block" *ngIf="isAuthorized">Add Animal</a>
+                class="btn btn-success tooltips btn-block" *ngIf="isAuthorized">+Add Animal</a>
         </div>
     </mat-sidenav>
     
