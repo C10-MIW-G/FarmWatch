@@ -13,11 +13,11 @@ export class CreateTicketService {
 
   constructor(private http: HttpClient) { }
 
-  createTicket(title: string, description: string, animalId: number, reportUsername: string): Observable<any> {
+  createTicket(subject: string, description: string, animalId: number, reportUsername: string): Observable<any> {
     return this.http.post(
       this.apiServerUrl + '/ticket',
       {
-        title, 
+        subject, 
         description,
         animalId,
         reportUsername
