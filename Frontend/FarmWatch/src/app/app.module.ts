@@ -18,7 +18,6 @@ import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSet
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminUserDetailComponent } from './component/admin-user-detail/admin-user-detail.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
@@ -48,7 +47,6 @@ import { TicketOverviewComponent } from './component/ticket-overview/ticket-over
     ProfileComponent,
     AdminDashboardComponent,
     UpdateAnimalComponent,
-    AdminUserDetailComponent,
     CreateTicketComponent,
     AdminUpdateUserComponent,
     TicketDetailComponent,

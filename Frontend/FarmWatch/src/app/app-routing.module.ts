@@ -10,7 +10,6 @@ import { AuthGuard } from './security/_auth/auth.guard';
 import { UpdateAnimalComponent } from './component/update-animal/update-animal.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { CreateTicketComponent } from './component/create-ticket/create-ticket.component';
-import { AdminUserDetailComponent } from './component/admin-user-detail/admin-user-detail.component';
 import { AdminUpdateUserComponent } from './component/admin-update-user/admin-update-user-component';
 import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
@@ -27,7 +26,7 @@ const routes: Routes = [
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/update',component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
   { path: 'user/details',component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
-  { path: 'user/:id', component: AdminUserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
+  { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
   { path: 'user/update/:id', component: AdminUpdateUserComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/:id', component: TicketDetailComponent},
