@@ -18,6 +18,7 @@ export class UserDetailComponent {
   public currentPath: String;
   public userPagePath: String = "details";
   public updatePath: String = "/user/update";
+  public isAdmin: boolean = false; 
   public formattedRole: string = "";
 
   constructor(private userDetailService : UserService, 
@@ -33,7 +34,7 @@ export class UserDetailComponent {
           this.id = params['id'];
           this.updatePath = this.updatePath + "/" + this.id.toString();
         });
-      }
+      }  
   }
 
   ngOnInit(): void {
@@ -44,12 +45,15 @@ export class UserDetailComponent {
     this.userDetailService.getUserDetail(id).subscribe(
       (response: User) => {
         this.user = response;
-        if(this.user.role === 'ROLE_ADMIN'){
-          this.formattedRole = 'Administrator'
-        } else if (this.user.role === 'ROLE_USER'){
+        if (this.user.role === 'ROLE_USER'){
           this.formattedRole = 'User'
-        } else {
+        } else if (this.user.role === 'ROLE_CARETAKER'){
           this.formattedRole = 'Caretaker'
+        } else {
+          this.formattedRole = 'Administrator'
+        }
+        if(this.storageService.getRole() == 'ADMIN'){
+          this.isAdmin = true; 
         }
       },
       (error: HttpErrorResponse) => {
