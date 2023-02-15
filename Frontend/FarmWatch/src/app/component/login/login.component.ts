@@ -45,9 +45,6 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().role;
         this.toast.ShowSucces("New Notification", "Logged in succesfully");
-        setTimeout(() => {
-          this.router.navigate(['']);
-      }, 1000);  
       },
       error: err => {
         this.errorMessage = err;
