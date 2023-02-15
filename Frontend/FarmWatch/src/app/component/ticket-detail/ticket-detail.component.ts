@@ -51,6 +51,7 @@ export class TicketDetailComponent implements OnInit {
   }
 
   public getTicketMessages(ticketMessageIds: number[]){
+    this.ticketMessages = [];
     for(let ticketMessageId of ticketMessageIds){
       this.ticketMessageService.getTicketMessage(ticketMessageId).subscribe({
         next: ticketMessage => this.addTicketMessage(ticketMessage),
@@ -67,14 +68,17 @@ export class TicketDetailComponent implements OnInit {
   onSubmit(){
     this.newTicketMessageForm.sendByUser.id = this.storageService.getUser().id;
     this.newTicketMessageForm.ticketId = this.id;
-    this.ticketMessageService.addTicketMessage(this.newTicketMessageForm).subscribe({next: () => {
-      this.toast.ShowSucces("New Notification", "Message submitted successfully!")
-      this.getTicket(this.id)
-      this.newTicketMessageForm.message = '';
-    },
-    error: err => {
-      this.toast.ShowError("New Notification", "Adding new message failed!")
-    }
-    });
+    this.ticketMessageService.addTicketMessage(this.newTicketMessageForm).subscribe(
+      {
+        next: () => {
+          this.toast.ShowSucces("New Notification", "Message submitted successfully!")
+          this.getTicket(this.id);
+          this.newTicketMessageForm.message = '';
+        },
+        error: err => {
+          this.toast.ShowError("New Notification", "Adding new message failed!")
+        }
+      }
+    );
   }
 }
