@@ -6,6 +6,7 @@ import { UserService } from 'src/app/service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotifierService } from 'src/app/service/notifier.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,9 +17,12 @@ import { NotifierService } from 'src/app/service/notifier.service';
 export class UserUpdateComponent implements OnInit{
   public user!: User;
   public id!: number;
+  private isAdmin: boolean = false; 
   public isAuthorized: boolean = false;
   public canChangePassword: boolean = false;
   public isSuccessful: boolean = false;
+  public currentPath: String;
+  public userPagePath: String = "update";
   public roles = [
     { name: 'Administrator', value: 'ROLE_ADMIN' },
     { name: 'Caretaker', value: 'ROLE_CARETAKER' },
@@ -31,19 +35,35 @@ export class UserUpdateComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router,
     private storageService: StorageService,
-    private toast: NotifierService,) {
-    this.id = storageService.getUser().id;
+    private toast: NotifierService,
+    private location: Location) {
+      const pathArray = location.path().split('/');
+      this.currentPath = pathArray.pop()!;
+      if(this.currentPath === this.userPagePath){
+        this.id = storageService.getUser().id;
+      } else {
+        this.route.params.subscribe(params => {
+          this.id = params['id'];
+        });
       }
+    }
 
     ngOnInit(): void {
       this.getUser(this.id)
       this.isAuthorized = this.storageService.isLoggedIn();
+      if (this.user.role === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
     }
   
     onSubmit(){
       this.userService.updateUser(this.user).subscribe({next: data => {
         setTimeout(() => {
-          this.router.navigate(['']);
+          if(this.isAdmin){
+            this.router.navigate(['/user/', this.id]);
+          } else {
+            this.router.navigate(['/user/details']);
+          }
           this.toast.ShowSucces("New Notification", "Succesfully updated " + this.user.username)
       }, 1000);
       },
