@@ -4,6 +4,7 @@ import { StorageService } from '../security/_services/storage.service';
 import { NotifierService } from '../service/notifier.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../component/login/login.component';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { LoginComponent } from '../component/login/login.component';
 export class NavbarComponent {
 
   dialogOpen: boolean = false;
+  faUser = faUser;
 
   constructor(private storageService: StorageService, 
               private toast: NotifierService, 
