@@ -65,9 +65,4 @@ public class AnimalResource {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/seed")
-    public ResponseEntity<?> seedAnimals(){
-        animalService.seedAnimals();
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }

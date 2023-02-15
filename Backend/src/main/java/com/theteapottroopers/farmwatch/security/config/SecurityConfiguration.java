@@ -39,6 +39,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/ticket/message").permitAll()
                 .requestMatchers( "/ticket/**").permitAll()
                 .requestMatchers("/ticket/message/**").permitAll()
+                .requestMatchers("/seed").permitAll()
                 //TODO: deze permit weghalen
                 .requestMatchers("/user/**").permitAll()
                 .anyRequest()

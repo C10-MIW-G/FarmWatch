@@ -1,11 +1,9 @@
 package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
-import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
-import com.theteapottroopers.farmwatch.seeds.AnimalSeeder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,6 @@ import java.util.List;
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
-
     @Autowired
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
@@ -40,10 +37,6 @@ public class AnimalService {
         animalRepository.deleteById(id);
     }
 
-    public void seedAnimals(){
-        AnimalSeeder animalSeeder = new AnimalSeeder(animalRepository);
-        animalSeeder.SeedAnimals();
-    }
     public Animal updateAnimal(AnimalDetailDto animalDetailDto){
         Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
         existingAnimal.setName(animalDetailDto.getName());
