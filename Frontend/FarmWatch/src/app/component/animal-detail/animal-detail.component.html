@@ -15,27 +15,35 @@
     
 <!-- Center Content Start-->
 <mat-sidenav-content class="sidenav-content">
+  <br>
   <div class="card" style="width: 50rem;">
     <h1>{{animalDetail?.name}}</h1>
     <br>
+    <div class="row">
+    <div class="col-md-8">
     <img class="card-img-top" src="{{animalDetail?.imageUrl}}" alt="Card image cap">
-      <div class="card-body">
+    </div>
+    <div class="col-md-4">
+      
         <h5 class="card-title">Name: </h5>
         <p class="card-text">{{animalDetail?.name}}</p>
-      </div>
-      <div class="card-body">
+      
+      
         <h5 class="card-title">Animal: </h5>
         <p class="card-text">{{animalDetail?.commonName}}</p>
-      </div>
-      <div class="card-body">
+     
+      
         <h5 class="card-title">Species: </h5>
         <p class="card-text">{{animalDetail?.species}}</p>
-      </div>
-      <div class="card-body">
+      
+      
         <h5 class="card-title">Born on: </h5>
-        <p class="card-text">{{animalDetail?.dateOfBirth}}</p>
-      </div>
+        <p class="card-text">{{animalDetail?.dateOfBirth| date: "dd-MM-yyyy"}}</p>
+      
+    </div>
+    </div>
 </div>
+
 
 
   <br>
@@ -65,7 +73,6 @@
 <!-- Right Sidebar Start-->
   <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
     <div>
-      <p class="text-center">Actions</p>
         <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"  routerLink="/animal/update/{{id}}"><i class="fa fa-pencil" style='color: white'></i> Edit</button>
         <br>
        <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="onDeleteAnimal(id)"><i class="fa fa-times" style='color: white'></i> Delete</button> 
