@@ -13,6 +13,8 @@ import { LoginComponent } from '../component/login/login.component';
 })
 export class NavbarComponent {
 
+  dialogOpen: boolean = false;
+
   constructor(private storageService: StorageService, 
               private toast: NotifierService, 
               private router: Router,
@@ -39,6 +41,17 @@ export class NavbarComponent {
   }
 
   public openDialog(){
-    this.dialog.open(LoginComponent);
+    if(!this.dialogOpen){
+      this.dialog.open(LoginComponent);
+      this.dialogOpen = !this.dialogOpen;
+    } else {
+      this.dialog.closeAll();
+      this.dialogOpen = !this.dialogOpen;
+    }
+    
+    this.dialog.afterAllClosed.subscribe(event => 
+            {
+              this.dialogOpen = false;
+            });
   }
 }
