@@ -25,7 +25,9 @@ public class TicketMessageResource {
     private final TicketMessageService ticketMessageService;
     private final TicketMessageMapper ticketMessageMapper;
 
-    public TicketMessageResource(TicketService ticketService, TicketMessageService ticketMessageService, UserService userService) {
+    public TicketMessageResource(TicketService ticketService,
+                                 TicketMessageService ticketMessageService,
+                                 UserService userService) {
         this.ticketMessageService = ticketMessageService;
         this.ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
     }
