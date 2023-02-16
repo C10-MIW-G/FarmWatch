@@ -60,23 +60,35 @@
 <!-- Center Content End-->
 
 <!-- Right Sidebar Start-->
-  <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    <div>
-        <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"  routerLink="/animal/update/{{id}}">Edit</button>
-        <br>
-        <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
-        <ng-template #deleteDialog>
-         <h1>You are about to delete {{animalDetail?.name}}.</h1>
-         <mat-dialog-content>The animal and all related tickets will be deleted. Are you sure you wish to continue?</mat-dialog-content>
-        <mat-dialog-actions class="actions">
-          <button class="btn btn-primary tooltips">Cancel</button>
-          <button class="btn btn-primary tooltips" (click)="onDeleteAnimal(id)" [mat-dialog-close]="true">Continue</button>
-        </mat-dialog-actions>
-        </ng-template>
-    </div>
-    
-    
-
-    </mat-sidenav>
+<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
+  [fixedBottomGap]="0">
+  <div>
+    <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"
+      routerLink="/animal/update/{{id}}">Edit</button>
+    <br>
+    <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized"
+      (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
+    <ng-template #deleteDialog>
+      <mat-dialog-content>
+        <div style="text-align: center;">
+          <a>The animal and all related tickets will be deleted.</a>
+          <br>
+          <a>Are you sure you wish to continue?</a>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions class="actions">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-secondary tooltips btn-block" [mat-dialog-close]="true">No</button>
+          </div>
+          <div class="col">
+            <button class="btn btn-primary tooltips btn-block" (click)="onDeleteAnimal(id)"
+              [mat-dialog-close]="true">Yes</button>
+          </div>
+        </div>
+      </mat-dialog-actions>
+    </ng-template>
+  </div>
+</mat-sidenav>
 </mat-sidenav-container>
 <!-- Right Sidebar End-->
