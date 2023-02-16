@@ -15,10 +15,11 @@
            <fa-icon [icon]="faUser" class="mr-1" style="font-size: 16px;"></fa-icon>
          </button>
          <div class="dropdown-menu dropdown-menu-right">
+           <span class="dropdown-item">{{getUserName()}}</span>
+           <div class="dropdown-divider"></div>
            <button class="dropdown-item" type="button" routerLink="user/details">Manage account</button>
            <button class="dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
          </div>
        </div>
   </nav>
-  <div class="nav-padding"></div>
   
