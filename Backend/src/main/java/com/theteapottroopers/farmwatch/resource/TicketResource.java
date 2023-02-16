@@ -38,6 +38,7 @@ public class TicketResource {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<List<TicketDtoAll>> getAllTickets(){
         List<Ticket> allTickets = ticketService.findAllTickets();
         List<TicketDtoAll> allTicketDtos = new ArrayList<>();
@@ -55,6 +56,7 @@ public class TicketResource {
     }
 
     @GetMapping("{id}")
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<TicketDtoAll> getTicketById(@PathVariable("id") Long id){
         Ticket ticket = ticketService.findTicketById(id);
         TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
