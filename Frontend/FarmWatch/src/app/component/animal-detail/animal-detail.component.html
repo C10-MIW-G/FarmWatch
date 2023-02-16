@@ -76,16 +76,18 @@
           <a>Are you sure you wish to continue?</a>
         </div>
       </mat-dialog-content>
-      <mat-dialog-actions class="actions">
+      <mat-dialog-actions>
+        <div class="actions">
         <div class="row">
-          <div class="col">
-            <button class="btn btn-secondary tooltips btn-block" [mat-dialog-close]="true">No</button>
+          <div class="">
+            <button class="btn btn-secondary tooltips" [mat-dialog-close]="true">No</button>
           </div>
-          <div class="col">
-            <button class="btn btn-primary tooltips btn-block" (click)="onDeleteAnimal(id)"
+          <div class="">
+            <button class="btn btn-primary tooltips" (click)="onDeleteAnimal(id)"
               [mat-dialog-close]="true">Yes</button>
           </div>
         </div>
+      </div>
       </mat-dialog-actions>
     </ng-template>
   </div>

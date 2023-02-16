@@ -122,13 +122,16 @@ textarea {
 
 /* Delete confirm dialog */
 .actions {
-    display: flex;
-    float: right;
-    padding: 10px;
-    flex-direction: row;
+    display: block;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+    
   }
   
   .actions button {
     width: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
   
