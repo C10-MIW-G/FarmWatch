@@ -124,9 +124,10 @@ textarea {
     display: flex;
     float: right;
     padding: 10px;
+    flex-direction: row;
   }
   
   .actions button {
-    margin-left: 10px;
+    width: 100px;
   }
   
