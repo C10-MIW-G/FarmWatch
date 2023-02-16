@@ -5,4 +5,17 @@
 .menu-padding{
     width: 10px;
 }
+
+.fw-navbar-item{
+    font-size: 15px;
+    margin-left: 20px;
+    color: white
+}
   
+.fw-dropdown-header{
+    font-size: 16px;
+}
+
+.fw-dropdown-item{
+    font-size: 15px;
+}

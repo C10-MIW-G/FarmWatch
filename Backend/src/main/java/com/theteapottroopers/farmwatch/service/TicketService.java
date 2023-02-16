@@ -35,4 +35,15 @@ public class TicketService {
     public void addTicket(Ticket ticket) {
         ticketRepository.save(ticket);
     }
+
+    public void deleteTicketByAnimalId(Long id){
+        List<Ticket> allTickets = ticketRepository.findAll();
+        for (Ticket ticket : allTickets) {
+            if (ticket.getAnimal() != null) {
+                if(ticket.getAnimal().getId() == id){
+                    ticketRepository.deleteById(ticket.getId());
+                }
+            }
+        }
+    }
 }

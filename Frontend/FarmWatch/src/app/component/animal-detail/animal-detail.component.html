@@ -4,12 +4,7 @@
 <!-- Left Sidebar Start-->
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-      <h3 class="card-title">Animal details<span class="text-muted fw-normal ms-2"></span></h3>
-
-      <a class="btn btn-primary tooltips btn-block" (click)="toTop()">{{animalDetail?.name}}'s details</a>        <br>
-      <a class="btn btn-primary tooltips btn-block" (click)="onClick('meet')">Meet {{animalDetail?.name}}</a>
-      <br>
-      <a class="btn btn-primary tooltips btn-block" *ngIf="isAuthorized" (click)="onClick('ticket')">{{animalDetail?.name}}'s Tickets</a>
+      
 </mat-sidenav>
 <!-- Left Sidebar End-->
     
@@ -67,10 +62,21 @@
 <!-- Right Sidebar Start-->
   <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
     <div>
-        <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"  routerLink="/animal/update/{{id}}"> Edit</button>
+        <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"  routerLink="/animal/update/{{id}}">Edit</button>
         <br>
-       <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="onDeleteAnimal(id)">Delete</button> 
+        <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized" (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
+        <ng-template #deleteDialog>
+         <h1>You are about to delete {{animalDetail?.name}}.</h1>
+         <mat-dialog-content>The animal and all related tickets will be deleted. Are you sure you wish to continue?</mat-dialog-content>
+        <mat-dialog-actions class="actions">
+          <button class="btn btn-primary tooltips">Cancel</button>
+          <button class="btn btn-primary tooltips" (click)="onDeleteAnimal(id)" [mat-dialog-close]="true">Continue</button>
+        </mat-dialog-actions>
+        </ng-template>
     </div>
+    
+    
+
     </mat-sidenav>
 </mat-sidenav-container>
 <!-- Right Sidebar End-->

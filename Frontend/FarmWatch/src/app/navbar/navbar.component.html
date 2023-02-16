@@ -1,11 +1,11 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
     <a class="navbar-brand">FarmWatch</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-2 ">
-        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Animals</a>
-        <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Dashboard</a>
-        <a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Tickets</a>
+        <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item">Animals</a></li>
+        <li><a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Dashboard</a></li>
+        <li><a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() == 'ADMIN' || 'CARETAKER'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Tickets</a></li>
       </ul>
-       <button class="btn btn-secondary my-2 my-sm-0" routerLink="/register" *ngIf="!isLoggedIn()" >Sign Up</button>
+       <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/register" *ngIf="!isLoggedIn()" >Sign Up</button>
        <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/ticket/new" *ngIf="isLoggedIn()">New Ticket</button>
        <div class="menu-padding" *ngIf="!isLoggedIn()" ></div>
        <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()">Log In</button>
@@ -15,10 +15,10 @@
            <fa-icon [icon]="faUser" class="mr-1" style="font-size: 16px;"></fa-icon>
          </button>
          <div class="dropdown-menu dropdown-menu-right">
-           <span class="dropdown-item">{{getUserName()}}</span>
+           <span class="dropdown-header fw-dropdown-header">{{getUserName()}}</span>
            <div class="dropdown-divider"></div>
-           <button class="dropdown-item" type="button" routerLink="user/details">Manage account</button>
-           <button class="dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
+           <button class="dropdown-item fw-dropdown-item" type="button" routerLink="user/details">Manage account</button>
+           <button class="dropdown-item fw-dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
          </div>
        </div>
   </nav>
