@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { environment } from 'src/environments/environment';
+import { CaretakerOverview } from '../model/caretaker-overview';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -18,5 +19,8 @@ export class UserService {
     return this.http.put<User>(`${this.apiServerUrl}/user/update`, user);
   }
 
+  public getCaretakers(): Observable<CaretakerOverview[]> {
+    return this.http.get<CaretakerOverview[]>(`${this.apiServerUrl}/user/caretakers`);
+  }
   
 }

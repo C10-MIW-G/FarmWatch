@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.repository;
 
+import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

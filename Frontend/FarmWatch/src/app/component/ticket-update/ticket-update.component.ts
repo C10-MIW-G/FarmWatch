@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AnimalOverview } from 'src/app/model/animal-overview';
+import { CaretakerOverview } from 'src/app/model/caretaker-overview';
 import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-ticket-update',
@@ -10,6 +12,7 @@ import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 })
 export class TicketUpdateComponent implements OnInit{
 
+  
   form: any = {
     subject: null,
     description: null,
@@ -18,16 +21,19 @@ export class TicketUpdateComponent implements OnInit{
   };
 
   animals: AnimalOverview[] = [];
+  caretakers: CaretakerOverview[] = [];
 
-  constructor(private animalOverviewService: AnimalOverviewService){
+  constructor(private animalOverviewService: AnimalOverviewService,
+    private userService: UserService){
 
   }
 
 
   ngOnInit(): void {
-   this.getAnimals();
-   
+    this.getAnimals();
+    this.getCaretakers();
   }
+
   onSubmit(): void {
     
   }
@@ -36,6 +42,17 @@ export class TicketUpdateComponent implements OnInit{
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
         this.animals = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getCaretakers(): void {
+    this.userService.getCaretakers().subscribe(
+      (response: CaretakerOverview[]) => {
+        this.caretakers = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
