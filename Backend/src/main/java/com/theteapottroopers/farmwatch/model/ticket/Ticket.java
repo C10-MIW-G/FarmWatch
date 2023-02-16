@@ -1,5 +1,6 @@
-package com.theteapottroopers.farmwatch.model;
+package com.theteapottroopers.farmwatch.model.ticket;
 
+import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.security.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,7 +26,8 @@ public class Ticket {
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TicketStatus status;
     @Column(nullable = false)
     @Setter(AccessLevel.NONE)
     private final LocalDateTime reportDateTime = LocalDateTime.now();
