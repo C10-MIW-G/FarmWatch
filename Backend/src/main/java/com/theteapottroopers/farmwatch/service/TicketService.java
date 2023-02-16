@@ -1,7 +1,7 @@
 package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.exception.TicketNotFoundException;
-import com.theteapottroopers.farmwatch.model.Ticket;
+import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

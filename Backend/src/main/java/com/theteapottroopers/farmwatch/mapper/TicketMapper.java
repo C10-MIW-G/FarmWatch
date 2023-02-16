@@ -2,8 +2,9 @@ package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
-import com.theteapottroopers.farmwatch.model.Ticket;
-import com.theteapottroopers.farmwatch.model.TicketMessage;
+import com.theteapottroopers.farmwatch.model.ticket.Ticket;
+import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
+import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class TicketMapper {
                 .id(ticket.getId())
                 .subject(ticket.getSubject())
                 .description(ticket.getDescription())
-                .status(ticket.getStatus())
+                .status(ticket.getStatus().toString())
                 .reportDateTime(ticket.getReportDateTime())
                 .animal((ticket.getAnimal() != null) ?
                         getAnimalFromTicket(ticket) : null)
@@ -72,7 +73,7 @@ public class TicketMapper {
         Ticket ticketAllBuilder = Ticket.builder()
                 .subject(ticketDtoNew.getSubject())
                 .description(ticketDtoNew.getDescription())
-                .status("requested")
+                .status(TicketStatus.OPEN)
                 .animal((ticketDtoNew.getAnimalId() != null) ?
                         animalService.findAnimalById(ticketDtoNew.getAnimalId()) : null)
                 .reportedBy(userService.findUserByUsername(ticketDtoNew.getReportUsername()))
