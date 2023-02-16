@@ -10,6 +10,7 @@ import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -33,13 +34,15 @@ public class TicketMessageResource {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<TicketMessageDtoAll> getTicketById(@PathVariable("id") Long id){
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    public ResponseEntity<TicketMessageDtoAll> getTicketMessageById(@PathVariable("id") Long id){
         TicketMessage ticketMessage = ticketMessageService.findTicketMessageById(id);
         TicketMessageDtoAll ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
         return new ResponseEntity<>(ticketMessageDtoAll, HttpStatus.OK);
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<?> addTicketMessage(@RequestBody TicketMessageDtoAll ticketMessageDtoAll){
         TicketMessage ticketMessage = ticketMessageMapper.toTicketMessage(ticketMessageDtoAll);
         ticketMessageService.addTicketMessage(ticketMessage);
