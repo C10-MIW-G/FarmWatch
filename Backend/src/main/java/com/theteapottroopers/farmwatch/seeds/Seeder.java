@@ -181,25 +181,25 @@ public class Seeder {
 
 
         Ticket ticket1 = new Ticket(null, "Broken wing", "I was walking through the park and noticed " +
-                "that one of the chickens had a broken wing!", TicketStatus.OPEN, animal1, user2, null,
+                "that one of the chickens had a broken wing!", TicketStatus.OPEN, animal1, user2, user8,
                 null);
         ticketRepository.save(ticket1);
 
         Ticket ticket2 = new Ticket(null, "Limping hoof", "I was at the zoo and noticed that one " +
-                "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal2, user3, null, null);
+                "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal2, user3, user7, null);
         ticketRepository.save(ticket2);
 
         Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
-                "infection in my neighborhood.", TicketStatus.OPEN, animal4, user3, null, null);
+                "infection in my neighborhood.", TicketStatus.OPEN, animal4, user3, user8, null);
         ticketRepository.save(ticket3);
 
         Ticket ticket4 = new Ticket(null, "Broken antler", "I was hiking and found a deer " +
-                "with a broken antler.", TicketStatus.OPEN, animal6, user4, null, null);
+                "with a broken antler.", TicketStatus.OPEN, animal6, user4, user7, null);
         ticketRepository.save(ticket4);
 
         Ticket ticket5 = new Ticket(null, "Upside down turtle", "I was visiting your " +
                 "beautiful park, and I think one of the turtles is upside down!.",
-                TicketStatus.OPEN, animal5, user5, null, null);
+                TicketStatus.OPEN, animal5, user5, user8, null);
         ticketRepository.save(ticket5);
 
         Ticket ticket6 = new Ticket(null, "Limping leg", "I was in the park and saw " +
@@ -208,12 +208,12 @@ public class Seeder {
         ticketRepository.save(ticket6);
 
         Ticket ticket7 = new Ticket(null, "Scratched eye", "I found a chicken with a " +
-                "scratched eye on my balcony.", TicketStatus.OPEN, animal8, user7, null, null);
+                "scratched eye on my balcony.", TicketStatus.OPEN, animal8, user7, user7, null);
         ticketRepository.save(ticket7);
 
         Ticket ticket8 = new Ticket(null, "Bald spots", "I was walking through the park with " +
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
-                TicketStatus.OPEN, animal3, user8, null, null);
+                TicketStatus.OPEN, animal3, user8, user7, null);
         ticketRepository.save(ticket8);
 
     }
