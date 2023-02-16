@@ -1,84 +1,91 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-      
-        <h3 class="card-title">Ticket details<span class="text-muted fw-normal ms-2"></span></h3>
-
+        <h3 class="card-title">Ticket<span class="text-muted fw-normal ms-2"></span></h3>
     </mat-sidenav>
-<mat-sidenav-content class="sidenav-content">
-<div class="container d-flex flex-column">
-    <div class="row">
-      <div class="col">
-        <div class="ticket-container mx-auto">
-            <table class="table">
-                <tr>
-                    <th>Ticket ID</th>
-                    <td>{{ticket?.id}}</td>
-                    <th>Subject</th>
-                    <td>{{ticket?.subject}}</td>
-                    <th>Report Date</th>
-                    <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>{{ticket?.status}}</td>
-                </tr>
-                <tr>
-                    <th>Animal name</th>
-                    <td>{{ticket?.animal?.name || "Not specified"}}</td>
-                </tr>
-                <tr>
-                    <th>Reported By User</th>
-                    <td>{{ticket?.reportedByUser?.username}}</td>
-                </tr>
-                <tr>
-                    <th>Assigned To User</th>
-                    <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td colspan="4">{{ticket?.description}}</td>
-                </tr>
-            </table>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="ticket-messages-container mx-auto">
-            <span>Ticket Messages</span>
-            <div class="ticket-message-container mx-auto">
-                <div class="new-ticket-message-container">
-                    <form name="form" #f="ngForm" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                          <label for="newTicketMessage">New Ticket Message</label>
-                          <textarea class="form-control" id="newTicketMessage" rows="3" 
-                          name="message"
-                          [(ngModel)]="newTicketMessageForm.message"
-                          required
-                          message
-                          #message="ngModel"></textarea>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Submit</button> 
-                         </div>
-                      </form>
-                </div>
-                <ng-container *ngFor="let ticketMessage of ticketMessages">
-                    <div class="comment">
-                        <div class="comment-author-ava"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar"></div>
-                        <div class="comment-body">
-                            <p class="comment-text">{{ticketMessage.message}}</p>
-                            <div class="comment-footer"><span class="comment-meta">{{ticketMessage.sendByUser.username}}, {{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span></div>
-                        </div>
+    <mat-sidenav-content class="sidenav-content">
+        <div class="container d-flex flex-column">
+            <div class="row">
+                <div class="col">
+                    <h3>Ticket Details</h3>
+                    <div class="ticket-container mx-auto">
+                        <table class="table">
+                            <tr>
+                                <th>Subject</th>
+                                <td colspan="3">{{ticket?.subject}}</td>
+                            </tr>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <td>{{ticket?.id}}</td>
+                                <th>Report Date</th>
+                                <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ticket?.status}}</td>
+                                <th>Reported By User</th>
+                                <td>{{ticket?.reportedByUser?.username}}</td>
+                            </tr>
+                            <tr>
+                                <th>Animal name</th>
+                                <td>{{ticket?.animal?.name || "Not specified"}}</td>
+                                <th>Assigned To User</th>
+                                <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td colspan="3">{{ticket?.description}}</td>
+                            </tr>
+                        </table>
                     </div>
-                </ng-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Ticket Messages</h3>
+                    <div class="ticket-message-container mx-auto">
+                        <div>
+                            <form name="form" #f="ngForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label for="newTicketMessage">New Ticket Message</label>
+                                    <textarea class="form-control" id="newTicketMessage" rows="3" 
+                                    name="message"
+                                    [(ngModel)]="newTicketMessageForm.message"
+                                    required
+                                    message
+                                    #message="ngModel"></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button> 
+                                </div>
+                            </form>
+                        </div>
+                        <ng-container *ngFor="let ticketMessage of ticketMessages">
+                            <div class="fw-comment-container d-flex">
+                                <div class="fw-comment-userinfo d-block">
+                                    <table>
+                                        <tr>
+                                            <th>Send by: </th>
+                                            <td>{{ticketMessage.sendByUser.username}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
+                                    <div class="comment-body">
+                                        
+                                        <p class="comment-text">{{ticketMessage.message}}</p>
+                                        <div class="comment-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
-    </div>
-  </div>
-</mat-sidenav-content> 
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-</mat-sidenav>
+    </mat-sidenav-content> 
+    <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+    </mat-sidenav>
 </mat-sidenav-container>
 
