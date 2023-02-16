@@ -118,3 +118,15 @@ textarea {
 .new-ticket-form mat-label{
     font-size: 18px;
 }
+
+/* Delete confirm dialog */
+.actions {
+    display: flex;
+    float: right;
+    padding: 10px;
+  }
+  
+  .actions button {
+    margin-left: 10px;
+  }
+  
