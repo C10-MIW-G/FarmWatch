@@ -3,11 +3,8 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
-import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
 import com.theteapottroopers.farmwatch.model.Ticket;
-import com.theteapottroopers.farmwatch.repository.TicketMessageRepository;
 import com.theteapottroopers.farmwatch.service.AnimalService;
-import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -38,6 +35,7 @@ public class TicketResource {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<List<TicketDtoAll>> getAllTickets(){
         List<Ticket> allTickets = ticketService.findAllTickets();
         List<TicketDtoAll> allTicketDtos = new ArrayList<>();
@@ -55,6 +53,7 @@ public class TicketResource {
     }
 
     @GetMapping("{id}")
+    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<TicketDtoAll> getTicketById(@PathVariable("id") Long id){
         Ticket ticket = ticketService.findTicketById(id);
         TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);

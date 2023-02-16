@@ -38,19 +38,20 @@ public class UserResource {
         return new ResponseEntity<>(userDtos, HttpStatus.OK);
     }
 
-    //TODO: add authorization
     @GetMapping("/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id) {
         User user = userService.findUserById(id);
         UserDto userDto = userMapper.toUserDto(user);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
+    //TODO:There must be at least one admin in the server
     @PutMapping("/update")
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDTO){
         User userToUpdate = userService.updateUser(userDTO);
         UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
         return new ResponseEntity<>(updateUserDto, HttpStatus.OK);
     }
+
 }

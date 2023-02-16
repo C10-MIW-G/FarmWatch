@@ -51,9 +51,8 @@ export class UserUpdateComponent implements OnInit{
     ngOnInit(): void {
       this.getUser(this.id)
       this.isAuthorized = this.storageService.isLoggedIn();
-      if (this.storageService.getRole() === 'ADMIN') {
-        this.isAdmin = true;
-      }
+      this.isAdmin = this.storageService.getRole() === 'ADMIN';
+      
     }
   
     onSubmit(){
@@ -74,9 +73,7 @@ export class UserUpdateComponent implements OnInit{
     }
 
     private allowedToChangePassword(): void{
-      if(this.storageService.getRole() === 'USER'){
-        this.canChangePassword = true;
-      }  
+      this.canChangePassword = this.storageService.getRole() === 'USER';
     }
 
     private getUser(id: number): void {

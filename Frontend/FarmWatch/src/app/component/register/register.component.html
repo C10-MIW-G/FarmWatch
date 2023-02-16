@@ -15,11 +15,12 @@
       novalidate
     >
     <div class="form-group">
-      <label for="firstname">Firstname</label>
+      <label for="firstname">First name</label>
       <input
         type="text"
         class="form-control"
         name="firstname"
+        placeholder="Enter your first name"
         [(ngModel)]="form.firstname"
         required
         firstname
@@ -34,11 +35,12 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="lastname">Lastname</label>
+      <label for="lastname">Last name</label>
       <input
         type="lastname"
         class="form-control"
         name="lastname"
+        placeholder="Enter your last name"
         [(ngModel)]="form.lastname"
         required
         lastname
@@ -58,6 +60,7 @@
         type="email"
         class="form-control"
         name="email"
+        placeholder="Enter your email adress"
         [(ngModel)]="form.email"
         required
         email
@@ -77,6 +80,7 @@
           type="text"
           class="form-control"
           name="username"
+          placeholder="Enter your username"
           [(ngModel)]="form.username"
           required
           minlength="3"
@@ -100,6 +104,7 @@
           type="password"
           class="form-control"
           name="password"
+          placeholder="Enter your password"
           [(ngModel)]="form.password"
           required
           minlength="6"
@@ -113,7 +118,9 @@
           </div>
         </div>
       </div>
-      <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      <div class="recaptcha-center">
+        <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      </div>
       <br>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Create User</button>

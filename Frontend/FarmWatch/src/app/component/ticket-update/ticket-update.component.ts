@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-ticket-update',
+  templateUrl: './ticket-update.component.html',
+  styleUrls: ['./ticket-update.component.css']
+})
+export class TicketUpdateComponent {
+
+
+
+
+
+  onSubmit(): void {
+    
+  }
+
+}

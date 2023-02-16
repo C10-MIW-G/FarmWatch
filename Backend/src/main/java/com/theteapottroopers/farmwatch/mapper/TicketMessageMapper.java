@@ -34,7 +34,9 @@ public class TicketMessageMapper {
         TicketMessageDtoAll ticketMessageDtoAll = TicketMessageDtoAll.builder()
                 .id(ticketMessage.getId())
                 .sendByUser(new TicketMessageDtoAll.UserDtoUsername(
-                        ticketMessage.getSendBy().getId(), ticketMessage.getSendBy().getUsername()))
+                        ticketMessage.getSendBy().getId(),
+                        ticketMessage.getSendBy().getUsername(),
+                        ticketMessage.getSendBy().getRole().toString().substring(5).toLowerCase()))
                 .messageLocalDateTime(ticketMessage.getMessageDateTime())
                 .message(ticketMessage.getMessage())
                 .ticketId(ticketMessage.getTicket().getId())

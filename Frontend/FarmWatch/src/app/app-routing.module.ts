@@ -28,8 +28,8 @@ const routes: Routes = [
   { path: 'user/update/:id', component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
-  { path: 'ticket/:id', component: TicketDetailComponent},
-  { path: 'ticket', component: TicketOverviewComponent}
+  { path: 'ticket/:id', component: TicketDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
+  { path: 'ticket', component: TicketOverviewComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}}
 ];
 
 const routerOptions: ExtraOptions = {
