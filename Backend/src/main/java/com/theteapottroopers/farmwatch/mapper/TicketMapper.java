@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.mapper;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
+import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
@@ -80,5 +81,14 @@ public class TicketMapper {
                 .assignedTo(null)
                 .build();
         return ticketAllBuilder;
+    }
+
+    public TicketDtoUpdate toTicketDtoUpdate(Ticket ticket){
+        return new TicketDtoUpdate(
+                ticket.getId(),
+                ticket.getSubject(),
+                ticket.getDescription(),
+                ticket.getStatus(),
+                ticket.getAssignedTo().getId());
     }
 }

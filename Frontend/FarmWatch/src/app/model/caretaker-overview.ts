@@ -1,5 +1,4 @@
 export interface CaretakerOverview {
     id: number;
-    firstname: string;
-    lastname: string;
+    name: string;
 }

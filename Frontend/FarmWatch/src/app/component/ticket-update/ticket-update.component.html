@@ -14,15 +14,26 @@
                         <input matInput type="text" class="form-control" name="subject" [(ngModel)]="form.subject" required
                             subject #subject="ngModel">
                     </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <input matInput type="text" class="form-control" name="subject" [(ngModel)]="form.status" required
-                            subject #subject="ngModel">
-                    </div>
-                    <div class="form-group">
-                        <label>Assigned to</label>
-                        <input matInput type="text" class="form-control" name="subject" [(ngModel)]="form.assignedTo" required
-                            subject #subject="ngModel">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <input matInput type="text" class="form-control" name="subject" [(ngModel)]="form.status" required
+                                    subject #subject="ngModel">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Assigned to</label>
+                                <div class="dropdown">
+                                    <div class="dropdown-content">
+                                    <select [(ngModel)]="form.assignedTo" type="assignedTo" class="form-control" name="form.assignedTo">
+                                        <option *ngFor="let caretaker of caretakers">{{caretaker.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>  
                     </div>
                     <div class="form-group">
                         <label>Description</label>

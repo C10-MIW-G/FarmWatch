@@ -47,12 +47,12 @@ public class UserResource {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    //TODO:There must be at least one admin in the server
+    //TODO: There must be at least one admin in the server
     @PutMapping("/update")
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDTO){
         User userToUpdate = userService.updateUser(userDTO);
         UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
-        return new ResponseEntity<>(updateUserDto, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/caretakers")

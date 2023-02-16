@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
+import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
@@ -67,5 +68,14 @@ public class TicketResource {
     public ResponseEntity<List<TicketStatus>> getAllTicketStatus(){
         List<TicketStatus> allTicketStatus = Arrays.asList(TicketStatus.values());
         return new ResponseEntity<>(allTicketStatus, HttpStatus.OK);
+    }
+
+    @GetMapping("/update/{id}")
+    //TODO: put auth back
+    //@PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    public ResponseEntity<TicketDtoUpdate> getLeanTicketById(@PathVariable("id") Long id) {
+        Ticket ticket = ticketService.findTicketById(id);
+        TicketDtoUpdate ticketDtoUpdate = ticketMapper.toTicketDtoUpdate(ticket);
+        return new ResponseEntity<>(ticketDtoUpdate, HttpStatus.OK);
     }
 }

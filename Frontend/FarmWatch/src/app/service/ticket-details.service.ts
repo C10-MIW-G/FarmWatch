@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ticket } from '../model/ticket';
+import { TicketUpdate } from '../model/ticket-update';
 
 @Injectable({providedIn: 'root'})
 export class TicketDetailService {
@@ -12,6 +13,10 @@ export class TicketDetailService {
 
   public getTicket(id: number): Observable<Ticket> {
     return this.http.get<Ticket>(`${this.apiServerUrl}/ticket/${id}`)
+  }
+
+  public getLeanTicket(id: number): Observable<TicketUpdate> {
+    return this.http.get<TicketUpdate>(`${this.apiServerUrl}/ticket/update/${id}`)
   }
   
 }
