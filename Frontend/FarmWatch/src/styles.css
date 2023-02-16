@@ -44,8 +44,13 @@ h3{
 
 .card-img-top {
     border-radius: 8px;
-    max-width: 500px;
+    max-height: 288px;
+    width: auto;
     margin: 0 auto;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .card {
