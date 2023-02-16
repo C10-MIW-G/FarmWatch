@@ -2,9 +2,7 @@
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
-        <br>
-        <br>
-        <br>
+      <div class="container">
         <div class="col-md-6 offset-md-3">
           <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
             novalidateclass="form">
@@ -68,7 +66,8 @@
             </div>
             <button class="btn btn-primary" style="float: right" type="submit">Save</button>
           </form>
-        </div>          
+        </div>   
+      </div>       
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
     </mat-sidenav>

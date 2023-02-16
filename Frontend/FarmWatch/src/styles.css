@@ -44,8 +44,13 @@ h3{
 
 .card-img-top {
     border-radius: 8px;
-    max-width: 500px;
+    max-height: 288px;
+    width: auto;
     margin: 0 auto;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .card {
@@ -57,6 +62,7 @@ h3{
 }
 
 .sidenav-content {
+    margin-top: 56px;
     padding-bottom: 10px;
     background-color: rgb(255, 255, 255);
 }
@@ -121,13 +127,16 @@ textarea {
 
 /* Delete confirm dialog */
 .actions {
-    display: flex;
-    float: right;
-    padding: 10px;
-    flex-direction: row;
+    display: block;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+    
   }
   
   .actions button {
     width: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
   
