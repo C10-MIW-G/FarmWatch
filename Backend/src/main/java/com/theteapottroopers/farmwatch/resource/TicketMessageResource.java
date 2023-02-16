@@ -1,9 +1,7 @@
 package com.theteapottroopers.farmwatch.resource;
 
-import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
 import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
-import com.theteapottroopers.farmwatch.model.Ticket;
 import com.theteapottroopers.farmwatch.model.TicketMessage;
 import com.theteapottroopers.farmwatch.service.TicketMessageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
