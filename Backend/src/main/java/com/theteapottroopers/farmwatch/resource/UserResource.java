@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.resource;
 
+import com.theteapottroopers.farmwatch.dto.CaretakerLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.mapper.UserMapper;
 import com.theteapottroopers.farmwatch.security.user.User;
@@ -54,4 +55,10 @@ public class UserResource {
         return new ResponseEntity<>(updateUserDto, HttpStatus.OK);
     }
 
+    @GetMapping("/caretakers")
+    public ResponseEntity<List<CaretakerLeanDto>> getAllCaretakers(){
+        List<User> users = userService.findAllCaretakers();
+        List<CaretakerLeanDto> caretakerLeanDtos = userMapper.toCaretakerLeanDtos(users);
+        return new ResponseEntity<>(caretakerLeanDtos, HttpStatus.OK);
+    }
 }
