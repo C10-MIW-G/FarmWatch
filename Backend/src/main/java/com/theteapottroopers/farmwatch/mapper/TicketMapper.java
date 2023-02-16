@@ -84,11 +84,16 @@ public class TicketMapper {
     }
 
     public TicketDtoUpdate toTicketDtoUpdate(Ticket ticket){
-        return new TicketDtoUpdate(
-                ticket.getId(),
-                ticket.getSubject(),
-                ticket.getDescription(),
-                ticket.getStatus(),
-                ticket.getAssignedTo().getId());
+        TicketDtoUpdate ticketDtoUpdate = new TicketDtoUpdate();
+        ticketDtoUpdate.setId(ticket.getId());
+        ticketDtoUpdate.setSubject(ticket.getSubject());
+        ticketDtoUpdate.setDescription(ticket.getDescription());
+        ticketDtoUpdate.setTicketStatus(ticket.getStatus());
+        ticketDtoUpdate.setAssignedTo(ticket.getAssignedTo().getId());
+        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
+        stringBuilder.append(" ");
+        stringBuilder.append(ticket.getAssignedTo().getLastname());
+        ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+        return ticketDtoUpdate;
     }
 }

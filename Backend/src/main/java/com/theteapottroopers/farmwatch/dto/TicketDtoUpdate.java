@@ -22,5 +22,6 @@ public class TicketDtoUpdate {
     private String description;
     private TicketStatus ticketStatus;
     private Long assignedTo;
+    private String assignedToName;
 
 }

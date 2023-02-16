@@ -4,4 +4,5 @@ export interface TicketUpdate {
     description: string;
     status: string;
     assignedTo: number;
+    assignedToName: string;
 }
