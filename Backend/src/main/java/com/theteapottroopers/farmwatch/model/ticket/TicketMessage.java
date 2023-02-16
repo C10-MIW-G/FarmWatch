@@ -1,4 +1,4 @@
-package com.theteapottroopers.farmwatch.model;
+package com.theteapottroopers.farmwatch.model.ticket;
 
 import com.theteapottroopers.farmwatch.security.user.User;
 import jakarta.persistence.*;
