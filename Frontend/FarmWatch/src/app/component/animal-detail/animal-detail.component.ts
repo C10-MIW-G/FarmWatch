@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, TemplateRef } from "@angular/core";
 import { AnimalDetail } from "../../model/animal-detail";
 import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../../security/_services/storage.service';
 import { NotifierService } from "src/app/service/notifier.service";
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ComponentType } from "@angular/cdk/portal";
 
 @Component({
     selector: 'app-animal',
@@ -20,11 +22,14 @@ export class AnimalDetailComponent implements OnInit {
       private route: ActivatedRoute, 
       private router: Router, 
       private storageService: StorageService,
-      private toast: NotifierService) {
+      private toast: NotifierService,
+      private dialog: MatDialog) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
     }
+
+    @ViewChild('deleteDialog', { static: true }) deleteDialog: TemplateRef<any> | undefined;
   
     ngOnInit(): void {
         this.getAnimalDetail(this.id);
@@ -48,7 +53,6 @@ export class AnimalDetailComponent implements OnInit {
     }
 
     public onDeleteAnimal(AnimalDetailId: number): void {
-      if(window.confirm('Are sure you want to delete '+this.animalDetail?.name+'?')){
       this.animalDetailService.deleteAnimal(AnimalDetailId).subscribe(
         (response: void) => {
             console.log(response);
@@ -59,17 +63,20 @@ export class AnimalDetailComponent implements OnInit {
             this.toast.ShowError("New Notification", this.animalDetail?.name + " could not be deleted")
         }
       );
-      }
+      this.closeDialog();
     }
 
-    public onClick(fragment: string): void {
-      this.router.navigate( ['/animal/', this.id ], {fragment});
-
+    openDialogWithTemplateRef(templateRef: TemplateRef<any>) {
+      this.dialog.open(templateRef);
     }
 
-    public toTop(): void {
-      window.scroll({top: 0, left: 0})
-    }
+    closeDialog() {
+      this.closeDialog();
+  }
+
+    
+
+  
 
 
    

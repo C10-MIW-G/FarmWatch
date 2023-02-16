@@ -5,6 +5,7 @@ import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.AnimalService;
+import com.theteapottroopers.farmwatch.service.TicketService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,12 @@ import java.util.List;
 @RequestMapping("/animal")
 public class AnimalResource {
     private final AnimalService animalService;
+    private final TicketService ticketService;
     private final AnimalMapper animalMapper;
 
-    public AnimalResource(AnimalService animalService) {
+    public AnimalResource(AnimalService animalService, TicketService ticketService) {
         this.animalService = animalService;
+        this.ticketService = ticketService;
         animalMapper = new AnimalMapper();
     }
     
@@ -48,6 +51,7 @@ public class AnimalResource {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteAnimalById(@PathVariable("id") Long id){
+        ticketService.deleteTicketByAnimalId(id);
         animalService.deleteAnimal(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
