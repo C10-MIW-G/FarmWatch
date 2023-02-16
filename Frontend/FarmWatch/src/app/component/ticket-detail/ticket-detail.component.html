@@ -61,18 +61,19 @@
                         </div>
                         <ng-container *ngFor="let ticketMessage of ticketMessages">
                             <div class="fw-comment-container d-flex">
-                                <div class="fw-comment-userinfo d-block">
+                                <div class="fw-comment-userinfo">
                                     <table>
                                         <tr>
-                                            <th>Send by: </th>
-                                            <td>{{ticketMessage.sendByUser.username}}</td>
+                                            <td class="username">{{ticketMessage.sendByUser.username}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ticketMessage.sendByUser.role}}</td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="comment">
                                     <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
                                     <div class="comment-body">
-                                        
                                         <p class="comment-text">{{ticketMessage.message}}</p>
                                         <div class="comment-footer">
                                         </div>

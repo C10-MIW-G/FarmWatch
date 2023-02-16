@@ -3,6 +3,7 @@ export interface TicketMessage {
     sendByUser: {
         id: number;
         username: string;
+        role: string;
     };
     messageLocalDateTime: string;
     message: string;
