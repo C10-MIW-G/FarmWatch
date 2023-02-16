@@ -4,6 +4,7 @@
   </mat-sidenav>
 <mat-sidenav-content class="sidenav-content">
  
+    <div class="container">
   <div class="col-md-6 offset-md-3">
     <br>
     <form (ngSubmit) = "onSubmit()">
@@ -58,7 +59,7 @@
             </div>
         </div>
     </div>      
-
+    <div class="col-md-12">
         <div class="form-group">
             <label> Description:</label>
             <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
@@ -71,12 +72,14 @@
             <input type="text" class ="form-control" id = "imageUrl"
                 [(ngModel)] = "animal.imageUrl" name = "imageUrl">
         </div>
+        </div>
     
     
         <button class = "btn btn-primary" type ="submit" style="float: right;">Submit</button>
     
     </form>
 </div> 
+</div>
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
 
 </mat-sidenav>
