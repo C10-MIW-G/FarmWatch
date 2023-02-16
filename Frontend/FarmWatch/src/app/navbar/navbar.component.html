@@ -1,35 +1,24 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
     <a class="navbar-brand">FarmWatch</a>
-  
-    <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">All Animals</a>
-        <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Admin Dashboard</a>
-        <a routerLink="/ticket/new" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Ticket Management</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-2 ">
+        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Animals</a>
+        <a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Dashboard</a>
         <a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-left: 20px; color: white; font-size: 15px;">Tickets</a>
       </ul>
-      <ul class="my-2 my-lg-0" *ngIf="!isLoggedIn()">
-        <button class="btn btn-secondary my-2 my-sm-0" routerLink="/register">Sign Up</button>
-      </ul>
-      <ul class="my-2 my-lg-0">
-        <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()">Log In</button>
-      </ul>
-      <ul class="my-2 my-lg-0" *ngIf="isLoggedIn()">
-        <div class="btn-group">
-          <div class="d-flex align-items-center justify-content-between">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <fa-icon [icon]="faUser" class="mr-1" style="font-size: 16px;"></fa-icon>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <button class="dropdown-item" type="button" routerLink="user/details">Manage account</button>
-              <button class="dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
-            </div>
+       <button class="btn btn-secondary my-2 my-sm-0" routerLink="/register" *ngIf="!isLoggedIn()" >Sign Up</button>
+       <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/ticket/new" *ngIf="isLoggedIn()">New Ticket</button>
+       <div class="menu-padding" *ngIf="!isLoggedIn()" ></div>
+       <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()">Log In</button>
+       <div class="menu-padding" *ngIf="isLoggedIn()" ></div>
+       <div class="btn-group" *ngIf="isLoggedIn()">
+         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <fa-icon [icon]="faUser" class="mr-1" style="font-size: 16px;"></fa-icon>
+         </button>
+         <div class="dropdown-menu dropdown-menu-right">
+           <button class="dropdown-item" type="button" routerLink="user/details">Manage account</button>
+           <button class="dropdown-item" *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
           </div>
-        </div>
-      </ul>
-    </div>
-
-
+       </div>
   </nav>
   <div class="nav-padding"></div>
   
