@@ -113,7 +113,9 @@
           </div>
         </div>
       </div>
-      <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      <div class="recaptcha-center">
+        <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      </div>
       <br>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Create User</button>
