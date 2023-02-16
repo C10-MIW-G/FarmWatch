@@ -1,10 +1,12 @@
-
+.container{
+    width: 90%;
+}
 .ticket-container{
     margin-top: 20px;
     padding: 30px;
     border: 1px solid;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
 }
 
 .ticket-message-container{
@@ -12,18 +14,36 @@
     padding: 30px;
     border: 1px solid;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
+}
+
+.fw-comment-userinfo{
+    padding: 5px;
+    border: 1px solid #adb0b3;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 14px;
+    min-width: 100px;
+}
+
+.fw-comment-userinfo .username{
+    font-weight: bold;
 }
 
 .new-ticket-message-container{
     margin-bottom: 20px;
 }
 
+.fw-comment-container{
+    margin-top: 25px;
+}
+
 .comment {
     display: block;
     position: relative;
     margin-bottom: 30px;
-    padding-left: 66px
+    padding-left: 30px;
+    width: 100%;
 }
 
 .comment .comment-author-ava {
@@ -46,7 +66,7 @@
     padding: 24px;
     border: 1px solid #e1e7ec;
     border-radius: 7px;
-    background-color: #fff
+    /*background-color: #fff;*/
 }
 
 .comment .comment-body::after,
@@ -101,7 +121,9 @@
 
 .comment .comment-meta {
     color: #9da9b9;
-    font-size: 13px
+    font-size: 13px;
+    float: right;
+    margin: 10px;
 }
 
 .comment .reply-link {

@@ -28,5 +28,6 @@ public class TicketMessageDtoAll {
     public static class UserDtoUsername{
         private Long id;
         private String username;
+        private String role;
     }
 }
