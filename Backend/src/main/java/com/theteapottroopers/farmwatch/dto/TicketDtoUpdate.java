@@ -18,9 +18,9 @@ import lombok.Setter;
 public class TicketDtoUpdate {
 
     private Long id;
-    private String subject;
+    private String summary;
     private String description;
-    private TicketStatus ticketStatus;
+    private TicketStatus status;
     private Long assignedTo;
     private String assignedToName;
 

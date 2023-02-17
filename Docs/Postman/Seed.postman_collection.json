@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "8491e2dc-5a99-42ed-8e4f-ae683ae0ea52",
+		"name": "Seed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25360866"
+	},
+	"item": [
+		{
+			"name": "Seed database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

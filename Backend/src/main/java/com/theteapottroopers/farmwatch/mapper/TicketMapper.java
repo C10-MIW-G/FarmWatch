@@ -30,7 +30,7 @@ public class TicketMapper {
         List<Long> ticketMessagesDtoIdList = getTicketMessagesId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
-                .subject(ticket.getSubject())
+                .summary(ticket.getSummary())
                 .description(ticket.getDescription())
                 .status(ticket.getStatus().toString())
                 .reportDateTime(ticket.getReportDateTime())
@@ -72,7 +72,7 @@ public class TicketMapper {
 
     public Ticket toTicketFromNew(TicketDtoNew ticketDtoNew){
         Ticket ticketAllBuilder = Ticket.builder()
-                .subject(ticketDtoNew.getSubject())
+                .summary(ticketDtoNew.getSummary())
                 .description(ticketDtoNew.getDescription())
                 .status(TicketStatus.OPEN)
                 .animal((ticketDtoNew.getAnimalId() != null) ?
@@ -86,14 +86,19 @@ public class TicketMapper {
     public TicketDtoUpdate toTicketDtoUpdate(Ticket ticket){
         TicketDtoUpdate ticketDtoUpdate = new TicketDtoUpdate();
         ticketDtoUpdate.setId(ticket.getId());
-        ticketDtoUpdate.setSubject(ticket.getSubject());
+        ticketDtoUpdate.setSummary(ticket.getSummary());
         ticketDtoUpdate.setDescription(ticket.getDescription());
-        ticketDtoUpdate.setTicketStatus(ticket.getStatus());
-        ticketDtoUpdate.setAssignedTo(ticket.getAssignedTo().getId());
-        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
-        stringBuilder.append(" ");
-        stringBuilder.append(ticket.getAssignedTo().getLastname());
-        ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+        ticketDtoUpdate.setStatus(ticket.getStatus());
+        ticketDtoUpdate.setAssignedTo((ticket.getAssignedTo() != null) ?
+                ticket.getAssignedTo().getId() : null);
+        if(ticketDtoUpdate.getAssignedTo() == null){
+            ticketDtoUpdate.setAssignedTo(null);
+        }else{
+            StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
+            stringBuilder.append(" ");
+            stringBuilder.append(ticket.getAssignedTo().getLastname());
+            ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+        }
         return ticketDtoUpdate;
     }
 }

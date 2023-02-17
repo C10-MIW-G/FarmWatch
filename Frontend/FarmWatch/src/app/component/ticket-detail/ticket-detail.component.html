@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <h3 class="card-title">Ticket<span class="text-muted fw-normal ms-2"></span></h3>
+        <h3 class="card-title">Ticket</h3>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         <div class="container d-flex flex-column">
@@ -10,8 +10,8 @@
                     <div class="ticket-container mx-auto">
                         <table class="table">
                             <tr>
-                                <th>Subject</th>
-                                <td colspan="3">{{ticket?.subject}}</td>
+                                <th>Summary</th>
+                                <td colspan="3">{{ticket?.summary}}</td>
                             </tr>
                             <tr>
                                 <th>Ticket ID</th>
@@ -29,7 +29,7 @@
                                 <th>Animal name</th>
                                 <td>{{ticket?.animal?.name || "Not specified"}}</td>
                                 <th>Assigned To User</th>
-                                <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
+                                <td>{{ticket?.assignedToUser?.username || "Not assigned"}}</td>
                             </tr>
                             <tr>
                                 <th>Description</th>

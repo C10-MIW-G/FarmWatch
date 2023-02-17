@@ -2,7 +2,7 @@
     
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
-        <h3 class="card-title">Create new ticket<span class="text-muted fw-normal ms-2"></span></h3>
+        <h3 class="card-title">Create new ticket</h3>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
@@ -11,9 +11,9 @@
             <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input matInput type="text" class="form-control" name="subject" placeholder="Enter a summary for your ticket" [(ngModel)]="form.subject" required
-                            subject #subject="ngModel">
+                        <label>Summary</label>
+                        <input matInput type="text" class="form-control" name="summary" placeholder="Enter a summary for your ticket" [(ngModel)]="form.summary" required
+                            summary #summary="ngModel">
                     </div>
                     <div class="form-group">
                         <label>Animal</label>

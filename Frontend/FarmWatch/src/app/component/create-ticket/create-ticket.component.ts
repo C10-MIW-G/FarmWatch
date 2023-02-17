@@ -17,7 +17,7 @@ import { NotifierService } from '../../service/notifier.service';
 export class CreateTicketComponent implements OnInit{
 
   form: any = {
-    subject: null,
+    summary: null,
     description: null,
     animalId: -1
   };
@@ -34,7 +34,7 @@ export class CreateTicketComponent implements OnInit{
   }
 
   onSubmit(): void {
-    const { subject, description, animalId} = this.form;
+    const { summary, description, animalId} = this.form;
     this.reportUsername = this.storageService.getUser().username;
     let animalTempId
     if(animalId==-1){
@@ -42,7 +42,7 @@ export class CreateTicketComponent implements OnInit{
     }
     else(animalTempId=animalId)
 
-    this.createTicketService.createTicket(subject, description, animalTempId, this.reportUsername).subscribe({
+    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername).subscribe({
       next: data => {
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");

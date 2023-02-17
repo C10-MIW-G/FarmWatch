@@ -4,9 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { AnimalOverview } from 'src/app/model/animal-overview';
 import { CaretakerOverview } from 'src/app/model/caretaker-overview';
 import { TicketUpdate } from 'src/app/model/ticket-update';
+import { Status } from 'src/app/model/status';
 import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 import { UserService } from 'src/app/service/user.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
+
 
 
 
@@ -18,19 +20,13 @@ import { TicketDetailService } from 'src/app/service/ticket-details.service';
 export class TicketUpdateComponent implements OnInit{
 
   id!: number;
-  ticket?: TicketUpdate;
+  ticket!: TicketUpdate;
   animals: AnimalOverview[] = [];
   caretakers: CaretakerOverview[] = [];
-
-  form: any = {
-    subject: null,
-    description: null,
-    status: null,
-    assignedTo: null
-  };
+  statuses: Status[] = [];
+  caretakerNames: string[] = [];
 
   
-
   constructor(private animalOverviewService: AnimalOverviewService,
     private userService: UserService,
     private route: ActivatedRoute,
@@ -38,6 +34,7 @@ export class TicketUpdateComponent implements OnInit{
       this.route.params.subscribe(params => {
         this.id = params['id'];
       });
+      
   }
 
 
@@ -45,16 +42,17 @@ export class TicketUpdateComponent implements OnInit{
     this.getAnimals();
     this.getCaretakers();
     this.getTicket();
+    this.getStatuses();
   }
 
   onSubmit(): void {
     
   }
 
-  public getAnimals(): void {
+  private getAnimals(): void {
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
-        this.animals = response;
+        this.putResponseInAnimals(response);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -62,10 +60,10 @@ export class TicketUpdateComponent implements OnInit{
     );
   }
 
-  public getCaretakers(): void {
+  private getCaretakers(): void {
     this.userService.getCaretakers().subscribe(
       (response: CaretakerOverview[]) => {
-        this.caretakers = response;
+        this.putResponseInCaretakers(response);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -73,7 +71,7 @@ export class TicketUpdateComponent implements OnInit{
     );
   }
 
-  public getTicket(): void {
+  private getTicket(): void {
     this.ticketDetailService.getLeanTicket(this.id).subscribe(
       (response: TicketUpdate) => {
         this.ticket = response;
@@ -83,5 +81,33 @@ export class TicketUpdateComponent implements OnInit{
       }
     );
   }
+
+  private getStatuses(): void {
+    this.ticketDetailService.getStatuses().subscribe(
+      (response: Status[]) => {
+        this.putResponseInStatuses(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  private putResponseInAnimals(response: AnimalOverview[]): void {
+    this.animals = response;
+  }
+
+  private putResponseInCaretakers(response: CaretakerOverview[]): void {
+    this.caretakers = response;
+  }
+
+  private putResponseInStatuses(response: Status[]): void {
+    this.statuses = response;
+  }
+
+
+  
+
+ 
 
 }
