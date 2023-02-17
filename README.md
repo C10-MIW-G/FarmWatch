@@ -39,6 +39,13 @@ or  download and extract the repository .zip to the folder of your choosing.
 `ng serve`
 4. The frontend is now ready to use.
 
+#### Postman
+1. Open your Postman application and import the Seed.postman_collection.json found in [local_folder]/docs/postman/
+2. Run the 'Seed Database' from the Seed section in the Postman workspace you have just imported.
+3. Your database should now be seeded and you are able to login with the following credentials:
+	- username: 		'user'
+	- password: 		'password'
+
 ## Built With 
 #### Frameworks
 ![Spring](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
