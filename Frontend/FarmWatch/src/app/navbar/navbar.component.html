@@ -2,8 +2,8 @@
     <a class="navbar-brand">FarmWatch</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-2 ">
         <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item">Animals</a></li>
-        <li><a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Dashboard</a></li>
         <li><a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Tickets</a></li>
+        <li><a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Users</a></li>
       </ul>
        <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/register" *ngIf="!isLoggedIn()" >Sign Up</button>
        <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/ticket/new" *ngIf="isLoggedIn()">New Ticket</button>
