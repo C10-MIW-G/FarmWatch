@@ -89,11 +89,16 @@ public class TicketMapper {
         ticketDtoUpdate.setSubject(ticket.getSubject());
         ticketDtoUpdate.setDescription(ticket.getDescription());
         ticketDtoUpdate.setTicketStatus(ticket.getStatus());
-        ticketDtoUpdate.setAssignedTo(ticket.getAssignedTo().getId());
-        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
-        stringBuilder.append(" ");
-        stringBuilder.append(ticket.getAssignedTo().getLastname());
-        ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+        ticketDtoUpdate.setAssignedTo((ticket.getAssignedTo() != null) ?
+                ticket.getAssignedTo().getId() : null);
+        if(ticketDtoUpdate.getAssignedTo() == null){
+            ticketDtoUpdate.setAssignedTo(null);
+        }else{
+            StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
+            stringBuilder.append(" ");
+            stringBuilder.append(ticket.getAssignedTo().getLastname());
+            ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+        }
         return ticketDtoUpdate;
     }
 }
