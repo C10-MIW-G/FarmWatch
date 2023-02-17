@@ -1,6 +1,6 @@
 export interface Ticket {
     id: number;
-    subject: string;
+    summary: string;
     description: string;
     status: string;
     reportDateTime: string;

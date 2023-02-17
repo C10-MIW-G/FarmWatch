@@ -1,5 +1,5 @@
 export interface CreateTicket {
-    title: string;
+    summary: string;
     description: string;
     reportedByUserId: number;
     animalId: number;
