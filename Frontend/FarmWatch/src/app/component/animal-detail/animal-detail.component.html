@@ -69,7 +69,7 @@
     <br>
     <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
     && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
-      (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
+      (click)="confirmDeleteAction(id)">Delete</button>
     <ng-template #deleteDialog>
       <mat-dialog-content>
         <div style="text-align: center;">
