@@ -3,7 +3,7 @@ import { AnimalToAdd } from '../../model/add-animal';
 import { AddAnimalService } from '../../service/add-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-add-animal',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { StorageService } from '../../security/_services/storage.service';
 import { Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

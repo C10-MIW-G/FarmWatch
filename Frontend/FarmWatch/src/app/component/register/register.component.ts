@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-register',

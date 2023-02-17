@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketMessage } from 'src/app/model/ticket-message';
 import { StorageService } from 'src/app/security/_services/storage.service';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { TicketMessageService } from 'src/app/service/ticket-message.service';
 

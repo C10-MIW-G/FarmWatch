@@ -7,7 +7,7 @@ import { CreateTicketService } from 'src/app/service/create-ticket.service';
 import { AnimalOverview } from '../../model/animal-overview';
 import { StorageService } from '../../security/_services/storage.service';
 import { AnimalOverviewService } from '../../service/animal-overview.service';
-import { NotifierService } from '../../service/notifier.service';
+import { NotifierService } from '../../service/toast.service';
 
 @Component({
   selector: 'app-create-ticket',

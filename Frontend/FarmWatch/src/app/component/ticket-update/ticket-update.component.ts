@@ -8,7 +8,7 @@ import { Status } from 'src/app/model/status';
 import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 import { UserService } from 'src/app/service/user.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 import { Router } from '@angular/router';
 
 

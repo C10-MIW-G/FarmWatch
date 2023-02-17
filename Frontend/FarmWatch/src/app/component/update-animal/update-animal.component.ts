@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimalDetail } from 'src/app/model/animal-detail';
 import {UpdateAnimalService} from '../../service/update-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { NotifierService } from 'src/app/service/toast.service';
 
 
 @Component({
