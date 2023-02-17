@@ -8,13 +8,13 @@ import lombok.Setter;
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
  * <p>
- * dit programma doet iets
+ * User DTO containing the Id and Name
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class CaretakerLeanDto {
+public class UserLeanDto {
     private Long id;
     private String name;
 }

@@ -1,6 +1,6 @@
 package com.theteapottroopers.farmwatch.resource;
 
-import com.theteapottroopers.farmwatch.dto.CaretakerLeanDto;
+import com.theteapottroopers.farmwatch.dto.UserLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.mapper.UserMapper;
 import com.theteapottroopers.farmwatch.security.user.Role;
@@ -9,7 +9,6 @@ import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,9 +65,9 @@ public class UserResource {
     }
 
     @GetMapping("/caretakers")
-    public ResponseEntity<List<CaretakerLeanDto>> getAllCaretakers(){
+    public ResponseEntity<List<UserLeanDto>> getAllCaretakers(){
         List<User> users = userService.findAllCaretakers();
-        List<CaretakerLeanDto> caretakerLeanDtos = userMapper.toCaretakerLeanDtos(users);
+        List<UserLeanDto> caretakerLeanDtos = userMapper.toCaretakerLeanDtos(users);
         return new ResponseEntity<>(caretakerLeanDtos, HttpStatus.OK);
     }
 }

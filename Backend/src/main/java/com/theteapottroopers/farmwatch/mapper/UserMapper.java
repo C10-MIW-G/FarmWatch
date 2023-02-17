@@ -1,6 +1,6 @@
 package com.theteapottroopers.farmwatch.mapper;
 
-import com.theteapottroopers.farmwatch.dto.CaretakerLeanDto;
+import com.theteapottroopers.farmwatch.dto.UserLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.security.user.User;
 
@@ -40,10 +40,10 @@ public class UserMapper {
         return userDtos;
     }
 
-    public List<CaretakerLeanDto> toCaretakerLeanDtos(List<User> users){
-        List<CaretakerLeanDto> caretakerLeanDtos = new ArrayList<>();
+    public List<UserLeanDto> toCaretakerLeanDtos(List<User> users){
+        List<UserLeanDto> caretakerLeanDtos = new ArrayList<>();
         for (User user: users) {
-            CaretakerLeanDto caretakerLeanDto = new CaretakerLeanDto();
+            UserLeanDto caretakerLeanDto = new UserLeanDto();
             StringBuilder stringBuilder = new StringBuilder();
             caretakerLeanDto.setId(user.getId());
             stringBuilder.append(user.getFirstname());
