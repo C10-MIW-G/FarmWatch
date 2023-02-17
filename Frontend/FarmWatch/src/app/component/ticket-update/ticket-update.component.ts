@@ -8,7 +8,7 @@ import { Status } from 'src/app/model/status';
 import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 import { UserService } from 'src/app/service/user.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
-import { NotifierService } from 'src/app/service/toast.service';
+import { ToastService } from 'src/app/service/toast.service';
 import { Router } from '@angular/router';
 
 
@@ -34,7 +34,7 @@ export class TicketUpdateComponent implements OnInit{
     private route: ActivatedRoute,
     private ticketDetailService: TicketDetailService,
     private router: Router,
-    private toast: NotifierService,
+    private toast: ToastService,
     ){
       this.route.params.subscribe(params => {
         this.id = params['id'];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { StorageService } from '../../security/_services/storage.service';
 import { Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/toast.service';
+import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, 
               private storageService: StorageService, 
               private router: Router,
-              private toast: NotifierService,
+              private toast: ToastService,
               private dialog: MatDialog 
               ) { }
 
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
         this.toast.ShowError("New Notification", "Login failed")
       }
     });
-    
   }
 
   reloadPage(): void {

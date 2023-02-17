@@ -12,5 +12,9 @@ export class ConfirmationDialogComponent {
   confirmButtonText = "Yes";
   cancelButtonText = "No";
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: confirmdialogdata) {}    
+  constructor(@Inject(MAT_DIALOG_DATA) public data: confirmdialogdata) {}   
+  
+  hasMessage(): Boolean{
+    return this.data.message === '';
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../security/_services/storage.service';
-import { NotifierService } from '../service/toast.service';
+import { ToastService } from '../service/toast.service';
 import { LoginComponent } from '../component/login/login.component';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { DialogService } from '../service/dialog.service';
@@ -18,7 +18,7 @@ export class NavbarComponent {
   faUser = faUser;
 
   constructor(private storageService: StorageService, 
-              private toast: NotifierService, 
+              private toast: ToastService, 
               private router: Router,
               private dialog: DialogService
               ){

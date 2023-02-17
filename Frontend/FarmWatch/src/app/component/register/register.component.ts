@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/toast.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +22,9 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router, private toast: NotifierService) { }
+  constructor(private authService: AuthService, 
+              private router: Router, 
+              private toast: ToastService) { }
 
   ngOnInit(): void {
   }
