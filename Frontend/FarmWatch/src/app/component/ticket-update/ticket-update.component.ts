@@ -129,10 +129,4 @@ export class TicketUpdateComponent implements OnInit{
     }
     this.ticket.assignedTo = null;
   }
-
-
-  
-
- 
-
 }
