@@ -88,7 +88,7 @@ public class TicketMapper {
         ticketDtoUpdate.setId(ticket.getId());
         ticketDtoUpdate.setSubject(ticket.getSubject());
         ticketDtoUpdate.setDescription(ticket.getDescription());
-        ticketDtoUpdate.setTicketStatus(ticket.getStatus());
+        ticketDtoUpdate.setStatus(ticket.getStatus());
         ticketDtoUpdate.setAssignedTo((ticket.getAssignedTo() != null) ?
                 ticket.getAssignedTo().getId() : null);
         if(ticketDtoUpdate.getAssignedTo() == null){
