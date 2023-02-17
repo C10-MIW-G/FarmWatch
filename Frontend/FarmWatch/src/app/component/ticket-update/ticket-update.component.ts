@@ -9,6 +9,7 @@ import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 import { UserService } from 'src/app/service/user.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { NotifierService } from 'src/app/service/notifier.service';
+import { Router } from '@angular/router';
 
 
 
@@ -32,7 +33,9 @@ export class TicketUpdateComponent implements OnInit{
     private userService: UserService,
     private route: ActivatedRoute,
     private ticketDetailService: TicketDetailService,
-    private toast: NotifierService){
+    private router: Router,
+    private toast: NotifierService,
+    ){
       this.route.params.subscribe(params => {
         this.id = params['id'];
       });
@@ -51,9 +54,9 @@ export class TicketUpdateComponent implements OnInit{
     this.caretakerNameToId();
     this.ticketDetailService.updateTicket(this.ticket).subscribe({next: data => {
       setTimeout(() => {
-            
+        this.router.navigate(['/ticket/', this.id]);   
         this.toast.ShowSucces("New Notification", "Succesfully updated ")
-    }, 1000);
+    }, 500);
     },
     error: err => {
       this.toast.ShowError("New Notification", "Updating failed!")
@@ -64,7 +67,7 @@ export class TicketUpdateComponent implements OnInit{
   private getAnimals(): void {
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
-        this.putResponseInAnimals(response);
+        this.putResponseInAnimals(response);  
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
