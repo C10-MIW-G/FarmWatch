@@ -22,7 +22,7 @@ public class Ticket {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false)
-    private String subject;
+    private String summary;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)

@@ -15,7 +15,7 @@ import lombok.*;
 @Setter
 public class TicketDtoNew {
 
-    private String subject;
+    private String summary;
     private String description;
     private String reportUsername;
     private Long animalId;
