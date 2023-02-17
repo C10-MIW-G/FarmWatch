@@ -72,9 +72,6 @@ export class UserUpdateComponent implements OnInit{
       });
     }
 
-    private allowedToChangePassword(): void{
-      this.canChangePassword = this.storageService.getRole() === 'USER';
-    }
 
     private getUser(id: number): void {
       this.userService.getUserDetail(this.id).subscribe(
