@@ -8,7 +8,7 @@ import { Status } from 'src/app/model/status';
 import { AnimalOverviewService } from 'src/app/service/animal-overview.service';
 import { UserService } from 'src/app/service/user.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
-
+import { NotifierService } from 'src/app/service/notifier.service';
 
 
 
@@ -25,12 +25,14 @@ export class TicketUpdateComponent implements OnInit{
   caretakers: CaretakerOverview[] = [];
   statuses: Status[] = [];
   caretakerNames: string[] = [];
+  noValue: String = "Does not apply"
 
   
   constructor(private animalOverviewService: AnimalOverviewService,
     private userService: UserService,
     private route: ActivatedRoute,
-    private ticketDetailService: TicketDetailService){
+    private ticketDetailService: TicketDetailService,
+    private toast: NotifierService){
       this.route.params.subscribe(params => {
         this.id = params['id'];
       });
@@ -46,7 +48,17 @@ export class TicketUpdateComponent implements OnInit{
   }
 
   onSubmit(): void {
-    
+    this.caretakerNameToId();
+    this.ticketDetailService.updateTicket(this.ticket).subscribe({next: data => {
+      setTimeout(() => {
+            
+        this.toast.ShowSucces("New Notification", "Succesfully updated ")
+    }, 1000);
+    },
+    error: err => {
+      this.toast.ShowError("New Notification", "Updating failed!")
+    }
+    });
   }
 
   private getAnimals(): void {
@@ -103,6 +115,16 @@ export class TicketUpdateComponent implements OnInit{
 
   private putResponseInStatuses(response: Status[]): void {
     this.statuses = response;
+  }
+
+  private caretakerNameToId() : void {
+    for (const caretaker of this.caretakers) {
+      if(this.ticket.assignedToName == caretaker.name){
+        this.ticket.assignedTo = caretaker.id;
+        return;
+      }
+    }
+    this.ticket.assignedTo = null;
   }
 
 

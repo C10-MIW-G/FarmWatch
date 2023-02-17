@@ -1,8 +1,8 @@
 export interface TicketUpdate {
     id: number;
-    subject: string;
+    summary: string;
     description: string;
     status: string;
-    assignedTo: number;
+    assignedTo: number | null;
     assignedToName: string;
 }

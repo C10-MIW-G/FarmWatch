@@ -3,9 +3,11 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
+import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
+import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.service.UserService;
@@ -80,6 +82,13 @@ public class TicketResource {
         return new ResponseEntity<>(ticketDtoUpdate, HttpStatus.OK);
     }
 
-//    @PutMapping("/update/{id}")
+    @PutMapping("/update")
+    //TODO: put auth back
+    //@PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    public ResponseEntity<HttpStatus>updateTicket(@RequestBody TicketDtoUpdate ticketDtoUpdate) {
+        ticketService.updateTicket(ticketDtoUpdate);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ticket } from '../model/ticket';
@@ -22,6 +22,10 @@ export class TicketDetailService {
 
   public getStatuses(): Observable<Status[]> {
     return this.http.get<Status[]>(`${this.apiServerUrl}/ticket/status`)
+  }
+
+  public updateTicket(ticket: TicketUpdate): Observable<TicketUpdate> {
+    return this.http.put<TicketUpdate>(`${this.apiServerUrl}/ticket/update`, ticket)
   }
   
 }

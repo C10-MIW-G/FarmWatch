@@ -9,9 +9,9 @@
             <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form">
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control" name="subject" [(ngModel)]="ticket.subject" required subject
-                        #subject="ngModel" value={{ticket.subject}}>
+                        <label>Summary</label>
+                        <input type="text" class="form-control" name="summary" [(ngModel)]="ticket.summary" required summary
+                        #summary="ngModel" value={{ticket.summary}}>
                     </div>
                     <div class="row">
                         <div class="col">
@@ -32,8 +32,9 @@
                                 <label>Assigned to</label>
                                 <div class="dropdown">
                                     <div class="dropdown-content">
-                                    <select [(ngModel)]="ticket.assignedTo" type="assignedTo" class="form-control" required
-                                        assignedTo #assignedTo="ngModel"name="assignedTo" value="{{ticket.assignedTo}}">
+                                    <select [(ngModel)]="ticket.assignedToName" type="assignedToName" class="form-control" required
+                                        assignedToName #assignedToName="ngModel"name="assignedToName" value="{{ticket.assignedToName}}">
+                                        <option value="" >Does not apply</option>
                                         <option *ngFor="let caretaker of caretakers" [selected]="caretaker.name==ticket.assignedToName">{{caretaker.name}}</option>
                                     </select>
                                     </div>
