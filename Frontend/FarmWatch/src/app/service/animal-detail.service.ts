@@ -17,6 +17,6 @@ export class AnimalDetailService {
   public deleteAnimal(AnimalDetailId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/animal/${AnimalDetailId}`);
   }
-
+  
   
 }

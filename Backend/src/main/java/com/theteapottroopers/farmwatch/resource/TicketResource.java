@@ -64,7 +64,8 @@ public class TicketResource {
     }
 
     @GetMapping("/status")
-    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    //TODO: put back auth
+    //@PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<List<TicketStatus>> getAllTicketStatus(){
         List<TicketStatus> allTicketStatus = Arrays.asList(TicketStatus.values());
         return new ResponseEntity<>(allTicketStatus, HttpStatus.OK);
@@ -78,4 +79,7 @@ public class TicketResource {
         TicketDtoUpdate ticketDtoUpdate = ticketMapper.toTicketDtoUpdate(ticket);
         return new ResponseEntity<>(ticketDtoUpdate, HttpStatus.OK);
     }
+
+//    @PutMapping("/update/{id}")
+
 }
