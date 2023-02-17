@@ -63,10 +63,12 @@
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
   [fixedBottomGap]="0">
   <div>
-    <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isAuthorized"
+    <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isLoggedIn() 
+    && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
       routerLink="/animal/update/{{id}}">Edit</button>
     <br>
-    <button class="btn btn-danger tooltips btn-block" *ngIf="isAuthorized"
+    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
+    && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
       (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
     <ng-template #deleteDialog>
       <mat-dialog-content>
