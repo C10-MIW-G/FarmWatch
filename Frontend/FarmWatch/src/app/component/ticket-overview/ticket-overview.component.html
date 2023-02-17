@@ -27,7 +27,7 @@
                                     <td><span><a
                                                 routerLink="/ticket/{{ticket.id}}"><b>{{ticket.summary}}</b></a></span>
                                     </td>
-                                    <td><span>{{ticket.animal.name}}</span></td>
+                                    <td><span>{{ticket?.animal?.name || "Not specified"}}</span></td>
                                     <td><span>{{ticket.status}}</span></td>
                                     <td><span>{{ticket.reportDateTime| date: "dd-MM-yyyy HH:mm"}}</span></td>
                                     <td><span>{{ticket.reportedByUser.username}}</span></td>
