@@ -10,8 +10,8 @@
                     <div class="ticket-container mx-auto">
                         <table class="table">
                             <tr>
-                                <th>Subject</th>
-                                <td colspan="3">{{ticket?.subject}}</td>
+                                <th>Summary</th>
+                                <td colspan="3">{{ticket?.summary}}</td>
                             </tr>
                             <tr>
                                 <th>Ticket ID</th>
@@ -29,7 +29,7 @@
                                 <th>Animal name</th>
                                 <td>{{ticket?.animal?.name || "Not specified"}}</td>
                                 <th>Assigned To User</th>
-                                <td>{{ticket?.assignedToUser || "Not assigned"}}</td>
+                                <td>{{ticket?.assignedToUser?.username || "Not assigned"}}</td>
                             </tr>
                             <tr>
                                 <th>Description</th>
