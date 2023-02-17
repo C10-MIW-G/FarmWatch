@@ -74,6 +74,14 @@ export class AnimalDetailComponent implements OnInit {
       this.closeDialog();
   }
 
+  public isLoggedIn(): boolean{
+    return this.storageService.isLoggedIn();
+  }
+
+  public getRole(): string{
+    return this.storageService.getRole();
+  }
+
     
 
   

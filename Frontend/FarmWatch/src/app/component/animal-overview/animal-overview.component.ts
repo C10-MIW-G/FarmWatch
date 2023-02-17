@@ -51,5 +51,13 @@ export class AnimalOverviewComponent implements OnInit{
       }
     );
   }
+
+  public isLoggedIn(): boolean{
+    return this.storageService.isLoggedIn();
+  }
+
+  public getRole(): string{
+    return this.storageService.getRole();
+  }
   
 }
