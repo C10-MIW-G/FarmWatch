@@ -12,14 +12,15 @@
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
                     <div class="form-group">
                         <label>Subject</label>
-                        <input matInput type="text" class="form-control" name="subject" [(ngModel)]="form.subject" required
+                        <input matInput type="text" class="form-control" name="subject" placeholder="Enter a summary for your ticket" [(ngModel)]="form.subject" required
                             subject #subject="ngModel">
                     </div>
                     <div class="form-group">
                         <label>Animal</label>
                         <select class="form-control" name="animalId" [(ngModel)]="form.animalId" animalId
                             #animalId="ngModel">
-                            <option value="">I don't know</option>
+                            <option disabled selected value="-1"> -- select an animal -- </option>
+                            <option value="" selected>I'm not sure</option>
                             <option *ngFor="let animal of animals" [value]="animal.id">
                                 {{animal.name}}
                             </option>
@@ -27,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea matInput rows="10" style="height: 100%;" class="form-control" name="description"
+                        <textarea matInput rows="10" style="height: 100%;" class="form-control" name="description" placeholder="Describe what you noticed"
                             [(ngModel)]="form.description" required description #description="ngModel"></textarea>
                     </div>
                     <button class="btn btn-primary" type="submit" style="float: right">Submit ticket</button>

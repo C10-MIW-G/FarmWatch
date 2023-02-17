@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label> Animal name:</label>
                 <input type="text" class ="form-control" id = "name"
-                    [(ngModel)] = "animal.name" name = "name">
+                    [(ngModel)] = "animal.name" name = "name" placeholder="Animal name">
             </div>
         </div>
         <div class="col-md-6">
@@ -33,6 +33,7 @@
                     id="dateOfBirth"
                     [(ngModel)]="animal.dateOfBirth"
                     name="dateOfBirth"
+                    placeholder="Pick a date"
                     readonly="true"
                   />
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -47,7 +48,7 @@
             <div class="form-group">
                 <label> Species:</label>
                 <input type="text" class ="form-control" id = "species"
-                    [(ngModel)] = "animal.species" name = "species">
+                    [(ngModel)] = "animal.species" name = "species" placeholder="Species (Latin)">
             </div>
         </div>
 
@@ -55,7 +56,7 @@
             <div class="form-group">
                 <label> Common name:</label>
                 <input type="text" class ="form-control" id = "commonName"
-                    [(ngModel)] = "animal.commonName" name = "commonName">
+                    [(ngModel)] = "animal.commonName" name = "commonName" placeholder="Species (English)">
             </div>
         </div>
     </div>      
@@ -63,14 +64,14 @@
         <div class="form-group">
             <label> Description:</label>
             <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
-            [(ngModel)] = "animal.description" name = "description"></textarea>
+            [(ngModel)] = "animal.description" name = "description" placeholder="Enter a description about the animal"></textarea>
             
         </div>
 
         <div class="form-group">
             <label> Image url:</label>
             <input type="text" class ="form-control" id = "imageUrl"
-                [(ngModel)] = "animal.imageUrl" name = "imageUrl">
+                [(ngModel)] = "animal.imageUrl" name = "imageUrl" placeholder="Enter an image URL">
         </div>
         </div>
     
