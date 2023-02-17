@@ -3,11 +3,14 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.CaretakerLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.mapper.UserMapper;
+import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,8 +43,15 @@ public class UserResource {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(principal instanceof User){
+            Long currentUserId = ((User) principal).getId();
+            if(currentUserId != id && ((User) principal).getRole() != Role.ROLE_ADMIN){
+                return new ResponseEntity<>( HttpStatus.FORBIDDEN);
+            }
+        }
         User user = userService.findUserById(id);
         UserDto userDto = userMapper.toUserDto(user);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
