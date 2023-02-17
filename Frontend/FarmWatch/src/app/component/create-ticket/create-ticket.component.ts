@@ -19,7 +19,7 @@ export class CreateTicketComponent implements OnInit{
   form: any = {
     summary: null,
     description: null,
-    animalId: null
+    animalId: -1
   };
   reportUsername= '';
   errorMessage = '';
@@ -36,8 +36,13 @@ export class CreateTicketComponent implements OnInit{
   onSubmit(): void {
     const { summary, description, animalId} = this.form;
     this.reportUsername = this.storageService.getUser().username;
+    let animalTempId
+    if(animalId==-1){
+      animalTempId=null;
+    }
+    else(animalTempId=animalId)
 
-    this.createTicketService.createTicket(summary, description, animalId, this.reportUsername).subscribe({
+    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername).subscribe({
       next: data => {
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
