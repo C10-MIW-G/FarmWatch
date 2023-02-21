@@ -1,12 +1,5 @@
-<mat-sidenav-container class="sidenav-container" id="top">
-  <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-      
-    <h3 class="card-title">Register new account</h3>
-
-  </mat-sidenav>
-<mat-sidenav-content class="sidenav-content">
-<div class="col-md-12">
-  <div class="card card-container">
+<h1 mat-dialog-title>Sign Up</h1>
+<div mat-dialog-content>
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -49,9 +42,7 @@
       />
       <div class="invalid-feedback" *ngIf="lastname.errors && f.submitted">
         <div *ngIf="lastname.errors['required']">Lastname is required</div>
-        <div *ngIf="lastname.errors['lastname']">
-          Lastname must be a valid lastname
-        </div>
+        <div *ngIf="lastname.errors['lastname']">Lastname must be a valid lastname</div>
       </div>
     </div>
     <div class="form-group">
@@ -69,9 +60,7 @@
       />
       <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
         <div *ngIf="email.errors['required']">Email is required</div>
-        <div *ngIf="email.errors['email']">
-          Email must be a valid email address
-        </div>
+        <div *ngIf="email.errors['email']">Email must be a valid email address</div>
       </div>
     </div>
       <div class="form-group">
@@ -113,9 +102,7 @@
         />
         <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
           <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
-          </div>
+          <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
         </div>
       </div>
       <div class="recaptcha-center">
@@ -124,19 +111,11 @@
       <br>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Sign up</button>
+        <button class="btn btn-secondary btn-block">Close</button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Signup failed!<br />{{ errorMessage }}
       </div>
     </form>
-
-    <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
-    </div>
   </div>
-</div>
-</mat-sidenav-content>
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-</mat-sidenav>
-</mat-sidenav-container>

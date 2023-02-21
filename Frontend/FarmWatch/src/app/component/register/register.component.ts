@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
-import { Router } from '@angular/router';
 import { ToastService } from 'src/app/service/toast.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -18,23 +18,27 @@ export class RegisterComponent implements OnInit {
     password: null,
     captchaToken: null,
   };
+  passwordValid = false;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, 
-              private router: Router, 
-              private toast: ToastService) { }
+  constructor(private authService: AuthService,
+              private toast: ToastService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
+    if(!this.passwordValid) return;
+    
     const { firstname, lastname, email, username, password, captchaToken } = this.form;
 
     this.authService.register(firstname, lastname, email, username, password, captchaToken).subscribe({
       next: data => {
         console.log(data);
+        this.dialog.closeAll();
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.toast.ShowSucces("New Notification", "Your account has been registered succesfully!")
@@ -45,9 +49,9 @@ export class RegisterComponent implements OnInit {
         this.toast.ShowError("New Notification", "Registration failed!")
       }
     });
-    setTimeout(() => {
-      this.router.navigate(['']);
-  }, 3000);  
+  }
 
+  matchPassword(password: string, passwordValidation: string): Boolean{
+    return password === passwordValidation;
   }
 }

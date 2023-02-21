@@ -5,6 +5,7 @@ import { ToastService } from '../service/toast.service';
 import { LoginComponent } from '../component/login/login.component';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { DialogService } from '../service/dialog.service';
+import { RegisterComponent } from '../component/register/register.component';
 
 
 @Component({
@@ -42,7 +43,11 @@ export class NavbarComponent {
     return this.storageService.getUserName();
   }
 
-  public openDialog(){
+  public openLoginDialog(){
       this.dialog.open(LoginComponent);
   }
+
+  public openRegisterDialog(){
+    this.dialog.open(RegisterComponent);
+}
 }
