@@ -10,9 +10,8 @@
     
 <!-- Center Content Start-->
 <mat-sidenav-content class="sidenav-content">
-  <br>
+  <div class="container" id="main-container">
   <div class="card" style="width: 50rem; background-color: white; border: none">
-    <h1>{{animalDetail?.name}}</h1>
     <br>
     <div class="row">
     <div class="col-md-8">
@@ -38,23 +37,15 @@
 
   <br>
   
-    <h1>Meet {{animalDetail?.name}}!</h1>
+    
     <div class="card-body">
+      <h3 class="card-title">Meet {{animalDetail?.name}}!</h3>
         <p class="card-text">{{animalDetail?.description}}</p>
     </div>
  
   <br>
 </div>
-  
-
-  <div class="card"  *ngIf="isAuthorized" style="width: 50rem; background-color: white; border: none">
-    <h1>Tickets involving {{animalDetail?.name}}</h1>
-    <div class="card-body">
-        <p class="card-text">Fortunately, {{animalDetail?.name}} has no tickets at this moment.</p>
-    </div>
-    </div>
-      <br>
-    <div id="bottom"></div>
+</div>
   </mat-sidenav-content> 
 
 <!-- Center Content End-->
@@ -82,11 +73,11 @@
         <div class="actions">
         <div class="row">
           <div class="">
-            <button class="btn btn-secondary tooltips" [mat-dialog-close]="true">No</button>
-          </div>
-          <div class="">
             <button class="btn btn-primary tooltips" (click)="onDeleteAnimal(id)"
               [mat-dialog-close]="true">Yes</button>
+          </div>
+          <div class="">
+              <button class="btn btn-secondary tooltips" [mat-dialog-close]="true">No</button>
           </div>
         </div>
       </div>

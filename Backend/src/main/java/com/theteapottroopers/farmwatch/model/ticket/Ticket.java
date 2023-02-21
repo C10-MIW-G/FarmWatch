@@ -40,6 +40,6 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "assigned_to_user_id")
     private User assignedTo;
-    @OneToMany(mappedBy = "ticket")
+    @OneToMany(mappedBy = "ticket", cascade = CascadeType.REMOVE)
     private List<TicketMessage> ticketMessages;
 }
