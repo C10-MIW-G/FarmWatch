@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimalDetail } from 'src/app/model/animal-detail';
 import {UpdateAnimalService} from '../../service/update-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class UpdateAnimalComponent implements OnInit{
   constructor(private updateAnimalService : UpdateAnimalService,
     private route: ActivatedRoute,
     private router: Router,
-    private toast: NotifierService) { }
+    private toast: ToastService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content *ngIf="!hasMessage()">
+  <span>{{data.message}}</span>
+</div>
+<mat-dialog-actions>
+    <div class="actions">
+    <div class="row">
+      <div class="">
+        <button class="btn btn-secondary tooltips" [mat-dialog-close]="false">{{cancelButtonText}}</button>
+      </div>
+      <div class="">
+        <button class="btn btn-primary tooltips" [mat-dialog-close]="true">{{confirmButtonText}}</button>
+      </div>
+    </div>
+  </div>
+  </mat-dialog-actions>

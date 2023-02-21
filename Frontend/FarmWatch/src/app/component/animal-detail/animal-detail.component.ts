@@ -4,9 +4,8 @@ import { AnimalDetail } from "../../model/animal-detail";
 import { AnimalDetailService } from "../../service/animal-detail.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../../security/_services/storage.service';
-import { NotifierService } from "src/app/service/notifier.service";
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ComponentType } from "@angular/cdk/portal";
+import { ToastService } from "src/app/service/toast.service";
+import { DialogService } from "src/app/service/dialog.service";
 
 @Component({
     selector: 'app-animal',
@@ -18,12 +17,14 @@ export class AnimalDetailComponent implements OnInit {
     public id!: number;
     public isAuthorized: boolean = false; 
 
+    confirmationMessage = "Are you sure you want to delete ";
+
     constructor(private animalDetailService : AnimalDetailService, 
       private route: ActivatedRoute, 
       private router: Router, 
       private storageService: StorageService,
-      private toast: NotifierService,
-      private dialog: MatDialog) {
+      private toast: ToastService,
+      private dialog: DialogService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -66,10 +67,6 @@ export class AnimalDetailComponent implements OnInit {
       this.closeDialog();
     }
 
-    openDialogWithTemplateRef(templateRef: TemplateRef<any>) {
-      this.dialog.open(templateRef);
-    }
-
     closeDialog() {
       this.closeDialog();
   }
@@ -82,14 +79,26 @@ export class AnimalDetailComponent implements OnInit {
     return this.storageService.getRole();
   }
 
-    
-
-  
-
-
-   
-
-
-
-    
+  confirmDeleteAction(AnimalDetailId: number): void {
+    this.dialog.showConfirmDialog({title: "Are you sure you want to delete " + this.animalDetail?.name + "?", message: ""}).subscribe(
+      (response: Boolean) => {
+        console.log(response);
+        if (response) {
+          this.animalDetailService.deleteAnimal(AnimalDetailId).subscribe(
+            (response: void) => {
+                console.log(response);
+                this.router.navigate(['/']);
+                this.toast.ShowSucces("New Notification", this.animalDetail?.name + " deleted succesfully")
+            },
+            (error: HttpErrorResponse) => {
+                this.toast.ShowError("New Notification", this.animalDetail?.name + " could not be deleted")
+            }
+          );
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this.toast.ShowError("New Notification", this.animalDetail?.name + " could not be deleted");
+      }
+    );
+  }
 }

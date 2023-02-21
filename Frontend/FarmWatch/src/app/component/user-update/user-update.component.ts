@@ -5,7 +5,7 @@ import { StorageService } from 'src/app/security/_services/storage.service';
 import { UserService } from 'src/app/service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { ToastService } from 'src/app/service/toast.service';
 import { Location } from '@angular/common';
 
 
@@ -35,7 +35,7 @@ export class UserUpdateComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router,
     private storageService: StorageService,
-    private toast: NotifierService,
+    private toast: ToastService,
     private location: Location) {
       const pathArray = location.path().split('/');
       this.currentPath = pathArray.pop()!;

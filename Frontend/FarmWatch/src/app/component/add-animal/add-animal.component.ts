@@ -3,7 +3,7 @@ import { AnimalToAdd } from '../../model/add-animal';
 import { AddAnimalService } from '../../service/add-animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotifierService } from 'src/app/service/notifier.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-add-animal',
@@ -16,8 +16,10 @@ export class AddAnimalComponent {
 
   animal: AnimalToAdd 
   
-  constructor(private addAnimalService : AddAnimalService, private route: ActivatedRoute, 
-    private router: Router, private toast:NotifierService) {
+  constructor(private addAnimalService : AddAnimalService, 
+              private route: ActivatedRoute, 
+              private router: Router, 
+              private toast:ToastService) {
     this.animal = new AnimalToAdd()
   } 
 

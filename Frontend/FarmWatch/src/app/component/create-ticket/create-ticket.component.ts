@@ -7,7 +7,7 @@ import { CreateTicketService } from 'src/app/service/create-ticket.service';
 import { AnimalOverview } from '../../model/animal-overview';
 import { StorageService } from '../../security/_services/storage.service';
 import { AnimalOverviewService } from '../../service/animal-overview.service';
-import { NotifierService } from '../../service/notifier.service';
+import { ToastService } from '../../service/toast.service';
 
 @Component({
   selector: 'app-create-ticket',
@@ -26,9 +26,12 @@ export class CreateTicketComponent implements OnInit{
   animals: AnimalOverview[] = [];
   created = false;
 
-  constructor(private createTicketService: CreateTicketService, private route: ActivatedRoute, 
-    private router: Router, private storageService: StorageService, private animalOverviewService: AnimalOverviewService,
-    private toast: NotifierService) { }
+  constructor(private createTicketService: CreateTicketService, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private storageService: StorageService, 
+    private animalOverviewService: AnimalOverviewService,
+    private toast: ToastService) { }
   ngOnInit(): void {
     this.getAnimals();
   }

@@ -34,7 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { TicketOverviewComponent } from './component/ticket-overview/ticket-overview.component';
 import { MatDialogModule} from '@angular/material/dialog';
-import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component'
+import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
+import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component'
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { TicketUpdateComponent } from './component/ticket-update/ticket-update.c
     NavbarComponent,
     UserDetailComponent,
     TicketOverviewComponent,
-    TicketUpdateComponent
+    TicketUpdateComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

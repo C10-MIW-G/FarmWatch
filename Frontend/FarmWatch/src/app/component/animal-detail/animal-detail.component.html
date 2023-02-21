@@ -60,29 +60,7 @@
     <br>
     <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
     && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
-      (click)="openDialogWithTemplateRef(deleteDialog)">Delete</button>
-    <ng-template #deleteDialog>
-      <mat-dialog-content>
-        <div style="text-align: center;">
-          <a>The animal and all related tickets will be deleted.</a>
-          <br>
-          <a>Are you sure you wish to continue?</a>
-        </div>
-      </mat-dialog-content>
-      <mat-dialog-actions>
-        <div class="actions">
-        <div class="row">
-          <div class="">
-            <button class="btn btn-primary tooltips" (click)="onDeleteAnimal(id)"
-              [mat-dialog-close]="true">Yes</button>
-          </div>
-          <div class="">
-              <button class="btn btn-secondary tooltips" [mat-dialog-close]="true">No</button>
-          </div>
-        </div>
-      </div>
-      </mat-dialog-actions>
-    </ng-template>
+      (click)="confirmDeleteAction(id)">Delete</button>
   </div>
 </mat-sidenav>
 </mat-sidenav-container>

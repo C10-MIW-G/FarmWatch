@@ -1,10 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../security/_services/storage.service';
-import { NotifierService } from '../service/notifier.service';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastService } from '../service/toast.service';
 import { LoginComponent } from '../component/login/login.component';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { DialogService } from '../service/dialog.service';
+import { RegisterComponent } from '../component/register/register.component';
 
 
 @Component({
@@ -18,9 +19,9 @@ export class NavbarComponent {
   faUser = faUser;
 
   constructor(private storageService: StorageService, 
-              private toast: NotifierService, 
+              private toast: ToastService, 
               private router: Router,
-              private dialog: MatDialog
+              private dialog: DialogService
               ){
               };
 
@@ -42,18 +43,11 @@ export class NavbarComponent {
     return this.storageService.getUserName();
   }
 
-  public openDialog(){
-    if(!this.dialogOpen){
+  public openLoginDialog(){
       this.dialog.open(LoginComponent);
-      this.dialogOpen = !this.dialogOpen;
-    } else {
-      this.dialog.closeAll();
-      this.dialogOpen = !this.dialogOpen;
-    }
-    
-    this.dialog.afterAllClosed.subscribe(event => 
-            {
-              this.dialogOpen = false;
-            });
   }
+
+  public openRegisterDialog(){
+    this.dialog.open(RegisterComponent);
+}
 }

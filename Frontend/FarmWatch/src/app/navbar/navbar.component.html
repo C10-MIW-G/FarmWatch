@@ -5,10 +5,10 @@
         <li><a routerLink="/ticket" *ngIf="isLoggedIn() && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Tickets</a></li>
         <li><a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Users</a></li>
       </ul>
-       <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/register" *ngIf="!isLoggedIn()" >Sign Up</button>
+       <button class="btn btn-secondary my-2 my-sm-0 " (click)="openRegisterDialog()" *ngIf="!isLoggedIn()" >Sign Up</button>
        <button class="btn btn-secondary my-2 my-sm-0 " routerLink="/ticket/new" *ngIf="isLoggedIn()">New Ticket</button>
        <div class="menu-padding" *ngIf="!isLoggedIn()" ></div>
-       <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openDialog()">Log In</button>
+       <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0" (click)="openLoginDialog()">Log In</button>
        <div class="menu-padding" *ngIf="isLoggedIn()" ></div>
        <div class="btn-group" *ngIf="isLoggedIn()">
          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
