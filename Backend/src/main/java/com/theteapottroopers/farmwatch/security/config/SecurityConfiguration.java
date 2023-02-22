@@ -42,6 +42,9 @@ public class SecurityConfiguration {
                 .requestMatchers("/seed").permitAll()
                 //TODO: deze weghalen
                 .requestMatchers("/user/**").permitAll()
+                //TODO: add security check to upload.
+                .requestMatchers("/image").permitAll()
+                .requestMatchers("/image/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
