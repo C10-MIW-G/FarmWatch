@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
     password: null,
     captchaToken: null,
   };
-  passwordValid = false;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -30,9 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
-    if(!this.passwordValid) return;
-    
+  onSubmit(): void {    
     const { firstname, lastname, email, username, password, captchaToken } = this.form;
 
     this.authService.register(firstname, lastname, email, username, password, captchaToken).subscribe({
@@ -49,9 +46,5 @@ export class RegisterComponent implements OnInit {
         this.toast.ShowError("New Notification", "Registration failed!")
       }
     });
-  }
-
-  matchPassword(password: string, passwordValidation: string): Boolean{
-    return password === passwordValidation;
   }
 }
