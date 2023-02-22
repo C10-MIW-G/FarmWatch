@@ -86,21 +86,30 @@ public class TicketMapper {
     public TicketDtoUpdate toTicketDtoUpdate(Ticket ticket){
         TicketDtoUpdate ticketDtoUpdate = new TicketDtoUpdate();
         ticketDtoUpdate.setId(ticket.getId());
-        ticketDtoUpdate.setAnimalId(ticket.getAnimal().getId());
-        ticketDtoUpdate.setAnimalName(ticket.getAnimal().getId());
+        if (ticket.getAnimal() == null){
+            ticketDtoUpdate.setAnimalId(null);
+            ticketDtoUpdate.setAnimalName(null);
+        } else {
+            ticketDtoUpdate.setAnimalId(ticket.getAnimal().getId());
+            ticketDtoUpdate.setAnimalName(ticket.getAnimal().getName());
+        }
         ticketDtoUpdate.setSummary(ticket.getSummary());
         ticketDtoUpdate.setDescription(ticket.getDescription());
         ticketDtoUpdate.setStatus(ticket.getStatus());
-        ticketDtoUpdate.setAssignedTo((ticket.getAssignedTo() != null) ?
-                ticket.getAssignedTo().getId() : null);
         if(ticketDtoUpdate.getAssignedTo() == null){
             ticketDtoUpdate.setAssignedTo(null);
+            ticketDtoUpdate.setAssignedToName(null);
         }else{
-            StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
-            stringBuilder.append(" ");
-            stringBuilder.append(ticket.getAssignedTo().getLastname());
-            ticketDtoUpdate.setAssignedToName(stringBuilder.toString());
+            ticketDtoUpdate.setAssignedTo(ticket.getAssignedTo().getId());
+            ticketDtoUpdate.setAssignedToName(getFullName(ticket).toString());
         }
         return ticketDtoUpdate;
+    }
+
+    private static StringBuilder getFullName(Ticket ticket) {
+        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
+        stringBuilder.append(" ");
+        stringBuilder.append(ticket.getAssignedTo().getLastname());
+        return stringBuilder;
     }
 }

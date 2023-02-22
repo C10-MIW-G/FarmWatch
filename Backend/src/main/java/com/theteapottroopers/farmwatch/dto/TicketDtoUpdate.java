@@ -19,7 +19,7 @@ public class TicketDtoUpdate {
 
     private Long id;
     private Long animalId;
-    private Long animalName;
+    private String animalName;
     private String summary;
     private String description;
     private TicketStatus status;
