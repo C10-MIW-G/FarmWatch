@@ -51,7 +51,6 @@ export class TicketUpdateComponent implements OnInit{
   }
 
   onSubmit(): void {
-    this.caretakerNameToId();
     this.ticketDetailService.updateTicket(this.ticket).subscribe({next: data => {
       setTimeout(() => {
         this.router.navigate(['/ticket/', this.id]);   
@@ -118,15 +117,5 @@ export class TicketUpdateComponent implements OnInit{
 
   private putResponseInStatuses(response: Status[]): void {
     this.statuses = response;
-  }
-
-  private caretakerNameToId() : void {
-    for (const caretaker of this.caretakers) {
-      if(this.ticket.assignedToName == caretaker.name){
-        this.ticket.assignedTo = caretaker.id;
-        return;
-      }
-    }
-    this.ticket.assignedTo = null;
   }
 }
