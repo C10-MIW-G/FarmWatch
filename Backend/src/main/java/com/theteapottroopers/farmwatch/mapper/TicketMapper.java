@@ -86,6 +86,8 @@ public class TicketMapper {
     public TicketDtoUpdate toTicketDtoUpdate(Ticket ticket){
         TicketDtoUpdate ticketDtoUpdate = new TicketDtoUpdate();
         ticketDtoUpdate.setId(ticket.getId());
+        ticketDtoUpdate.setAnimalId(ticket.getAnimal().getId());
+        ticketDtoUpdate.setAnimalName(ticket.getAnimal().getId());
         ticketDtoUpdate.setSummary(ticket.getSummary());
         ticketDtoUpdate.setDescription(ticket.getDescription());
         ticketDtoUpdate.setStatus(ticket.getStatus());
