@@ -20,10 +20,12 @@ public class TicketService {
 
     private final TicketRepository ticketRepository;
     private final UserService userService;
+    private final AnimalService animalService;
     @Autowired
-    public TicketService(TicketRepository ticketRepository, UserService userService) {
+    public TicketService(TicketRepository ticketRepository, UserService userService, AnimalService animalService) {
         this.ticketRepository = ticketRepository;
         this.userService = userService;
+        this.animalService = animalService;
     }
 
 
@@ -53,14 +55,27 @@ public class TicketService {
 
     public void updateTicket(TicketDtoUpdate ticketDtoUpdate){
         Ticket ticketToUpdate = ticketRepository.findById(ticketDtoUpdate.getId()).get();
+        updateAnimalInTicket(ticketDtoUpdate, ticketToUpdate);
         ticketToUpdate.setSummary(ticketDtoUpdate.getSummary());
         ticketToUpdate.setDescription(ticketDtoUpdate.getDescription());
         ticketToUpdate.setStatus(ticketDtoUpdate.getStatus());
+        updateUserInTicket(ticketDtoUpdate, ticketToUpdate);
+        ticketRepository.save(ticketToUpdate);
+    }
+
+    private void updateUserInTicket(TicketDtoUpdate ticketDtoUpdate, Ticket ticketToUpdate) {
         if(ticketDtoUpdate.getAssignedTo() == null) {
             ticketToUpdate.setAssignedTo(null);
         } else {
             ticketToUpdate.setAssignedTo(userService.findUserById(ticketDtoUpdate.getAssignedTo()));
         }
-        ticketRepository.save(ticketToUpdate);
+    }
+
+    private void updateAnimalInTicket(TicketDtoUpdate ticketDtoUpdate, Ticket ticketToUpdate) {
+        if(ticketDtoUpdate.getAnimalId() == null) {
+            ticketToUpdate.setAnimal(null);
+        } else {
+            ticketToUpdate.setAnimal(animalService.findAnimalById(ticketDtoUpdate.getAnimalId()));
+        }
     }
 }

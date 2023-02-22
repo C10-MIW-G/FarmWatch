@@ -51,15 +51,14 @@ public class CaptchaChecker {
             return false;
         }
     }
-
-    private boolean checkForValidResponse(StringBuffer response) {
-        JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
-        JsonObject jsonObject = jsonReader.readObject();
-        jsonReader.close();
-
-        return jsonObject.getBoolean(VALIDATION_STRING);
+    private HttpsURLConnection setupHttpsURLConnection() throws IOException {
+        URL url = new URL(API_URL);
+        HttpsURLConnection currentConnection = (HttpsURLConnection) url.openConnection();
+        currentConnection.setRequestMethod("POST");
+        currentConnection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        currentConnection.setDoOutput(true);
+        return currentConnection;
     }
-
     private void addOutputToCurrentConnection(String userCaptcha, HttpsURLConnection currentConnection) throws IOException {
         String urlString = "secret=" + CAPTCHA_KEY + "&response="
                 + userCaptcha;
@@ -69,15 +68,15 @@ public class CaptchaChecker {
         dataOutputStream.flush();
         dataOutputStream.close();
     }
+    private boolean checkForValidResponse(StringBuffer response) {
+        JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
+        JsonObject jsonObject = jsonReader.readObject();
+        jsonReader.close();
 
-    private HttpsURLConnection setupHttpsURLConnection() throws IOException {
-        URL url = new URL(API_URL);
-        HttpsURLConnection currentConnection = (HttpsURLConnection) url.openConnection();
-        currentConnection.setRequestMethod("POST");
-        currentConnection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        currentConnection.setDoOutput(true);
-        return currentConnection;
+        return jsonObject.getBoolean(VALIDATION_STRING);
     }
+
+
 
 
 }
