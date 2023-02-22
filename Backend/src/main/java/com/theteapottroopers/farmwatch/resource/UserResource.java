@@ -61,7 +61,7 @@ public class UserResource {
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDTO){
         User userToUpdate = userService.updateUser(userDTO);
         UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(updateUserDto,HttpStatus.OK);
     }
 
     @GetMapping("/caretakers")
