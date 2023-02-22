@@ -65,7 +65,7 @@ export class TicketUpdateComponent implements OnInit{
 
   private getAnimals(): void {
     this.animalOverviewService.getAnimals().subscribe(
-      (response: AnimalOverview[]) => {
+      (response: AnimalOverview[]) => { 
         this.putResponseInAnimals(response);  
       },
       (error: HttpErrorResponse) => {

@@ -9,6 +9,7 @@ import { ToastService } from 'src/app/service/toast.service';
 import { Location } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-user-upate',
   templateUrl: './user-update.component.html',
@@ -67,7 +68,7 @@ export class UserUpdateComponent implements OnInit{
       }, 1000);
       },
       error: err => {
-        this.toast.ShowError("New Notification", "Updating " + this.user.username + "failed!")
+        this.toast.ShowError("New Notification", err.error.message)
       }
       });
     }

@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
+import com.theteapottroopers.farmwatch.exception.LastAdminDeletionException;
 import com.theteapottroopers.farmwatch.exception.UserNotFoundException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
@@ -55,6 +56,17 @@ public class UserService {
 
     public User updateUser(UserDto userDto) {
         User userToUpdate = userRepository.findById(userDto.getId()).get();
+        if (adminCount() > 1 ||
+                        (adminCount() == 1 &&
+                        userDto.getRole().equals(Role.ROLE_ADMIN))){
+            User updatedUser = setAndSaveUser(userDto, userToUpdate);
+            return updatedUser;
+        } else {
+            throw new LastAdminDeletionException("This user is the last Admin");
+        }
+    }
+
+    private User setAndSaveUser(UserDto userDto, User userToUpdate) {
         userToUpdate.setFirstname(userDto.getFirstname());
         userToUpdate.setLastname(userDto.getLastname());
         userToUpdate.setUsername(userDto.getUsername());
@@ -62,5 +74,9 @@ public class UserService {
         userToUpdate.setRole(userDto.getRole());
         User updatedUser = userRepository.save(userToUpdate);
         return updatedUser;
+    }
+
+    private long adminCount() {
+        return userRepository.countByRole(Role.ROLE_ADMIN);
     }
 }

@@ -2,7 +2,9 @@ package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.dto.UserLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
+import com.theteapottroopers.farmwatch.exception.LastAdminDeletionException;
 import com.theteapottroopers.farmwatch.mapper.UserMapper;
+import com.theteapottroopers.farmwatch.exception.ErrorResponse;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.UserService;
@@ -56,12 +58,15 @@ public class UserResource {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    //TODO: There must be at least one admin in the server
     @PutMapping("/update")
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDTO){
-        User userToUpdate = userService.updateUser(userDTO);
-        UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
-        return new ResponseEntity<>(updateUserDto,HttpStatus.OK);
+    public ResponseEntity<?> updateUser(@RequestBody UserDto userDTO){
+        try {
+            User userToUpdate = userService.updateUser(userDTO);
+            UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
+            return new ResponseEntity<>(updateUserDto,HttpStatus.OK);
+        } catch (Exception exception) {
+            return ResponseEntity.badRequest().body(new ErrorResponse(exception.getMessage()));
+        }
     }
 
     @GetMapping("/caretakers")
