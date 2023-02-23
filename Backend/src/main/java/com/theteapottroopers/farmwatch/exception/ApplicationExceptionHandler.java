@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.time.DateTimeException;
+
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
  * <p>
@@ -50,6 +52,17 @@ public class ApplicationExceptionHandler {
                 .body(exception.getMessage());
     }
 
+    @ExceptionHandler(value = { FieldHasNoInputException.class })
+    public ResponseEntity<Object> handleCustomException(FieldHasNoInputException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(value = { DateTimeException.class })
+    public ResponseEntity<Object> handleCustomException(DateTimeException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
 
 
 
