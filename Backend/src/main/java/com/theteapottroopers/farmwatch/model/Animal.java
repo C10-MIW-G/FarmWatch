@@ -24,6 +24,7 @@ import java.time.LocalDate;
 public class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
     private String commonName;
     private String species;

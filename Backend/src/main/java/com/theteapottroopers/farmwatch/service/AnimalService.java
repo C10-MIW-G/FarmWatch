@@ -2,11 +2,15 @@ package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
+import com.theteapottroopers.farmwatch.exception.FieldHasNoInputException;
+import com.theteapottroopers.farmwatch.exception.InputIsToLargeException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,6 +22,7 @@ import java.util.List;
 @Service
 public class AnimalService {
 
+    public static final int MAX_LENGTH_DESCRIPTION = 1000;
     private final AnimalRepository animalRepository;
     @Autowired
     public AnimalService(AnimalRepository animalRepository) {
@@ -51,6 +56,19 @@ public class AnimalService {
     }
 
     public void addAnimal(Animal animal){
+        validationCheck(animal);
         animalRepository.save(animal);
+    }
+
+    private static void validationCheck(Animal animal) {
+        if (animal.getName().length() == 0){
+            throw new FieldHasNoInputException("You have to fill in the animals name");
+        }
+        if (animal.getDateOfBirth().isAfter(LocalDate.now())) {
+            throw new DateTimeException("The date should be in de past");
+        }
+        if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
+            throw new InputIsToLargeException("Your input is to long");
+        }
     }
 }

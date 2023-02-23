@@ -30,7 +30,7 @@ export class AddAnimalComponent {
         this.toast.ShowSucces("New notification", "Succesfully added a new animal");
     },
       error: error => {
-        this.toast.ShowError("New notification", "Failed to add a new animall");
+        this.toast.ShowError("New notification", error.error);
       }
     });
   }

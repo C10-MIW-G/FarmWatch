@@ -30,18 +30,21 @@ public class UserService {
     }
 
     public List<User> findAllUsers(){
+        List<User> allUsers = userRepository.findAll();
+        if (allUsers.size() == 0) {
+            throw new UserNotFoundException("There are currently no users in the database\n\n" +
+                    "Please contact the application development company");
+        }
         return userRepository.findAll();
     }
 
     public List<User> findAllCaretakers() {
-        List<User> usersToFilter = userRepository.findAll();
-        List<User> allCaretakers = new ArrayList<>();
-        for (User user: usersToFilter) {
-            if (user.getRole().equals(Role.ROLE_CARETAKER)){
-                allCaretakers.add(user);
-            }
+        List<User> allCareTakers = userRepository.findAllByRole(Role.ROLE_CARETAKER);
+        if (allCareTakers.size() == 0) {
+            throw new UserNotFoundException("There are currently no caretakers in your database\n\n" +
+                    "Please assign the caretaker role");
         }
-        return allCaretakers;
+        return userRepository.findAllByRole(Role.ROLE_CARETAKER);
     }    
 
     public User findUserById(Long id){
@@ -55,15 +58,14 @@ public class UserService {
     }
 
     public User updateUser(UserDto userDto) {
-        User userToUpdate = userRepository.findById(userDto.getId()).get();
-        if (adminCount() > 1 ||
-                        (adminCount() == 1 &&
-                        userDto.getRole().equals(Role.ROLE_ADMIN))){
-            User updatedUser = setAndSaveUser(userDto, userToUpdate);
-            return updatedUser;
-        } else {
+        User userToUpdate = findUserById(userDto.getId());
+        if (adminCount() == 1 &&
+                userToUpdate.getRole().equals(Role.ROLE_ADMIN) &&
+                !userDto.getRole().equals(Role.ROLE_ADMIN)) {
             throw new LastAdminDeletionException("This user is the last Admin");
         }
+        User updatedUser = setAndSaveUser(userDto, userToUpdate);
+        return updatedUser;
     }
 
     private User setAndSaveUser(UserDto userDto, User userToUpdate) {

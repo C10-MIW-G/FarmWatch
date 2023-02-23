@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
+import com.theteapottroopers.farmwatch.exception.LoginException;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.security.config.JwtService;
 import com.theteapottroopers.farmwatch.security.user.Role;
@@ -48,7 +49,7 @@ public class AuthenticationService {
                 )
         );
         User user = userRepository.findUserByUsername(request.getUsername())
-                .orElseThrow();
+                .orElseThrow(() -> new LoginException("Something went wrong please try again"));
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

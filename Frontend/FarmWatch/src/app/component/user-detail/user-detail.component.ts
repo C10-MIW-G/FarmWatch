@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/security/_services/storage.service';
 import { HttpErrorResponse} from '@angular/common/http';
 import { Location } from '@angular/common';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -23,7 +24,8 @@ export class UserDetailComponent {
   constructor(private userDetailService : UserService, 
     private route: ActivatedRoute, 
     private storageService: StorageService,
-    private location: Location) {
+    private location: Location,
+    private toast: ToastService) {
       const pathArray = location.path().split('/');
       this.currentPath = pathArray.pop()!;
       if(this.currentPath === this.userPagePath){
@@ -56,7 +58,7 @@ export class UserDetailComponent {
         }
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error)
       }
     );
   }

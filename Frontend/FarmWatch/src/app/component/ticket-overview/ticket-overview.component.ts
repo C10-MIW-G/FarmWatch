@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketOverviewService } from 'src/app/service/ticket-overview.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from 'src/app/service/toast.service';
 import { Sort } from '@angular/material/sort';
 
 @Component({
@@ -14,9 +15,11 @@ export class TicketOverviewComponent implements OnInit {
   public isAuthorized: boolean = false; 
   sortedData: Ticket[];
 
-  constructor(private ticketOverviewService : TicketOverviewService) {
-  this.sortedData = this.tickets.slice();
-  }
+  constructor(private ticketOverviewService : TicketOverviewService,
+    private toast: ToastService) {
+      this.sortedData = this.tickets.slice();
+    }
+
  
   ngOnInit(): void {
     this.getTickets(); 
@@ -32,7 +35,12 @@ export class TicketOverviewComponent implements OnInit {
         
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        if(error.error.message != null){
+          this.toast.ShowError("New Notification", "Please login again");
+        } else {
+          this.toast.ShowError("New Notification", error.error);
+        }
+        
       }
     );
   }
