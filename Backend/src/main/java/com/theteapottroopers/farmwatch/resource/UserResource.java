@@ -29,7 +29,6 @@ public class UserResource {
     private final UserService userService;
     private final UserMapper userMapper;
 
-
     public UserResource(UserService userService) {
         this.userService = userService;
         this.userMapper = new UserMapper();
@@ -60,13 +59,9 @@ public class UserResource {
 
     @PutMapping("/update")
     public ResponseEntity<?> updateUser(@RequestBody UserDto userDTO){
-        try {
-            User userToUpdate = userService.updateUser(userDTO);
-            UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
-            return new ResponseEntity<>(updateUserDto,HttpStatus.OK);
-        } catch (Exception exception) {
-            return ResponseEntity.badRequest().body(new ErrorResponse(exception.getMessage()));
-        }
+        User userToUpdate = userService.updateUser(userDTO);
+        UserDto updateUserDto = userMapper.toUserDto(userToUpdate);
+        return new ResponseEntity<>(updateUserDto,HttpStatus.OK);
     }
 
     @GetMapping("/caretakers")
