@@ -30,7 +30,11 @@ export class AddAnimalComponent {
         this.toast.ShowSucces("New notification", "Succesfully added a new animal");
     },
       error: error => {
-        this.toast.ShowError("New notification", error.error);
+        if(error.error.message != null){
+          this.toast.ShowError("New Notification", "Please login again");
+        } else {
+          this.toast.ShowError("New Notification", error.error);
+        }
       }
     });
   }

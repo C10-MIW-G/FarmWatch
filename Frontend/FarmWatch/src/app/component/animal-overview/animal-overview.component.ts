@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalOverview} from '../../model/animal-overview';
 import {AnimalOverviewService} from '../../service/animal-overview.service';
-import { UpdateAnimalComponent } from '../update-animal/update-animal.component';
-import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { StorageService } from '../../security/_services/storage.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-animal',
@@ -16,7 +15,9 @@ export class AnimalOverviewComponent implements OnInit{
   public deleteAnimal!: AnimalOverview;
   public isAuthorized: boolean = false; 
 
-  constructor(private animalOverviewService : AnimalOverviewService, private storageService: StorageService) {}
+  constructor(private animalOverviewService : AnimalOverviewService, 
+    private storageService: StorageService,
+    private toast: ToastService) {}
 
   ngOnInit(): void {
     this.getAnimals(); 
@@ -35,8 +36,12 @@ export class AnimalOverviewComponent implements OnInit{
         this.animals = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+        if(error.error.message != null){
+          this.toast.ShowError("New Notification", "Please login again");
+        } else {
+          this.toast.ShowError("New Notification", error.error);
+        }
+      }  
     );
   }
 

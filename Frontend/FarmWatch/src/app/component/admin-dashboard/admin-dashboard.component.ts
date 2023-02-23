@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { AdminDashboardService } from '../../service/admin-dashboard.service';
 import { StorageService } from 'src/app/security/_services/storage.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,7 +16,8 @@ export class AdminDashboardComponent implements OnInit{
 
 
   constructor (private adminDashboardService : AdminDashboardService,
-    private storageService: StorageService){}
+    private storageService: StorageService,
+    private toast: ToastService){}
   
   ngOnInit(): void {
     this.adminDashboardService.getUsers().subscribe(
@@ -23,8 +25,12 @@ export class AdminDashboardComponent implements OnInit{
         this.users = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+        if(error.error.message != null){
+          this.toast.ShowError("New Notification", "Please login again");
+        } else {
+          this.toast.ShowError("New Notification", error.error);
+        }
+      }  
     );
   }
 

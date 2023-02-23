@@ -65,7 +65,11 @@ export class CreateTicketComponent implements OnInit{
         this.animals = response;
       },
       (error: HttpErrorResponse) => {
-        this.toast.ShowError("New Notification", error.error);
+        if(error.error.message != null){
+          this.toast.ShowError("New Notification", "Please login again");
+        } else {
+          this.toast.ShowError("New Notification", error.error);
+        }
       }
     );
   }
