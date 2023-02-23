@@ -58,7 +58,7 @@ export class TicketUpdateComponent implements OnInit{
     }, 500);
     },
     error: err => {
-      this.toast.ShowError("New Notification", "Updating failed!")
+      this.toast.ShowError("New Notification", err.error)
     }
     });
   }
@@ -69,7 +69,7 @@ export class TicketUpdateComponent implements OnInit{
         this.putResponseInAnimals(response);  
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error);
       }
     );
   }
@@ -80,7 +80,7 @@ export class TicketUpdateComponent implements OnInit{
         this.putResponseInCaretakers(response);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error);
       }
     );
   }
@@ -91,7 +91,7 @@ export class TicketUpdateComponent implements OnInit{
         this.ticket = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error);
       }
     );
   }
@@ -102,7 +102,7 @@ export class TicketUpdateComponent implements OnInit{
         this.putResponseInStatuses(response);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error);
       }
     );
   }

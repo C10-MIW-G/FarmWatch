@@ -68,7 +68,7 @@ export class UserUpdateComponent implements OnInit{
       }, 1000);
       },
       error: err => {
-        this.toast.ShowError("New Notification", err.error.message)
+        this.toast.ShowError("New Notification", err.error)
       }
       });
     }
@@ -80,7 +80,7 @@ export class UserUpdateComponent implements OnInit{
           this.user = response;
         },
         (error: HttpErrorResponse) => {
-          alert(error.message);
+          this.toast.ShowError("New Notification", error.error)
         }
       );
   }

@@ -24,7 +24,7 @@ export class UpdateAnimalComponent implements OnInit{
 
     this.updateAnimalService.getAnimalDetail(this.id).subscribe(data => {
       this.updateAnimal = data;
-    }, error => console.log(error));
+    }, error => this.toast.ShowError("New Notification", error.error));
   }
 
   
@@ -35,7 +35,7 @@ export class UpdateAnimalComponent implements OnInit{
         this.toast.ShowSucces("New notification", "Succesfully updated " + this.updateAnimal.name);
       },
       error: err => {
-        this.toast.ShowError("New Notification", "Updating " + this.updateAnimal.name + "failed!")
+        this.toast.ShowError("New Notification", err.error);
       }
     });
   }

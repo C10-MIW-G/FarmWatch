@@ -60,7 +60,7 @@ export class TicketDetailComponent implements OnInit {
     for(let ticketMessageId of ticketMessageIds){
       this.ticketMessageService.getTicketMessage(ticketMessageId).subscribe({
         next: ticketMessage => this.addTicketMessage(ticketMessage),
-        error: error => console.log(error)
+        error: error => console.log(error), 
       });
     }
   }
