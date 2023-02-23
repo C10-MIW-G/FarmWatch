@@ -26,11 +26,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-
     private String firstname;
     private String lastname;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
