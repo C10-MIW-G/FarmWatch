@@ -54,7 +54,7 @@ export class CreateTicketComponent implements OnInit{
       }, 1000); 
       },
       error: err => {
-        this.toast.ShowError("New Notification", "Creating a new ticket failed");
+        this.toast.ShowError("New Notification", err.error);
       }
     });
   }
@@ -65,7 +65,7 @@ export class CreateTicketComponent implements OnInit{
         this.animals = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toast.ShowError("New Notification", error.error);
       }
     );
   }
