@@ -8,6 +8,7 @@ import { ToastService } from 'src/app/service/toast.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { TicketMessageService } from 'src/app/service/ticket-message.service';
 
+
 @Component({
   selector: 'app-ticket-detail',
   templateUrl: './ticket-detail.component.html',
@@ -30,6 +31,7 @@ export class TicketDetailComponent implements OnInit {
     private ticketMessageService: TicketMessageService,
     private storageService: StorageService,
     private route: ActivatedRoute,
+    private router: Router,
     private toast: ToastService){
       this.route.params.subscribe(params => {
         this.id = params['id'];
@@ -46,7 +48,10 @@ export class TicketDetailComponent implements OnInit {
         this.ticket = ticket,
         this.getTicketMessages(this.ticket.ticketMessageIds);
       },
-      error: error => console.log(error)
+      error: err => {
+        this.toast.ShowError("New Notification", err.error.message);
+        this.router.navigate(['/ticket']);   
+      }
     });
   }
 

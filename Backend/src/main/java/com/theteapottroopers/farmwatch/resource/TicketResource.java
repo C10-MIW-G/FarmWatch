@@ -4,6 +4,7 @@ import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
 import com.theteapottroopers.farmwatch.dto.UserDto;
+import com.theteapottroopers.farmwatch.exception.ErrorResponse;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
@@ -59,10 +60,15 @@ public class TicketResource {
 
     @GetMapping("{id}")
     @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
-    public ResponseEntity<TicketDtoAll> getTicketById(@PathVariable("id") Long id){
-        Ticket ticket = ticketService.findTicketById(id);
-        TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
-        return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
+    public ResponseEntity<?> getTicketById(@PathVariable("id") Long id){
+        try {
+            Ticket ticket = ticketService.findTicketById(id);
+            TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
+            return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body(new ErrorResponse(exception.getMessage()));
+        }
+
     }
 
     @GetMapping("/status")

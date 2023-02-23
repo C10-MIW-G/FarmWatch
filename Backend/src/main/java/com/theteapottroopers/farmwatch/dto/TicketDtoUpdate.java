@@ -18,6 +18,8 @@ import lombok.Setter;
 public class TicketDtoUpdate {
 
     private Long id;
+    private Long animalId;
+    private String animalName;
     private String summary;
     private String description;
     private TicketStatus status;
