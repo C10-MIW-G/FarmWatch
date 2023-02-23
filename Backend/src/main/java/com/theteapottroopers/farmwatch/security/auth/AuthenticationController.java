@@ -24,11 +24,10 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request){
         CaptchaChecker captchaChecker = new CaptchaChecker();
-
         if (captchaChecker.verify(request.getCaptchaToken())){
             return ResponseEntity.ok(authenticationService.register(request));
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
     }
 
