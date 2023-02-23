@@ -20,6 +20,7 @@ export class TicketOverviewComponent implements OnInit {
  
   ngOnInit(): void {
     this.getTickets(); 
+    
   }
 
   public getTickets(): void {
@@ -27,6 +28,8 @@ export class TicketOverviewComponent implements OnInit {
       (response: Ticket[]) => {
         this.tickets = response;
         this.sortedData = this.tickets.slice();
+        this.sortData({ active: 'status', direction: 'desc' });
+        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -49,7 +52,12 @@ export class TicketOverviewComponent implements OnInit {
         case 'animal':
           return compare(a.animal.name, b.animal.name, isAsc);
         case 'status':
-          return compare(a.status, b.status, isAsc);
+          const statusComparison = a.status.localeCompare(b.status);
+          if (statusComparison !== 0) {
+            return (isAsc ? statusComparison : -statusComparison);
+          } else {
+            return (isAsc ? compare(a.reportDateTime, b.reportDateTime, !isAsc) : compare(b.reportDateTime, a.reportDateTime, !isAsc));
+          }
         case 'created_on':
           return compare(a.reportDateTime, b.reportDateTime, isAsc);
         case 'created_by':
@@ -59,9 +67,8 @@ export class TicketOverviewComponent implements OnInit {
       }
     });
   
-  function compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
 }
-
 }
