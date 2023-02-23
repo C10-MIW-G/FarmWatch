@@ -36,6 +36,8 @@ import { TicketOverviewComponent } from './component/ticket-overview/ticket-over
 import { MatDialogModule} from '@angular/material/dialog';
 import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component'
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -77,6 +79,8 @@ import { ConfirmationDialogComponent } from './component/confirmation-dialog/con
     FontAwesomeModule, 
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
+    MatSortModule,
     MatDialogModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
