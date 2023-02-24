@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.security.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,19 +23,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"username","email"}))
 public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
     private String firstname;
     private String lastname;
-    @Column(nullable = false)
+    @Email
+    @Column(name="email", nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+    @Column(name="username", nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String password;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
