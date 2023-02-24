@@ -7,7 +7,7 @@ import com.theteapottroopers.farmwatch.model.Animal;
 /**
  * @author Eelke Mulder
  */
-public class AnimalMapper {
+public class AnimalMapper extends Mapper{
     public AnimalOverviewDto toAnimalOverviewDto(Animal animal){
        return new AnimalOverviewDto(
                animal.getId(),
@@ -27,10 +27,10 @@ public class AnimalMapper {
     }
 
     public Animal toAnimal(AnimalDetailDto animalDetailDto) {return new Animal(
-            animalDetailDto.getName(),
-            animalDetailDto.getCommonName(),
-            animalDetailDto.getSpecies(),
-            animalDetailDto.getDescription(),
+            emptyToNull(animalDetailDto.getName()),
+            emptyToNull(animalDetailDto.getCommonName()),
+            emptyToNull(animalDetailDto.getSpecies()),
+            emptyToNull(animalDetailDto.getDescription()),
             animalDetailDto.getDateOfBirth(),
-            animalDetailDto.getImageUrl());}
+            emptyToNull(animalDetailDto.getImageUrl()));}
 }
