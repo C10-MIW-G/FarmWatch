@@ -1,17 +1,14 @@
 package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.dto.UserDto;
-import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
-import com.theteapottroopers.farmwatch.exception.LastAdminDeletionException;
-import com.theteapottroopers.farmwatch.exception.UserNotFoundException;
-import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.exception.*;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
+import com.theteapottroopers.farmwatch.validation.UserValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,10 +20,12 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserValidation userValidation;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserValidation userValidation) {
         this.userRepository = userRepository;
+        this.userValidation = userValidation;
     }
 
     public List<User> findAllUsers(){
@@ -59,26 +58,41 @@ public class UserService {
 
     public User updateUser(UserDto userDto) {
         User userToUpdate = findUserById(userDto.getId());
-        if (adminCount() == 1 &&
-                userToUpdate.getRole().equals(Role.ROLE_ADMIN) &&
-                !userDto.getRole().equals(Role.ROLE_ADMIN)) {
-            throw new LastAdminDeletionException("This user is the last Admin");
+        userValidation.databaseValidation(userDto, userToUpdate);
+        setUser(userDto, userToUpdate);
+        try {
+            userRepository.save(userToUpdate);
+            return userToUpdate;
+        } catch (Exception exception) {
+            throw exception;
         }
-        User updatedUser = setAndSaveUser(userDto, userToUpdate);
-        return updatedUser;
     }
 
-    private User setAndSaveUser(UserDto userDto, User userToUpdate) {
+    private static void setUser(UserDto userDto, User userToUpdate) {
         userToUpdate.setFirstname(userDto.getFirstname());
         userToUpdate.setLastname(userDto.getLastname());
         userToUpdate.setUsername(userDto.getUsername());
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setRole(userDto.getRole());
-        User updatedUser = userRepository.save(userToUpdate);
-        return updatedUser;
     }
 
-    private long adminCount() {
-        return userRepository.countByRole(Role.ROLE_ADMIN);
-    }
+//    private void validationDatabaseCheck(UserDto userDto, User user) {
+//        if (adminCount() == 1 &&
+//                user.getRole().equals(Role.ROLE_ADMIN) &&
+//                !userDto.getRole().equals(Role.ROLE_ADMIN)) {
+//            throw new LastAdminDeletionException("This user is the last Admin");
+//        }
+//        if (userRepository.findUserByUsername(userDto.getUsername()).isPresent() &&
+//                !userDto.getUsername().equals(user.getUsername())) {
+//            throw new InputHasDuplicateException("Username is already taken");
+//        }
+//        if (userRepository.findUserByEmail(user.getEmail()).isPresent() &&
+//                !userDto.getEmail().equals(user.getEmail())) {
+//            throw new InputHasDuplicateException("Email is already taken");
+//        }
+//    }
+
+
+
+
 }
