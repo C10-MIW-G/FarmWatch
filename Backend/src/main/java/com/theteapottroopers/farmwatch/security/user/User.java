@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.security.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,10 +32,13 @@ public class User implements UserDetails {
     private String firstname;
     private String lastname;
     @Email
+    @NotNull
     @Column(name="email", nullable = false, unique = true)
     private String email;
+    @NotNull
     @Column(name="username", nullable = false, unique = true)
     private String username;
+    @NotNull
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
