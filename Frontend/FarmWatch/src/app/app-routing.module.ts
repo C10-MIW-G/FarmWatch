@@ -30,8 +30,8 @@ const routes: Routes = [
   { path: 'user/:id', component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'ticket/new', component: CreateTicketComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'USER', 'CARETAKER']}},
   { path: 'ticket/update/:id', component: TicketUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
-  { path: 'ticket/:id', component: TicketDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
-  { path: 'ticket', component: TicketOverviewComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
+  { path: 'ticket/:id', component: TicketDetailComponent, canActivate: [AuthGuard], data: {role: ['USER', 'ADMIN', 'CARETAKER']}},
+  { path: 'ticket', component: TicketOverviewComponent, canActivate: [AuthGuard], data: {role: ['USER', 'ADMIN', 'CARETAKER']}},
 ];
 
 const routerOptions: ExtraOptions = {

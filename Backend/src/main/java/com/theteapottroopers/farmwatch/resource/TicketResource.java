@@ -3,11 +3,11 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
-import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.ErrorResponse;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
+import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.TicketService;
@@ -15,6 +15,7 @@ import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -41,12 +42,18 @@ public class TicketResource {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<List<TicketDtoAll>> getAllTickets(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Ticket> allTickets = ticketService.findAllTickets();
         List<TicketDtoAll> allTicketDtos = new ArrayList<>();
-        for (Ticket ticket: allTickets) {
-            allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
+        if(principal instanceof User){
+            for (Ticket ticket: allTickets) {
+                if (ticket.isTicketFromUserId(((User) principal).getId()) ||
+                        ((User) principal).getRole() != Role.ROLE_USER) {
+                    allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
+                }
+            }
         }
         return new ResponseEntity<>(allTicketDtos, HttpStatus.OK);
     }
@@ -58,17 +65,24 @@ public class TicketResource {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
-    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER','CARETAKER', 'ADMIN')")
     public ResponseEntity<?> getTicketById(@PathVariable("id") Long id){
         try {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             Ticket ticket = ticketService.findTicketById(id);
-            TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
-            return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
-        } catch (Exception exception){
+            if(principal instanceof User) {
+                if (ticket.isTicketFromUserId(((User) principal).getId()) ||
+                        ((User) principal).getRole() != Role.ROLE_USER) {
+                    TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
+                    return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
+                }
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception exception) {
             return ResponseEntity.badRequest().body(new ErrorResponse(exception.getMessage()));
         }
-
     }
 
     @GetMapping("/status")
@@ -92,6 +106,4 @@ public class TicketResource {
         ticketService.updateTicket(ticketDtoUpdate);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 }

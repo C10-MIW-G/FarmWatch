@@ -42,4 +42,8 @@ public class Ticket {
     private User assignedTo;
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.REMOVE)
     private List<TicketMessage> ticketMessages;
+
+    public boolean isTicketFromUserId(Long id){
+        return reportedBy.getId().equals(id);
+    }
 }
