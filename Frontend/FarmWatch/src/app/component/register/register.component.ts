@@ -41,9 +41,9 @@ export class RegisterComponent implements OnInit {
         this.toast.ShowSucces("New Notification", "Your account has been registered succesfully!")
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err.error;
         this.isSignUpFailed = true;
-        this.toast.ShowError("New Notification", "Registration failed!")
+        this.toast.ShowError("New Notification", this.errorMessage)
       }
     });
   }
