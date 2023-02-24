@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Animal {
     private String species;
     @Column(length=1000)
     private String description;
+    @PastOrPresent
     private LocalDate dateOfBirth;
     private String imageUrl;
 
