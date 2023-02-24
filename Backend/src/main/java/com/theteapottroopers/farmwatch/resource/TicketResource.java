@@ -3,7 +3,6 @@ package com.theteapottroopers.farmwatch.resource;
 import com.theteapottroopers.farmwatch.dto.TicketDtoAll;
 import com.theteapottroopers.farmwatch.dto.TicketDtoNew;
 import com.theteapottroopers.farmwatch.dto.TicketDtoUpdate;
-import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.ErrorResponse;
 import com.theteapottroopers.farmwatch.mapper.TicketMapper;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
@@ -16,12 +15,9 @@ import com.theteapottroopers.farmwatch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -70,7 +66,7 @@ public class TicketResource {
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             Ticket ticket = ticketService.findTicketById(id);
             if(principal instanceof User) {
-                if (((User) principal).getId().equals(ticket.getReportedBy().getId()) ||
+                if (ticket.isTicketFromUserId(((User) principal).getId()) ||
                         ((User) principal).getRole() != Role.ROLE_USER) {
                     TicketDtoAll ticketDtoAll = ticketMapper.toTicketDtoAll(ticket);
                     return new ResponseEntity<>(ticketDtoAll, HttpStatus.OK);
