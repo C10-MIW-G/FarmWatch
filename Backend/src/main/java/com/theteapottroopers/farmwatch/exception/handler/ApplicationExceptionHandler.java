@@ -73,5 +73,13 @@ public class ApplicationExceptionHandler {
                 .body(exception.getMessage());
     }
 
+    @ExceptionHandler(value = { SomethingWentWrongException.class })
+    public ResponseEntity<Object> handleCustomException(SomethingWentWrongException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
+
+
+
 
 }
