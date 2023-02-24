@@ -4,8 +4,10 @@ import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
 import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
 import com.theteapottroopers.farmwatch.exception.FieldHasNoInputException;
 import com.theteapottroopers.farmwatch.exception.InputIsToLargeException;
+import com.theteapottroopers.farmwatch.exception.SomethingWentWrongException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
+import com.theteapottroopers.farmwatch.validation.AnimalValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,15 @@ import java.util.List;
 @Service
 public class AnimalService {
 
-    public static final int MAX_LENGTH_DESCRIPTION = 1000;
+
+    public static final String MESSAGE_FOR_UNKNOWN_EXCEPTION = "something went wrong while performing your request, " +
+            "please contact web administrator to report a problem";
     private final AnimalRepository animalRepository;
+    private final AnimalValidation animalValidation;
+
     @Autowired
-    public AnimalService(AnimalRepository animalRepository) {
+    public AnimalService(AnimalRepository animalRepository, AnimalValidation animalValidation) {
+        this.animalValidation =animalValidation;
         this.animalRepository = animalRepository;
     }
 
@@ -35,40 +42,45 @@ public class AnimalService {
     }
 
     public List<Animal> findAllAnimals(){
-        return animalRepository.findAll();
+        List<Animal> allAnimals = animalRepository.findAll();
+        if (allAnimals.size() == 0){
+            throw new AnimalNotFoundException("There are no animals in the database");
+        }
+        return allAnimals;
     }
 
     public void deleteAnimal(Long id){
-
         animalRepository.deleteById(id);
     }
 
     public Animal updateAnimal(AnimalDetailDto animalDetailDto){
         Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
+        setAnimal(animalDetailDto, existingAnimal);
+        animalValidation.instanceCheck(existingAnimal);
+        try {
+            Animal updatedAnimal = animalRepository.save(existingAnimal);
+            return updatedAnimal;
+        } catch (Exception exception) {
+            throw new SomethingWentWrongException(MESSAGE_FOR_UNKNOWN_EXCEPTION);
+        }
+    }
+
+    public void addAnimal(Animal animal){
+        animalValidation.instanceCheck(animal);
+        try {
+            animalRepository.save(animal);
+        } catch (Exception exception) {
+            throw new SomethingWentWrongException(MESSAGE_FOR_UNKNOWN_EXCEPTION);
+        }
+    }
+
+    private static void setAnimal(AnimalDetailDto animalDetailDto, Animal existingAnimal) {
         existingAnimal.setName(animalDetailDto.getName());
         existingAnimal.setCommonName(animalDetailDto.getCommonName());
         existingAnimal.setSpecies(animalDetailDto.getSpecies());
         existingAnimal.setDescription(animalDetailDto.getDescription());
         existingAnimal.setDateOfBirth(animalDetailDto.getDateOfBirth());
         existingAnimal.setImageUrl(animalDetailDto.getImageUrl());
-        Animal updatedAnimal = animalRepository.save(existingAnimal);
-        return updatedAnimal;
     }
 
-    public void addAnimal(Animal animal){
-        validationCheck(animal);
-        animalRepository.save(animal);
-    }
-
-    private static void validationCheck(Animal animal) {
-        if (animal.getName().length() == 0){
-            throw new FieldHasNoInputException("You have to fill in the animals name");
-        }
-        if (animal.getDateOfBirth().isAfter(LocalDate.now())) {
-            throw new DateTimeException("The date should be in de past");
-        }
-        if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
-            throw new InputIsToLargeException("Your input is to long");
-        }
-    }
 }
