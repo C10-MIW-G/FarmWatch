@@ -16,7 +16,7 @@ import java.util.List;
  * <p>
  * Does DTO <-> Model conversion for Ticket
  */
-public class TicketMapper {
+public class TicketMapper{
 
     private final UserService userService;
     private final AnimalService animalService;

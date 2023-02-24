@@ -81,7 +81,7 @@ export class TicketDetailComponent implements OnInit {
           this.newTicketMessageForm.message = '';
         },
         error: err => {
-          this.toast.ShowError("New Notification", "Adding new message failed!")
+          this.toast.ShowError("New Notification", err.error)
         }
       }
     );

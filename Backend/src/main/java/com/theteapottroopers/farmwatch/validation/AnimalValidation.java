@@ -34,6 +34,7 @@ public class AnimalValidation {
         nameMustNotBeNull(animal);
         dateMustNotBeNull(animal);
         dateMustBePresentOrPast(animal);
+        descriptionToLong(animal);
     }
 
     private void nameMustNotBeNull(Animal animal) {

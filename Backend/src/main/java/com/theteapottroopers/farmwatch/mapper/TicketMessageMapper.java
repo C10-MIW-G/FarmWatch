@@ -10,7 +10,7 @@ import com.theteapottroopers.farmwatch.service.UserService;
  * <p>
  * Does DTO <-> Model conversion for TicketMessage
  */
-public class TicketMessageMapper {
+public class TicketMessageMapper extends Mapper {
 
     private final UserService userService;
     private final TicketService ticketService;
@@ -23,7 +23,7 @@ public class TicketMessageMapper {
     public TicketMessage toTicketMessage(TicketMessageDtoAll ticketMessageDtoAll) {
         TicketMessage ticketMessageBuilder = TicketMessage.builder()
                 .sendBy(userService.findUserById(ticketMessageDtoAll.getSendByUser().getId()))
-                .message(ticketMessageDtoAll.getMessage())
+                .message(emptyToNull(ticketMessageDtoAll.getMessage()))
                 .ticket((ticketMessageDtoAll.getTicketId() != null ?
                         ticketService.findTicketById(ticketMessageDtoAll.getTicketId()) : null))
                 .build();
