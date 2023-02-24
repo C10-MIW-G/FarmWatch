@@ -42,12 +42,18 @@ public class TicketResource {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<List<TicketDtoAll>> getAllTickets(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Ticket> allTickets = ticketService.findAllTickets();
         List<TicketDtoAll> allTicketDtos = new ArrayList<>();
-        for (Ticket ticket: allTickets) {
-            allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
+        if(principal instanceof User){
+            for (Ticket ticket: allTickets) {
+                if (ticket.isTicketFromUserId(((User) principal).getId()) ||
+                        ((User) principal).getRole() != Role.ROLE_USER) {
+                    allTicketDtos.add(ticketMapper.toTicketDtoAll(ticket));
+                }
+            }
         }
         return new ResponseEntity<>(allTicketDtos, HttpStatus.OK);
     }
