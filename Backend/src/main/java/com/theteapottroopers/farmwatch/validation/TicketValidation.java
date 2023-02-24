@@ -38,6 +38,7 @@ public class TicketValidation {
         dateTimeMustNotBeNull(ticketMessage);
         messageMustNotBeNull(ticketMessage);
         ticketIdMustNotBeNull(ticketMessage);
+        messageMustContainACharacter(ticketMessage);
     }
     private void userIdMustNotBeNull(TicketMessage ticketMessage) {
         if (ticketMessage.getSendBy().getId() == null){
@@ -52,6 +53,13 @@ public class TicketValidation {
 
     private void messageMustNotBeNull(TicketMessage ticketMessage) {
         if (ticketMessage.getMessage() == null){
+            throw new FieldHasNoInputException("You have to fill in a message");
+        }
+    }
+
+    private void messageMustContainACharacter(TicketMessage ticketMessage) {
+        String pattern = "[\\x21-\\x7E]+";
+        if (!ticketMessage.getMessage().matches(pattern)){
             throw new FieldHasNoInputException("You have to fill in a message");
         }
     }
