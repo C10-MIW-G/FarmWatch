@@ -58,7 +58,7 @@ public class UserService {
 
     public User updateUser(UserDto userDto) {
         User userToUpdate = findUserById(userDto.getId());
-        userValidation.databaseValidation(userDto, userToUpdate);
+        userValidation.databaseCheck(userDto, userToUpdate);
         setUser(userDto, userToUpdate);
         try {
             userRepository.save(userToUpdate);

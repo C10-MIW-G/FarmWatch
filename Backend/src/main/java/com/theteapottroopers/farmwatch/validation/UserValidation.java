@@ -23,7 +23,7 @@ public class UserValidation {
     @Autowired
     public UserValidation(UserRepository userRepository) {this.userRepository = userRepository;}
 
-    public void databaseValidation(UserDto userDto, User user) {
+    public void databaseCheck(UserDto userDto, User user) {
         lastAdmin(userDto,user);
         uniqueUsername(userDto,user);
         uniqueEmail(userDto,user);
