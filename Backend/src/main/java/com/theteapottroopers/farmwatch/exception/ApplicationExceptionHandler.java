@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.DateTimeException;
 
 /**
@@ -64,6 +65,11 @@ public class ApplicationExceptionHandler {
                 .body(exception.getMessage());
     }
 
+    @ExceptionHandler(value = {SQLIntegrityConstraintViolationException.class})
+    public ResponseEntity<Object> handleCustomException(SQLIntegrityConstraintViolationException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body("Username or email already exists. Please try again");
+    }
 
 
 
