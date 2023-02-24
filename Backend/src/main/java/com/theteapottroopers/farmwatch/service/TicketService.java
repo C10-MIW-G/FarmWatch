@@ -31,7 +31,7 @@ public class TicketService {
 
     public List<Ticket> findAllTickets(){
         if (ticketRepository.findAll().size() == 0) {
-            throw new TicketNotFoundException("No ticket were found!");
+            throw new TicketNotFoundException("No tickets were found!");
         }
         return ticketRepository.findAll();
     }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
  * <p>
- * dit programma doet iets
+ * this class validates data for User
  */
 
 @Service

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.theteapottroopers.farmwatch.service.AnimalService.MESSAGE_FOR_UNKNOWN_EXCEPTION;
+
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
  * <p>
@@ -64,7 +66,7 @@ public class UserService {
             userRepository.save(userToUpdate);
             return userToUpdate;
         } catch (Exception exception) {
-            throw exception;
+            throw new SomethingWentWrongException(MESSAGE_FOR_UNKNOWN_EXCEPTION);
         }
     }
 
@@ -75,24 +77,4 @@ public class UserService {
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setRole(userDto.getRole());
     }
-
-//    private void validationDatabaseCheck(UserDto userDto, User user) {
-//        if (adminCount() == 1 &&
-//                user.getRole().equals(Role.ROLE_ADMIN) &&
-//                !userDto.getRole().equals(Role.ROLE_ADMIN)) {
-//            throw new LastAdminDeletionException("This user is the last Admin");
-//        }
-//        if (userRepository.findUserByUsername(userDto.getUsername()).isPresent() &&
-//                !userDto.getUsername().equals(user.getUsername())) {
-//            throw new InputHasDuplicateException("Username is already taken");
-//        }
-//        if (userRepository.findUserByEmail(user.getEmail()).isPresent() &&
-//                !userDto.getEmail().equals(user.getEmail())) {
-//            throw new InputHasDuplicateException("Email is already taken");
-//        }
-//    }
-
-
-
-
 }
