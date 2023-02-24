@@ -1,5 +1,6 @@
-package com.theteapottroopers.farmwatch.exception;
+package com.theteapottroopers.farmwatch.exception.handler;
 
+import com.theteapottroopers.farmwatch.exception.*;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
@@ -59,18 +60,18 @@ public class ApplicationExceptionHandler {
                 .body(exception.getMessage());
     }
 
+    @ExceptionHandler(value = { InputHasDuplicateException.class })
+    public ResponseEntity<Object> handleCustomException(InputHasDuplicateException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
+
+
     @ExceptionHandler(value = { DateTimeException.class })
     public ResponseEntity<Object> handleCustomException(DateTimeException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
-
-    @ExceptionHandler(value = {SQLIntegrityConstraintViolationException.class})
-    public ResponseEntity<Object> handleCustomException(SQLIntegrityConstraintViolationException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Username or email already exists. Please try again");
-    }
-
 
 
 }
