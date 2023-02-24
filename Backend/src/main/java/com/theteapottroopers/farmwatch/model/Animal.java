@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 public class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     @Column(nullable = false)
     private String name;
     private String commonName;
