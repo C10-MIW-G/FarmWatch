@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.seeds;
 
 import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
@@ -50,19 +51,26 @@ public class Seeder {
 
         Animal animal1 = new Animal("Clara", "Chicken", "Galus galus domesticus",
                 animal1Description, LocalDate.of(2012, 5, 17),
-                "https://upload.wikimedia.org/wikipedia/commons/d/d4/Chicken_portrait.jpg");
+                null);
+
+
         Animal animal2 = new Animal("Benjamin", "Donkey", "Equus africanus",
                 animal2Description, LocalDate.of(2010, 8, 12),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Donkey_in_Clovelly" +
-                        "%2C_North_Devon%2C_England.jpg/440px-Donkey_in_Clovelly%2C_North_Devon%2C_England.jpg");
-        Animal animal3 = new Animal("Hugo", "Horse", "Equus ferus caballus",
+                null);
+
+
+        /*Animal animal3 = new Animal("Hugo", "Horse", "Equus ferus caballus",
                 animal3Description, LocalDate.of(2009, 2, 21),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Horse-and-pony.jpg/" +
                         "1280px-Horse-and-pony.jpg");
+
+
         Animal animal4 = new Animal("Patrick", "Rabbit", "Oryctolagus cuniculus",
                 animal4Description, LocalDate.of(2011, 4, 7),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/" +
                         "440px-Oryctolagus_cuniculus_Rcdo.jpg");
+
+
         Animal animal5 = new Animal("Shelly", "Turtle", "Emydura subglobosa",
                 animal5Description, LocalDate.of(2013, 6, 25),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/" +
@@ -72,24 +80,22 @@ public class Seeder {
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/" +
                         "Roe_deer_eating_leaves_in_Tuntorp_2.jpg/1280px-Roe_deer_eating_leaves_in_Tuntorp_2.jpg");
         Animal animal7 = new Animal("Brownie", "Cow", "Bos taurus",
-                animal7Description, LocalDate.of(2008, 12, 15),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/S%C3%A4rk%C3%A4nniemi_-_cow.jpg/" +
-                        "1280px-S%C3%A4rk%C3%A4nniemi_-_cow.jpg");
+                animal7Description, LocalDate.of(2008, 12, 15));
         Animal animal8 = new Animal("Jimmy", "Chicken", "Galus galus domesticus",
                 animal8Description, LocalDate.of(2012, 7, 3),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/" +
                         "Male_and_female_chicken_sitting_together.jpg/" +
-                        "800px-Male_and_female_chicken_sitting_together.jpg");
+                        "800px-Male_and_female_chicken_sitting_together.jpg");*/
 
 
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
-        animalsToSeed.add(animal3);
+        /*animalsToSeed.add(animal3);
         animalsToSeed.add(animal4);
         animalsToSeed.add(animal5);
         animalsToSeed.add(animal6);
         animalsToSeed.add(animal7);
-        animalsToSeed.add(animal8);
+        animalsToSeed.add(animal8);*/
 
         for (Animal animal : animalsToSeed) {
             Optional<Animal> animalToSeed = animalRepository.findAnimalByName(animal.getName());
@@ -189,7 +195,7 @@ public class Seeder {
                 "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal2, user3, user7, null);
         ticketRepository.save(ticket2);
 
-        Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
+        /*Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
                 "infection in my neighborhood.", TicketStatus.OPEN, animal4, user3, user8, null);
         ticketRepository.save(ticket3);
 
@@ -214,7 +220,7 @@ public class Seeder {
         Ticket ticket8 = new Ticket(null, "Bald spots", "I was walking through the park with " +
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
                 TicketStatus.OPEN, animal3, user8, user7, null);
-        ticketRepository.save(ticket8);
+        ticketRepository.save(ticket8);*/
 
     }
 }

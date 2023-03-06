@@ -43,8 +43,8 @@ public class SecurityConfiguration {
                 //TODO: deze weghalen
                 .requestMatchers("/user/**").permitAll()
                 //TODO: add security check to upload.
-                .requestMatchers("/image").permitAll()
-                .requestMatchers("/image/*").permitAll()
+                .requestMatchers("/images").permitAll()
+                .requestMatchers("/images/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

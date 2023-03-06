@@ -3,11 +3,18 @@ package com.theteapottroopers.farmwatch.mapper;
 import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
 import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.service.FileStorageService;
 
 /**
  * @author Eelke Mulder
  */
 public class AnimalMapper extends Mapper{
+    private final FileStorageService fileStorageService;
+
+    public AnimalMapper(FileStorageService fileStorageService) {
+        this.fileStorageService = fileStorageService;
+    }
+
     public AnimalOverviewDto toAnimalOverviewDto(Animal animal){
        return new AnimalOverviewDto(
                animal.getId(),
@@ -23,7 +30,8 @@ public class AnimalMapper extends Mapper{
                 animal.getSpecies(),
                 animal.getDescription(),
                 animal.getDateOfBirth(),
-                animal.getImageUrl());
+                animal.getImageData() != null ? animal.getImageData().getName() : null
+        );
     }
 
     public Animal toAnimal(AnimalDetailDto animalDetailDto) {return new Animal(
@@ -32,5 +40,7 @@ public class AnimalMapper extends Mapper{
             emptyToNull(animalDetailDto.getSpecies()),
             emptyToNull(animalDetailDto.getDescription()),
             animalDetailDto.getDateOfBirth(),
-            emptyToNull(animalDetailDto.getImageUrl()));}
+            animalDetailDto.getImageFileName() != null ?
+                    fileStorageService.findImageDataByFileName(animalDetailDto.getImageFileName()) : null);
+            }
 }
