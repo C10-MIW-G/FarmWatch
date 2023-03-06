@@ -59,8 +59,8 @@ public class TicketValidation {
 
     private void messageMustContainACharacter(TicketMessage ticketMessage) {
         String pattern = "[\\x21-\\x7E]+";
-        if (!ticketMessage.getMessage().matches(pattern)){
-            throw new FieldHasNoInputException("You have to fill in a message");
+        if (!ticketMessage.getMessage().substring(0, 1).matches(pattern)){
+            throw new FieldHasNoInputException("Message has to start with a word");
         }
     }
 
