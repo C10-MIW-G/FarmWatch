@@ -31,7 +31,7 @@ export class AddAnimalComponent {
     },
       error: error => {
         if(error.error.message != null){
-          this.toast.ShowError("New Notification", "Please login again");
+          this.toast.ShowError("New Notification", error.error.message);
         } else {
           this.toast.ShowError("New Notification", error.error);
         }
