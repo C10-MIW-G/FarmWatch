@@ -2,9 +2,7 @@ package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.dto.UserLeanDto;
 import com.theteapottroopers.farmwatch.dto.UserDto;
-import com.theteapottroopers.farmwatch.exception.LastAdminDeletionException;
 import com.theteapottroopers.farmwatch.mapper.UserMapper;
-import com.theteapottroopers.farmwatch.exception.ErrorResponse;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.UserService;

@@ -1,4 +1,4 @@
-package com.theteapottroopers.farmwatch.exception;
+package com.theteapottroopers.farmwatch.exception.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

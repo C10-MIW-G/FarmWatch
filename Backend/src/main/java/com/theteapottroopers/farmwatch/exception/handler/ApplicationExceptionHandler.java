@@ -30,18 +30,6 @@ public class ApplicationExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
-    @ExceptionHandler(value = { ExpiredJwtException.class })
-    public ResponseEntity<Object> handleCustomException(ExpiredJwtException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Please login again\n\n" + exception.getMessage());
-    }
-
-    @ExceptionHandler(value = { LoginException.class })
-    public ResponseEntity<Object> handleCustomException(LoginException exception) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body("Please login again");
-    }
-
     @ExceptionHandler(value = { PropertyValueException.class })
     public ResponseEntity<Object> handleCustomException(PropertyValueException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
