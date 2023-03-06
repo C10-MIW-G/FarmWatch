@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AnimalToAdd } from '../../model/add-animal';
 import { AddAnimalService } from '../../service/add-animal.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/service/toast.service';
 
@@ -14,17 +13,23 @@ import { ToastService } from 'src/app/service/toast.service';
 
 export class AddAnimalComponent {
 
-  animal: AnimalToAdd 
+  form: any = {
+    name: null,
+    commonName: null,
+    species: null,
+    description: null,
+    dateOfBirth: null,
+    imageFileName: null,
+  }
   
-  constructor(private addAnimalService : AddAnimalService, 
-              private route: ActivatedRoute, 
+  constructor(private addAnimalService : AddAnimalService,
               private router: Router, 
               private toast:ToastService) {
-    this.animal = new AnimalToAdd()
   } 
 
   onSubmit() {
-    this.addAnimalService.createAnimal(this.animal).subscribe({
+    const {name, commonName, species, description, dateOfBirth, imageFileName } = this.form;
+    this.addAnimalService.createAnimal(name, commonName, species, description, dateOfBirth, imageFileName).subscribe({
       next: response => {
         this.gotoUserList();
         this.toast.ShowSucces("New notification", "Succesfully added a new animal");
