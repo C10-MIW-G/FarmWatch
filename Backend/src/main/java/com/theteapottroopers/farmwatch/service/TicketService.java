@@ -5,6 +5,7 @@ import com.theteapottroopers.farmwatch.exception.TicketNotFoundException;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.repository.TicketRepository;
 import com.theteapottroopers.farmwatch.security.user.User;
+import com.theteapottroopers.farmwatch.validation.TicketValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,16 @@ import java.util.List;
 public class TicketService {
 
     private final TicketRepository ticketRepository;
+    private final TicketValidation ticketValidation;
     private final UserService userService;
     private final AnimalService animalService;
     @Autowired
-    public TicketService(TicketRepository ticketRepository, UserService userService, AnimalService animalService) {
+    public TicketService(TicketRepository ticketRepository, UserService userService, AnimalService animalService,
+                         TicketValidation ticketValidation) {
         this.ticketRepository = ticketRepository;
         this.userService = userService;
         this.animalService = animalService;
+        this.ticketValidation = ticketValidation;
     }
 
 
@@ -42,6 +46,7 @@ public class TicketService {
     }
 
     public void addTicket(Ticket ticket) {
+        ticketValidation.instanceTicketCheck(ticket);
         ticketRepository.save(ticket);
     }
 

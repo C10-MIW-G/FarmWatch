@@ -16,7 +16,7 @@ import java.util.List;
  * <p>
  * Does DTO <-> Model conversion for Ticket
  */
-public class TicketMapper{
+public class TicketMapper extends Mapper{
 
     private final UserService userService;
     private final AnimalService animalService;
@@ -30,8 +30,8 @@ public class TicketMapper{
         List<Long> ticketMessagesDtoIdList = getTicketMessagesId(ticket);
         TicketDtoAll ticketDtoAllBuilder = TicketDtoAll.builder()
                 .id(ticket.getId())
-                .summary(ticket.getSummary())
-                .description(ticket.getDescription())
+                .summary(emptyToNull(ticket.getSummary()))
+                .description(emptyToNull(ticket.getDescription()))
                 .status(ticket.getStatus().toString())
                 .reportDateTime(ticket.getReportDateTime())
                 .animal((ticket.getAnimal() != null) ?

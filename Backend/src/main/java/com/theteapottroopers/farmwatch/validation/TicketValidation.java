@@ -33,6 +33,11 @@ public class TicketValidation {
         this.ticketMessageRepository = ticketMessageRepository;
     }
 
+    public void instanceTicketCheck(Ticket ticket) {
+        summaryMustNotBeNull(ticket);
+        descriptionMustNotBeNull(ticket);
+    }
+
     public void instanceMessageCheck(TicketMessage ticketMessage) {
         userIdMustNotBeNull(ticketMessage);
         dateTimeMustNotBeNull(ticketMessage);
@@ -40,6 +45,19 @@ public class TicketValidation {
         ticketIdMustNotBeNull(ticketMessage);
         messageMustContainACharacter(ticketMessage);
     }
+
+    private void summaryMustNotBeNull(Ticket ticket){
+        if (ticket.getSummary() == null){
+            throw new FieldHasNoInputException("Summary can't be be empty");
+        }
+    }
+
+    private void descriptionMustNotBeNull(Ticket ticket){
+        if (ticket.getDescription() == null){
+            throw new FieldHasNoInputException("Description can't be be empty");
+        }
+    }
+
     private void userIdMustNotBeNull(TicketMessage ticketMessage) {
         if (ticketMessage.getSendBy().getId() == null){
             throw new FieldHasNoInputException("Ticket message has to be assigned to user");

@@ -3,6 +3,7 @@ package com.theteapottroopers.farmwatch.model.ticket;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.security.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,8 +22,10 @@ import java.util.List;
 public class Ticket {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
     @Column(nullable = false)
     private String summary;
+    @NotNull
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)

@@ -4,17 +4,11 @@ import com.theteapottroopers.farmwatch.exception.FieldHasNoInputException;
 import com.theteapottroopers.farmwatch.exception.InputIsToLargeException;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
@@ -60,13 +54,4 @@ public class AnimalValidation {
             throw new InputIsToLargeException("Your input is to long");
         }
     }
-
-
-
-
-
-//    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//    Validator validator = factory.getValidator();
-//    Set<ConstraintViolation<Animal>> violations = validator.validate(animal);
-
 }
