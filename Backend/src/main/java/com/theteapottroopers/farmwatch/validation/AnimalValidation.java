@@ -50,8 +50,10 @@ public class AnimalValidation {
     }
 
     private void descriptionToLong(Animal animal) {
-        if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
-            throw new InputIsToLargeException("Your input is to long");
+        if (animal.getDescription() != null){
+            if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
+                throw new InputIsToLargeException("Your input is to long");
+            }
         }
     }
 }
