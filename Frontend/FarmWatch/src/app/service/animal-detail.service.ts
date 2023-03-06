@@ -14,9 +14,11 @@ export class AnimalDetailService {
     return this.http.get<AnimalDetail>(`${this.apiServerUrl}/animal/${id}`)
   }
 
+  public getAnimalImage(fileName: string): Observable<File>{
+    return this.http.get<File>(`${this.apiServerUrl}/images/${fileName}`)
+  }
+
   public deleteAnimal(AnimalDetailId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/animal/${AnimalDetailId}`);
   }
-  
-  
 }
