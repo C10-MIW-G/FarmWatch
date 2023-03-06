@@ -26,6 +26,7 @@ public class TicketMessageMapper extends Mapper {
                 .message(emptyToNull(ticketMessageDtoAll.getMessage()))
                 .ticket((ticketMessageDtoAll.getTicketId() != null ?
                         ticketService.findTicketById(ticketMessageDtoAll.getTicketId()) : null))
+                .privateMessage(ticketMessageDtoAll.isPrivateMessage())
                 .build();
         return ticketMessageBuilder;
     }
@@ -40,6 +41,7 @@ public class TicketMessageMapper extends Mapper {
                 .messageLocalDateTime(ticketMessage.getMessageDateTime())
                 .message(ticketMessage.getMessage())
                 .ticketId(ticketMessage.getTicket().getId())
+                .privateMessage(ticketMessage.isPrivateMessage())
                 .build();
         return ticketMessageDtoAll;
     }

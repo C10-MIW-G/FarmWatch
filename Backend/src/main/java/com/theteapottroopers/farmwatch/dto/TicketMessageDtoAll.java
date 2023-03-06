@@ -20,6 +20,7 @@ public class TicketMessageDtoAll {
     private LocalDateTime messageLocalDateTime;
     private String message;
     private Long ticketId;
+    private boolean privateMessage;
 
     @Getter
     @Setter

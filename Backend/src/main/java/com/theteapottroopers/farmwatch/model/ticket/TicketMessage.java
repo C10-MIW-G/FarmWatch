@@ -32,5 +32,7 @@ public class TicketMessage {
     @ManyToOne
     @JoinColumn(name = "ticket_id", nullable = false)
     private Ticket ticket;
+
+    private boolean privateMessage;
 }
 
