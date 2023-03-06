@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Upload File</h1>
+<div mat-dialog-content>
+    <div *ngIf="currentFile">
+      <img [src]="imagePreviewUrl" class="image-preview">
+    </div>
+
+    <div><input type="file" accept="image/*" class="file-upload" (change)="onFileSelected($event)"></div>
+  </div>
+<mat-dialog-actions>
+    <div class="actions">
+    <div class="row">
+      <div class="">
+        <button class="btn btn-secondary tooltips" [mat-dialog-close]="false">{{cancelButtonText}}</button>
+      </div>
+      <div class="" *ngIf="hasFile && !uploadReady">
+        <button class="btn btn-primary tooltips"  (click)="uploadFile()">Upload Image</button>
+      </div>
+      <div class="" *ngIf="uploadReady">
+        <button class="btn btn-primary tooltips" [mat-dialog-close]="generatedUuid">Submit</button>
+      </div>
+    </div>
+  </div>
+  </mat-dialog-actions>

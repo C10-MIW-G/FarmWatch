@@ -5,5 +5,5 @@ export interface AnimalDetail {
     species: string;
     description: string;
     dateOfBirth: string;
-    imageUrl: string;
+    imageFileName: string;
 }

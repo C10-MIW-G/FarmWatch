@@ -38,6 +38,9 @@ import { TicketUpdateComponent } from './component/ticket-update/ticket-update.c
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component'
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { FileUploadComponent } from './component/file-upload/file-upload.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NewTicketMessageComponent } from './component/new-ticket-message/new-ticket-message.component';
 
 
 @NgModule({
@@ -59,7 +62,9 @@ import { MatSortModule } from '@angular/material/sort';
     UserDetailComponent,
     TicketOverviewComponent,
     TicketUpdateComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FileUploadComponent,
+    NewTicketMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +93,8 @@ import { MatSortModule } from '@angular/material/sort';
       easing: "ease-in",
       easeTime: 750,
       timeOut: 3000
-    })
+    }),
+    MatSlideToggleModule
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,

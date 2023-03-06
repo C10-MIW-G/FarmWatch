@@ -8,4 +8,5 @@ export interface TicketMessage {
     messageLocalDateTime: string;
     message: string;
     ticketId: number;
+    privateMessage: boolean;
 }

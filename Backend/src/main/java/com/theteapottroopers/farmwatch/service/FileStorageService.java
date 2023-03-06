@@ -1,7 +1,7 @@
 package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.Utilities.ImageUtilities;
-import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
+import com.theteapottroopers.farmwatch.exception.ImageFileNotFoundException;
 import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.repository.StorageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @Author is Berend Boksma <b.boksma@st.hanze.nl>
@@ -26,21 +27,33 @@ public class FileStorageService {
         this.storageRepository = storageRepository;
     }
 
-    public ImageData findAnimalById(Long id){
-        return storageRepository.findById(id).orElseThrow(() -> new AnimalNotFoundException(
+    public ImageData findImageDataByFileName(String filename){
+        return storageRepository.findByName(filename).orElseThrow(() -> new ImageFileNotFoundException(
+                filename + " was not found!"));
+    }
+
+    public String generateUuid(){
+        return UUID.randomUUID().toString();
+    }
+
+    public ImageData findImageDataById(Long id){
+        return storageRepository.findById(id).orElseThrow(() -> new ImageFileNotFoundException(
                 "Image by id " + id + " was not found!"));
     }
 
     public String uploadImage(MultipartFile file) throws IOException {
+
+        String uuid = generateUuid();
+
         ImageData imageData = storageRepository.save(ImageData.builder()
-                .name(file.getOriginalFilename())
+                .name(uuid)
                 .type(file.getContentType())
                 .imageData(ImageUtilities.compressImage(file.getBytes())).build());
 
         if(imageData != null){
-            return file.getOriginalFilename() + " Was Uploaded Succesfully. File type: " + file.getContentType();
+            return uuid;
         }
-        return null;
+        return "";
     }
 
     public byte[] downloadImage(String fileName){

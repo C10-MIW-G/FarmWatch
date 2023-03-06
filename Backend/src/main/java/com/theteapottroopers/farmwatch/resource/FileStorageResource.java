@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.resource;
 
+import com.theteapottroopers.farmwatch.dto.ImageUuidDto;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.json.Json;
 import java.io.IOException;
 
 /**
@@ -24,17 +26,32 @@ public class FileStorageResource {
         this.fileStorageService = fileStorageService;
     }
 
-    @PostMapping("/image")
-    // @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')") Frontend not implemented yet
-    public ResponseEntity<?> uploadImage(@RequestParam("image")MultipartFile file) throws IOException{
-        String uploadImage = fileStorageService.uploadImage(file);
+    @GetMapping("/images/generate-uuid")
+    public ResponseEntity<?> generateUuid(){
+        String uuid = fileStorageService.generateUuid();
 
-        return ResponseEntity.status(HttpStatus.OK)
-                        .body(uploadImage);
+        //TODO Put in Service
+        ImageUuidDto imageuuiddto = new ImageUuidDto();
+        imageuuiddto.setUuid(uuid);
+
+        return new ResponseEntity<>(imageuuiddto, HttpStatus.OK);
     }
 
-    @GetMapping("/image/{fileName}")
-    // @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')") Frontend not implemented yet!
+    @PostMapping("/images")
+    // @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')") // Frontend not implemented yet
+    public ResponseEntity<?> uploadImage(@RequestParam("imageFile")MultipartFile file) throws IOException{
+
+        String uuid = fileStorageService.uploadImage(file);
+        ImageUuidDto imageUuidDto = new ImageUuidDto(uuid);
+
+        if(!uuid.isEmpty()) {
+            return new ResponseEntity<>(imageUuidDto, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @GetMapping("/images/{fileName}")
     public ResponseEntity<?> downloadImage(@PathVariable String fileName){
         byte[] imageData = fileStorageService.downloadImage(fileName);
 

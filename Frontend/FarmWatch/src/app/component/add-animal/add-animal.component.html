@@ -8,18 +8,12 @@
   <div class="col-md-6 offset-md-3">
     <br>
     <form (ngSubmit) = "onSubmit()">
-
-        <div class="form-group">
-            <input type="hidden" class ="form-control" id = "id"
-                [(ngModel)] = "animal.id" name = "id">
-        </div>
-
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label> Animal name:</label>
                 <input type="text" class ="form-control" id = "name"
-                    [(ngModel)] = "animal.name" name = "name" placeholder="Animal name">
+                    [(ngModel)] = "form.name" name = "name" placeholder="Animal name">
             </div>
         </div>
         <div class="col-md-6">
@@ -31,7 +25,7 @@
                     [matDatepicker]="picker"
                     class="form-control"
                     id="dateOfBirth"
-                    [(ngModel)]="animal.dateOfBirth"
+                    [(ngModel)]="form.dateOfBirth"
                     name="dateOfBirth"
                     placeholder="Pick a date"
                     readonly="true"
@@ -48,7 +42,7 @@
             <div class="form-group">
                 <label> Species:</label>
                 <input type="text" class ="form-control" id = "species"
-                    [(ngModel)] = "animal.species" name = "species" placeholder="Species (Latin)">
+                    [(ngModel)] = "form.species" name = "species" placeholder="Species (Latin)">
             </div>
         </div>
 
@@ -56,7 +50,7 @@
             <div class="form-group">
                 <label> Common name:</label>
                 <input type="text" class ="form-control" id = "commonName"
-                    [(ngModel)] = "animal.commonName" name = "commonName" placeholder="Species (English)">
+                    [(ngModel)] = "form.commonName" name = "commonName" placeholder="Species (English)">
             </div>
         </div>
     </div>      
@@ -64,14 +58,14 @@
         <div class="form-group">
             <label> Description:</label>
             <textarea name="textarea" style="height:150px;"class ="form-control" id = "description"
-            [(ngModel)] = "animal.description" name = "description" placeholder="Enter a description about the animal"></textarea>
+            [(ngModel)] = "form.description" name = "description" placeholder="Enter a description about the animal"></textarea>
             
         </div>
 
         <div class="form-group">
             <label> Image url:</label>
-            <input type="text" class ="form-control" id = "imageUrl"
-                [(ngModel)] = "animal.imageUrl" name = "imageUrl" placeholder="Enter an image URL">
+            <input type="text" class ="form-control" id = "imageFileName"
+                [(ngModel)] = "form.imageFileName" name = "imageFileName" placeholder="Enter an image URL">
         </div>
         </div>
     

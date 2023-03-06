@@ -43,22 +43,7 @@
                 <div class="col">
                     <h3>Ticket Messages</h3>
                     <div class="ticket-message-container mx-auto">
-                        <div>
-                            <form name="form" #f="ngForm" (ngSubmit)="onSubmit()">
-                                <div class="form-group">
-                                    <label for="newTicketMessage">New Ticket Message</label>
-                                    <textarea class="form-control" id="newTicketMessage" rows="3" 
-                                    name="message"
-                                    [(ngModel)]="newTicketMessageForm.message"
-                                    required
-                                    message
-                                    #message="ngModel"></textarea>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Submit</button> 
-                                </div>
-                            </form>
-                        </div>
+                        <button mat-raised-button color="primary" (click)="openNewMessageDialog()">New message</button>
                         <ng-container *ngFor="let ticketMessage of ticketMessages">
                             <div class="fw-comment-container d-flex">
                                 <div class="fw-comment-userinfo">

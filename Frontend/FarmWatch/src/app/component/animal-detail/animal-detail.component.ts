@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../../security/_services/storage.service';
 import { ToastService } from "src/app/service/toast.service";
 import { DialogService } from "src/app/service/dialog.service";
+import { FileUploadService } from "src/app/service/file-upload.service";
+import { fileuploaddialogdata } from "src/app/model/fileupload-dialog-data";
 
 @Component({
     selector: 'app-animal',
@@ -16,6 +18,7 @@ export class AnimalDetailComponent implements OnInit {
     public animalDetail?: AnimalDetail;
     public id!: number;
     public isAuthorized: boolean = false; 
+    public imageUrl: string = "localhost:8080/image/"
 
     confirmationMessage = "Are you sure you want to delete ";
 
@@ -24,7 +27,8 @@ export class AnimalDetailComponent implements OnInit {
       private router: Router, 
       private storageService: StorageService,
       private toast: ToastService,
-      private dialog: DialogService) {
+      private dialog: DialogService,
+      private fileupload: FileUploadService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -46,6 +50,7 @@ export class AnimalDetailComponent implements OnInit {
         this.animalDetailService.getAnimalDetail(id).subscribe(
           (response: AnimalDetail) => {
             this.animalDetail = response;
+            this.imageUrl = "http://localhost:8080/images/" + this.animalDetail.imageFileName;
           },
           (error: HttpErrorResponse) => {
             alert(error.message);
@@ -86,7 +91,6 @@ export class AnimalDetailComponent implements OnInit {
         if (response) {
           this.animalDetailService.deleteAnimal(AnimalDetailId).subscribe(
             (response: void) => {
-                console.log(response);
                 this.router.navigate(['/']);
                 this.toast.ShowSucces("New Notification", this.animalDetail?.name + " deleted succesfully")
             },

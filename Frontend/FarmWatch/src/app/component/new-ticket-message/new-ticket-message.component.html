@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>New Message</h1>
+<div id="newTicketMessageForm">
+    <div mat-dialog-content>
+        <div>
+            <form name="form" #f="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <textarea class="form-control" id="newTicketMessage" rows="3" 
+                    name="message"
+                    [(ngModel)]="newTicketMessageForm.message"
+                    required
+                    message
+                    #message="ngModel"></textarea>
+                    <label for="newTicketMessageSlider">Private message</label>
+                    <mat-slide-toggle id="newTicketMessageSlider"
+                    name="privateMessage"
+                    [(ngModel)]="newTicketMessageForm.privateMessage"
+                    privateMessage
+                    #privateMessage="ngModel"></mat-slide-toggle>
+                </div>
+            </form>
+            <button mat-raised-button (click)="onExit()">Exit</button>
+            <button mat-raised-button [mat-dialog-close]="newTicketMessageForm">Ok</button>
+        </div>
+    </div>
+</div>

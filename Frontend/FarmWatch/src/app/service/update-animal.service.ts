@@ -19,4 +19,7 @@ export class UpdateAnimalService {
     return this.http.get<AnimalDetail>(`${this.apiServerUrl}/animal/${id}`)
   }
 
+  public deleteAnimal(AnimalDetailId: number): Observable<void>{
+    return this.http.delete<void>(`${this.apiServerUrl}/animal/${AnimalDetailId}`);
+  }
 }

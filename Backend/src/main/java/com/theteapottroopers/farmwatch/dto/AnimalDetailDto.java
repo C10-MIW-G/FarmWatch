@@ -21,5 +21,5 @@ public class AnimalDetailDto {
     private String species;
     private String description;
     private LocalDate dateOfBirth;
-    private String imageUrl;
+    private String imageFileName;
 }

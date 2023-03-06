@@ -5,6 +5,7 @@ import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.AnimalService;
+import com.theteapottroopers.farmwatch.service.FileStorageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +27,13 @@ public class AnimalResource {
     private final AnimalService animalService;
     private final TicketService ticketService;
     private final AnimalMapper animalMapper;
+    private final FileStorageService fileStorageService;
 
-    public AnimalResource(AnimalService animalService, TicketService ticketService) {
+    public AnimalResource(AnimalService animalService, TicketService ticketService, FileStorageService fileStorageService) {
         this.animalService = animalService;
         this.ticketService = ticketService;
-        animalMapper = new AnimalMapper();
+        this.fileStorageService = fileStorageService;
+        animalMapper = new AnimalMapper(fileStorageService);
     }
     
     @GetMapping()
