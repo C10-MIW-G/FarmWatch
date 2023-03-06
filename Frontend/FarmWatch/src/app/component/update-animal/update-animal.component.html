@@ -56,9 +56,8 @@
                         [(ngModel)]="updateAnimal.description" name="description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label> Image url:</label>
-                    <input type="text" class="form-control" id="imageUrl" [(ngModel)]="updateAnimal.imageUrl"
-                        name="imageUrl">
+                    <input type="hidden" class="form-control" id="imageFileName" [(ngModel)]="updateAnimal.imageFileName"
+                        name="imageFileName">
                 </div>
                 <button class="btn btn-primary" type="submit" style="float: right">Submit</button>
             </div>
@@ -69,6 +68,15 @@
 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
+        <div>
+    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
+    && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
+      (click)="confirmDeleteAction(id)">Delete</button>
+    <br>
+    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
+    && getRole() === 'ADMIN' || getRole() === 'CARETAKER' || getRole() === 'User'"
+      (click)="openImageUploadAction()">Upload new Image</button>
+        </div>
     </mat-sidenav>
 
 </mat-sidenav-container>
