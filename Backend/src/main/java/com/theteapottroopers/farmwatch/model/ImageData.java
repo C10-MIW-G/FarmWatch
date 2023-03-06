@@ -16,6 +16,7 @@ import lombok.*;
 public class ImageData {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String name;
     private String type;
     @Lob // Needed to store BINARY FORMAT
