@@ -19,10 +19,6 @@ import java.time.LocalDate;
 @Service
 public class AnimalValidation {
     public static final int MAX_LENGTH_DESCRIPTION = 1000;
-    private final UserRepository userRepository;
-
-    @Autowired
-    public AnimalValidation(UserRepository userRepository) {this.userRepository = userRepository;}
 
     public void instanceCheck(Animal animal) {
         nameMustNotBeNull(animal);
@@ -52,7 +48,7 @@ public class AnimalValidation {
     private void descriptionToLong(Animal animal) {
         if (animal.getDescription() != null){
             if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
-                throw new InputIsToLargeException("Your input is to long");
+                throw new InputIsToLargeException("Your input is too long");
             }
         }
     }

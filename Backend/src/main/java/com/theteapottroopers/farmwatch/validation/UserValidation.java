@@ -33,21 +33,21 @@ public class UserValidation {
         if (userRepository.countByRole(Role.ROLE_ADMIN) == 1 &&
                 user.getRole().equals(Role.ROLE_ADMIN) &&
                 !userDto.getRole().equals(Role.ROLE_ADMIN)) {
-            throw new LastAdminDeletionException("This user is the last Admin");
+            throw new LastAdminDeletionException("This user is the last admin");
         }
     }
 
     private void uniqueUsername(UserDto userDto, User user) {
         if (userRepository.findUserByUsername(userDto.getUsername()).isPresent() &&
                 !userDto.getUsername().equals(user.getUsername())) {
-            throw new InputHasDuplicateException("Username is already taken");
+            throw new InputHasDuplicateException("Username already exists");
         }
     }
 
     private void uniqueEmail(UserDto userDto, User user) {
         if (userRepository.findUserByEmail(user.getEmail()).isPresent() &&
                 !userDto.getEmail().equals(user.getEmail())) {
-            throw new InputHasDuplicateException("Email is already taken");
+            throw new InputHasDuplicateException("An account with Email " + userDto.getEmail() +" already exists.");
         }
     }
 
