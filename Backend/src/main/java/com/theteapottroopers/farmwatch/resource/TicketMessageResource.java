@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.resource;
 
 import com.theteapottroopers.farmwatch.dto.TicketMessageDtoAll;
 import com.theteapottroopers.farmwatch.mapper.TicketMessageMapper;
+import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
@@ -26,11 +27,13 @@ public class TicketMessageResource {
 
     private final TicketMessageService ticketMessageService;
     private final TicketMessageMapper ticketMessageMapper;
+    private final TicketService ticketService;
 
     public TicketMessageResource(TicketService ticketService,
                                  TicketMessageService ticketMessageService,
-                                 UserService userService) {
+                                 UserService userService, TicketService ticketService1) {
         this.ticketMessageService = ticketMessageService;
+        this.ticketService = ticketService1;
         this.ticketMessageMapper = new TicketMessageMapper(userService, ticketService);
     }
 
@@ -51,11 +54,20 @@ public class TicketMessageResource {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<?> addTicketMessage(@RequestBody TicketMessageDtoAll ticketMessageDtoAll){
-        TicketMessage ticketMessage = ticketMessageMapper.toTicketMessage(ticketMessageDtoAll);
-        ticketMessageService.addTicketMessage(ticketMessage);
-        ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
-        return new ResponseEntity<>(ticketMessageDtoAll,HttpStatus.CREATED);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(principal instanceof User) {
+            Ticket ticket = ticketService.findTicketById(ticketMessageDtoAll.getTicketId());
+            if (ticket.isTicketFromUserId(((User) principal).getId()) ||
+                    ((User) principal).getRole() != Role.ROLE_USER) {
+                TicketMessage ticketMessage = ticketMessageMapper.toTicketMessage(ticketMessageDtoAll);
+                ticketMessageService.addTicketMessage(ticketMessage);
+                ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
+                return new ResponseEntity<>(ticketMessageDtoAll, HttpStatus.CREATED);
+            }
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
