@@ -1,8 +1,9 @@
-import { Component, Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ConfirmationDialogComponent } from '../component/confirmation-dialog/confirmation-dialog.component';
 import { NewTicketMessageComponent } from '../component/new-ticket-message/new-ticket-message.component';
+import { FileUploadComponent } from '../component/file-upload/file-upload.component';
 import { confirmdialogdata } from '../model/confirm-dialog-data';
 
 @Injectable({
@@ -20,7 +21,12 @@ export class DialogService {
 
   showConfirmDialog(data: confirmdialogdata): Observable<Boolean> {
     this.closeAll();
-    return this.dialog.open(ConfirmationDialogComponent, { data }).afterClosed() ;
+    return this.dialog.open(ConfirmationDialogComponent, { data }).afterClosed();
+  }
+
+  showUploadFile(): Observable<any> {
+    this.closeAll();
+    return this.dialog.open(FileUploadComponent).afterClosed();
   }
 
   showNewTicketMessageDialog(): Observable<any> {
