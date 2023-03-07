@@ -19,4 +19,5 @@ public class TicketDtoNew {
     private String description;
     private String reportUsername;
     private Long animalId;
+    private String imageFileName;
 }

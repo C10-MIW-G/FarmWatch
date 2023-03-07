@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.model.ticket;
 
 import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.security.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -45,6 +46,8 @@ public class Ticket {
     private User assignedTo;
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.REMOVE)
     private List<TicketMessage> ticketMessages;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private ImageData image;
 
     public boolean isTicketFromUserId(Long id){
         return reportedBy.getId().equals(id);

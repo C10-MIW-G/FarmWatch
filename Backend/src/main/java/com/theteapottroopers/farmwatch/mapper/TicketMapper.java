@@ -7,6 +7,7 @@ import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.service.AnimalService;
+import com.theteapottroopers.farmwatch.service.FileStorageService;
 import com.theteapottroopers.farmwatch.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,12 @@ public class TicketMapper extends Mapper{
 
     private final UserService userService;
     private final AnimalService animalService;
+    private final FileStorageService fileStorageService;
 
-    public TicketMapper(UserService userService, AnimalService animalService) {
+    public TicketMapper(UserService userService, AnimalService animalService, FileStorageService fileStorageService) {
         this.userService = userService;
         this.animalService = animalService;
+        this.fileStorageService = fileStorageService;
     }
 
     public TicketDtoAll toTicketDtoAll(Ticket ticket){
@@ -40,6 +43,8 @@ public class TicketMapper extends Mapper{
                 .assignedToUser((ticket.getAssignedTo() != null) ?
                         getAssignedToUserFromTicket(ticket) : null)
                 .ticketMessageIds(ticketMessagesDtoIdList)
+                .imageFileName(ticket.getImage() != null ?
+                        ticket.getImage().getName() : null)
                 .build();
         return ticketDtoAllBuilder;
     }
@@ -79,6 +84,8 @@ public class TicketMapper extends Mapper{
                         animalService.findAnimalById(ticketDtoNew.getAnimalId()) : null)
                 .reportedBy(userService.findUserByUsername(ticketDtoNew.getReportUsername()))
                 .assignedTo(null)
+                .image(ticketDtoNew.getImageFileName() != null ?
+                        fileStorageService.findImageDataByFileName(ticketDtoNew.getImageFileName()) : null)
                 .build();
         return ticketAllBuilder;
     }
@@ -103,6 +110,8 @@ public class TicketMapper extends Mapper{
             ticketDtoUpdate.setAssignedTo(ticket.getAssignedTo().getId());
             ticketDtoUpdate.setAssignedToName(getFullName(ticket).toString());
         }
+        ticketDtoUpdate.setImageFileName(ticket.getImage() != null ?
+                ticket.getImage().getName() : null);
         return ticketDtoUpdate;
     }
 

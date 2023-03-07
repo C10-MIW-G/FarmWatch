@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateTicket } from 'src/app/model/create-ticket';
 import { CreateTicketService } from 'src/app/service/create-ticket.service';
+import { DialogService } from 'src/app/service/dialog.service';
 import { AnimalOverview } from '../../model/animal-overview';
 import { StorageService } from '../../security/_services/storage.service';
 import { AnimalOverviewService } from '../../service/animal-overview.service';
@@ -21,17 +23,19 @@ export class CreateTicketComponent implements OnInit{
     description: null,
     animalId: -1
   };
-  reportUsername= '';
+  reportUsername = '';
   errorMessage = '';
   animals: AnimalOverview[] = [];
   created = false;
+  imageFileName = '';
 
   constructor(private createTicketService: CreateTicketService, 
     private route: ActivatedRoute, 
     private router: Router, 
     private storageService: StorageService, 
     private animalOverviewService: AnimalOverviewService,
-    private toast: ToastService) { }
+    private toast: ToastService,
+    private dialog: DialogService) { }
   ngOnInit(): void {
     this.getAnimals();
   }
@@ -45,7 +49,7 @@ export class CreateTicketComponent implements OnInit{
     }
     else(animalTempId=animalId)
 
-    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername).subscribe({
+    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername, this.imageFileName).subscribe({
       next: data => {
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
@@ -69,6 +73,18 @@ export class CreateTicketComponent implements OnInit{
           this.toast.ShowError("New Notification", error.error.message);
         } else {
           this.toast.ShowError("New Notification", error.error);
+        }
+      }
+    );
+  }
+
+  openImageUploadAction(){
+    this.dialog.showUploadFile().subscribe(
+      (response) => {
+        if(response){
+          this.toast.ShowSucces("New Notification", "Image added succesfully")
+          this.imageFileName = response;
+          console.log("Generated UUID: " + response);
         }
       }
     );
