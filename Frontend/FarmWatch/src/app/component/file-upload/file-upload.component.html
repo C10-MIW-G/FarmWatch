@@ -1,23 +1,26 @@
 <h1 mat-dialog-title>Upload File</h1>
 <div mat-dialog-content>
-    <div *ngIf="currentFile">
-      <img [src]="imagePreviewUrl" class="image-preview">
+  <div *ngIf="currentFile">
+    <img [src]="imagePreviewUrl" class="image-preview">
     </div>
-
-    <div><input type="file" accept="image/*" class="file-upload" (change)="onFileSelected($event)"></div>
+    <div *ngIf="!currentFile">
+      <img class="image-preview">
+      <input type="file" id="image-uploaded" max accept="image/*" maxFileSize="2048000" class="file-upload" (change)="onFileSelected($event)" hidden>
+    </div>
+    <span>Max image file size is 2Mb</span>
   </div>
 <mat-dialog-actions>
-    <div class="actions">
+  <div class="actions">
     <div class="row">
-      <div class="">
+      <div class="button-container" style="flex: auto;">
         <button class="btn btn-secondary tooltips" [mat-dialog-close]="false">{{cancelButtonText}}</button>
       </div>
-      <div class="" *ngIf="hasFile && !uploadReady">
-        <button class="btn btn-primary tooltips"  (click)="uploadFile()">Upload Image</button>
+      <div class="" *ngIf="!hasFile && !uploadReady">
+        <label for="image-uploaded" class="btn btn-primary tooltips upload-file-button">Choose Image</label>
       </div>
-      <div class="" *ngIf="uploadReady">
-        <button class="btn btn-primary tooltips" [mat-dialog-close]="generatedUuid">Submit</button>
+      <div class="" *ngIf="hasFile && uploadReady">
+        <button class="btn btn-primary tooltips" [mat-dialog-close]="generatedUuid">Save</button>
       </div>
     </div>
   </div>
-  </mat-dialog-actions>
+</mat-dialog-actions>
