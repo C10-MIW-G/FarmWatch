@@ -48,7 +48,7 @@ public class TicketValidation {
 
     private void summaryMustNotBeNull(Ticket ticket){
         if (ticket.getSummary() == null){
-            throw new FieldHasNoInputException("Summary can't be be empty");
+            throw new FieldHasNoInputException("Summary can't be empty");
         }
     }
 
@@ -60,7 +60,7 @@ public class TicketValidation {
 
     private void userIdMustNotBeNull(TicketMessage ticketMessage) {
         if (ticketMessage.getSendBy().getId() == null){
-            throw new FieldHasNoInputException("Ticket message has to be assigned to user");
+            throw new FieldHasNoInputException("Ticket message has to be assigned to a user");
         }
     }
     private void dateTimeMustNotBeNull(TicketMessage ticketMessage) {
@@ -71,7 +71,7 @@ public class TicketValidation {
 
     private void messageMustNotBeNull(TicketMessage ticketMessage) {
         if (ticketMessage.getMessage() == null){
-            throw new FieldHasNoInputException("You have to fill in a message");
+            throw new FieldHasNoInputException("Message cannot be empty");
         }
     }
 

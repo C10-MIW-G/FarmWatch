@@ -14,7 +14,7 @@ import java.time.DateTimeException;
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
  * <p>
- * this class handles exceptions in regard to the HTTP respone
+ * this class handles exceptions in regard to the HTTP response
  */
 
 @ControllerAdvice
@@ -31,7 +31,7 @@ public class ApplicationExceptionHandler {
     }
 
     @ExceptionHandler(value = { PropertyValueException.class })
-    public ResponseEntity<Object> handleCustomException(PropertyValueException exception) {
+    public ResponseEntity<Object> handleCustomException() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body("All the required fields should be filled in");
     }
@@ -66,8 +66,4 @@ public class ApplicationExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
-
-
-
-
 }
