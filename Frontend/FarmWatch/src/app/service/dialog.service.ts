@@ -29,9 +29,11 @@ export class DialogService {
     return this.dialog.open(FileUploadComponent).afterClosed();
   }
 
-  showNewTicketMessageDialog(): Observable<any> {
+  showNewTicketMessageDialog(privateMessage: boolean): Observable<any> {
     this.closeAll();
-    return this.dialog.open(NewTicketMessageComponent).afterClosed();
+    let dialogRef = this.dialog.open(NewTicketMessageComponent);
+    dialogRef.componentInstance.setPrivateMessager(privateMessage);
+    return dialogRef.afterClosed();
   }
 
   closeAll(){

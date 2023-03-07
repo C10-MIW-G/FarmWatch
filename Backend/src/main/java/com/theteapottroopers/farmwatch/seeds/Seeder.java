@@ -50,52 +50,38 @@ public class Seeder {
 
 
         Animal animal1 = new Animal("Clara", "Chicken", "Galus galus domesticus",
-                animal1Description, LocalDate.of(2012, 5, 17),
-                null);
-
+                animal1Description, LocalDate.of(2012, 5, 17), null);
 
         Animal animal2 = new Animal("Benjamin", "Donkey", "Equus africanus",
-                animal2Description, LocalDate.of(2010, 8, 12),
-                null);
+                animal2Description, LocalDate.of(2010, 8, 12), null);
 
-
-        /*Animal animal3 = new Animal("Hugo", "Horse", "Equus ferus caballus",
-                animal3Description, LocalDate.of(2009, 2, 21),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Horse-and-pony.jpg/" +
-                        "1280px-Horse-and-pony.jpg");
-
+        Animal animal3 = new Animal("Hugo", "Horse", "Equus ferus caballus",
+                animal3Description, LocalDate.of(2009, 2, 21), null);
 
         Animal animal4 = new Animal("Patrick", "Rabbit", "Oryctolagus cuniculus",
-                animal4Description, LocalDate.of(2011, 4, 7),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/" +
-                        "440px-Oryctolagus_cuniculus_Rcdo.jpg");
-
+                animal4Description, LocalDate.of(2011, 4, 7), null);
 
         Animal animal5 = new Animal("Shelly", "Turtle", "Emydura subglobosa",
-                animal5Description, LocalDate.of(2013, 6, 25),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/" +
-                        "Pelomedusa_subrufa_%28cropped%29.JPG/1280px-Pelomedusa_subrufa_%28cropped%29.JPG");
+                animal5Description, LocalDate.of(2013, 6, 25),null);
+
         Animal animal6 = new Animal("Peter", "Deer", "Dama dama",
-                animal6Description, LocalDate.of(2010, 11, 8),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/" +
-                        "Roe_deer_eating_leaves_in_Tuntorp_2.jpg/1280px-Roe_deer_eating_leaves_in_Tuntorp_2.jpg");
+                animal6Description, LocalDate.of(2010, 11, 8), null);
+
         Animal animal7 = new Animal("Brownie", "Cow", "Bos taurus",
-                animal7Description, LocalDate.of(2008, 12, 15));
+                animal7Description, LocalDate.of(2008, 12, 15), null);
+
         Animal animal8 = new Animal("Jimmy", "Chicken", "Galus galus domesticus",
-                animal8Description, LocalDate.of(2012, 7, 3),
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/" +
-                        "Male_and_female_chicken_sitting_together.jpg/" +
-                        "800px-Male_and_female_chicken_sitting_together.jpg");*/
+                animal8Description, LocalDate.of(2012, 7, 3), null);
 
 
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
-        /*animalsToSeed.add(animal3);
+        animalsToSeed.add(animal3);
         animalsToSeed.add(animal4);
         animalsToSeed.add(animal5);
         animalsToSeed.add(animal6);
         animalsToSeed.add(animal7);
-        animalsToSeed.add(animal8);*/
+        animalsToSeed.add(animal8);
 
         for (Animal animal : animalsToSeed) {
             Optional<Animal> animalToSeed = animalRepository.findAnimalByName(animal.getName());
@@ -195,7 +181,7 @@ public class Seeder {
                 "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal2, user3, user7, null);
         ticketRepository.save(ticket2);
 
-        /*Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
+        Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
                 "infection in my neighborhood.", TicketStatus.OPEN, animal4, user3, user8, null);
         ticketRepository.save(ticket3);
 
@@ -220,7 +206,6 @@ public class Seeder {
         Ticket ticket8 = new Ticket(null, "Bald spots", "I was walking through the park with " +
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
                 TicketStatus.OPEN, animal3, user8, user7, null);
-        ticketRepository.save(ticket8);*/
-
+        ticketRepository.save(ticket8);
     }
 }

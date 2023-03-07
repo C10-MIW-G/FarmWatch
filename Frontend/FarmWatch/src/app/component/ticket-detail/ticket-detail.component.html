@@ -43,9 +43,11 @@
                 <div class="col">
                     <h3>Ticket Messages</h3>
                     <div class="ticket-message-container mx-auto">
-                        <button mat-raised-button color="primary" (click)="openNewMessageDialog()">New message</button>
                         <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="start">
                             <mat-tab label="Public">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn-new-message" mat-raised-button color="primary" (click)="openNewMessageDialog(false)">New public message</button>
+                                </div>
                                 <ng-container *ngFor="let ticketMessage of publicTicketMessages">
                                     <div class="fw-comment-container d-flex">
                                         <div class="fw-comment-userinfo">
@@ -70,6 +72,9 @@
                                 </ng-container>
                             </mat-tab>
                             <mat-tab *ngIf="getRole() != 'USER'" label="Private">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn-new-message" mat-raised-button color="primary" (click)="openNewMessageDialog(true)">New private message</button>
+                                </div>
                                 <ng-container *ngFor="let ticketMessage of privateTicketMessages">
                                 <div class="fw-comment-container d-flex">
                                     <div class="fw-comment-userinfo">

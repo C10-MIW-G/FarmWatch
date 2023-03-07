@@ -102,11 +102,13 @@ export class TicketDetailComponent implements OnInit {
     );
   }
 
-  openNewMessageDialog(){
-    this.dialogService.showNewTicketMessageDialog().subscribe({
+  openNewMessageDialog(privateMessage: boolean){
+    this.dialogService.showNewTicketMessageDialog(privateMessage).subscribe({
       next: (result) => {
-        this.newTicketMessageForm = result
-        this.sendTicketMessage();
+        if(result != ""){
+          this.newTicketMessageForm = result
+          this.sendTicketMessage();
+        }
       },
       error: err => {
         this.toast.ShowError("New Notification", err.error)
