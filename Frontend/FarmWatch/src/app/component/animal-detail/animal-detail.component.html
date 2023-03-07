@@ -57,10 +57,6 @@
     <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isLoggedIn() 
     && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
       routerLink="/animal/update/{{id}}">Edit</button>
-    <br>
-    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
-    && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
-      (click)="confirmDeleteAction(id)">Delete</button>
   </div>
 </mat-sidenav>
 </mat-sidenav-container>
