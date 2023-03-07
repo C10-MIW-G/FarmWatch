@@ -4,9 +4,31 @@
 html, body { height: 100%; }
 body { margin-top: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+/* NAVBAR COMPONENT */
 .navbar-brand{
     font-size: 25px;
     font-weight: 500;
+}
+
+#navbar{
+    background-color:#2d4636;
+}
+
+#signupbutton{
+    background-color: #328254;
+}
+
+#loginbutton{
+    background-color: #328254;
+}
+
+#ticketbutton{
+    background-color: #328254;
+}
+
+#accountbutton{
+    background-color: #328254; 
 }
 
 h1 {
@@ -61,22 +83,29 @@ h3{
     background-color: #f7f7f7;
 }
 
+.mat-drawer-side.mat-drawer-end{
+    border: none;
+}
+
 .sidenav-content {
     margin-top: 56px;
     padding-bottom: 10px;
     background-color: rgb(255, 255, 255);
+    border: none;
 }
 
 .sidenav-left {
     background-color: rgb(255, 255, 255);
     width: 250px;
     padding: 50px 20px 10px 20px;
+    border: none;
 }
 
 .sidenav-right {
     background-color: rgb(255, 255, 255);
     width: 250px;
     padding: 50px 20px 10px 20px;
+    border: none;
 }
 
 

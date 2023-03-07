@@ -10,16 +10,26 @@
                     required
                     message
                     #message="ngModel"></textarea>
+                </div>
+                <div *ngIf="getRole() != 'USER'">
                     <label for="newTicketMessageSlider">Private message</label>
-                    <mat-slide-toggle id="newTicketMessageSlider"
+                    <mat-checkbox id="newTicketMessageSlider"
                     name="privateMessage"
                     [(ngModel)]="newTicketMessageForm.privateMessage"
                     privateMessage
-                    #privateMessage="ngModel"></mat-slide-toggle>
+                    #privateMessage="ngModel"></mat-checkbox>
                 </div>
-            </form>
-            <button mat-raised-button (click)="onExit()">Exit</button>
-            <button mat-raised-button [mat-dialog-close]="newTicketMessageForm">Ok</button>
+            </form>            
         </div>
     </div>
+    <mat-dialog-actions>
+        <div class="actions d-flex flex-row">
+            <div>
+                <button class="btn btn-secondary btn-block" mat-dialog-close>Close</button>
+            </div>
+            <div>
+                <button class="btn btn-primary btn-block" [mat-dialog-close]="newTicketMessageForm">Send</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
 </div>
