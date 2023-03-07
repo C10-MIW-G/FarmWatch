@@ -25,5 +25,6 @@ public class TicketDtoUpdate {
     private TicketStatus status;
     private Long assignedTo;
     private String assignedToName;
+    private String imageFileName;
 
 }

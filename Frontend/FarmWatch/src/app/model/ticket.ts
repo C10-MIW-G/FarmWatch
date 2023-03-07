@@ -17,5 +17,6 @@ export interface Ticket {
         username: string; 
     };
     ticketMessageIds: number[];
+    imageFileName: string;
 }
 
