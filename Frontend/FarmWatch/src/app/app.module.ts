@@ -38,11 +38,12 @@ import { TicketUpdateComponent } from './component/ticket-update/ticket-update.c
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component'
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { FileUploadComponent } from './component/file-upload/file-upload.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FileUploadComponent } from './component/file-upload/file-upload.component';
 import { NewTicketMessageComponent } from './component/new-ticket-message/new-ticket-message.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { PersonalTicketFilter } from './pipe/personal-ticket-filter';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     TicketUpdateComponent,
     ConfirmationDialogComponent,
     FileUploadComponent,
-    NewTicketMessageComponent
+    NewTicketMessageComponent,
+    PersonalTicketFilter
   ],
   imports: [
     BrowserModule,
@@ -88,6 +90,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatNativeDateModule,
     MatTableModule,
     MatSortModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
     MatDialogModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
