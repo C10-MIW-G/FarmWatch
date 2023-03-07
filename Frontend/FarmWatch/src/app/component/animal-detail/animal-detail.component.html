@@ -54,7 +54,7 @@
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
   [fixedBottomGap]="0">
   <div>
-    <button class="btn btn-warning tooltips btn-block text-light" *ngIf="isLoggedIn() 
+    <button class="btn btn-secondary tooltips btn-block text-light farmbutton" *ngIf="isLoggedIn() 
     && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
       routerLink="/animal/update/{{id}}">Edit</button>
   </div>

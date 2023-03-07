@@ -31,7 +31,7 @@
                         <textarea matInput rows="10" style="height: 100%;" class="form-control" name="description" placeholder="Describe what you noticed"
                             [(ngModel)]="form.description" required description #description="ngModel"></textarea>
                     </div>
-                    <button class="btn btn-primary" type="submit" style="float: right">Submit ticket</button>
+                    <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Submit ticket</button>
                 </form>
             </div>
         </div>
@@ -40,7 +40,7 @@
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
         <div>
-            <button class="btn btn-secondary tooltips btn-block"
+            <button class="btn btn-secondary tooltips btn-block farmbutton"
               (click)="openImageUploadAction()">Upload new Image</button>
         </div>
     </mat-sidenav>

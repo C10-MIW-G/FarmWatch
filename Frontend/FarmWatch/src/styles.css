@@ -82,10 +82,22 @@ h3{
             border-color: #febb26;      
 }
 
+.ticketdetailtitle{
+    font-size: 30px;
+    font-weight: 750;
+    color:#38905e;
+    text-align: center;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-bottom: 0px;
+            border-bottom-style: solid;
+            border-bottom-width: 7px;
+            border-color: #febb26;      
+}
+
 /* CONTAINER & SIDENAVS */
 .container {
     background-color: #fff;
-    margin: 50px auto;
     max-width: auto;
     padding: 20px;
 }

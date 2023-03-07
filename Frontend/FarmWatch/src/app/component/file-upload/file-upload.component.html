@@ -13,13 +13,13 @@
   <div class="actions">
     <div class="row">
       <div class="button-container" style="flex: auto;">
-        <button class="btn btn-secondary tooltips" [mat-dialog-close]="false">{{cancelButtonText}}</button>
+        <button class="btn btn-secondary farmbutton" [mat-dialog-close]="false">{{cancelButtonText}}</button>
       </div>
       <div class="" *ngIf="!hasFile && !uploadReady">
-        <label for="image-uploaded" class="btn btn-primary tooltips upload-file-button">Choose Image</label>
+        <label for="image-uploaded" class="btn btn-secondary tooltips upload-file-button farmbutton">Choose Image</label>
       </div>
       <div class="" *ngIf="hasFile && uploadReady">
-        <button class="btn btn-primary tooltips" [mat-dialog-close]="generatedUuid">Save</button>
+        <button class="btn btn-secondary farmbutton" [mat-dialog-close]="generatedUuid">Save</button>
       </div>
     </div>
   </div>

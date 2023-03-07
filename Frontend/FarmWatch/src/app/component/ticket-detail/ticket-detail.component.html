@@ -1,12 +1,15 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <h3 class="card-title">Ticket</h3>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
+        
+        <div class="container">
+            <p class="ticketdetailtitle">Ticket details</p>
         <div class="container d-flex flex-column">
+            
             <div class="row">
                 <div class="col">
-                    <h3>Ticket Details</h3>
+                    
                     <div class="ticket-container mx-auto">
                         <table class="table">
                             <tr>
@@ -106,9 +109,10 @@
                 </div>
             </div>
         </div>
+    </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <button class="btn btn-warning tooltips btn-block text-light " routerLink="/ticket/update/{{id}}">Edit</button>
+        <button class="btn btn-secondary tooltips btn-block text-light farmbutton " routerLink="/ticket/update/{{id}}">Edit</button>
     </mat-sidenav>
 </mat-sidenav-container>
 

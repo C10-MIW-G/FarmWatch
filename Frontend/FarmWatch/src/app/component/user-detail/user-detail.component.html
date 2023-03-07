@@ -3,13 +3,12 @@
 <mat-sidenav-container class="sidenav-container" id="top">
   
   <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    <h3 class="card-title">Account overview</h3>
   </mat-sidenav>
 
   <mat-sidenav-content class="sidenav-content">
     <div class="container">
-      <h1>User Details</h1>
-      <br>
+      <p class="title">User details</p>
+    <div class="datacontainer">
       <div class="row">
         <div class="label">Username:</div>
         <div class="value">{{user?.username}}</div>
@@ -27,13 +26,13 @@
         <div class="value">{{formattedRole}}</div>
       </div>
     </div>
-    <div id="bottom"></div>
+  </div>
   </mat-sidenav-content>
 
   <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
     [fixedBottomGap]="0">
     <div>
-      <button class="btn btn-warning tooltips btn-block text-light " routerLink="{{updatePath}}">Edit</button>
+      <button class="btn btn-secondary tooltips btn-block text-light farmbutton" routerLink="{{updatePath}}">Edit</button>
     </div>
   </mat-sidenav>
 
