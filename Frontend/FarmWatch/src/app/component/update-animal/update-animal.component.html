@@ -67,16 +67,16 @@
     </mat-sidenav-content>
 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
-        [fixedBottomGap]="0">
-        <div>
-    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
-    && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
-      (click)="confirmDeleteAction(id)">Delete</button>
-    <br>
-    <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
-    && getRole() === 'ADMIN' || getRole() === 'CARETAKER' || getRole() === 'User'"
-      (click)="openImageUploadAction()">Upload new Image</button>
-        </div>
-    </mat-sidenav>
+    [fixedBottomGap]="0">
+    <div>
+        <button class="btn btn-secondary tooltips btn-block" *ngIf="isLoggedIn() 
+        && getRole() === 'ADMIN' || getRole() === 'CARETAKER' || getRole() === 'User'"
+          (click)="openImageUploadAction()">Upload new Image</button>
+            </div>
+            <br>
+            <button class="btn btn-danger tooltips btn-block" *ngIf="isLoggedIn() 
+            && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"
+              (click)="confirmDeleteAction(id)">Delete</button>
+</mat-sidenav>
 
 </mat-sidenav-container>

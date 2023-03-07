@@ -1,10 +1,9 @@
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable, Subscription } from 'rxjs';
-import { confirmdialogdata } from 'src/app/model/confirm-dialog-data';
 import { fileuploaddialogdata, fileuploadimage } from 'src/app/model/fileupload-dialog-data';
 import { FileUploadService } from 'src/app/service/file-upload.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -27,7 +26,8 @@ export class FileUploadComponent {
   formData!: FormData;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: fileuploaddialogdata,
-              private uploadService: FileUploadService) {}  
+              private uploadService: FileUploadService,
+              private toast: ToastService) {}  
     
 
   onFileSelected(event: any) {
@@ -36,13 +36,13 @@ export class FileUploadComponent {
     
     this.currentFile = event.target.files[0];
 
-    if (this.currentFile) {
-
+    if (this.currentFile && this.checkFileSize()) {
       this.hasFile = true;
       this.formData = new FormData();
 
       this.formData.append('imageFile', this.currentFile);
       
+      this.uploadFile();
     } 
     var reader = new FileReader();
 		reader.readAsDataURL(event.target.files[0]);
@@ -50,6 +50,17 @@ export class FileUploadComponent {
 		reader.onload = (_event) => {
 			this.imagePreviewUrl = reader.result; 
 		}
+  }
+
+  checkFileSize(): Boolean{
+    if(this.currentFile!.size/1024 < 2 * 1024){
+      console.log("File doenst exceed 2 MB, Image size is: " + Math.round(this.currentFile!.size / 1024) + "KB");
+      return true;
+    }
+    console.log("File exceeded 2 MB, Image size is: " +  Math.round(this.currentFile!.size / 1024) + "KB");
+    this.toast.ShowError("Image Upload Failed!", "Image exceeded the 2 MB Max file size.");
+    this.currentFile = undefined;
+    return false;
   }
 
   uploadFile() {
