@@ -13,31 +13,34 @@ html {
     font-weight: 500;
 }
 
-#navbar{
+.navbar{
     background-color:#2d4636;
 }
 
-#signupbutton{
+.farmbutton{
     background-color: #38905e;
-    box-shadow: none;
+    box-shadow: none; 
+}
+.farmbutton:hover{
+    background-color: #febb26;
+    box-shadow: none; 
+    outline:#38905e;
 }
 
-#loginbutton{
-    background-color: #38905e;
-    box-shadow: none;
+.btn-secondary:focus{
+    background-color: #febb26;
+    outline: none;
+}
+.farmbutton::selection{
+    background-color:#febb26;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+    background-color: #febb26;
 }
 
-#ticketbutton{
-    background-color: #38905e;
-    box-shadow: none;
+.btn-secondary{
+    border:none;
 }
-
-#accountbutton{
-    background-color: #38905e; 
-    box-shadow: none;
-}
-
-/* /NAVBAR COMPONENT */
 
 /*TEXT*/
 
@@ -52,7 +55,7 @@ h3{
     font-size: 20px;
 }
 
-#title{
+.title{
     font-size: 30px;
     font-weight: 750;
     color:#38905e;
@@ -99,29 +102,36 @@ h3{
     padding: 50px 20px 10px 20px;
     border: none;
 }
-/* /CONTAINER & SIDENAVS */
 
 /* TABLES */
-#tableheader{
+.tableheader{
     background-color: #38905e;
     color: #febb26;
     text-align: center;
 }
 
-#tablebody{
+.tablebody{
     background-color: #bdd6c5;
     text-align: center;
 }
 
-#tableurl{
+.tableurl{
     color:black;
+}
+
+.mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+  }
+
+  .mat-sort-header-arrow {
+    color: #fff;
 }
 
 td, th{
     line-height: 15px;
+    
 }
-
-
 
 .row {
     display: flex;
@@ -137,8 +147,6 @@ td, th{
 .value {
     flex: 2;
 }
-
-
 
 .card-img-top {
     border-radius: 8px;

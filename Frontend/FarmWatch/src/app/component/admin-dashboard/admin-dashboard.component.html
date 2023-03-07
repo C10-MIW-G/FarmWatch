@@ -13,13 +13,13 @@
 
     <mat-sidenav-content class="sidenav-content">
         <div class="container">
-            <p id="title">Users</p>
+            <p class="title">Users</p>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="">
                         <div class="table-responsive">
                             <table class="table table-nowrap align-middle table-borderless" >
-                                <thead id="tableheader">
+                                <thead class="tableheader">
                                     <tr>
                                         <th class="table-column" scope="col">Username</th>
                                         <th class="table-column" scope="col">Firstname</th>
@@ -28,9 +28,9 @@
                                         <th class="table-column" scope="col">Role</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tablebody">
+                                <tbody class="tablebody">
                                     <tr *ngFor="let user of users">
-                                        <td><a id="tableurl" routerLink="/user/{{user.id}}"><b>{{user.username}}</b></a></td>
+                                        <td><a class="tableurl" routerLink="/user/{{user.id}}"><b>{{user.username}}</b></a></td>
                                         <td><span>{{user.firstname}}</span></td>
                                         <td><span>{{user.lastname}}</span></td>
                                         <td><span>{{user.email}}</span></td>
