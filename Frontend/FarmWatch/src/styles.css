@@ -3,7 +3,9 @@
 
 html, body { height: 100%; }
 body { margin-top: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html {
+    overflow-y:scroll;
+}
 
 /* NAVBAR COMPONENT */
 .navbar-brand{
@@ -219,8 +221,6 @@ textarea {
     margin-left: 50px;
     margin-right: 50px;
   }
-  
-
  
 
   

@@ -4,6 +4,9 @@ import { TicketOverviewService } from 'src/app/service/ticket-overview.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/service/toast.service';
 import { Sort } from '@angular/material/sort';
+import { StorageService } from 'src/app/security/_services/storage.service';
+import { PersonalTicketFilter } from 'src/app/pipe/personal-ticket-filter';
+
 
 @Component({
   selector: 'app-ticket-overview',
@@ -14,16 +17,26 @@ export class TicketOverviewComponent implements OnInit {
   public tickets: Ticket [] = [];
   public isAuthorized: boolean = false; 
   sortedData: Ticket[];
+  filterValue: string;
+  loggedInUser: string; 
 
   constructor(private ticketOverviewService : TicketOverviewService,
-    private toast: ToastService) {
+    private toast: ToastService,
+    private storageService: StorageService,
+    ) {
       this.sortedData = this.tickets.slice();
+      this.filterValue = '';
+      try {
+        this.loggedInUser = this.storageService.getUserName() as string;
+      } catch (error) {
+        this.toast.ShowError("New Notification", error);
+        this.loggedInUser = '';
+      }
     }
 
  
   ngOnInit(): void {
-    this.getTickets(); 
-    
+    this.getTickets();  
   }
 
   public getTickets(): void {
@@ -78,5 +91,15 @@ export class TicketOverviewComponent implements OnInit {
     function compare(a: number | string, b: number | string, isAsc: boolean) {
       return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
     }
-}
+
+  }
+
+  public checkBoxChanged(event: any): void {
+    if (event.checked) {
+      this.filterValue = this.loggedInUser;
+    } else {
+      this.filterValue = '';
+    }
+  }
+
 }

@@ -16,7 +16,7 @@
             </thead>
             <tbody>
               <ng-container *ngIf="sortedData.length > 0">
-                <tr *ngFor="let ticket of sortedData">
+                <tr *ngFor="let ticket of sortedData | personalTicketFilter: filterValue" >
                   <td><a routerLink="/ticket/{{ticket.id}}"><b>{{ticket.summary}}</b></a></td>
                   <td>{{ticket.animal.name}}</td>
                   <td>{{ticket.status}}</td>
@@ -37,5 +37,6 @@
         </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+        <mat-checkbox (change)="checkBoxChanged($event)">Tickets assigned to me</mat-checkbox>
     </mat-sidenav>
 </mat-sidenav-container>

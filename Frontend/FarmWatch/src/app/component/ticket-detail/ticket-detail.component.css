@@ -171,3 +171,7 @@
 ::ng-deep *,*:focus,*:hover{
     outline:none !important;
  }
+
+ .btn-new-message{
+    margin-top: 20px;
+ }
