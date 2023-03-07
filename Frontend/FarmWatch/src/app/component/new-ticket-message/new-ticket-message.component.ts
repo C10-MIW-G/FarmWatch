@@ -26,4 +26,8 @@ export class NewTicketMessageComponent {
   public getRole(): string{
     return this.storageService.getRole();
   }
+  
+  public setPrivateMessager(isPrivateMessage: boolean){
+    this.newTicketMessageForm.privateMessage = isPrivateMessage;
+  }
 }

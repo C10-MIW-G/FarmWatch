@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>New Message</h1>
+<h1 mat-dialog-title>New {{newTicketMessageForm.privateMessage ? "private" : "public"}} message</h1>
 <div id="newTicketMessageForm">
     <div mat-dialog-content>
         <div>
@@ -10,14 +10,6 @@
                     required
                     message
                     #message="ngModel"></textarea>
-                </div>
-                <div *ngIf="getRole() != 'USER'">
-                    <label for="newTicketMessageSlider">Private message</label>
-                    <mat-checkbox id="newTicketMessageSlider"
-                    name="privateMessage"
-                    [(ngModel)]="newTicketMessageForm.privateMessage"
-                    privateMessage
-                    #privateMessage="ngModel"></mat-checkbox>
                 </div>
             </form>            
         </div>
