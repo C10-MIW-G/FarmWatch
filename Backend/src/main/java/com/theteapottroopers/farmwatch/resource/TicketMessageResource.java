@@ -43,8 +43,11 @@ public class TicketMessageResource {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(principal instanceof User){
             TicketMessage ticketMessage = ticketMessageService.findTicketMessageById(id);
-            if(ticketMessage.getTicket().isTicketFromUserId(((User) principal).getId()) ||
-                    ((User) principal).getRole() != Role.ROLE_USER) {
+            if(ticketMessage.getTicket().isTicketFromUserId(((User) principal).getId()) && ((User) principal).getRole() == Role.ROLE_USER && !ticketMessage.isPrivateMessage()){
+                TicketMessageDtoAll ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
+                return new ResponseEntity<>(ticketMessageDtoAll, HttpStatus.OK);
+            }
+            if(((User) principal).getRole() != Role.ROLE_USER){
                 TicketMessageDtoAll ticketMessageDtoAll = ticketMessageMapper.toTicketMessageDtoAll(ticketMessage);
                 return new ResponseEntity<>(ticketMessageDtoAll, HttpStatus.OK);
             }

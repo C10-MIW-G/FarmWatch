@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { StorageService } from 'src/app/security/_services/storage.service';
 
 @Component({
   selector: 'app-new-ticket-message',
@@ -16,13 +17,13 @@ export class NewTicketMessageComponent {
     privateMessage: null
   };
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private storageService: StorageService) {}
 
   onSubmit(){
     this.dialog.closeAll();
   }
 
-  onExit(){
-    this.dialog.closeAll();
+  public getRole(): string{
+    return this.storageService.getRole();
   }
 }

@@ -40,7 +40,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { FileUploadComponent } from './component/file-upload/file-upload.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewTicketMessageComponent } from './component/new-ticket-message/new-ticket-message.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -94,7 +96,9 @@ import { NewTicketMessageComponent } from './component/new-ticket-message/new-ti
       easeTime: 750,
       timeOut: 3000
     }),
-    MatSlideToggleModule
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatTabsModule,
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,

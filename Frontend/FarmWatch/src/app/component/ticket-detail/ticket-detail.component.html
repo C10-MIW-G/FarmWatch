@@ -44,28 +44,56 @@
                     <h3>Ticket Messages</h3>
                     <div class="ticket-message-container mx-auto">
                         <button mat-raised-button color="primary" (click)="openNewMessageDialog()">New message</button>
-                        <ng-container *ngFor="let ticketMessage of ticketMessages">
-                            <div class="fw-comment-container d-flex">
-                                <div class="fw-comment-userinfo">
-                                    <table>
-                                        <tr>
-                                            <td class="username">{{ticketMessage.sendByUser.username}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ticketMessage.sendByUser.role}}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="comment">
-                                    <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
-                                    <div class="comment-body">
-                                        <p class="comment-text">{{ticketMessage.message}}</p>
-                                        <div class="comment-footer">
+                        <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="start">
+                            <mat-tab label="Public">
+                                <ng-container *ngFor="let ticketMessage of publicTicketMessages">
+                                    <div class="fw-comment-container d-flex">
+                                        <div class="fw-comment-userinfo">
+                                            <table>
+                                                <tr>
+                                                    <td class="username">{{ticketMessage.sendByUser.username}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ticketMessage.sendByUser.role}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="comment">
+                                            <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
+                                            <div class="comment-body">
+                                                <p class="comment-text">{{ticketMessage.message}}</p>
+                                                <div class="comment-footer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </mat-tab>
+                            <mat-tab *ngIf="getRole() != 'USER'" label="Private">
+                                <ng-container *ngFor="let ticketMessage of privateTicketMessages">
+                                <div class="fw-comment-container d-flex">
+                                    <div class="fw-comment-userinfo">
+                                        <table>
+                                            <tr>
+                                                <td class="username">{{ticketMessage.sendByUser.username}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ticketMessage.sendByUser.role}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="comment">
+                                        <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
+                                        <div class="comment-body">
+                                            <p class="comment-text">{{ticketMessage.message}}</p>
+                                            <div class="comment-footer">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ng-container>
+                                </ng-container>
+                            </mat-tab>
+                          </mat-tab-group>
                     </div>
                 </div>
             </div>
