@@ -20,7 +20,8 @@ export class TicketDetailComponent implements OnInit {
 
   id!: number;
   ticket?: Ticket;
-  ticketMessages?: TicketMessage[] = [];  
+  publicTicketMessages?: TicketMessage[] = []; 
+  privateTicketMessages?: TicketMessage[] = []; 
   newTicketMessageForm: any = {
     ticketId: null,
     message: null,
@@ -60,8 +61,11 @@ export class TicketDetailComponent implements OnInit {
     });
   }
 
+  public getRole(){
+    return this.storageService.getRole();
+  }
+
   public getTicketMessages(ticketMessageIds: number[]){
-    this.ticketMessages = [];
     for(let ticketMessageId of ticketMessageIds){
       this.ticketMessageService.getTicketMessage(ticketMessageId).subscribe({
         next: ticketMessage => this.addTicketMessage(ticketMessage),
@@ -71,8 +75,13 @@ export class TicketDetailComponent implements OnInit {
   }
 
   public addTicketMessage(ticketMessage: TicketMessage): void {
-    this.ticketMessages!.push(ticketMessage);
-    this.ticketMessages?.sort((a, b) => b.messageLocalDateTime.localeCompare(a.messageLocalDateTime));
+    if(ticketMessage.privateMessage){
+      this.privateTicketMessages!.push(ticketMessage);
+      this.privateTicketMessages?.sort((a, b) => b.messageLocalDateTime.localeCompare(a.messageLocalDateTime));
+    }else{
+      this.publicTicketMessages!.push(ticketMessage);
+      this.publicTicketMessages?.sort((a, b) => b.messageLocalDateTime.localeCompare(a.messageLocalDateTime));
+    }
   }
 
   sendTicketMessage(){
