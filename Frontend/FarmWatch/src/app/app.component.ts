@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StorageService } from './security/_services/storage.service';
 import { EventBusService } from './security/_shared/event-bus.service';
@@ -17,6 +18,7 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private eventBusService: EventBusService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +29,6 @@ export class AppComponent {
 
   logout(): void {
       this.storageService.clean();
+      this.router.navigate(['/']);
   }
 }
