@@ -37,6 +37,6 @@
         </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <mat-checkbox (change)="checkBoxChanged($event)">Tickets assigned to me</mat-checkbox>
+        <mat-checkbox *ngIf="showFilterCheckBox" (change)="checkBoxChanged($event)">Tickets assigned to me</mat-checkbox>
     </mat-sidenav>
 </mat-sidenav-container>

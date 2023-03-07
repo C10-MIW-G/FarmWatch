@@ -5,8 +5,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/service/toast.service';
 import { Sort } from '@angular/material/sort';
 import { StorageService } from 'src/app/security/_services/storage.service';
-import { PersonalTicketFilter } from 'src/app/pipe/personal-ticket-filter';
-
 
 @Component({
   selector: 'app-ticket-overview',
@@ -18,7 +16,9 @@ export class TicketOverviewComponent implements OnInit {
   public isAuthorized: boolean = false; 
   sortedData: Ticket[];
   filterValue: string;
-  loggedInUser: string; 
+  loggedInUsername: string;
+  showFilterCheckBox: boolean = false;
+  roleUser: string; 
 
   constructor(private ticketOverviewService : TicketOverviewService,
     private toast: ToastService,
@@ -26,11 +26,13 @@ export class TicketOverviewComponent implements OnInit {
     ) {
       this.sortedData = this.tickets.slice();
       this.filterValue = '';
+      this.canCheckBoxBeShown();
+      this.roleUser = this.storageService.getRole()
       try {
-        this.loggedInUser = this.storageService.getUserName() as string;
+        this.loggedInUsername = this.storageService.getUserName() as string;
       } catch (error) {
         this.toast.ShowError("New Notification", error);
-        this.loggedInUser = '';
+        this.loggedInUsername = '';
       }
     }
 
@@ -93,13 +95,22 @@ export class TicketOverviewComponent implements OnInit {
     }
 
   }
+  private canCheckBoxBeShown(): void{
+    if(this.storageService.getRole() == 'USER'){
+      this.showFilterCheckBox = false;
+    } else {
+      this.showFilterCheckBox = true;
+    }
+  }
 
   public checkBoxChanged(event: any): void {
     if (event.checked) {
-      this.filterValue = this.loggedInUser;
+      this.filterValue = this.loggedInUsername;
     } else {
       this.filterValue = '';
     }
   }
+
+
 
 }
