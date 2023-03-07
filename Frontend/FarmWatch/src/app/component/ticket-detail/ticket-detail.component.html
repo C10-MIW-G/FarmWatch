@@ -35,6 +35,9 @@
                                 <th>Description</th>
                                 <td colspan="3">{{ticket?.description}}</td>
                             </tr>
+                            <tr *ngIf="ticket?.imageFileName">
+                                <td><img class="card-img-top" src={{imageUrl}} alt="Card image cap"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>

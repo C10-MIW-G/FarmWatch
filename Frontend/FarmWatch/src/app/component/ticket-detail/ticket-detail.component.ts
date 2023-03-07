@@ -28,8 +28,9 @@ export class TicketDetailComponent implements OnInit {
     sendByUser: {
       id: null
     },
-    privateMessage: null
+    privateMessage: null,
   };
+  imageUrl = "";
 
   constructor(
     private ticketDetailService: TicketDetailService,
@@ -51,7 +52,8 @@ export class TicketDetailComponent implements OnInit {
   public getTicket(id: number): void {
     this.ticketDetailService.getTicket(this.id).subscribe({
       next: ticket => {
-        this.ticket = ticket,
+        this.ticket = ticket;
+        this.imageUrl = "http://localhost:8080/images/" + ticket.imageFileName;
         this.getTicketMessages(this.ticket.ticketMessageIds);
       },
       error: err => {
