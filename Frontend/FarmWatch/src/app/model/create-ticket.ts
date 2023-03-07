@@ -3,4 +3,5 @@ export interface CreateTicket {
     description: string;
     reportedByUserId: number;
     animalId: number;
+    imageFileName: string;
 }

@@ -13,14 +13,15 @@ export class CreateTicketService {
 
   constructor(private http: HttpClient) { }
 
-  createTicket(summary: string, description: string, animalId: number, reportUsername: string): Observable<any> {
+  createTicket(summary: string, description: string, animalId: number, reportUsername: string, imageFileName: string): Observable<any> {
     return this.http.post(
       this.apiServerUrl + '/ticket',
       {
         summary, 
         description,
         animalId,
-        reportUsername
+        reportUsername,
+        imageFileName
       },
       httpOptions
     );

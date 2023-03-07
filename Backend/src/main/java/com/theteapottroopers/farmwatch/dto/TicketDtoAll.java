@@ -26,6 +26,7 @@ public class TicketDtoAll {
     private UserDtoUsername reportedByUser;
     private UserDtoUsername assignedToUser;
     private List<Long> ticketMessageIds;
+    private String imageFileName;
 
     @Getter
     @Setter

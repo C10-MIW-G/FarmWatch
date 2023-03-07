@@ -18,14 +18,14 @@
               <ng-container *ngIf="sortedData.length > 0">
                 <tr *ngFor="let ticket of sortedData | personalTicketFilter: filterValue" >
                   <td><a class="tableurl" routerLink="/ticket/{{ticket.id}}"><b>{{ticket.summary}}</b></a></td>
-                  <td>{{ticket.animal.name}}</td>
+                  <td>{{ticket.animal ? ticket.animal.name : "Not specified"}}</td>
                   <td>{{ticket.status}}</td>
                   <td>{{ticket.reportDateTime| date: "dd-MM-yyyy HH:mm"}}</td>
                   <td>{{ticket.reportedByUser.username}}</td>
                   <td *ngIf="sortedData.length == 0"></td>
                 </tr>
               </ng-container>
-              <ng-container *ngIf="sortedData.length == 0">
+              <ng-container *ngIf="sortedData.length == 0 || (sortedData | personalTicketFilter: filterValue).length == 0">
                 <tr>
                   <td colspan="5">
                     No tickets found
@@ -37,6 +37,6 @@
         </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <mat-checkbox (change)="checkBoxChanged($event)">Tickets assigned to me</mat-checkbox>
+        <mat-checkbox *ngIf="showFilterCheckBox" (change)="checkBoxChanged($event)">Tickets assigned to me</mat-checkbox>
     </mat-sidenav>
 </mat-sidenav-container>
