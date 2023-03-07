@@ -4,13 +4,13 @@
 <!-- Left Sidebar Start-->
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    <h3 class="card-title">Animal details</h3>
 </mat-sidenav>
 <!-- Left Sidebar End-->
     
 <!-- Center Content Start-->
 <mat-sidenav-content class="sidenav-content">
   <div class="container" id="main-container">
+    <p class="title">{{animalDetail?.name}}</p>
   <div class="card" style="width: 50rem; background-color: white; border: none">
     <br>
     <div class="row">
@@ -34,17 +34,17 @@
         <p class="card-text">{{animalDetail?.dateOfBirth| date: "dd-MM-yyyy"}}</p>
     </div>
     </div>
+  </div>
 
   <br>
   
-    
+  <p class="title">Description</p>
     <div class="card-body">
-      <h3 class="card-title">Meet {{animalDetail?.name}}!</h3>
         <p class="card-text">{{animalDetail?.description}}</p>
     </div>
  
   <br>
-</div>
+
 </div>
   </mat-sidenav-content> 
 

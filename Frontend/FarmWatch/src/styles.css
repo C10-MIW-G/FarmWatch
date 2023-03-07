@@ -62,6 +62,19 @@ h3{
     text-align: center;
     margin-left: 400px;
     margin-right: 400px;
+    padding-bottom: 0px;
+            border-bottom-style: solid;
+            border-bottom-width: 7px;
+            border-color: #febb26;      
+}
+
+.tabletitle{
+    font-size: 30px;
+    font-weight: 750;
+    color:#38905e;
+    text-align: center;
+    margin-left: 400px;
+    margin-right: 400px;
     margin-bottom: 50px;
     padding-bottom: 0px;
             border-bottom-style: solid;
