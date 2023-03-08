@@ -15,6 +15,7 @@ import { UserUpdateComponent } from './component/user-update/user-update.compone
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { TicketOverviewComponent } from './component/ticket-overview/ticket-overview.component';
 import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
+import { AccountActivationComponent } from './component/account-activation/account-activation.component';
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'ticket/update/:id', component: TicketUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'ticket/:id', component: TicketDetailComponent, canActivate: [AuthGuard], data: {role: ['USER', 'ADMIN', 'CARETAKER']}},
   { path: 'ticket', component: TicketOverviewComponent, canActivate: [AuthGuard], data: {role: ['USER', 'ADMIN', 'CARETAKER']}},
+  { path: 'registrationConfirmation', component: AccountActivationComponent} 
 ];
 
 const routerOptions: ExtraOptions = {

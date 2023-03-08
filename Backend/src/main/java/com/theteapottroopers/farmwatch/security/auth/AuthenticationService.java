@@ -4,9 +4,11 @@ import com.theteapottroopers.farmwatch.exception.LoginException;
 import com.theteapottroopers.farmwatch.exception.SomethingWentWrongException;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.security.config.JwtService;
+import com.theteapottroopers.farmwatch.security.event.OnRegistrationCompleteEvent;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +26,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final ApplicationEventPublisher eventPublisher;
 
     public RegisterResponse register(RegisterRequest request) {
         User user;
@@ -34,15 +37,14 @@ public class AuthenticationService {
                     .username(request.getUsername())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .role(Role.ROLE_USER)
+                    .open(false)
                     .build();
             userRepository.save(user);
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
         } catch (Exception exception) {
             throw new SomethingWentWrongException("Something went wrong. Try using a different username or email");
         }
-
-        String jwtToken = jwtService.generateToken(user);
         return RegisterResponse.builder()
-                .token(jwtToken)
                 .build();
     }
 

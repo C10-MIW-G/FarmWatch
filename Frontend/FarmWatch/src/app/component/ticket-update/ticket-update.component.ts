@@ -26,7 +26,7 @@ export class TicketUpdateComponent implements OnInit{
   caretakers: CaretakerOverview[] = [];
   statuses: Status[] = [];
   caretakerNames: string[] = [];
-  noValue: String = "Does not apply"
+  noValue: String = "Not assigned"
 
   
   constructor(private animalOverviewService: AnimalOverviewService,

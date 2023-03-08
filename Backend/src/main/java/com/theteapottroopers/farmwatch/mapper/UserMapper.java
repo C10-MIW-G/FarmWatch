@@ -42,10 +42,8 @@ public class UserMapper {
         List<UserLeanDto> caretakerLeanDtos = new ArrayList<>();
         for (User user: users) {
             UserLeanDto caretakerLeanDto = new UserLeanDto();
-            StringBuilder stringBuilder = new StringBuilder();
             caretakerLeanDto.setId(user.getId());
-            stringBuilder.append(user.getFullName());
-            caretakerLeanDto.setFullName(stringBuilder.toString());
+            caretakerLeanDto.setFullName(user.getFullName());
             caretakerLeanDtos.add(caretakerLeanDto);
         }
         return caretakerLeanDtos;

@@ -13,7 +13,7 @@ export interface Ticket {
         username: string; 
     };
     assignedToUser: {
-        id: number;
+        id: number | null;
         username: string; 
     };
     ticketMessageIds: number[];

@@ -112,8 +112,8 @@
     </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <button class="btn btn-success tooltips btn-block text-light" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign ticket to me</button>
-        <button class="btn btn-secondary tooltips btn-block text-lightfarmbutton " routerLink="/ticket/update/{{id}}">Edit</button>  
+        <button class="btn btn-secondary tooltips btn-block text-lightfarmbutton " routerLink="/ticket/update/{{id}}">Edit</button>
+        <button class="btn btn-success tooltips btn-block text-light farmbutton" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign ticket to me</button>  
     </mat-sidenav>
 </mat-sidenav-container>
 

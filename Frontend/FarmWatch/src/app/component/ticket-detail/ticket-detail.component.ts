@@ -25,7 +25,7 @@ export class TicketDetailComponent implements OnInit {
   privateTicketMessages?: TicketMessage[] = [];
   assignToMeTicket?: TicketUpdate;
   currentUser: string;
-  showAssignToMeButton: boolean = true;   
+  showAssignToMeButton: boolean = false;   
   newTicketMessageForm: any = {
     ticketId: null,
     message: null,
@@ -63,9 +63,9 @@ export class TicketDetailComponent implements OnInit {
     this.ticketDetailService.getTicket(this.id).subscribe({
       next: ticket => {
         this.ticket = ticket;
-        if(ticket.assignedToUser.username == this.currentUser){
-          this.showAssignToMeButton = false; 
-        }
+        if(ticket.assignedToUser == null || ticket.assignedToUser.username != this.currentUser){
+          this.showAssignToMeButton = true; 
+        } 
         this.imageUrl = "http://localhost:8080/images/" + ticket.imageFileName;
         this.getTicketMessages(this.ticket.ticketMessageIds);
       },
@@ -132,37 +132,41 @@ export class TicketDetailComponent implements OnInit {
   }
 
   assignTicketToCurrentUser(ticket?: Ticket): void{
-    if(ticket){
-      this.assignToMeTicket = {id: ticket.id, 
-                              animalId: ticket.animal.id,
-                              animalName: ticket.animal.name,
-                              description: ticket.description,
-                              summary: ticket.summary,
-                              status: ticket.status,
-                              assignedTo: null,
-                              assignedToName: this.currentUser};
+    this.dialogService.showConfirmDialog({title: "Are you sure you want to assign this ticket to yourself?" , message: ""}).subscribe(
+      (response: Boolean) => {
+        if(ticket && response){
+          this.assignToMeTicket = {id: ticket.id, 
+                                  animalId: ticket.animal.id,
+                                  animalName: ticket.animal.name,
+                                  description: ticket.description,
+                                  summary: ticket.summary,
+                                  status: ticket.status,
+                                  assignedTo: null,
+                                  assignedToName: this.currentUser};
 
-      this.ticketDetailService.updateTicket(this.assignToMeTicket).subscribe({next: data => { 
-                              this.toast.ShowSucces("New Notification", "Ticket has been assigned to " + this.currentUser)
-                              
-                                if (this.ticket?.assignedToUser && this.assignToMeTicket?.assignedToName) {
-                                  this.ticket.assignedToUser.username = this.assignToMeTicket.assignedToName;
-                                  this.showAssignToMeButton = false;   
-                                } else {
-                                setTimeout(() => {
-                                  this.toast.ShowError("New Notification", "Something went wrong")
-                                  this.router.navigate(['/ticket/', this.id]);
-                                  }, 1000);
-                                }
-                              },
-                              error: err => {
-                                this.toast.ShowError("New Notification", err.error)
-                              }
-                              });
-                              
-    } else {
-      this.toast.ShowError("New Notification", "Something went wrong")
-    }
-    
-  } 
+          this.ticketDetailService.updateTicket(this.assignToMeTicket).subscribe({next: data => { 
+            if (this.ticket && this.assignToMeTicket?.assignedToName) {
+              if (this.ticket.assignedToUser) {
+                this.ticket.assignedToUser.username = this.assignToMeTicket.assignedToName;
+              } else {
+                this.ticket.assignedToUser = {id: null ,username: this.assignToMeTicket.assignedToName };
+              }
+              this.showAssignToMeButton = false;
+              this.toast.ShowSucces("New Notification", "Ticket has been assigned to " + this.currentUser)   
+            } else {
+              setTimeout(() => {
+                this.toast.ShowError("New Notification", "Something went wrong")
+                this.router.navigate(['/ticket/', this.id]);
+                }, 1000);
+            }
+          },
+          error: err => {
+            this.toast.ShowError("New Notification", err.error)
+          }
+          });
+        }                        
+      }
+    )
+  }  
+  
 }

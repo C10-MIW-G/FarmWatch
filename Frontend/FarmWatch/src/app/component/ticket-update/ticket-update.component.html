@@ -51,8 +51,8 @@
                                     <div class="dropdown-content">
                                     <select [(ngModel)]="ticket.assignedTo" type="assignedTo" class="form-control" required
                                         assignedTo #assignedTo="ngModel"name="assignedTo" value="{{ticket.assignedTo}}">
-                                        <option value="" >Does not apply</option>
-                                        <option *ngFor="let caretaker of caretakers" [selected]="caretaker.name==ticket.assignedToName" [value]="caretaker.id">{{caretaker.name}}</option>
+                                        <option value="" >{{noValue}}</option>
+                                        <option *ngFor="let caretaker of caretakers" [selected]="caretaker.fullName==ticket.assignedToName" [value]="caretaker.id">{{caretaker.fullName}}</option>
                                     </select>
                                     </div>
                                 </div>                        

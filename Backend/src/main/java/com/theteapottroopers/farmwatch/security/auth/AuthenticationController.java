@@ -1,12 +1,18 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
+import com.theteapottroopers.farmwatch.security.event.OnRegistrationCompleteEvent;
+import com.theteapottroopers.farmwatch.security.user.User;
+import com.theteapottroopers.farmwatch.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
+import java.util.Calendar;
 
 
 /**
@@ -20,6 +26,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
+    private final UserService userService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request){
@@ -33,5 +41,27 @@ public class AuthenticationController {
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(authenticationService.authenticate(request));
+    }
+
+    @GetMapping("/registrationConfirm")
+    public ResponseEntity<?> confirmRegistration(@RequestParam("token") String token){
+        VerificationToken verificationToken = userService.getVerificationToken(token);
+        if(verificationToken == null){
+            return ResponseEntity.badRequest().body("Invalid token");
+        }
+
+        User user = verificationToken.getUser();
+        Calendar cal = Calendar.getInstance();
+        if((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0){
+            return ResponseEntity.status(401).body("Token is expired");
+        }
+
+        if(user.isEnabled()){
+            return ResponseEntity.status(200).body("Token has already been activated");
+        }
+
+        user.setOpen(true);
+        userService.saveUser(user);
+        return ResponseEntity.status(200).body("Token is already activated");
     }
 }

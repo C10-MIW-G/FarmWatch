@@ -3,6 +3,8 @@ package com.theteapottroopers.farmwatch.service;
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.*;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
+import com.theteapottroopers.farmwatch.repository.VerificationRepository;
+import com.theteapottroopers.farmwatch.security.auth.VerificationToken;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.validation.UserValidation;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.theteapottroopers.farmwatch.service.AnimalService.MESSAGE_FOR_UNKNOWN_EXCEPTION;
 
@@ -23,11 +26,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserValidation userValidation;
+    private final VerificationRepository verificationRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserValidation userValidation) {
+    public UserService(UserRepository userRepository, UserValidation userValidation, VerificationRepository verificationRepository) {
         this.userRepository = userRepository;
         this.userValidation = userValidation;
+        this.verificationRepository = verificationRepository;
     }
 
     public List<User> findAllUsers(){
@@ -75,5 +80,18 @@ public class UserService {
         userToUpdate.setUsername(userDto.getUsername());
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setRole(userDto.getRole());
+    }
+
+    public void createVerificationToken(User user, String token){
+        VerificationToken newToken = new VerificationToken(token, user);
+        verificationRepository.save(newToken);
+    }
+
+    public VerificationToken getVerificationToken(String verificationToken){
+        return verificationRepository.findVerificationTokenByToken(verificationToken);
+    }
+
+    public void saveUser(User user){
+        userRepository.save(user);
     }
 }

@@ -44,6 +44,7 @@ import { FileUploadComponent } from './component/file-upload/file-upload.compone
 import { NewTicketMessageComponent } from './component/new-ticket-message/new-ticket-message.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PersonalTicketFilter } from './pipe/personal-ticket-filter';
+import { AccountActivationComponent } from './component/account-activation/account-activation.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { PersonalTicketFilter } from './pipe/personal-ticket-filter';
     ConfirmationDialogComponent,
     FileUploadComponent,
     NewTicketMessageComponent,
-    PersonalTicketFilter
+    PersonalTicketFilter,
+    AccountActivationComponent
   ],
   imports: [
     BrowserModule,
