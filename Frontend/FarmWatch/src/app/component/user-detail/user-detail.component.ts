@@ -68,7 +68,7 @@ export class UserDetailComponent {
   }
 
   public fullName():String {
-    const fullname: string = this.user ? `${this.user.firstname} ${this.user.lastname}` : '';
+    const fullname: string = this.user ? `${this.user.fullName}` : '';
     return fullname;
   }
 

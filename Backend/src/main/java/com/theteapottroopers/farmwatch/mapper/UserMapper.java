@@ -18,8 +18,7 @@ public class UserMapper {
     public UserDto toUserDto(User user){
         return new UserDto(
                 user.getId(),
-                user.getFirstname(),
-                user.getLastname(),
+                user.getFullName(),
                 user.getEmail(),
                 user.getUsername(),
                 user.getRole());
@@ -30,8 +29,7 @@ public class UserMapper {
         for (User user: users) {
             userDtos.add(new UserDto(
                     user.getId(),
-                    user.getFirstname(),
-                    user.getLastname(),
+                    user.getFullName(),
                     user.getEmail(),
                     user.getUsername(),
                     user.getRole())
@@ -46,10 +44,8 @@ public class UserMapper {
             UserLeanDto caretakerLeanDto = new UserLeanDto();
             StringBuilder stringBuilder = new StringBuilder();
             caretakerLeanDto.setId(user.getId());
-            stringBuilder.append(user.getFirstname());
-            stringBuilder.append(" ");
-            stringBuilder.append(user.getLastname());
-            caretakerLeanDto.setName(stringBuilder.toString());
+            stringBuilder.append(user.getFullName());
+            caretakerLeanDto.setFullName(stringBuilder.toString());
             caretakerLeanDtos.add(caretakerLeanDto);
         }
         return caretakerLeanDtos;

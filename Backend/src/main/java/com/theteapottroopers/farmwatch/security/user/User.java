@@ -29,8 +29,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-    private String firstname;
-    private String lastname;
+    private String fullName;
     @Email
     @NotNull
     @Column(name="email", nullable = false, unique = true)

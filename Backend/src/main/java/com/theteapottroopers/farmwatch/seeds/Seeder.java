@@ -92,8 +92,7 @@ public class Seeder {
 
 
         User user1 = User.builder()
-                .firstname("Kai")
-                .lastname("Patel")
+                .fullName("Kai Patel")
                 .email("kaipatel@mail.com")
                 .username("user")
                 .password(passwordEncoder.encode("password"))
@@ -102,8 +101,7 @@ public class Seeder {
         userRepository.save(user1);
 
         User user2 = User.builder()
-                .firstname("Lila")
-                .lastname("Singh")
+                .fullName("Lila Singh")
                 .email("lilasingh@mail.com")
                 .username("Lila")
                 .password(passwordEncoder.encode("password"))
@@ -112,8 +110,7 @@ public class Seeder {
         userRepository.save(user2);
 
         User user3 = User.builder()
-                .firstname("Dante")
-                .lastname("Williams")
+                .fullName("Dante Williams")
                 .email("dantewilliams@mail.com")
                 .username("Dante")
                 .password(passwordEncoder.encode("password"))
@@ -122,8 +119,7 @@ public class Seeder {
         userRepository.save(user3);
 
         User user4 = User.builder()
-                .firstname("Isabel")
-                .lastname("Garcia")
+                .fullName("Isabel Garcia")
                 .email("isabelgarcia@mail.com")
                 .username("Isabel")
                 .password(passwordEncoder.encode("password"))
@@ -132,8 +128,7 @@ public class Seeder {
         userRepository.save(user4);
 
         User user5 = User.builder()
-                .firstname("Caleb")
-                .lastname("Nguyen")
+                .fullName("Caleb Nguyen")
                 .email("calebnguyen@mail.com")
                 .username("Caleb")
                 .password(passwordEncoder.encode("password"))
@@ -142,8 +137,7 @@ public class Seeder {
         userRepository.save(user5);
 
         User user6 = User.builder()
-                .firstname("Leila")
-                .lastname("Kim")
+                .fullName("Leila Kim")
                 .email("leilakim@mail.com")
                 .username("Leila")
                 .password(passwordEncoder.encode("password"))
@@ -152,8 +146,7 @@ public class Seeder {
         userRepository.save(user6);
 
         User user7 = User.builder()
-                .firstname("Ethan")
-                .lastname("Chen")
+                .fullName("Ethan Chen")
                 .email("ethanchen@mail.com")
                 .username("Ethan")
                 .password(passwordEncoder.encode("password"))
@@ -162,8 +155,7 @@ public class Seeder {
         userRepository.save(user7);
 
         User user8 = User.builder()
-                .firstname("Avery")
-                .lastname("Martin")
+                .fullName("Avery Martin")
                 .email("averymartin@mail.com")
                 .username("Avery")
                 .password(passwordEncoder.encode("password"))
