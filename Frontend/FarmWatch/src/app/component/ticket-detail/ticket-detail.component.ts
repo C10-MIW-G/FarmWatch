@@ -8,8 +8,9 @@ import { ToastService } from 'src/app/service/toast.service';
 import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { TicketMessageService } from 'src/app/service/ticket-message.service';
 import { DialogService } from 'src/app/service/dialog.service';
+import { TicketUpdate } from 'src/app/model/ticket-update';
 import { NewTicketMessageComponent } from '../new-ticket-message/new-ticket-message.component';
-
+import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -21,7 +22,10 @@ export class TicketDetailComponent implements OnInit {
   id!: number;
   ticket?: Ticket;
   publicTicketMessages?: TicketMessage[] = []; 
-  privateTicketMessages?: TicketMessage[] = []; 
+  privateTicketMessages?: TicketMessage[] = [];
+  assignToMeTicket?: TicketUpdate;
+  currentUser: string;
+  showAssignToMeButton: boolean = true;   
   newTicketMessageForm: any = {
     ticketId: null,
     message: null,
@@ -39,10 +43,16 @@ export class TicketDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private toast: ToastService,
-    private dialogService: DialogService,){
+    private dialogService: DialogService){
       this.route.params.subscribe(params => {
         this.id = params['id'];
       });
+      try {
+        this.currentUser = this.storageService.getUserName() as string;
+      } catch (error) {
+        this.toast.ShowError("New Notification", error);
+        this.currentUser = '';
+      }
     }
   
   ngOnInit(): void {
@@ -53,6 +63,9 @@ export class TicketDetailComponent implements OnInit {
     this.ticketDetailService.getTicket(this.id).subscribe({
       next: ticket => {
         this.ticket = ticket;
+        if(ticket.assignedToUser.username == this.currentUser){
+          this.showAssignToMeButton = false; 
+        }
         this.imageUrl = "http://localhost:8080/images/" + ticket.imageFileName;
         this.getTicketMessages(this.ticket.ticketMessageIds);
       },
@@ -117,4 +130,39 @@ export class TicketDetailComponent implements OnInit {
       }
     });
   }
+
+  assignTicketToCurrentUser(ticket?: Ticket): void{
+    if(ticket){
+      this.assignToMeTicket = {id: ticket.id, 
+                              animalId: ticket.animal.id,
+                              animalName: ticket.animal.name,
+                              description: ticket.description,
+                              summary: ticket.summary,
+                              status: ticket.status,
+                              assignedTo: null,
+                              assignedToName: this.currentUser};
+
+      this.ticketDetailService.updateTicket(this.assignToMeTicket).subscribe({next: data => { 
+                              this.toast.ShowSucces("New Notification", "Ticket has been assigned to " + this.currentUser)
+                              
+                                if (this.ticket?.assignedToUser && this.assignToMeTicket?.assignedToName) {
+                                  this.ticket.assignedToUser.username = this.assignToMeTicket.assignedToName;
+                                  this.showAssignToMeButton = false;   
+                                } else {
+                                setTimeout(() => {
+                                  this.toast.ShowError("New Notification", "Something went wrong")
+                                  this.router.navigate(['/ticket/', this.id]);
+                                  }, 1000);
+                                }
+                              },
+                              error: err => {
+                                this.toast.ShowError("New Notification", err.error)
+                              }
+                              });
+                              
+    } else {
+      this.toast.ShowError("New Notification", "Something went wrong")
+    }
+    
+  } 
 }
