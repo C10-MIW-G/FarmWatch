@@ -116,9 +116,7 @@ public class TicketMapper extends Mapper{
     }
 
     private static StringBuilder getFullName(Ticket ticket) {
-        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFirstname());
-        stringBuilder.append(" ");
-        stringBuilder.append(ticket.getAssignedTo().getLastname());
+        StringBuilder stringBuilder = new StringBuilder(ticket.getAssignedTo().getFullName());
         return stringBuilder;
     }
 }

@@ -71,8 +71,7 @@ public class UserService {
     }
 
     private static void setUser(UserDto userDto, User userToUpdate) {
-        userToUpdate.setFirstname(userDto.getFirstname());
-        userToUpdate.setLastname(userDto.getLastname());
+        userToUpdate.setFullName(userDto.getFullName());
         userToUpdate.setUsername(userDto.getUsername());
         userToUpdate.setEmail(userDto.getEmail());
         userToUpdate.setRole(userDto.getRole());
