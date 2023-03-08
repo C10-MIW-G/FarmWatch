@@ -11,8 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class RegisterComponent implements OnInit {
   form: any = {
-    firstname: null,
-    lastname: null,
+    fullname: null,
     username: null,
     email: null,
     password: null,
@@ -30,9 +29,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {    
-    const { firstname, lastname, email, username, password, captchaToken } = this.form;
+    const { fullname, email, username, password, captchaToken } = this.form;
 
-    this.authService.register(firstname, lastname, email, username, password, captchaToken).subscribe({
+    this.authService.register(fullname, email, username, password, captchaToken).subscribe({
       next: data => {
         console.log(data);
         this.dialog.closeAll();
