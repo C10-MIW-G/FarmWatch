@@ -40,6 +40,16 @@ export class AuthService {
     );
   }
 
+  confirmRegistration(token: string): Observable<any> {
+    return this.http.get(
+      AUTH_API + 'registrationConfirm?token=' + token,
+      {responseType: 'text'}
+    );
+  }
+
+
+
+
   logout(){
     this.storageService.clean();
   }
