@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
 import com.theteapottroopers.farmwatch.exception.LoginException;
+import com.theteapottroopers.farmwatch.exception.SomethingWentWrongException;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.security.config.JwtService;
 import com.theteapottroopers.farmwatch.security.user.Role;
@@ -25,16 +26,21 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public RegisterResponse register(RegisterRequest request) {
+        User user;
+        try {
+            user = User.builder()
+                    .firstname(request.getFirstname())
+                    .lastname(request.getLastname())
+                    .email(request.getEmail())
+                    .username(request.getUsername())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .role(Role.ROLE_USER)
+                    .build();
+            userRepository.save(user);
+        } catch (Exception exception) {
+            throw new SomethingWentWrongException("Something went wrong. Try using a different username or email");
+        }
 
-        User user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
-                .username(request.getUsername())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.ROLE_USER)
-                .build();
-        userRepository.save(user);
         String jwtToken = jwtService.generateToken(user);
         return RegisterResponse.builder()
                 .token(jwtToken)
