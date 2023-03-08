@@ -25,7 +25,7 @@ export class TicketDetailComponent implements OnInit {
   privateTicketMessages?: TicketMessage[] = [];
   assignToMeTicket?: TicketUpdate;
   currentUser: string;
-  showAssignToMeButton: boolean = true;   
+  showAssignToMeButton: boolean = false;   
   newTicketMessageForm: any = {
     ticketId: null,
     message: null,
@@ -63,9 +63,9 @@ export class TicketDetailComponent implements OnInit {
     this.ticketDetailService.getTicket(this.id).subscribe({
       next: ticket => {
         this.ticket = ticket;
-        if(ticket.assignedToUser.username == this.currentUser){
-          this.showAssignToMeButton = false; 
-        }
+        if(ticket.assignedToUser.username != this.currentUser){
+          this.showAssignToMeButton = true; 
+        } 
         this.imageUrl = "http://localhost:8080/images/" + ticket.imageFileName;
         this.getTicketMessages(this.ticket.ticketMessageIds);
       },
