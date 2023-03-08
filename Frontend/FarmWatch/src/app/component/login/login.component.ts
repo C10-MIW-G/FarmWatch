@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       error: err => {
         this.errorMessage = err;
         this.isLoginFailed = true;
-        this.toast.ShowError("New Notification", "Login failed")
+        this.toast.ShowError("New Notification", "Login failed");
       }
     });
   }

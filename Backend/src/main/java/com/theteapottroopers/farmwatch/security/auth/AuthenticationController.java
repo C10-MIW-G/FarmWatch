@@ -57,11 +57,11 @@ public class AuthenticationController {
         }
 
         if(user.isEnabled()){
-            return ResponseEntity.status(200).body("Token has already been activated");
+            return ResponseEntity.status(200).body("Account has already been activated");
         }
 
         user.setOpen(true);
         userService.saveUser(user);
-        return ResponseEntity.status(200).body("Token is already activated");
+        return ResponseEntity.status(200).body("Account activated");
     }
 }

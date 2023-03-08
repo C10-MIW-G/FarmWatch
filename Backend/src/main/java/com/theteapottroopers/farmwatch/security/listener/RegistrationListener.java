@@ -4,6 +4,7 @@ import com.theteapottroopers.farmwatch.security.event.OnRegistrationCompleteEven
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.UserService;
 import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -11,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 @Component
@@ -41,6 +43,11 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
             MimeMessageHelper helper = new MimeMessageHelper(mailMessage, true, "UTF-8");
             helper.setTo(recipientAddress);
+            try {
+                helper.setFrom(new InternetAddress("farmwatchmail@gmail.com", "FarmWatch"));
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
             helper.setText("<p>Hello " + user.getFullName() + ",</p>\n" +
                     "\n" +
                     "<p>Congratulations and welcome to FarmWatch! We are thrilled to inform you that your account has been successfully created.</p>\n" +
