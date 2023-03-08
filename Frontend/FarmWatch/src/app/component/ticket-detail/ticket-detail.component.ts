@@ -145,11 +145,14 @@ export class TicketDetailComponent implements OnInit {
                                   assignedToName: this.currentUser};
 
           this.ticketDetailService.updateTicket(this.assignToMeTicket).subscribe({next: data => { 
-                                  this.toast.ShowSucces("New Notification", "Ticket has been assigned to " + this.currentUser)
-                                  
-                                    if (this.ticket?.assignedToUser && this.assignToMeTicket?.assignedToName) {
-                                      this.ticket.assignedToUser.username = this.assignToMeTicket.assignedToName;
-                                      this.showAssignToMeButton = false;   
+                                    if (this.ticket && this.assignToMeTicket?.assignedToName) {
+                                      if (this.ticket.assignedToUser) {
+                                        this.ticket.assignedToUser.username = this.assignToMeTicket.assignedToName;
+                                      } else {
+                                        this.ticket.assignedToUser = {id: null ,username: this.assignToMeTicket.assignedToName };
+                                      }
+                                      this.showAssignToMeButton = false;
+                                      this.toast.ShowSucces("New Notification", "Ticket has been assigned to " + this.currentUser)   
                                     } else {
                                     setTimeout(() => {
                                       this.toast.ShowError("New Notification", "Something went wrong")
