@@ -39,7 +39,7 @@ public class FileStorageResource {
 
     @PostMapping("/images")
     // @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')") // Frontend not implemented yet
-    public ResponseEntity<?> uploadImage(@RequestParam("imageFile")MultipartFile file) throws IOException{
+    public ResponseEntity<?> uploadImage(@RequestParam("imageFile")MultipartFile file ) throws IOException{
 
         String uuid = fileStorageService.uploadImage(file);
         ImageUuidDto imageUuidDto = new ImageUuidDto(uuid);
