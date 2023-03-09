@@ -53,7 +53,7 @@ public class AuthenticationController {
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0){
-            return ResponseEntity.status(401).body("Token is expired");
+            return ResponseEntity.status(401).body("Token has expired");
         }
 
         if(user.isEnabled()){
