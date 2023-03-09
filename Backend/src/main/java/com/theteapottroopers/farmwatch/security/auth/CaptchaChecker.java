@@ -22,7 +22,7 @@ public class CaptchaChecker {
     @Value("${google.captcha.key}")
     private String CAPTCHA_KEY;
 
-    @Value("$(google.captcha.url")
+    @Value("${google.captcha.url}")
     private String API_URL;
     private static final String VALIDATION_STRING = "success";
 
