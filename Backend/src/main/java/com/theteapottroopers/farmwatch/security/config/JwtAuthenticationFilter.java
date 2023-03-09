@@ -50,7 +50,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             username = jwtService.extractUsername(jwt);
         }catch (ExpiredJwtException e) {
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.getWriter().write("Your session is expired, please login again.");
+            response.getWriter().write("Your session has expired, please login again.");
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             return;
         }

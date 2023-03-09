@@ -97,6 +97,7 @@ public class Seeder {
                 .username("user")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_ADMIN)
+                .open(true)
                 .build();
         userRepository.save(user1);
 
@@ -106,6 +107,7 @@ public class Seeder {
                 .username("Lila")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
+                .open(true)
                 .build();
         userRepository.save(user2);
 
@@ -115,6 +117,7 @@ public class Seeder {
                 .username("Dante")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
+                .open(true)
                 .build();
         userRepository.save(user3);
 
@@ -124,6 +127,7 @@ public class Seeder {
                 .username("Isabel")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
+                .open(true)
                 .build();
         userRepository.save(user4);
 
@@ -133,6 +137,7 @@ public class Seeder {
                 .username("Caleb")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
+                .open(true)
                 .build();
         userRepository.save(user5);
 
@@ -142,6 +147,7 @@ public class Seeder {
                 .username("Leila")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
+                .open(true)
                 .build();
         userRepository.save(user6);
 
@@ -151,6 +157,7 @@ public class Seeder {
                 .username("Ethan")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_CARETAKER)
+                .open(true)
                 .build();
         userRepository.save(user7);
 
@@ -160,6 +167,7 @@ public class Seeder {
                 .username("Avery")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_CARETAKER)
+                .open(true)
                 .build();
         userRepository.save(user8);
 

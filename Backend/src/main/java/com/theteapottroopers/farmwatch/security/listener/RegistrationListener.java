@@ -52,7 +52,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
                     "\n" +
                     "<p>Congratulations and welcome to FarmWatch! We are thrilled to inform you that your account has been successfully created.</p>\n" +
                     "\n" +
-                    "<p>Activate your account to gain access to information about the animals in your local petting zoo,  and help the caretakers by reporting any injured animals.</p>\n" +
+                    "<p>Activate your account to gain access to information about the animals in your local petting zoo, and help the caretakers by reporting any injured animals.</p>\n" +
                     "\n" +
                     "<p>To activate your account, please click on the link below:</p>\n" +
                     "\n" +

@@ -27,7 +27,7 @@ export class CreateTicketComponent implements OnInit{
   errorMessage = '';
   animals: AnimalOverview[] = [];
   created = false;
-  imageFileName = '';
+  imageFileName = null;
 
   constructor(private createTicketService: CreateTicketService, 
     private route: ActivatedRoute, 
@@ -49,7 +49,7 @@ export class CreateTicketComponent implements OnInit{
     }
     else(animalTempId=animalId)
 
-    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername, this.imageFileName).subscribe({
+    this.createTicketService.createTicket(summary, description, animalTempId, this.reportUsername, this.imageFileName!).subscribe({
       next: data => {
         this.created = true;
         this.toast.ShowSucces("New Notification", "Succesfully created a ticket");
