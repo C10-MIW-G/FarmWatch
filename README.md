@@ -1,3 +1,4 @@
+
 ![FarmWatch](https://github.com/C10-MIW-G/FarmWatch/blob/main/Docs/farmwatchbanner.png)
 
 This web application boasts a dynamic front-end implemented using Angular and a robust backend powered by Spring Boot. The combination of these technologies results in a seamless user experience. The Angular front-end provides an interactive and responsive interface, while the Spring Boot backend efficiently handles and manages data.
@@ -28,9 +29,12 @@ or  download and extract the repository .zip to the folder of your choosing.
 
 #### Backend
 1. Open the backend folder using IntelliJ or a similar IDE. 
-2. Open de pom.xml and download and install all missing dependencies.
-3. Run the application.
-4. The backend is now ready to use. 
+2. Create a folder named "config" in the backend folder.
+3. Create a new 'ResourceBundle' and name it "application.properties".
+4. Add the secret keys provided by your team to this file. 
+5. Open de pom.xml and download and install all missing dependencies.
+6. Run the application.
+7. The backend is now ready to use. 
 
 #### Frontend
 1.  Open the frontend folder using Microsoft Visual Code or similar IDE.
