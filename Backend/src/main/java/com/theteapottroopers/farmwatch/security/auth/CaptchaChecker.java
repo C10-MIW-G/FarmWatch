@@ -2,6 +2,7 @@ package com.theteapottroopers.farmwatch.security.auth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -15,11 +16,14 @@ import java.net.URL;
  * <p>
  * checks if a given captcha is valid
  */
-
+@Service
 public class CaptchaChecker {
 
-    private static final String CAPTCHA_KEY = "6LeKLl0kAAAAANJ5-3s9PLySY-r_Ln13epzRtN3d";
-    private static final String API_URL = "https://www.google.com/recaptcha/api/siteverify";
+    @Value("${google.captcha.key}")
+    private String CAPTCHA_KEY;
+
+    @Value("$(google.captcha.url")
+    private String API_URL;
     private static final String VALIDATION_STRING = "success";
 
     public CaptchaChecker() {
