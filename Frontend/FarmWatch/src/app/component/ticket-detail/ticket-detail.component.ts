@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketMessage } from 'src/app/model/ticket-message';
@@ -9,8 +8,7 @@ import { TicketDetailService } from 'src/app/service/ticket-details.service';
 import { TicketMessageService } from 'src/app/service/ticket-message.service';
 import { DialogService } from 'src/app/service/dialog.service';
 import { TicketUpdate } from 'src/app/model/ticket-update';
-import { NewTicketMessageComponent } from '../new-ticket-message/new-ticket-message.component';
-import { tick } from '@angular/core/testing';
+
 
 @Component({
   selector: 'app-ticket-detail',

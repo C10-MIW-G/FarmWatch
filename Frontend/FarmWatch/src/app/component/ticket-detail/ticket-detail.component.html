@@ -4,55 +4,54 @@
     <mat-sidenav-content class="sidenav-content">
         
         <div class="container">
+
             <p class="ticketdetailtitle">Ticket details</p>
-        <div class="container d-flex flex-column">
-            
+
+            <div class="card-columns mx-auto">
+                
+            <div class="card ticketdetailcard">
+                <div class="ticketdetailimage">
+                <img class="card-img-top" src={{imageUrl}} alt="No image provided">
+                <h5><div class="top-left  badge badge-secondary">{{ticket?.animal?.name}}</div></h5>
+            </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ticket?.summary}}</h5>
+                  <p class="card-text">{{ticket?.description}}</p>
+                </div>
+              </div>
+              <br>
+              <div class="card ticketdetailcard">
+                <div class="card-header">
+                  <h5>Report date</h5>
+                  {{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}
+                  <br>
+                  <br>
+                  <h5>Reported by</h5>
+                  {{ticket?.reportedByUser?.username}}
+                  <br>
+                  <br>
+                  <h5>Asigned to</h5>
+                  {{ticket?.assignedToUser?.username || "Not assigned"}}
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Ticket status</h5>
+                  
+                  <span class="badge badge-warning">{{ticket?.status}}</span>
+                </div>
+              </div>
+
+            </div>
+
             <div class="row">
                 <div class="col">
                     
-                    <div class="ticket-container mx-auto">
-                        <table class="table">
-                            <tr>
-                                <th>Summary</th>
-                                <td colspan="3">{{ticket?.summary}}</td>
-                            </tr>
-                            <tr>
-                                <th>Ticket ID</th>
-                                <td>{{ticket?.id}}</td>
-                                <th>Report Date</th>
-                                <td>{{ticket?.reportDateTime | date: 'dd/MM/yyyy hh:mm'}}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>{{ticket?.status}}</td>
-                                <th>Reported By User</th>
-                                <td>{{ticket?.reportedByUser?.username}}</td>
-                            </tr>
-                            <tr>
-                                <th>Animal name</th>
-                                <td>{{ticket?.animal?.name || "Not specified"}}</td>
-                                <th>Assigned To User</th>
-                                <td>{{ticket?.assignedToUser?.username || "Not assigned"}}</td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td colspan="3">{{ticket?.description}}</td>
-                            </tr>
-                            <tr *ngIf="ticket?.imageFileName">
-                                <td><img class="card-img-top" src={{imageUrl}} alt="Card image cap"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h3>Ticket Messages</h3>
                     <div class="ticket-message-container mx-auto">
-                        <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="start">
-                            <mat-tab label="Public">
+                        <h3> Messages</h3>
+                        <mat-tab-group  mat-stretch-tabs="true" mat-align-tabs="start">
+                            <mat-tab label="Public"  >
                                 <div class="col-md-12 text-center">
-                                    <button class="btn-new-message" mat-raised-button color="primary" (click)="openNewMessageDialog(false)">New public message</button>
+                                    <br>
+                                    <button class="btn btn-secondary farmbutton"  (click)="openNewMessageDialog(false)">New public message</button>
                                 </div>
                                 <ng-container *ngFor="let ticketMessage of publicTicketMessages">
                                     <div class="fw-comment-container d-flex">
@@ -67,8 +66,8 @@
                                             </table>
                                         </div>
                                         <div class="comment">
-                                            <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
                                             <div class="comment-body">
+                                                <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
                                                 <p class="comment-text">{{ticketMessage.message}}</p>
                                                 <div class="comment-footer">
                                                 </div>
@@ -79,7 +78,8 @@
                             </mat-tab>
                             <mat-tab *ngIf="getRole() != 'USER'" label="Private">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn-new-message" mat-raised-button color="primary" (click)="openNewMessageDialog(true)">New private message</button>
+                                    <br>
+                                    <button class="btn btn-secondary farmbutton" (click)="openNewMessageDialog(true)">New private message</button>
                                 </div>
                                 <ng-container *ngFor="let ticketMessage of privateTicketMessages">
                                 <div class="fw-comment-container d-flex">
@@ -94,8 +94,9 @@
                                         </table>
                                     </div>
                                     <div class="comment">
-                                        <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
+                                        
                                         <div class="comment-body">
+                                            <span class="comment-meta">{{ticketMessage.messageLocalDateTime | date: "dd-MM-yyyy HH:mm"}}</span>
                                             <p class="comment-text">{{ticketMessage.message}}</p>
                                             <div class="comment-footer">
                                             </div>
@@ -108,12 +109,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+            
+
+            
+                
+             
+            
+            
     </div>
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <button class="btn btn-secondary tooltips btn-block text-lightfarmbutton " routerLink="/ticket/update/{{id}}">Edit</button>
-        <button class="btn btn-success tooltips btn-block text-light farmbutton" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign ticket to me</button>  
+        <button class="btn btn-secondary tooltips btn-block text-light farmbutton " routerLink="/ticket/update/{{id}}">Edit</button>
+        <button class="btn btn-secondary tooltips btn-block text-light farmbutton" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign ticket to me</button>  
     </mat-sidenav>
 </mat-sidenav-container>
 

@@ -2,12 +2,14 @@
     
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
-        <h3 class="card-title">Update ticket</h3>
+        
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
         <div class="container">
-            <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
+            <div class="col-md-6 offset-md-3 formshadow">
+                <br>
+                <h3 class="card-title">Edit ticket</h3>
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form">
                     <div class="row">
                         <div class="col">
@@ -25,11 +27,13 @@
                         </div>
                         <div class="col"></div>
                     </div> 
+                    <div class="col">
                     <div class="form-group">
                         <label>Summary</label>
                         <input type="text" class="form-control" name="summary" [(ngModel)]="ticket.summary" required summary
                         #summary="ngModel" value={{ticket.summary}}>
                     </div>
+                </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -59,11 +63,13 @@
                             </div>
                         </div>  
                     </div>
+                    <div class="col">
                     <div class="form-group">
                         <label>Description</label>
                         <textarea rows="10" style="height: 100%;" class="form-control" name="description"
                             [(ngModel)]="ticket.description" required description #description="ngModel"></textarea>
                     </div>
+                </div>
                     <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Save</button>
                 </form>
             </div>

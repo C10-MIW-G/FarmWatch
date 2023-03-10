@@ -7,25 +7,28 @@
 
   <mat-sidenav-content class="sidenav-content">
     <div class="container">
-      <p class="title">User details</p>
-    <div class="datacontainer">
-      <div class="row">
-        <div class="label">Username:</div>
-        <div class="value">{{user?.username}}</div>
+      <p class="ticketdetailtitle">User details</p>
+
+      <div class="card ticketdetailleftcard">
+        <div class="card-header">
+          <h5>Username</h5>
+          {{user?.username}}
+          <br>
+                  <br>
+          <h5>Name</h5>
+          {{user?.fullName}}
+          <br>
+                  <br>
+          <h5>Email</h5>
+          {{user?.email}}
+          <br>
+          <br>
+        </div>
+        <div class="card-body" *ngIf="isAdmin">
+          <h5 class="card-title">Role</h5>
+          <span class="badge badge-warning">{{formattedRole}}</span>
+        </div>
       </div>
-      <div class="row">
-        <div class="label">Name:</div>
-        <div class="value">{{user?.fullName}}</div>
-      </div>
-      <div class="row">
-        <div class="label">Email:</div>
-        <div class="value">{{user?.email}}</div>
-      </div>
-      <div class="row" *ngIf="isAdmin">
-        <div class="label">Role:</div>
-        <div class="value">{{formattedRole}}</div>
-      </div>
-    </div>
   </div>
   </mat-sidenav-content>
 

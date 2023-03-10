@@ -1,13 +1,15 @@
 <mat-sidenav-container class="sidenav-container" id="top">
   <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    <h3 class="card-title" >Add animal</h3>
+    
   </mat-sidenav>
 <mat-sidenav-content class="sidenav-content">
  
-    <div class="container">
-  <div class="col-md-6 offset-md-3">
+<div class="container" style="height:1300px">
+    
+  <div class="col-md-6 offset-md-3 formshadow">
     <br>
-    <form (ngSubmit) = "onSubmit()">
+    <h3 class="card-title" >Add animal</h3>
+    <form class="" (ngSubmit) = "onSubmit()">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -67,16 +69,20 @@
             <input type="text" class ="form-control" id = "imageFileName"
                 [(ngModel)] = "form.imageFileName" name = "imageFileName" placeholder="Enter an image URL">
         </div>
+        <button class = "btn btn-secondary farmbutton" type ="submit" style="float: right;">Save</button>
         </div>
     
     
-        <button class = "btn btn-secondary farmbutton" type ="submit" style="float: right;">Save</button>
+        
     
     </form>
+    
 </div> 
 </div>
+
+
+</mat-sidenav-content> 
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
 
 </mat-sidenav>
-</mat-sidenav-content> 
 </mat-sidenav-container>

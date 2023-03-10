@@ -7,14 +7,16 @@
     border: 1px solid;
     border-radius: 5px;
     width: 100%;
+    
 }
 
 .ticket-message-container{
     margin-top: 20px;
     padding: 30px;
-    border: 1px solid;
     border-radius: 5px;
-    width: 100%;
+    width: 800px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .fw-comment-userinfo{
@@ -24,6 +26,7 @@
     height: 100%;
     font-size: 14px;
     min-width: 100px;
+    background-color: white;
 }
 
 .fw-comment-userinfo .username{
@@ -44,6 +47,8 @@
     margin-bottom: 30px;
     padding-left: 30px;
     width: 100%;
+    
+    
 }
 
 .comment .comment-author-ava {
@@ -53,18 +58,21 @@
     left: 0;
     width: 50px;
     border-radius: 50%;
-    overflow: hidden
+    overflow: hidden;
+    
 }
 
 .comment .comment-author-ava>img {
     display: block;
-    width: 100%
+    width: 100%;
+    
 }
 
 .comment .comment-body {
     position: relative;
     padding: 24px;
     border: 1px solid #e1e7ec;
+    background-color: white;
     border-radius: 7px;
     /*background-color: #fff;*/
 }
@@ -120,10 +128,11 @@
 }
 
 .comment .comment-meta {
-    color: #9da9b9;
+    position:absolute; left: 500px; top:5px;
     font-size: 13px;
     float: right;
-    margin: 10px;
+    margin: 0px;
+    
 }
 
 .comment .reply-link {
@@ -175,3 +184,21 @@
  .btn-new-message{
     margin-top: 20px;
  }
+ 
+ 
+
+
+  ::ng-deep .mdc-tab-indicator--active{
+    background: #38905e;
+    
+  
+  }
+
+ 
+
+
+
+
+
+
+ 

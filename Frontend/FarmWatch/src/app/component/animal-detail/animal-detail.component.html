@@ -10,40 +10,45 @@
 <!-- Center Content Start-->
 <mat-sidenav-content class="sidenav-content">
   <div class="container" id="main-container">
-    <p class="title">{{animalDetail?.name}}</p>
-  <div class="card" style="width: 50rem; background-color: white; border: none">
-    <br>
-    <div class="row">
-    <div class="col-md-8">
-    <img class="card-img-top" src={{imageUrl}} alt="Card image cap">
-    </div>
-    <div class="col-md-4">
-        <h5 class="card-title">Name: </h5>
-        <p class="card-text">{{animalDetail?.name}}</p>
-      
-      
-        <h5 class="card-title">Animal: </h5>
-        <p class="card-text">{{animalDetail?.commonName}}</p>
-     
-      
-        <h5 class="card-title">Species: </h5>
-        <p class="card-text">{{animalDetail?.species}}</p>
-      
-      
-        <h5 class="card-title">Born on: </h5>
-        <p class="card-text">{{animalDetail?.dateOfBirth| date: "dd-MM-yyyy"}}</p>
-    </div>
-    </div>
-  </div>
+    <p class="tabletitle">{{animalDetail?.name}}</p>
 
-  <br>
-  
-  <p class="title">Description</p>
-    <div class="card-body">
-        <p class="card-text">{{animalDetail?.description}}</p>
-    </div>
- 
-  <br>
+    <div class="card-columns mx-auto">
+                
+      <div class="card animaldetailcard">
+          <div class="animaldetailimage">
+          <img class="animal-detail-img" src={{imageUrl}} alt="">
+      </div>
+          
+        </div>
+        <br>
+        <div class="card animaldetailrightcard">
+          <div class="card-header">
+            <h5 class="no-padding">Name</h5>
+            <p>{{animalDetail?.name}}</p>
+          
+          
+            <h5 class="no-padding">Animal</h5>
+            <p>{{animalDetail?.commonName}}</p>
+            
+            
+            <h5 class="no-padding">Species</h5>
+            {{animalDetail?.species}}
+          </div>
+          <div class="card-body">
+            <h5 class="no-padding">Born on</h5>
+            
+           {{animalDetail?.dateOfBirth| date: "dd-MM-yyyy"}}
+          </div>
+        </div>
+
+      </div>
+      <div class="card description-card">
+        <div class="card-body">
+          <h5 class="card-title">Description</h5>
+          <p class="card-text">{{animalDetail?.description}}</p>
+        </div>
+      </div>
+
 
 </div>
   </mat-sidenav-content> 
