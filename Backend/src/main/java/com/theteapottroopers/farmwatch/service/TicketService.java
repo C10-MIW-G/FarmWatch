@@ -72,8 +72,7 @@ public class TicketService {
     }
 
     private void updateUserInTicket(TicketDtoUpdate ticketDtoUpdate, Ticket ticketToUpdate) {
-        if(ticketDtoUpdate.getAssignedTo() == null && ticketDtoUpdate.getAssignedToName() == null ||
-                ticketDtoUpdate.getAssignedToName().equals("Not assigned")) {
+        if(ticketDtoUpdate.getAssignedTo() == null && ticketDtoUpdate.getAssignedToName() == null) {
             ticketToUpdate.setAssignedTo(null);
          } else if (ticketDtoUpdate.getAssignedToName() != null &&
                ticketDtoUpdate.getAssignedTo() == null) {
