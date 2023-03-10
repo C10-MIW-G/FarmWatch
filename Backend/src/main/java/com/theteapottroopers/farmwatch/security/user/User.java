@@ -44,7 +44,7 @@ public class User implements UserDetails {
     private Role role;
     @NotNull
     @Column(nullable = false)
-    private boolean open;
+    private boolean verified;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -68,6 +68,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return open;
+        return verified;
     }
 }

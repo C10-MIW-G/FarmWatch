@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
 import java.util.Calendar;
 
@@ -47,21 +46,24 @@ public class AuthenticationController {
     public ResponseEntity<?> confirmRegistration(@RequestParam("token") String token){
         VerificationToken verificationToken = userService.getVerificationToken(token);
         if(verificationToken == null){
-            return ResponseEntity.status(400).body("Invalid token");
+            return ResponseEntity.status(498).body("Invalid token");
         }
 
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0){
-            return ResponseEntity.status(401).body("Token has expired");
+            userService.removeVerificationToken(verificationToken);
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
+            return ResponseEntity.status(498).body("Token has expired, please check your email");
         }
 
         if(user.isEnabled()){
             return ResponseEntity.status(200).body("Account has already been activated");
         }
 
-        user.setOpen(true);
+        user.setVerified(true);
         userService.saveUser(user);
+        userService.removeVerificationToken(verificationToken);
         return ResponseEntity.status(200).body("Account activated");
     }
 }

@@ -3,7 +3,8 @@ package com.theteapottroopers.farmwatch.repository;
 import com.theteapottroopers.farmwatch.security.auth.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface VerificationRepository extends JpaRepository<VerificationToken, Long> {
+import java.util.Optional;
 
-    VerificationToken findVerificationTokenByToken(String token);
+public interface VerificationRepository extends JpaRepository<VerificationToken, Long> {
+    Optional<VerificationToken> findByToken(String token);
 }
