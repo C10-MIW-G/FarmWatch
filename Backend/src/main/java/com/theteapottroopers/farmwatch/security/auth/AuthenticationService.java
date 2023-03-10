@@ -37,12 +37,13 @@ public class AuthenticationService {
                     .username(request.getUsername())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .role(Role.ROLE_USER)
-                    .open(false)
+                    .verified(false)
                     .build();
             userRepository.save(user);
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
         } catch (Exception exception) {
-            throw new SomethingWentWrongException("Something went wrong. Try using a different username or email");
+            throw new SomethingWentWrongException(
+                    "Something went wrong. Please try again or contact the administrator");
         }
         return RegisterResponse.builder()
                 .build();
@@ -56,7 +57,8 @@ public class AuthenticationService {
                 )
         );
         User user = userRepository.findUserByUsername(request.getUsername())
-                .orElseThrow(() -> new LoginException("Something went wrong please try again"));
+                .orElseThrow(() -> new LoginException(
+                        "Something went wrong. Please try again or contact the administrator"));
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

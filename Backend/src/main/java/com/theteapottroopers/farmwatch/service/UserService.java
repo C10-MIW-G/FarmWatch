@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.theteapottroopers.farmwatch.service.AnimalService.MESSAGE_FOR_UNKNOWN_EXCEPTION;
@@ -88,7 +89,12 @@ public class UserService {
     }
 
     public VerificationToken getVerificationToken(String verificationToken){
-        return verificationRepository.findVerificationTokenByToken(verificationToken);
+        Optional<VerificationToken> verificationTokenOptional = verificationRepository.findByToken(verificationToken);
+        return verificationTokenOptional.orElse(null);
+    }
+
+    public void removeVerificationToken(VerificationToken token){
+        verificationRepository.deleteById(token.getId());
     }
 
     public void saveUser(User user){

@@ -1,7 +1,6 @@
 package com.theteapottroopers.farmwatch.seeds;
 
 import com.theteapottroopers.farmwatch.model.Animal;
-import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.repository.AnimalRepository;
@@ -97,7 +96,7 @@ public class Seeder {
                 .username("user")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_ADMIN)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user1);
 
@@ -107,7 +106,7 @@ public class Seeder {
                 .username("Lila")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user2);
 
@@ -117,7 +116,7 @@ public class Seeder {
                 .username("Dante")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user3);
 
@@ -127,7 +126,7 @@ public class Seeder {
                 .username("Isabel")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user4);
 
@@ -137,7 +136,7 @@ public class Seeder {
                 .username("Caleb")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user5);
 
@@ -147,7 +146,7 @@ public class Seeder {
                 .username("Leila")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_USER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user6);
 
@@ -157,7 +156,7 @@ public class Seeder {
                 .username("Ethan")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_CARETAKER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user7);
 
@@ -167,7 +166,7 @@ public class Seeder {
                 .username("Avery")
                 .password(passwordEncoder.encode("password"))
                 .role(Role.ROLE_CARETAKER)
-                .open(true)
+                .verified(true)
                 .build();
         userRepository.save(user8);
 

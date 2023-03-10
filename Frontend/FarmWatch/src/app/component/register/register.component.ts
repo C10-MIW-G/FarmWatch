@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
         this.dialog.closeAll();
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.toast.ShowSucces("New Notification", "Your account has been registered succesfully!")
+        this.toast.ShowSucces("New Notification", "Registration completed. Please check your email")
       },
       error: err => {
         this.errorMessage = err.error;
