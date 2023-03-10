@@ -1,7 +1,7 @@
 package com.theteapottroopers.farmwatch.security.auth;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.json.Json;
@@ -18,7 +18,6 @@ import java.net.URL;
  */
 @Service
 public class CaptchaChecker {
-
     @Value("${google.captcha.key}")
     private String CAPTCHA_KEY;
 
