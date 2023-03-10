@@ -13,6 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class AccountActivationComponent implements OnInit {
 
   public token!: string;
+  public activated!: boolean;
 
   constructor(
     private route: ActivatedRoute, 
@@ -31,17 +32,15 @@ export class AccountActivationComponent implements OnInit {
 
     this.authService.confirmRegistration(this.token).subscribe({
       next: data => {
+        this.activated = true;
         this.toast.ShowSucces("New Notification", data);
         setTimeout(() => {
           this.dialog.open(LoginComponent);
-          this.router.navigate(['/']);
-        }, 1000); 
+        }, 5000); 
       },
       error: err => {
-        this.toast.ShowError("New Notification", err.message);
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 1000); 
+        this.activated = false;
+        this.toast.ShowError("New Notification", err.error);
       }
     });
 

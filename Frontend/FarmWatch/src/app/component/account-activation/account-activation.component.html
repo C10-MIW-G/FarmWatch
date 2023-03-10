@@ -1,21 +1,29 @@
 <mat-sidenav-container class="sidenav-container" id="top">
-    
+
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
-        <h3 class="card-title">Activate account</h3>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-        <br>
-        <div class="container">
+        <div class="container" id="main-container">
+            <p class="tabletitle">Account activation</p>
             <div class="col-md-12 d-flex align-items-center justify-content-center flex-column">
-                Account activation
+                <div class="fw-aa-container text-center">
+                    <h3>Account activation</h3>
+                    <ng-container *ngIf="activated">
+                        <span>Your account is activated.</span>
+                    </ng-container>
+                    <ng-container *ngIf="!activated">
+                        <span>Your account could <strong>not</strong> be activated.<br>Please try again or contact the administrator.</span>
+                    </ng-container>
+                </div>
             </div>
         </div>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
-   
+
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
     </mat-sidenav>
-
+    
 </mat-sidenav-container>

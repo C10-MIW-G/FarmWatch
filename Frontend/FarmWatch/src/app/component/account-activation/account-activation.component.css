@@ -1,0 +1,11 @@
+.fw-aa-container{
+    width: 400px;
+    background-color: #bdd6c5;
+    padding-bottom: 10px;
+}
+
+.fw-aa-container h3{
+    background-color: #38905e;
+    color: #febb26;
+    padding: 5px;
+}
