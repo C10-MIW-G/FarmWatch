@@ -47,7 +47,7 @@ public class AuthenticationController {
     public ResponseEntity<?> confirmRegistration(@RequestParam("token") String token){
         VerificationToken verificationToken = userService.getVerificationToken(token);
         if(verificationToken == null){
-            return ResponseEntity.badRequest().body("Invalid token");
+            return ResponseEntity.status(400).body("Invalid token");
         }
 
         User user = verificationToken.getUser();
