@@ -62,7 +62,9 @@ export class TicketDetailComponent implements OnInit {
       next: ticket => {
         this.ticket = ticket;
         if(ticket.assignedToUser == null || ticket.assignedToUser.username != this.currentUser){
-          this.showAssignToMeButton = true; 
+          if(this.storageService.getRole() != 'USER'){
+            this.showAssignToMeButton = true; 
+          } 
         } 
         this.imageUrl = "http://localhost:8080/images/" + ticket.imageFileName;
         this.getTicketMessages(this.ticket.ticketMessageIds);
