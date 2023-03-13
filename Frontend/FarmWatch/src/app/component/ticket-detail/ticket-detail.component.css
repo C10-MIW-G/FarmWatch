@@ -1,3 +1,5 @@
+
+
 .ticketdetailspace{
     margin-top:50px;
 }
@@ -179,20 +181,34 @@
 
 ::ng-deep *,*:focus,*:hover{
     outline:none !important;
+    
  }
 
  .btn-new-message{
     margin-top: 20px;
  }
- 
- 
 
 
-  ::ng-deep .mdc-tab-indicator--active{
+
+  ::ng-deep .mdc-tab-indicator--active {
     background: #38905e;
     
-  
+    
   }
+  
+
+  ::ng-deep .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    border-color: var(--mdc-tab-indicator-active-indicator-color, #38905e);
+  }
+
+
+  ::ng-deep .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label{
+    color:white;
+    font-size: 16px;
+   
+  }
+
+ 
 
  
 

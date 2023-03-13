@@ -1,11 +1,14 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 
+
 html, body { height: 100%; }
 body { margin-top: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html {
     overflow-y:scroll;
 }
+
+
 
 /* NAVBAR COMPONENT */
 .navbar-brand{
@@ -15,33 +18,38 @@ html {
 
 .navbar{
     background-color:#3e5f4a;
+    
 }
 
 /*BUTTONS*/
+
 .farmbutton{
     background-color: #38905e;
     box-shadow: none; 
+    
 }
 .farmbutton:hover{
     background-color: #febb26;
     box-shadow: none; 
-    outline:#38905e;
+    
 }
 
-.btn-secondary:focus{
-    background-color: #febb26;
-    outline: none;
-}
-.farmbutton::selection{
-    background-color:#febb26;
-}
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
     background-color: #febb26;
+    outline: none!important;
+}
+
+.farmbutton:focus{
+    background-color: #38905e;
 }
 
 .btn-secondary{
     border:none;
 }
+
+
+
+
 
 /*TEXT*/
 h1 {
@@ -55,9 +63,11 @@ h3{
     font-size: 20px;
 }
 
+
+
 .title{
     font-size: 30px;
-    font-weight: 750;
+    font-weight: 500;
     color:#3e5f4a;
     text-align: center;
     margin-left: 400px;
@@ -70,7 +80,7 @@ h3{
 
 .tabletitle{
     font-size: 30px;
-    font-weight: 750;
+    font-weight: 500;
     color:#3e5f4a;
     text-align: center;
     margin-left: 400px;
@@ -84,7 +94,7 @@ h3{
 
 .ticketdetailtitle{
     font-size: 30px;
-    font-weight: 750;
+    font-weight: 500;
     color:#3e5f4a;
     text-align: center;
     margin-left: 375px;
@@ -102,6 +112,7 @@ h3{
     background-color: #fff;
     max-width: auto;
     padding: 20px;
+    
 }
 
 .mat-drawer-side.mat-drawer-end{
@@ -112,7 +123,7 @@ h3{
     margin-top: 56px;
     padding-bottom: 10px;
     background-color: rgb(255, 255, 255);
-    border: none;
+    
 }
 
 .sidenav-left {
@@ -120,6 +131,8 @@ h3{
     width: 250px;
     padding: 50px 20px 10px 20px;
     border: none;
+    
+    
 }
 
 .sidenav-right {
@@ -127,11 +140,12 @@ h3{
     width: 250px;
     padding: 50px 20px 10px 20px;
     border: none;
+    
 }
 
 /* TABLES */
 .tableheader{
-    background-color: #38905e;
+    background-color: #4f8b69;
     color: #febb26;
     text-align: center;
 }

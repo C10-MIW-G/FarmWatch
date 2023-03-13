@@ -1,5 +1,6 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
+       
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         
@@ -47,8 +48,8 @@
                     
                     <div class="ticket-message-container mx-auto">
                         <h3> Messages</h3>
-                        <mat-tab-group  mat-stretch-tabs="true" mat-align-tabs="start">
-                            <mat-tab label="Public"  >
+                        <mat-tab-group  mat-stretch-tabs="true" mat-align-tabs="start" >
+                            <mat-tab label="Public" >
                                 <div class="col-md-12 text-center">
                                     <br>
                                     <button class="btn btn-secondary farmbutton"  (click)="openNewMessageDialog(false)">New public message</button>
