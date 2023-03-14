@@ -17,7 +17,7 @@ html {
 }
 
 .navbar{
-    background-color:#3e5f4a;
+    background-color:#407353;
     
 }
 
@@ -45,6 +45,10 @@ html {
 .btn-secondary{
     border:none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
 
 
@@ -114,10 +118,11 @@ h3{
     padding: 20px;
     padding-top: 50px;
     
+    
 }
 
 .mat-drawer-side.mat-drawer-end{
-    /* border: none; */
+    border: none;
 }
 
 .sidenav-content {
@@ -131,7 +136,7 @@ h3{
     background-color: rgb(255, 255, 255);
     width: 250px;
     padding: 50px 20px 10px 20px;
-    /* border: none; */
+    border: none;
     text-align: center;
     
 }
@@ -140,22 +145,50 @@ h3{
     background-color: rgb(255, 255, 255);
     width: 250px;
     padding: 50px 20px 10px 20px;
-    /* border: none; */
+    border: none;
     
 }
 
 /* TABLES */
+
+
+
+.table{
+    width:900px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius:5px;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 5px;
+  }
+  
+  /* top-right border-radius */
+  table tr:first-child th:last-child {
+    border-top-right-radius: 5px;
+  }
+  
+  /* bottom-left border-radius */
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  
+  /* bottom-right border-radius */
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+  }
+
+
 .tableheader{
-    background-color: #4f8b69;
-    color: #febb26;
+    color: #febb26;   
     text-align: center;
 }
 
-.tablebody{
-    background-color: #bdd6c5;
-    text-align: center;
-    
-}
+
 
 .tableurl{
     color:black;
@@ -167,14 +200,25 @@ h3{
   }
 
   .mat-sort-header-arrow {
-    color: #fff;
+    color: #ffffff;
 }
 
-td, th{
+td{
     line-height: 15px;
-    
 }
 
+th{
+    line-height: 15px;
+    background-color: #407353;
+}
+
+tr{
+    text-align: center;
+}
+
+.tableshadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .row {
     display: flex;
     flex-direction: row;
@@ -191,8 +235,8 @@ mat-form-field {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-bottom: 50px;
     padding-bottom: 50px;
-    margin-top:50px;
     width:75%;
+    border-radius: 5px;
 }
 
 
@@ -263,10 +307,12 @@ mat-form-field {
     padding-right:0px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border:none;
+
 }
 
 .animaldetailrightcard{
-    height:max-content;
+    height:292px;
     padding-left: 0px;
     padding-right:0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

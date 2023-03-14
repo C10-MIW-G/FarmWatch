@@ -45,6 +45,8 @@ import { NewTicketMessageComponent } from './component/new-ticket-message/new-ti
 import { MatTabsModule } from '@angular/material/tabs';
 import { PersonalTicketFilter } from './pipe/personal-ticket-filter';
 import { AccountActivationComponent } from './component/account-activation/account-activation.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { AccountActivationComponent } from './component/account-activation/accou
     FileUploadComponent,
     NewTicketMessageComponent,
     PersonalTicketFilter,
-    AccountActivationComponent
+    AccountActivationComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

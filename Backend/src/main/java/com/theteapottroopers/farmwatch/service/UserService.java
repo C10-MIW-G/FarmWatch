@@ -2,18 +2,20 @@ package com.theteapottroopers.farmwatch.service;
 
 import com.theteapottroopers.farmwatch.dto.UserDto;
 import com.theteapottroopers.farmwatch.exception.*;
+import com.theteapottroopers.farmwatch.repository.ForgotPasswordRepository;
 import com.theteapottroopers.farmwatch.repository.UserRepository;
 import com.theteapottroopers.farmwatch.repository.VerificationRepository;
+import com.theteapottroopers.farmwatch.security.auth.ForgotPasswordToken;
 import com.theteapottroopers.farmwatch.security.auth.VerificationToken;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.validation.UserValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static com.theteapottroopers.farmwatch.service.AnimalService.MESSAGE_FOR_UNKNOWN_EXCEPTION;
 
@@ -28,12 +30,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserValidation userValidation;
     private final VerificationRepository verificationRepository;
+    private final ForgotPasswordRepository forgotPasswordRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserValidation userValidation, VerificationRepository verificationRepository) {
+    public UserService(UserRepository userRepository, UserValidation userValidation, VerificationRepository verificationRepository,
+                       ForgotPasswordRepository forgotPasswordRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userValidation = userValidation;
         this.verificationRepository = verificationRepository;
+        this.forgotPasswordRepository = forgotPasswordRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<User> findAllUsers(){
@@ -98,6 +105,29 @@ public class UserService {
     }
 
     public void saveUser(User user){
+        userRepository.save(user);
+    }
+
+    public User findUserByEmail(String email){
+        return userRepository.findUserByEmail(email).orElse(null);
+    }
+
+    public void createForgotPasswordToken(User user, String token){
+        ForgotPasswordToken forgotPasswordToken = new ForgotPasswordToken(token, user);
+        forgotPasswordRepository.save(forgotPasswordToken);
+    }
+
+    public ForgotPasswordToken getForgotPasswordToken(String forgotPasswordToken){
+        Optional<ForgotPasswordToken> forgotPasswordTokenOptional = forgotPasswordRepository.findByToken(forgotPasswordToken);
+        return forgotPasswordTokenOptional.orElse(null);
+    }
+
+    public void removeForgotPasswordToken(ForgotPasswordToken token){
+        forgotPasswordRepository.deleteById(token.getId());
+    }
+
+    public void changePassword(User user, String password){
+        user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
     }
 }

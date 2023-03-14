@@ -4,6 +4,8 @@ import { StorageService } from '../../security/_services/storage.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/service/user.service';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -52,6 +54,10 @@ export class LoginComponent implements OnInit {
         this.toast.ShowError("New Notification", "Login failed");
       }
     });
+  }
+
+  passwordReset(){
+    this.dialog.open(ForgotPasswordComponent);
   }
 
   reloadPage(): void {

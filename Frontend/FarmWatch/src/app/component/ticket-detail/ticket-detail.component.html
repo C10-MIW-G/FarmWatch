@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-        <h5 class="card-title">Ticket details</h5>
+        <h5 class="card-title">Report details</h5>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         
@@ -33,7 +33,7 @@
                   {{ticket?.assignedToUser?.username || "Not assigned"}}
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Ticket status</h5>
+                  <h5 class="card-title">Report status</h5>
                   
                   <span class="badge badge-warning">{{ticket?.status}}</span>
                 </div>
@@ -120,7 +120,7 @@
     </mat-sidenav-content> 
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
         <button class="btn btn-secondary tooltips btn-block text-light farmbutton " *ngIf="getRole() != 'USER'" routerLink="/ticket/update/{{id}}">Edit</button>
-        <button class="btn btn-secondary tooltips btn-block text-light farmbutton" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign ticket to me</button>  
+        <button class="btn btn-secondary tooltips btn-block text-light farmbutton" *ngIf="showAssignToMeButton" (click)="assignTicketToCurrentUser(ticket)">Assign report to me</button>  
     </mat-sidenav>
 </mat-sidenav-container>
 

@@ -47,8 +47,26 @@ export class AuthService {
     );
   }
 
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'forgotPassword',
+      {
+        email
+      },
+      {responseType: 'text'}
+    );
+  }
 
-
+  resetPassword(password: string, token: string): Observable<any> {
+    return this.http.patch(
+      AUTH_API + 'resetPassword',
+      {
+        password,
+        token
+      },
+      {responseType: 'text'}
+    );
+  }
 
   logout(){
     this.storageService.clean();
