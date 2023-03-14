@@ -2,11 +2,11 @@
     <a class="navbar-brand">FarmWatch</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-2 pb-2 ">
         <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item">Animals</a></li>
-        <li><a routerLink="/ticket" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Tickets</a></li>
+        <li><a routerLink="/ticket" *ngIf="isLoggedIn()" routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Reports</a></li>
         <li><a routerLink="/admindashboard" *ngIf="isLoggedIn() && getRole() == 'ADMIN'"  routerLinkActive="active" ariaCurrentWhenActive="page" class="fw-navbar-item" >Users</a></li>
       </ul>
-       <button class="btn btn-secondary my-2 my-sm-0 farmbutton" (click)="openRegisterDialog()" *ngIf="!isLoggedIn()" >Sign Up</button>
-       <button class="btn btn-secondary my-2 my-sm-0 farmbutton" routerLink="/ticket/new" *ngIf="isLoggedIn()">New Ticket</button>
+       <button class="btn btn-secondary my-2 my-sm-0 farmbutton" (click)="openRegisterDialog()" *ngIf="!isLoggedIn()">Sign Up</button>
+       <button class="btn btn-secondary my-2 my-sm-0 farmbutton" routerLink="/ticket/new" *ngIf="isLoggedIn()">New Report</button>
        <div class="menu-padding" *ngIf="!isLoggedIn()" ></div>
        <button *ngIf="!isLoggedIn()" class="btn btn-secondary my-2 my-sm-0 farmbutton" (click)="openLoginDialog()">Log In</button>
        <div class="menu-padding" *ngIf="isLoggedIn()" ></div>
