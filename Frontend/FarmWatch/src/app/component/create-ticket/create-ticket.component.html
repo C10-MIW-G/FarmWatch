@@ -6,16 +6,16 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-        <br>
+
         <div class="container">
             
             <div class="col-md-6 offset-md-3 formshadow">
                 <br>
-            <h3 class="card-title">Create new ticket</h3>
+            <h3 class="card-title">Create new report</h3>
                 <form (ngSubmit)="onSubmit()" class="new-ticket-form" name="form" #f="ngForm">
                     <div class="form-group">
                         <label>Summary</label>
-                        <input matInput type="text" class="form-control" name="summary" placeholder="Enter a summary for your ticket" [(ngModel)]="form.summary" required
+                        <input matInput type="text" class="form-control" name="summary" placeholder="Enter a summary for your report" [(ngModel)]="form.summary" required
                             summary #summary="ngModel">
                     </div>
                     <div class="form-group">
@@ -34,7 +34,7 @@
                         <textarea matInput rows="10" style="height: 100%;" class="form-control" name="description" placeholder="Describe what you noticed"
                             [(ngModel)]="form.description" required description #description="ngModel"></textarea>
                     </div>
-                    <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Submit ticket</button>
+                    <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Submit report</button>
                 </form>
             </div>
         </div>
