@@ -28,6 +28,7 @@ public class Animal {
     @NotNull
     @Column(nullable = false)
     private String name;
+    private int ticketAmount;
     private String commonName;
     private String species;
     @Column(length=1000)
@@ -44,5 +45,8 @@ public class Animal {
         this.description = description;
         this.dateOfBirth = dateOfBirth;
         this.imageData = imageData;
+        this.ticketAmount = 0;
     }
+
+    
 }

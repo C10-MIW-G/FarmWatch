@@ -16,12 +16,12 @@
                     <input type="hidden" class="form-control" id="id" [(ngModel)]="updateAnimal.id" name="id">
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 image-preview-container">
                         <div class="form-group">
                             <img src={{getAnimalImage()}} class="animal-image-preview">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
                         <div class="form-group">
                             <label> Animal name:</label>
                             <input type="text" class="form-control" id="name" [(ngModel)]="updateAnimal.name"

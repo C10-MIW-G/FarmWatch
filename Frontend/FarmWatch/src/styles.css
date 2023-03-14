@@ -343,9 +343,16 @@ mat-form-field {
 
 .animal-image-preview{
     max-width: 200px;
-    max-height: 200px;
     width: 100%;
-    height: 100%;
+    border-radius:5px;
+    transform: translate(0,3px);
+}
+
+.image-preview-container{
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* LOGIN COMPONENT */
