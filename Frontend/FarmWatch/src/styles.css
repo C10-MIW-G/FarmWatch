@@ -312,10 +312,11 @@ mat-form-field {
 }
 
 .animaldetailrightcard{
-    height:292px;
+    height:292.5px;
     padding-left: 0px;
     padding-right:0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border:none;
 }
 
 .animal-detail-img {
@@ -323,7 +324,7 @@ mat-form-field {
     height: auto;
     border-radius: 5px;
     max-width: 390px;
-    max-height: 291.32px;
+    max-height: 294px;
 }
 
 .description-card{
