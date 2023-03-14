@@ -83,6 +83,5 @@ export class FileUploadComponent {
             this.currentFile = undefined;
           }
         });
-  }
-
+  }  
 }

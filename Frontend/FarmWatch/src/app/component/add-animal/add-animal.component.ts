@@ -3,6 +3,7 @@ import { AddAnimalService } from '../../service/add-animal.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/service/toast.service';
+import { DialogService } from 'src/app/service/dialog.service';
 
 @Component({
   selector: 'app-add-animal',
@@ -24,7 +25,8 @@ export class AddAnimalComponent {
   
   constructor(private addAnimalService : AddAnimalService,
               private router: Router, 
-              private toast:ToastService) {
+              private toast:ToastService,
+              private dialog: DialogService) {
   } 
 
   onSubmit() {
@@ -44,7 +46,25 @@ export class AddAnimalComponent {
     });
   }
 
-  
+  openImageUploadAction(){
+    this.dialog.showUploadFile().subscribe(
+      (response) => {
+        if(response){
+          this.toast.ShowSucces("New Notification", "Image added succesfully")
+          this.form.imageFileName = response;
+          console.log("Generated UUID: " + response);
+        }
+      }
+    );
+}
+
+getAnimalImage(): String{
+  console.log(this.form.imageFileName == null);
+  if(this.form.imageFileName == null){
+    return "http://localhost:8080/images/a59686ae-c324-4b44-9cd7-57c3aa6327df";
+      }
+  return "http://localhost:8080/images/" + this.form.imageFileName;
+}
 
   gotoUserList() {
     (error: HttpErrorResponse) => {

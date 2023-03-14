@@ -76,7 +76,13 @@ export class UpdateAnimalComponent implements OnInit{
     );
 }
 
-  
+  getAnimalImage(): String{
+    if(this.updateAnimal.imageFileName == null){
+      return "http://localhost:8080/images/a59686ae-c324-4b44-9cd7-57c3aa6327df";
+        }
+    return "http://localhost:8080/images/" + this.updateAnimal.imageFileName;
+  }
+
   onSubmit(){
     this.updateAnimalService.updateAnimal(this.updateAnimal).subscribe({
       next: data => {

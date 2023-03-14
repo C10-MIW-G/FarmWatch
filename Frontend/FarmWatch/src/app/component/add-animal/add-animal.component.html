@@ -13,12 +13,15 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
+                <img src={{getAnimalImage()}} class="animal-image-preview">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label> Animal name:</label>
                 <input type="text" class ="form-control" id = "name"
                     [(ngModel)] = "form.name" name = "name" placeholder="Animal name">
             </div>
-        </div>
-        <div class="col-md-6">
             <div class="form-group">
                 <label>Date of birth:</label>
                 <div class="input-group">
@@ -65,8 +68,7 @@
         </div>
 
         <div class="form-group">
-            <label> Image url:</label>
-            <input type="text" class ="form-control" id = "imageFileName"
+            <input type="text" class ="form-control" id = "imageFileName" hidden
                 [(ngModel)] = "form.imageFileName" name = "imageFileName" placeholder="Enter an image URL">
         </div>
         <button class = "btn btn-secondary farmbutton" type ="submit" style="float: right;">Save</button>
@@ -83,6 +85,9 @@
 
 </mat-sidenav-content> 
 <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-
+    <div>
+    <button class="btn btn-secondary tooltips btn-block farmbutton" 
+      (click)="openImageUploadAction()">Upload new Image</button>
+        </div>
 </mat-sidenav>
 </mat-sidenav-container>
