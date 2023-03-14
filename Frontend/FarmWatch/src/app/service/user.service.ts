@@ -22,5 +22,4 @@ export class UserService {
   public getCaretakers(): Observable<CaretakerOverview[]> {
     return this.http.get<CaretakerOverview[]>(`${this.apiServerUrl}/user/caretakers`);
   }
-  
 }
