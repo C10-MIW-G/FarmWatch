@@ -7,9 +7,9 @@
 <mat-sidenav-container class="sidenav-container" id="top">
     
     <mat-sidenav-content class="sidenav-content">
-        <div class="outer-box mx-auto" style="width: 80%; height: 600px; padding-top: 20px;">
+        <div class="outer-box mx-auto">
             <div class="row-first" > 
-                <carousel class="column carousel" style="width: 80%; height: 100%; ; display: inline-block; padding: 2px;">
+                <carousel class="column-carousel" style="height: 100%;">
                     <div class="carousel-cell" *ngFor="let index of amountOfCarouselCells()" >
                         <div class="row" *ngFor="let animal of animalPrepped[index]">
                             <div class="carousel-box">

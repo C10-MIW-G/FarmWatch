@@ -13,6 +13,17 @@
   height: 100%;
   width: 100%;
 }
+.outer-box {
+  width: 80%; 
+  height: 600px; 
+  padding-top: 20px;
+}
+.column-carousel{
+  width: 80%; 
+  height: 100%; ; 
+  display: inline-block;
+   padding: 2px;
+}
 
 .carousel-image {
   flex: 3;
