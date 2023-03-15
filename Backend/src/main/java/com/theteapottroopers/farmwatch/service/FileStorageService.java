@@ -21,6 +21,7 @@ import java.util.UUID;
 public class FileStorageService {
 
     private final StorageRepository storageRepository;
+    private final int MAX_IMAGEFILE_SIZE = 2048;
 
     @Autowired
     public FileStorageService(StorageRepository storageRepository) {
@@ -39,6 +40,21 @@ public class FileStorageService {
     public ImageData findImageDataById(Long id){
         return storageRepository.findById(id).orElseThrow(() -> new ImageFileNotFoundException(
                 "Image by id " + id + " was not found!"));
+    }
+
+    public Boolean imageSizeValidation(MultipartFile file){
+        int currentFileSize = (int)file.getSize();
+        // Convert bytes to Mb for easy comparison
+        currentFileSize = Math.round(currentFileSize / 1024);
+
+        System.out.println("Uploaded file " + file.getName() + "\nCurrent File Size: " + currentFileSize + "Kb\n" +
+                "Can file be uploaded?: " + (currentFileSize < MAX_IMAGEFILE_SIZE) + "\n");
+
+        if(currentFileSize > MAX_IMAGEFILE_SIZE){
+            return false;
+        }
+
+        return true;
     }
 
     public String uploadImage(MultipartFile file) throws IOException {
