@@ -57,5 +57,16 @@
   center;
 }
 
+::ng-deep .carousel-arrow-prev {
+  transform: translate(-100px, 0);
+}
+
+::ng-deep .carousel-arrow-next {
+  transform: translate(100px, 0);
+}
+
+
+
+
 
   
