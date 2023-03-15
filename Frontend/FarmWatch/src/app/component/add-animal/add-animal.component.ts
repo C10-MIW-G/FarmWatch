@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/service/toast.service';
 import { DialogService } from 'src/app/service/dialog.service';
+import { StorageService } from 'src/app/security/_services/storage.service';
 
 @Component({
   selector: 'app-add-animal',
@@ -26,7 +27,8 @@ export class AddAnimalComponent {
   constructor(private addAnimalService : AddAnimalService,
               private router: Router, 
               private toast:ToastService,
-              private dialog: DialogService) {
+              private dialog: DialogService,
+              private storageService: StorageService) {
   } 
 
   onSubmit() {
@@ -70,7 +72,11 @@ getAnimalImage(): String{
     (error: HttpErrorResponse) => {
       alert(error.message);
     }
-    this.router.navigate([''])
+    if(this.storageService.getRole() == 'CARETAKER' || this.storageService.getRole() == 'ADMIN'){
+      window.location.href = 'http://localhost:4200/animal/table';
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
 
