@@ -73,6 +73,7 @@ public class Seeder {
                 animal8Description, LocalDate.of(2012, 7, 3), null);
 
 
+
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
         animalsToSeed.add(animal3);
@@ -206,5 +207,27 @@ public class Seeder {
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
                 TicketStatus.OPEN, animal3, user8, user7, null, null);
         ticketRepository.save(ticket8);
+
+        List<TicketStatus> statuses = new ArrayList<>();
+        statuses.add(TicketStatus.OPEN);
+        statuses.add(TicketStatus.IN_PROGRESS);
+
+        animal1.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal1.getId(), statuses));
+        animal2.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal2.getId(), statuses));
+        animal3.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal3.getId(), statuses));
+        animal4.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal4.getId(), statuses));
+        animal5.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal5.getId(), statuses));
+        animal6.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal6.getId(), statuses));
+        animal7.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal7.getId(), statuses));
+        animal8.setTicketAmount(ticketRepository.countByAnimalIdAndStatusIn(animal8.getId(), statuses));
+
+        animalRepository.save(animal1);
+        animalRepository.save(animal2);
+        animalRepository.save(animal3);
+        animalRepository.save(animal4);
+        animalRepository.save(animal5);
+        animalRepository.save(animal6);
+        animalRepository.save(animal7);
+        animalRepository.save(animal8);
     }
 }

@@ -3,4 +3,5 @@ export interface AnimalOverview {
     name: string;
     commonName: string;
     imagePath: string;
+    ticketAmount: number;
 }

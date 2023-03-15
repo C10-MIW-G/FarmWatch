@@ -18,4 +18,5 @@ public class AnimalOverviewDto {
     private String name;
     private String commonName;
     private String imagePath;
+    private int ticketAmount;
 }
