@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().role;
         this.toast.ShowSucces("New Notification", "Logged in succesfully");
+        this.goToOverview();
       },
       error: err => {
         this.errorMessage = err;
@@ -54,6 +55,15 @@ export class LoginComponent implements OnInit {
         this.toast.ShowError("New Notification", "Login failed");
       }
     });
+
+  }
+
+  goToOverview(){
+    if(this.storageService.getRole() == 'CARETAKER' || this.storageService.getRole() == 'ADMIN'){
+      window.location.href = 'http://localhost:4200/animal/table';
+    } else {
+      this.reloadPage();
+    }
   }
 
   passwordReset(){
