@@ -41,7 +41,7 @@
     <mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56"
         [fixedBottomGap]="0">
         <div>
-            <a routerLink="animal" data-bs-toggle="modal" data-bs-target=".add-new"
+            <a routerLink="/animal" data-bs-toggle="modal" data-bs-target=".add-new"
                 class="btn btn-secondary btn-block farmbutton" *ngIf="isLoggedIn() 
                 && getRole() === 'ADMIN' || getRole() === 'CARETAKER'">Add Animal</a>
         </div>
