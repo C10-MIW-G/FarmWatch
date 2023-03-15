@@ -18,14 +18,16 @@ import { TicketUpdateComponent } from './component/ticket-update/ticket-update.c
 import { AccountActivationComponent } from './component/account-activation/account-activation.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { AnimalOverviewImageComponent } from './component/animal-oveview-image/animal-overview-image.component';
 
 const routes: Routes = [
-  { path: '', component: AnimalOverviewComponent },
+  { path: '', component: AnimalOverviewImageComponent},
+  { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
+  { path: 'animal/table', component: AnimalOverviewComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'animal/:id', component: AnimalDetailComponent},
+  { path: 'animal/update/:id', component: UpdateAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
-  { path: 'animal/update/:id', component: UpdateAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: ['ADMIN']}},
   { path: 'user/update',component: UserUpdateComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
   { path: 'user/details',component: UserDetailComponent, canActivate: [AuthGuard], data: {role: ['ADMIN','USER', 'CARETAKER']}},
@@ -37,7 +39,8 @@ const routes: Routes = [
   { path: 'ticket', component: TicketOverviewComponent, canActivate: [AuthGuard], data: {role: ['USER', 'ADMIN', 'CARETAKER']}},
   { path: 'registrationConfirmation', component: AccountActivationComponent},
   { path: 'forgotPassword', component: ForgotPasswordComponent},
-  { path: 'resetPassword', component: ResetPasswordComponent}
+  { path: 'resetPassword', component: ResetPasswordComponent},
+  { path: 'registrationConfirmation', component: AccountActivationComponent},
 ];
 
 const routerOptions: ExtraOptions = {

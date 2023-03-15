@@ -45,6 +45,9 @@ import { NewTicketMessageComponent } from './component/new-ticket-message/new-ti
 import { MatTabsModule } from '@angular/material/tabs';
 import { PersonalTicketFilter } from './pipe/personal-ticket-filter';
 import { AccountActivationComponent } from './component/account-activation/account-activation.component';
+import { AnimalOverviewImageComponent } from './component/animal-oveview-image/animal-overview-image.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
@@ -73,6 +76,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     NewTicketMessageComponent,
     PersonalTicketFilter,
     AccountActivationComponent,
+    AnimalOverviewImageComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent
   ],
@@ -109,6 +113,8 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     MatCheckboxModule,
     MatSlideToggleModule,
     MatTabsModule,
+    IvyCarouselModule,
+    MatGridListModule,
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,
