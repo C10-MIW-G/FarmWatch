@@ -19,7 +19,9 @@ public class AnimalMapper extends Mapper{
        return new AnimalOverviewDto(
                animal.getId(),
                animal.getName(),
-               animal.getCommonName());
+               animal.getCommonName(),
+               animal.getTicketAmount());
+
     }
 
     public AnimalDetailDto toAnimalDetailDto(Animal animal){

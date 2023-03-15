@@ -35,10 +35,12 @@ public class TicketResource {
 
     private final TicketService ticketService;
     private final TicketMapper ticketMapper;
+    private final AnimalService animalService;
 
     public TicketResource(TicketService ticketService, UserService userService,
-                          AnimalService animalService, FileStorageService fileStorageService) {
+                          AnimalService animalService, FileStorageService fileStorageService, AnimalService animalService1) {
         this.ticketService = ticketService;
+        this.animalService = animalService1;
         this.ticketMapper = new TicketMapper(userService, animalService, fileStorageService);
     }
 
@@ -63,6 +65,7 @@ public class TicketResource {
     @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<?> addTicket(@RequestBody TicketDtoNew ticketDtoNew){
         ticketService.addTicket(ticketMapper.toTicketFromNew(ticketDtoNew));
+        animalService.setTicketAmountForAnimal(ticketDtoNew.getAnimalId());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -105,6 +108,7 @@ public class TicketResource {
     @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<HttpStatus>updateTicket(@RequestBody TicketDtoUpdate ticketDtoUpdate) {
         ticketService.updateTicket(ticketDtoUpdate);
+        animalService.setTicketAmountForAnimal(ticketDtoUpdate.getAnimalId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

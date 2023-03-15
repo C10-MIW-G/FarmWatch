@@ -21,6 +21,9 @@
                                     <tr>
                                         <th class="name-column" scope="col">Name</th>
                                         <th class="name-column" scope="col">Animal</th>
+                                        <th class="name-column" scope="col" *ngIf="isLoggedIn() 
+                                        && getRole() === 'ADMIN' || getRole() === 'CARETAKER'">Reports</th>
+
                                     </tr>
                                 </thead>
                                 <tbody class="tablebody">
@@ -28,6 +31,10 @@
                                         <td><span><a class="tableurl" routerLink="/animal/{{animal.id}}"><b>{{animal.name}}</b></a></span>
                                         </td>
                                         <td><span>{{animal.commonName}}</span></td>
+                                        <td *ngIf="isLoggedIn() 
+                                        && getRole() === 'ADMIN' || getRole() === 'CARETAKER'"><span *ngIf="animal.ticketAmount !== null && animal.ticketAmount > 0 ">
+                                            {{animal.ticketAmount}}
+                                          </span></td>
                                     </tr>
                                 </tbody>
                             </table>
