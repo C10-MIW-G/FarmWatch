@@ -34,7 +34,7 @@ export class NavbarComponent {
     this.router.navigate(['/']);
     this.toast.ShowSucces("New notification", "Logged out succesfully");
   }
-
+  
   public getRole(): string{
     return this.storageService.getRole();
   }
@@ -49,5 +49,14 @@ export class NavbarComponent {
 
   public openRegisterDialog(){
     this.dialog.open(RegisterComponent);
-}
+  }
+
+  public showCarousel():boolean{
+    if(this.isLoggedIn() == false || this.isLoggedIn() == true && this.getRole() == 'USER'){
+      return true;
+    } else {
+      return false;
+    }
+    
+  }
 }
