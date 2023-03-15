@@ -1,22 +1,40 @@
 package com.theteapottroopers.farmwatch;
-
+import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
-import io.jsonwebtoken.lang.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.theteapottroopers.farmwatch.exception.AnimalNotFoundException;
+import com.theteapottroopers.farmwatch.repository.AnimalRepository;
+import com.theteapottroopers.farmwatch.service.AnimalService;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 class FarmwatchApplicationTests {
+
+	@Mock
+	private AnimalRepository animalRepository;
+
+	@InjectMocks
+	private AnimalService animalService;
 
 	@Autowired
 	FileStorageService fileStorageService;
@@ -59,5 +77,31 @@ class FarmwatchApplicationTests {
 
 		Assertions.assertEquals(true, fileStorageService.imageSizeValidation(smallMultipartFile));
 		Assertions.assertEquals(false, fileStorageService.imageSizeValidation(largeMultipartFile));
+	}
+
+	@Test
+	public void testFindAllAnimalsWithNoAnimals() {
+		when(animalRepository.findAll()).thenReturn(new ArrayList<>());
+
+		assertThrows(AnimalNotFoundException.class, () -> {
+			animalService.findAllAnimals();
+		});
+	}
+
+	@Test
+	public void testFindAllAnimalsWithAnimals() {
+		List<Animal> animals = new ArrayList<>();
+		animals.add( new Animal("Clara", "Chicken", "Galus galus domesticus",
+				"asdf", LocalDate.of(2012, 5, 17), null));
+		animals.add( new Animal("Benjamin", "Donkey", "Equus africanus",
+				"asdf", LocalDate.of(2010, 8, 12), null));
+		animals.add( new Animal("Hugo", "Horse", "Equus ferus caballus",
+				"asdf", LocalDate.of(2009, 2, 21), null));
+
+		when(animalRepository.findAll()).thenReturn(animals);
+
+		assertDoesNotThrow(() -> {
+			animalService.findAllAnimals();
+		});
 	}
 }
