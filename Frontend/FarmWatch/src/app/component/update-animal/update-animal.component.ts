@@ -96,6 +96,10 @@ export class UpdateAnimalComponent implements OnInit{
   }
 
   goToAnimalOverview(){
-    this.router.navigate(['/']);
+    if(this.storageService.getRole() == 'CARETAKER' || this.storageService.getRole() == 'ADMIN'){
+      window.location.href = 'http://localhost:4200/animal/table';
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
