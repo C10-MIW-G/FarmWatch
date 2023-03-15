@@ -4,6 +4,8 @@ import com.theteapottroopers.farmwatch.dto.AnimalDetailDto;
 import com.theteapottroopers.farmwatch.dto.AnimalOverviewDto;
 import com.theteapottroopers.farmwatch.mapper.AnimalMapper;
 import com.theteapottroopers.farmwatch.model.Animal;
+import com.theteapottroopers.farmwatch.repository.AnimalRepository;
+import com.theteapottroopers.farmwatch.repository.TicketRepository;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
 import com.theteapottroopers.farmwatch.service.TicketService;
@@ -28,17 +30,25 @@ public class AnimalResource {
     private final TicketService ticketService;
     private final AnimalMapper animalMapper;
     private final FileStorageService fileStorageService;
+    private final AnimalRepository animalRepository;
+    private final TicketRepository ticketRepository;
 
-    public AnimalResource(AnimalService animalService, TicketService ticketService, FileStorageService fileStorageService) {
+    public AnimalResource(AnimalService animalService, TicketService ticketService, FileStorageService fileStorageService,
+                          AnimalRepository animalRepository,
+                          TicketRepository ticketRepository) {
         this.animalService = animalService;
         this.ticketService = ticketService;
         this.fileStorageService = fileStorageService;
         animalMapper = new AnimalMapper(fileStorageService);
+        this.animalRepository = animalRepository;
+        this.ticketRepository = ticketRepository;
     }
     
     @GetMapping()
     public ResponseEntity<List<AnimalOverviewDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();
+
+
         List<AnimalOverviewDto> animalOverviewDtos = new ArrayList<>();
         for (Animal animal: animals) {
             animalOverviewDtos.add(animalMapper.toAnimalOverviewDto(animal));

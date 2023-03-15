@@ -1,0 +1,29 @@
+1. change password knop in het dropdown menutje rechtsboven
+antwoord Vincent: ik wil een change password optie op de manage account pagina, de knop komt dan onder "edit".
+2. messages knop beter stylen
+3. no image laten zien op alle plekken
+antwoord Vincent: zorg vooral dat je seeder goed is.
+4. moet het niet mogelijk zijn om een dier up te loaden zonder image?
+antwoord Vincent: dat hoeft niet.
+5. date picker kleuren veranderen
+6. een back knop op de edit formulieren
+antwoord Vincent: Ja dat is mooi, doe maar een back of een cancel knop. die bijv. backwards doet. 
+7. alles in een modal (ja, mag)(de delete knop zou onder edit komen)
+antwoord Vincent: ja, goed idee. consistent is altijd goed. De delete knop van edit animal, zou weer terug op de animal detail pagina komen in dat geval.
+8. bij forgot password niet een nieuw modal, maar een andere oplossing (verschijnt in zelfde modal)
+antwoord Vincent: ja is goed, kijk maar hoe je dat wilt gaan doen. 
+9. logo moet klikbaar zijn
+10. add image knop bij upload foto (op twee plekken kunnen uplaoden) (onder invloed modal)
+antwoord Vincent: dat moet sowieso als we alles in een modal zetten. 
+11. kleur accenten in navbar
+antwoord vincent: ja leuk!
+12. mag er meer info in de animal overview? vooral handig voor het sorteren
+antwoord VIncent: nee.
+13. Voor alle tabellen: tekst rechts uitlijnen, cijfers rechts. Ook de headers. 
+14. "reports assigned to me" -> assigned to me (speel er even mee of korter beter is)
+15. Als je een lange summary intikt, dan versprint de tabel. Kijk hier naar en houdt er rekening mee tijdens de presentatie.
+
+
+Logo:
+lijkt nu op een datingsite. verander het hartje naar een dierenafdruk, of een hoefijzer oid. 
+

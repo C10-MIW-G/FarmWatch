@@ -17,4 +17,5 @@ public class AnimalOverviewDto {
     private Long id;
     private String name;
     private String commonName;
+    private int ticketAmount;
 }

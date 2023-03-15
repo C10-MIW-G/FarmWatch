@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.model;
 
+import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Berend <b.boksma@st.hanze.nl>
@@ -38,6 +40,7 @@ public class Animal {
     @ManyToOne
     private ImageData imageData;
 
+
     public Animal(String name, String commonName, String species, String description, LocalDate dateOfBirth, ImageData imageData) {
         this.name = name;
         this.commonName = commonName;
@@ -45,8 +48,8 @@ public class Animal {
         this.description = description;
         this.dateOfBirth = dateOfBirth;
         this.imageData = imageData;
-        this.ticketAmount = 0;
     }
 
-    
+
+
 }
