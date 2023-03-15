@@ -20,7 +20,7 @@ public class AnimalMapper extends Mapper{
                animal.getId(),
                animal.getName(),
                animal.getCommonName(),
-               animal.getImageData() != null ? animal.getImageData().getName() : null),
+               animal.getImageData() != null ? animal.getImageData().getName() : null,
                animal.getTicketAmount());
 
     }

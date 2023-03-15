@@ -88,7 +88,8 @@ export class AnimalOverviewImageComponent implements OnInit{
         id: this.animals[i].id,
         name: this.animals[i].name,
         commonName: this.animals[i].commonName,
-        imagePath: this.animals[i].imagePath
+        imagePath: this.animals[i].imagePath,
+        ticketAmount: 0
         };
         pictureCellCount++;
         if(pictureCellCount === 3){
