@@ -11,7 +11,8 @@
                 <div class="fw-aa-container text-center">
                     <h3>Account activation</h3>
                     <ng-container *ngIf="activated">
-                        <span>Your account is activated.</span>
+                        <span>Your account is activated.</span><br>
+                        <span>Click <a routerLink="/">here</a> to go to the animals.</span>
                     </ng-container>
                     <ng-container *ngIf="!activated">
                         <span>Your account could <strong>not</strong> be activated.<br>Please try again or contact the administrator.</span>

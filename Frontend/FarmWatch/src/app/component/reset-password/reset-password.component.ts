@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/security/_services/auth.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { LoginComponent } from '../login/login.component';
+import { CustomValidators } from './custom-validators';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,12 +13,15 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit{
-  form: any = {
-    password: null,
-    confirmPassword: null,
-  }
   token!: string;
   passwordsMatching = false;
+  form = new FormGroup(
+    {
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    },
+    [CustomValidators.MatchValidator('password', 'confirmPassword')]
+  );
 
   constructor(private authService : AuthService,
     private router: Router,
@@ -34,12 +39,13 @@ export class ResetPasswordComponent implements OnInit{
   }
 
   onSubmit() {
-    const {password} = this.form;
-    this.authService.resetPassword(password, this.token).subscribe({
+    let password = this.form.get('password')!.value;
+    this.authService.resetPassword(password!, this.token).subscribe({
       next: () => {
         this.toast.ShowSucces("New notification", "Succesfully changed the password");
         setTimeout(() => {
           this.dialog.open(LoginComponent);
+          this.router.navigate(['/']);
         }, 3000); 
     },
       error: error => {
@@ -50,5 +56,12 @@ export class ResetPasswordComponent implements OnInit{
         }
       }
     });
+  }
+
+  get passwordMatchError() {
+    return (
+      this.form.getError('mismatch') &&
+      this.form.get('confirmPassword')?.touched
+    );
   }
 }

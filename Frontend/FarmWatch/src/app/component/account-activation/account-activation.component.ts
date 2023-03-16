@@ -34,9 +34,6 @@ export class AccountActivationComponent implements OnInit {
       next: data => {
         this.activated = true;
         this.toast.ShowSucces("New Notification", data);
-        setTimeout(() => {
-          this.dialog.open(LoginComponent);
-        }, 3000); 
       },
       error: err => {
         this.activated = false;
