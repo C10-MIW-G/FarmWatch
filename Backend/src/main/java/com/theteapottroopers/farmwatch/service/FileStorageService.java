@@ -47,9 +47,6 @@ public class FileStorageService {
         // Convert bytes to Mb for easy comparison
         currentFileSize = Math.round(currentFileSize / 1024);
 
-        System.out.println("Uploaded file " + file.getName() + "\nCurrent File Size: " + currentFileSize + "Kb\n" +
-                "Can file be uploaded?: " + (currentFileSize < MAX_IMAGEFILE_SIZE) + "\n");
-
         if(currentFileSize > MAX_IMAGEFILE_SIZE){
             return false;
         }
