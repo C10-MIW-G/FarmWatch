@@ -160,6 +160,21 @@ h3{
     border-collapse: separate;
     border-spacing: 0;
     border-radius:5px;
+
+}
+
+.animal-overview-table{
+    width:500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius:5px;
+
+}
+
+.ticket-number-column{
+    text-align: right;
 }
 
 /* top-left border-radius */
@@ -185,7 +200,7 @@ table tr:first-child th:first-child {
 
 .tableheader{
     color: #febb26;   
-    text-align: center;
+    
 }
 
 
@@ -196,7 +211,7 @@ table tr:first-child th:first-child {
 
 .mat-sort-header-container {
     display:flex;
-    justify-content:center;
+    
   }
 
   .mat-sort-header-arrow {
@@ -205,6 +220,7 @@ table tr:first-child th:first-child {
 
 td{
     line-height: 15px;
+    padding: 100px
 }
 
 th{
@@ -213,7 +229,7 @@ th{
 }
 
 tr{
-    text-align: center;
+    text-align: left;
 }
 
 .tableshadow{

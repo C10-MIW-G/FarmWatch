@@ -111,7 +111,7 @@ public class Seeder {
         Animal animal11= new Animal("Florence", "Chicken", "Galus galus domesticus",
                 animal11Description, LocalDate.of(2020, 7, 30), null);
 
-        Animal animal12= new Animal("Frank-hen-stein", "Chicken", "Galus galus domesticus",
+        Animal animal12= new Animal("Frank", "Chicken", "Galus galus domesticus",
                 animal12Description, LocalDate.of(2013, 3, 1), null);
 
         Animal animal13= new Animal("Jasmin", "Peacock", "Pavo cristatus",
