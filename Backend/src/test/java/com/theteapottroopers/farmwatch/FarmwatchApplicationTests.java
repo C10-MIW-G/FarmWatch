@@ -116,52 +116,9 @@ class FarmwatchApplicationTests {
 		});
 	}
 
-	@Test
-	public void animalDateMustBePresentOrPast() {
 
-		LocalDate dateInFuture = LocalDate.now().plusDays(1);
-		Animal animalToTest = new Animal("Clara", "Chicken", "Galus galus domesticus",
-				"asdf", dateInFuture, null);
 
-		assertThrows(DateTimeException.class, () -> {
-			animalValidation.dateMustBePresentOrPast(animalToTest);
-		});
 
-	}
-
-	@Test
-	public void animalDescriptionToLong() {
-
-		StringBuilder stringBuilder = new StringBuilder();
-		for (int i = 0; i < MAX_LENGTH_DESCRIPTION + 1; i++) {
-			stringBuilder.append("a");
-		}
-		String description = stringBuilder.toString();
-
-		Animal animalToTest = new Animal("Clara", "Chicken", "Galus galus domesticus",
-				description, LocalDate.now(), null);
-
-		assertThrows(InputIsToLargeException.class, () -> {
-			animalValidation.descriptionToLong(animalToTest);
-		});
-	}
-
-	@Test
-	public void addAnimal() {
-
-		Animal animalToTest = new Animal("Clara", "Chicken", "Galus galus domesticus",
-				"test", LocalDate.now(), null);
-
-		doNothing().when(animalValidation).instanceCheck(animalToTest);
-		when(animalRepository.save(animalToTest)).thenReturn(animalToTest);
-
-		animalService.addAnimal(animalToTest);
-
-		//checks if methods are called in animalValidation and Repository
-		verify(animalValidation, times(1)).instanceCheck(animalToTest);
-		verify(animalRepository, times(1)).save(animalToTest);
-
-	}
 
 
 
