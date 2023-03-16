@@ -6,6 +6,7 @@ import com.theteapottroopers.farmwatch.validation.AnimalValidation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.exceptions.base.MockitoException;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -36,7 +37,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 class FarmwatchApplicationTests {
 
 	@Mock
