@@ -17,7 +17,7 @@ export class ResetPasswordComponent implements OnInit{
   passwordsMatching = false;
   form = new FormGroup(
     {
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
     [CustomValidators.MatchValidator('password', 'confirmPassword')]
