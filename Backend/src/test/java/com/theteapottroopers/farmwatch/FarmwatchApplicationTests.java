@@ -1,6 +1,7 @@
 package com.theteapottroopers.farmwatch;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
+import com.theteapottroopers.farmwatch.validation.AnimalValidation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +15,13 @@ import com.theteapottroopers.farmwatch.repository.AnimalRepository;
 import com.theteapottroopers.farmwatch.service.AnimalService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +42,8 @@ class FarmwatchApplicationTests {
 
 	@Autowired
 	FileStorageService fileStorageService;
+	@Autowired
+	AnimalValidation animalValidation;
 
 	@Test
 	void contextLoads() {
@@ -104,4 +110,20 @@ class FarmwatchApplicationTests {
 			animalService.findAllAnimals();
 		});
 	}
+
+	@Test
+	public void dateMustBePresentOrPast() {
+
+		LocalDate dateInFuture = LocalDate.now().plusDays(1);
+		Animal animalToTest = new Animal("Clara", "Chicken", "Galus galus domesticus",
+				"asdf", dateInFuture, null);
+
+		assertThrows(DateTimeException.class, () -> {
+			animalValidation.dateMustBePresentOrPast(animalToTest);
+		});
+
+	}
+
+
+
 }
