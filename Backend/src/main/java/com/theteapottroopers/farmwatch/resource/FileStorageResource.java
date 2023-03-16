@@ -30,7 +30,6 @@ public class FileStorageResource {
     public ResponseEntity<?> generateUuid(){
         String uuid = fileStorageService.generateUuid();
 
-        //TODO Put in Service
         ImageUuidDto imageuuiddto = new ImageUuidDto();
         imageuuiddto.setUuid(uuid);
 
@@ -41,11 +40,16 @@ public class FileStorageResource {
     // @PreAuthorize("hasAnyRole('USER', 'CARETAKER','ADMIN')") // Frontend not implemented yet
     public ResponseEntity<?> uploadImage(@RequestParam("imageFile")MultipartFile file ) throws IOException{
 
-        String uuid = fileStorageService.uploadImage(file);
-        ImageUuidDto imageUuidDto = new ImageUuidDto(uuid);
+        if(fileStorageService.imageSizeValidation(file)){
+            String uuid = fileStorageService.uploadImage(file);
+            ImageUuidDto imageUuidDto = new ImageUuidDto(uuid);
 
-        if(!uuid.isEmpty()) {
-            return new ResponseEntity<>(imageUuidDto, HttpStatus.OK);
+            if(!uuid.isEmpty()) {
+                return new ResponseEntity<>(imageUuidDto, HttpStatus.OK);
+            }
+
+        } else {
+            return new ResponseEntity<>(HttpStatus.PAYLOAD_TOO_LARGE);
         }
 
         return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
