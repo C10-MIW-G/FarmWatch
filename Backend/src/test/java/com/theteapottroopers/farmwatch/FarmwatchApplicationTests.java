@@ -92,11 +92,11 @@ class FarmwatchApplicationTests {
 	public void testFindAllAnimalsWithAnimals() {
 		List<Animal> animals = new ArrayList<>();
 		animals.add( new Animal("Clara", "Chicken", "Galus galus domesticus",
-				"asdf", LocalDate.of(2012, 5, 17), null));
+				"empty", LocalDate.of(2012, 5, 17), null));
 		animals.add( new Animal("Benjamin", "Donkey", "Equus africanus",
-				"asdf", LocalDate.of(2010, 8, 12), null));
+				"empty", LocalDate.of(2010, 8, 12), null));
 		animals.add( new Animal("Hugo", "Horse", "Equus ferus caballus",
-				"asdf", LocalDate.of(2009, 2, 21), null));
+				"empty", LocalDate.of(2009, 2, 21), null));
 
 		when(animalRepository.findAll()).thenReturn(animals);
 

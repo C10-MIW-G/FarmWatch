@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * @author Eelke Mulder
  *
@@ -25,7 +27,7 @@ public class SeederResource {
     }
 
     @PostMapping("/seed")
-    public ResponseEntity<?> seedAnimals(){
+    public ResponseEntity<?> seedAnimals() throws IOException {
         seederService.runSeeder();
         return new ResponseEntity<>(HttpStatus.OK);
     }

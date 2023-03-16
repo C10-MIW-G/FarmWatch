@@ -22,7 +22,7 @@ antwoord VIncent: nee.
 13. Voor alle tabellen: tekst rechts uitlijnen, cijfers rechts. Ook de headers. 
 14. "reports assigned to me" -> assigned to me (speel er even mee of korter beter is)
 15. Als je een lange summary intikt, dan versprint de tabel. Kijk hier naar en houdt er rekening mee tijdens de presentatie.
-
+16. als je inlogt, kom je nog niet 
 
 Logo:
 lijkt nu op een datingsite. verander het hartje naar een dierenafdruk, of een hoefijzer oid. 
