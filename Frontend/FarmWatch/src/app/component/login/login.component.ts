@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   passwordReset(){
+    this.dialog.closeAll();
     this.dialog.open(ForgotPasswordComponent);
   }
 
