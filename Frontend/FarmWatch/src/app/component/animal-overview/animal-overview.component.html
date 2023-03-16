@@ -16,18 +16,18 @@
             
                 <div class="col-lg-12">
                     
-                            <table class="table animal-overview-table table-striped tableshadow">
+                            <table matSort class="table animal-overview-table table-striped sortheader tableshadow" (matSortChange)="sortData($event)">
                                 <thead class="tableheader">
                                     <tr>
-                                        <th class="name-column" scope="col">Name</th>
-                                        <th class="name-column" scope="col">Animal</th>
+                                        <th class="name-column" scope="col" mat-sort-header="name">Name</th>
+                                        <th class="name-column" scope="col" mat-sort-header="animal">Animal</th>
                                         <th class="name-column" scope="col" *ngIf="isLoggedIn() 
-                                        && getRole() === 'ADMIN' || getRole() === 'CARETAKER'">Reports</th>
+                                        && getRole() === 'ADMIN' || getRole() === 'CARETAKER'" mat-sort-header="reports">Reports</th>
 
                                     </tr>
                                 </thead>
                                 <tbody class="tablebody">
-                                    <tr *ngFor="let animal of animals">
+                                    <tr *ngFor="let animal of sortedData">
                                         <td><span><a class="tableurl" routerLink="/animal/{{animal.id}}"><b>{{animal.name}}</b></a></span>
                                         </td>
                                         <td><span>{{animal.commonName}}</span></td>

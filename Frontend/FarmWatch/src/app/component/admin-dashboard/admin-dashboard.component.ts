@@ -4,6 +4,7 @@ import { User } from '../../model/user';
 import { AdminDashboardService } from '../../service/admin-dashboard.service';
 import { StorageService } from 'src/app/security/_services/storage.service';
 import { ToastService } from 'src/app/service/toast.service';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,16 +14,19 @@ import { ToastService } from 'src/app/service/toast.service';
 export class AdminDashboardComponent implements OnInit{
 
   public users: User[] = [];
+  public sortedData: User[];
 
 
   constructor (private adminDashboardService : AdminDashboardService,
     private storageService: StorageService,
-    private toast: ToastService){}
+    private toast: ToastService){this.sortedData = this.users.slice();}
   
   ngOnInit(): void {
     this.adminDashboardService.getUsers().subscribe(
       (response: User[]) => {
         this.users = response;
+        this.sortedData = this.users.slice();
+        this.sortData({ active: 'status', direction: 'desc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
@@ -32,6 +36,33 @@ export class AdminDashboardComponent implements OnInit{
         }
       }  
     );
+  }
+
+  sortData(sort: Sort) {
+    const data = this.users.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'username':
+          return compare(a.username, b.username, isAsc);
+        case 'name':
+          return compare(a.fullName, b.fullName, isAsc);
+        case 'email':
+          return compare(a.email, b.email, isAsc);
+          case 'role':
+          return compare(a.role, b.role, isAsc)
+        default:
+          return 0;
+      }
+    });
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
   }
 
   public isCurrentUser(user: User): boolean {
