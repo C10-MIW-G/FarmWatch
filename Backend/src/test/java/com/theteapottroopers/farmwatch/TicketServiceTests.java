@@ -33,10 +33,7 @@ public class TicketServiceTests {
     private TicketRepository ticketRepository;
 
     @Spy
-    private TicketMessageRepository ticketMessageRepository;
-
-    @Spy
-    private TicketValidation ticketValidation = new TicketValidation(ticketRepository, ticketMessageRepository);
+    private TicketValidation ticketValidation;
     
     @InjectMocks
     private TicketService ticketService;
