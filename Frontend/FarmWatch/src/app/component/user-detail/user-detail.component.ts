@@ -6,6 +6,8 @@ import { StorageService } from 'src/app/security/_services/storage.service';
 import { HttpErrorResponse} from '@angular/common/http';
 import { Location } from '@angular/common';
 import { ToastService } from 'src/app/service/toast.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -25,6 +27,7 @@ export class UserDetailComponent {
     private route: ActivatedRoute, 
     private storageService: StorageService,
     private location: Location,
+    private dialog: MatDialog,
     private toast: ToastService) {
       const pathArray = location.path().split('/');
       this.currentPath = pathArray.pop()!;
@@ -70,6 +73,11 @@ export class UserDetailComponent {
   public fullName():String {
     const fullname: string = this.user ? `${this.user.fullName}` : '';
     return fullname;
+  }
+
+  passwordReset(){
+    this.dialog.closeAll();
+    this.dialog.open(ForgotPasswordComponent);
   }
 
 }
