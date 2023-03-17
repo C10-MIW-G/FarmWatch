@@ -52,4 +52,12 @@ public class Ticket {
     public boolean isTicketFromUserId(Long id){
         return reportedBy.getId().equals(id);
     }
+    public boolean hasPrivateMessages(){
+        for(TicketMessage ticketMessage : ticketMessages){
+            if(ticketMessage.isPrivateMessage()){
+                return true;
+            }
+        }
+        return false;
+    }
 }
