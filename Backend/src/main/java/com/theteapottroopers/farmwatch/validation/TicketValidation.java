@@ -24,15 +24,6 @@ import java.time.LocalDateTime;
 @Service
 public class TicketValidation {
 
-    TicketRepository ticketRepository;
-    TicketMessageRepository ticketMessageRepository;
-
-    @Autowired
-    public TicketValidation(TicketRepository ticketRepository, TicketMessageRepository ticketMessageRepository) {
-        this.ticketRepository = ticketRepository;
-        this.ticketMessageRepository = ticketMessageRepository;
-    }
-
     public void instanceTicketCheck(Ticket ticket) {
         summaryMustNotBeNull(ticket);
         descriptionMustNotBeNull(ticket);
