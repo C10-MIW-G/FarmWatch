@@ -72,8 +72,10 @@ export class TicketOverviewComponent implements OnInit {
       switch (sort.active) {
         case 'summary':
           return compare(a.summary, b.summary, isAsc);
-        case 'animal':
-          return compare(a.animal.name, b.animal.name, isAsc);
+          case 'animal':
+        const animalA = a.animal ? a.animal.name : 'Not specified';
+        const animalB = b.animal ? b.animal.name : 'Not specified';
+        return compare(animalA, animalB, isAsc);
         case 'status':
           const statusComparison = a.status.localeCompare(b.status);
           if (statusComparison !== 0) {

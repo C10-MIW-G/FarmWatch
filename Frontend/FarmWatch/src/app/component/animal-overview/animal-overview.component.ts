@@ -31,13 +31,12 @@ export class AnimalOverviewComponent implements OnInit{
     }
   }
 
-
   public getAnimals(): void {
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
         this.animals = response;
         this.sortedData = this.animals.slice();
-        this.sortData({ active: 'status', direction: 'desc' });
+        this.sortData({ active: 'reports', direction: 'desc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
@@ -48,8 +47,6 @@ export class AnimalOverviewComponent implements OnInit{
       }  
     );
   }
-
- 
 
   public onDeleteAnimal(AnimalOverviewId: number): void {
     this.animalOverviewService.deleteAnimal(AnimalOverviewId).subscribe(

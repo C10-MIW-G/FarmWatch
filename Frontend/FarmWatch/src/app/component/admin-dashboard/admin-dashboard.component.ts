@@ -26,7 +26,7 @@ export class AdminDashboardComponent implements OnInit{
       (response: User[]) => {
         this.users = response;
         this.sortedData = this.users.slice();
-        this.sortData({ active: 'status', direction: 'desc' });
+        this.sortData({ active: 'username', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
