@@ -59,7 +59,7 @@ public class TicketServiceTests {
     }
 
     @Test
-    void savedTicketHasNoSummary(){
+    void AddTicketWithNullSummaryShouldThrowException(){
         Ticket ticket = Ticket.builder()
                 .summary(null)
                 .description("Test description")
@@ -70,7 +70,7 @@ public class TicketServiceTests {
     }
 
     @Test
-    void savedTicketHasNoDescription(){
+    void AddTicketWithNullDescriptionShouldThrowException(){
         Ticket ticket = Ticket.builder()
                 .summary("Test Summary")
                 .description(null)
