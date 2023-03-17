@@ -43,11 +43,8 @@ public class Seeder {
     public void SeedAnimals() throws IOException {
         ImageReader imageReader = new ImageReader(storageRepository);
 
-
-
         List<Animal> animalsToSeed = new ArrayList<>();
         BiographyReader biographyReader = new BiographyReader();
-
 
         String animal1Description = biographyReader.getAnimal1Description();
         String animal2Description = biographyReader.getAnimal2Description();
@@ -160,12 +157,6 @@ public class Seeder {
                 animal27Description, LocalDate.of(2014, 12, 9), null);
 
 
-
-
-
-
-
-
         animalsToSeed.add(animal1);
         animalsToSeed.add(animal2);
         animalsToSeed.add(animal3);
@@ -198,7 +189,7 @@ public class Seeder {
             Optional<Animal> animalToSeed = animalRepository.findAnimalByName(animal.getName());
             if(animalToSeed.isEmpty()){
                 imageReader.saveImageDataFromPath("src/main/resources/images/"
-                        + animal.getName() + ".jpg", storageRepository);
+                        + animal.getName() + ".jpg");
                 Optional<ImageData> optionalImage = storageRepository.findByName(animal.getName() + ".jpg");
                 animal.setImageData( optionalImage.get());
                 animalRepository.save(animal);

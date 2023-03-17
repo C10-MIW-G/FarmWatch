@@ -1,15 +1,13 @@
 package com.theteapottroopers.farmwatch;
-import com.theteapottroopers.farmwatch.exception.InputIsToLargeException;
+
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
 import com.theteapottroopers.farmwatch.validation.AnimalValidation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
-import org.mockito.exceptions.base.MockitoException;
+
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -20,11 +18,9 @@ import com.theteapottroopers.farmwatch.service.AnimalService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static com.theteapottroopers.farmwatch.validation.AnimalValidation.MAX_LENGTH_DESCRIPTION;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -37,7 +33,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
 class FarmwatchApplicationTests {
 
 	@Mock

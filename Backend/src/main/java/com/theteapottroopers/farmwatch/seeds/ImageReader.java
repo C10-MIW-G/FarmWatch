@@ -22,7 +22,7 @@ public class ImageReader {
     }
 
 
-    public void saveImageDataFromPath(String path, StorageRepository storageRepository) throws IOException {
+    public void saveImageDataFromPath(String path) throws IOException {
 
         Path filePath = Paths.get(path);
         String fileName = filePath.getFileName().toString();
