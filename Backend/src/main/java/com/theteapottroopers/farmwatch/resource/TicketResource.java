@@ -65,7 +65,9 @@ public class TicketResource {
     @PreAuthorize("hasAnyRole('USER', 'CARETAKER', 'ADMIN')")
     public ResponseEntity<?> addTicket(@RequestBody TicketDtoNew ticketDtoNew){
         ticketService.addTicket(ticketMapper.toTicketFromNew(ticketDtoNew));
-        animalService.setTicketAmountForAnimal(ticketDtoNew.getAnimalId());
+        if(ticketDtoNew.getAnimalId() != null) {
+            animalService.setTicketAmountForAnimal(ticketDtoNew.getAnimalId());
+        }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -108,7 +110,9 @@ public class TicketResource {
     @PreAuthorize("hasAnyRole('CARETAKER', 'ADMIN')")
     public ResponseEntity<HttpStatus>updateTicket(@RequestBody TicketDtoUpdate ticketDtoUpdate) {
         ticketService.updateTicket(ticketDtoUpdate);
-        animalService.setTicketAmountForAnimal(ticketDtoUpdate.getAnimalId());
+        if(ticketDtoUpdate.getAnimalId() != null) {
+            animalService.setTicketAmountForAnimal(ticketDtoUpdate.getAnimalId());
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
