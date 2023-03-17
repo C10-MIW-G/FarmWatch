@@ -31,6 +31,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class FarmwatchApplicationTests {
@@ -92,6 +93,17 @@ class FarmwatchApplicationTests {
 
 		assertThrows(AnimalNotFoundException.class, () -> {
 			animalService.findAllAnimals();
+		});
+	}
+
+	@Test
+	public void testFindAnimalById() {
+		Animal testAnimal = new Animal("Clara", "Chicken", "Galus galus domesticus",
+				"empty", LocalDate.of(2012, 5, 17), null);
+		when(animalRepository.findById(1L)).thenReturn(Optional.of(testAnimal));
+
+		assertDoesNotThrow(() -> {
+			animalService.findAnimalById(1L);
 		});
 	}
 
