@@ -27,7 +27,7 @@ public class UserValidationTests {
     @InjectMocks
     UserValidation userValidation;
 
-    @Spy
+    @Mock
     UserRepository userRepository;
 
     private User testUser;
