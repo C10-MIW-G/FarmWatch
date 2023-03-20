@@ -4,6 +4,7 @@ import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.service.FileStorageService;
 import com.theteapottroopers.farmwatch.validation.AnimalValidation;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.junit.MockitoJUnitRunner;
@@ -88,9 +89,9 @@ class FarmwatchApplicationTests {
 	}
 
 	@Test
+	@DisplayName("findAnimalById should not throw exception")
 	public void testFindAnimalByIdWithAnimal() {
-		Animal testAnimal = new Animal("Clara", "Chicken", "Galus galus domesticus",
-				"empty", LocalDate.of(2012, 5, 17), null);
+		Animal testAnimal = new Animal();
 		when(animalRepository.findById(1L)).thenReturn(Optional.of(testAnimal));
 
 		assertDoesNotThrow(() -> {
@@ -99,23 +100,21 @@ class FarmwatchApplicationTests {
 	}
 
 	@Test
+	@DisplayName("findAnimalById should throw exception")
 	public void testFindAnimalByIdWithoutAnimal() {
-		when(animalRepository.findById(1L)).thenReturn(null);
 
 		assertThrows(AnimalNotFoundException.class, () -> {
-			animalService.findAllAnimals();
+			animalService.findAnimalById(1L);
 		});
 	}
 
 	@Test
+	@DisplayName("findAllAnimals should not throw exception")
 	public void testFindAllAnimalsWithAnimals() {
 		List<Animal> animals = new ArrayList<>();
-		animals.add( new Animal("Clara", "Chicken", "Galus galus domesticus",
-				"empty", LocalDate.of(2012, 5, 17), null));
-		animals.add( new Animal("Benjamin", "Donkey", "Equus africanus",
-				"empty", LocalDate.of(2010, 8, 12), null));
-		animals.add( new Animal("Hugo", "Horse", "Equus ferus caballus",
-				"empty", LocalDate.of(2009, 2, 21), null));
+		animals.add( new Animal());
+		animals.add( new Animal());
+		animals.add( new Animal());
 
 		when(animalRepository.findAll()).thenReturn(animals);
 
@@ -125,6 +124,7 @@ class FarmwatchApplicationTests {
 	}
 
 	@Test
+	@DisplayName("findAllAnimals should throw exception")
 	public void testFindAllAnimalsWithNoAnimals() {
 		when(animalRepository.findAll()).thenReturn(new ArrayList<>());
 
