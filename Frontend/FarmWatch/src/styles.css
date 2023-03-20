@@ -185,6 +185,7 @@ table tr:first-child th:first-child {
   /* top-right border-radius */
   table tr:first-child th:last-child {
     border-top-right-radius: 5px;
+    
   }
   
   /* bottom-left border-radius */
@@ -203,6 +204,9 @@ table tr:first-child th:first-child {
     
 }
 
+.table thead th{
+    border-bottom: none;
+}
 
 
 .tableurl{
@@ -220,7 +224,6 @@ table tr:first-child th:first-child {
 
 td{
     line-height: 15px;
-    padding: 100px
 }
 
 th{

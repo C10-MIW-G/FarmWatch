@@ -46,7 +46,7 @@ export class TicketOverviewComponent implements OnInit {
       (response: Ticket[]) => {
         this.tickets = response;
         this.sortedData = this.tickets.slice();
-        this.sortData({ active: 'status', direction: 'desc' });
+        this.sortData({ active: 'created_on', direction: 'desc' });
         
       },
       (error: HttpErrorResponse) => {

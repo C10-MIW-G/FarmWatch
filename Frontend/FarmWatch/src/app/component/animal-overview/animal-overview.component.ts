@@ -36,7 +36,7 @@ export class AnimalOverviewComponent implements OnInit{
       (response: AnimalOverview[]) => {
         this.animals = response;
         this.sortedData = this.animals.slice();
-        this.sortData({ active: 'reports', direction: 'desc' });
+        this.sortData({ active: 'name', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
