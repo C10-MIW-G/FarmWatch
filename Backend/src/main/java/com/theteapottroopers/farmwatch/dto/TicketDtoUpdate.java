@@ -1,10 +1,7 @@
 package com.theteapottroopers.farmwatch.dto;
 
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
@@ -13,6 +10,7 @@ import lombok.Setter;
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
 public class TicketDtoUpdate {

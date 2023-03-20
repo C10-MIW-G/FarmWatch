@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author Dave Thijs <d.thijs@st.hanze.nl>
@@ -62,7 +63,8 @@ public class TicketService {
     }
 
     public void updateTicket(TicketDtoUpdate ticketDtoUpdate){
-        Ticket ticketToUpdate = ticketRepository.findById(ticketDtoUpdate.getId()).get();
+        Ticket ticketToUpdate = ticketRepository.findById(ticketDtoUpdate.getId())
+                .orElseThrow(() -> new TicketNotFoundException("Ticket with ID " + ticketDtoUpdate.getId() + " not found"));
         updateAnimalInTicket(ticketDtoUpdate, ticketToUpdate);
         ticketToUpdate.setSummary(ticketDtoUpdate.getSummary());
         ticketToUpdate.setDescription(ticketDtoUpdate.getDescription());
