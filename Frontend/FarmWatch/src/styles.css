@@ -226,10 +226,7 @@ td{
     line-height: 15px;
 }
 
-th{
-    line-height: 15px;
-    background-color: #407353;
-}
+
 
 tr{
     text-align: left;
@@ -432,6 +429,8 @@ textarea {
     display: flex;
     justify-content: space-evenly;
 }
+
+
 
 
 
