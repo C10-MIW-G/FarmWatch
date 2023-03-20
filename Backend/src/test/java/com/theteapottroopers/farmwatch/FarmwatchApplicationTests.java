@@ -88,15 +88,6 @@ class FarmwatchApplicationTests {
 	}
 
 	@Test
-	public void testFindAllAnimalsWithNoAnimals() {
-		when(animalRepository.findAll()).thenReturn(new ArrayList<>());
-
-		assertThrows(AnimalNotFoundException.class, () -> {
-			animalService.findAllAnimals();
-		});
-	}
-
-	@Test
 	public void testFindAnimalByIdWithAnimal() {
 		Animal testAnimal = new Animal("Clara", "Chicken", "Galus galus domesticus",
 				"empty", LocalDate.of(2012, 5, 17), null);
@@ -133,10 +124,13 @@ class FarmwatchApplicationTests {
 		});
 	}
 
+	@Test
+	public void testFindAllAnimalsWithNoAnimals() {
+		when(animalRepository.findAll()).thenReturn(new ArrayList<>());
 
-
-
-
-
+		assertThrows(AnimalNotFoundException.class, () -> {
+			animalService.findAllAnimals();
+		});
+	}
 
 }
