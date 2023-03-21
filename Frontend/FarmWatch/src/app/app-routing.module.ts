@@ -22,8 +22,7 @@ import { AnimalOverviewImageComponent } from './component/animal-oveview-image/a
 
 const routes: Routes = [
   { path: '', component: AnimalOverviewImageComponent},
-  { path: 'animal', component: AddAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
-  { path: 'animal/table', component: AnimalOverviewComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
+  { path: 'animal', component: AnimalOverviewComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'animal/:id', component: AnimalDetailComponent},
   { path: 'animal/update/:id', component: UpdateAnimalComponent, canActivate: [AuthGuard], data: {role: ['ADMIN', 'CARETAKER']}},
   { path: 'login', component: LoginComponent },
