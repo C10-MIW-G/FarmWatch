@@ -5,6 +5,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { StorageService } from '../../security/_services/storage.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { Sort } from '@angular/material/sort';
+import { DialogService } from 'src/app/service/dialog.service';
+import { AddAnimalComponent } from '../add-animal/add-animal.component';
 
 @Component({
   selector: 'app-animal',
@@ -13,12 +15,15 @@ import { Sort } from '@angular/material/sort';
 })
 export class AnimalOverviewComponent implements OnInit{
   public animals: AnimalOverview[] = [];
+  sortedData: AnimalOverview[];
   public deleteAnimal!: AnimalOverview;
   public isAuthorized: boolean = false; 
 
   constructor(private animalOverviewService : AnimalOverviewService, 
     private storageService: StorageService,
-    private toast: ToastService) {}
+    private toast: ToastService,
+    private dialog: DialogService) 
+    {this.sortedData = this.animals.slice();}
 
   ngOnInit(): void {
     this.getAnimals(); 
@@ -91,5 +96,8 @@ export class AnimalOverviewComponent implements OnInit{
     }
   }
   
-  
+  openAddAnimalDialog(){
+    this.dialog.open(AddAnimalComponent);
+  }
+
 }
