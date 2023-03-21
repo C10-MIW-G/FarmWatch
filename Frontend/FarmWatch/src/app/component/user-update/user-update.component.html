@@ -55,7 +55,14 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-secondary farmbutton" style="float: right" type="submit">Save</button>
+            <div class="actions">
+              <div class="row">
+                  <div class="button-container" style="flex: auto;">
+                      <button class="btn btn-secondary btnshadow" [routerLink]="isAdmin ? ['/user', id] : ['/user/details']">Cancel</button>
+                  </div>
+                  <button class="btn btn-secondary farmbutton" type="submit">Save</button>
+              </div>
+          </div>
           </form>
         </div>   
       </div>       
