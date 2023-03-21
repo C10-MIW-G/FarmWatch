@@ -70,7 +70,14 @@
                             [(ngModel)]="ticket.description" required description #description="ngModel"></textarea>
                     </div>
                 </div>
-                    <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Save</button>
+                <div class="actions">
+                    <div class="row">
+                        <div class="button-container" style="flex: auto;">
+                            <button class="btn btn-secondary btnshadow" [routerLink]="['/ticket/', id]">Cancel</button>
+                        </div>
+                        <button class="btn btn-secondary farmbutton" type="submit">Save</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

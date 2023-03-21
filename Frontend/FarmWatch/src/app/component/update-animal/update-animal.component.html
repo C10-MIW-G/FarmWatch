@@ -65,7 +65,14 @@
                     <input type="hidden" class="form-control" id="imageFileName" [(ngModel)]="updateAnimal.imageFileName"
                         name="imageFileName">
                 </div>
-                <button class="btn btn-secondary farmbutton" type="submit" style="float: right">Save</button>
+                <div class="actions">
+                    <div class="row">
+                        <div class="button-container" style="flex: auto;">
+                            <button class="btn btn-secondary btnshadow" [routerLink]="['/animal/', id]">Cancel</button>
+                        </div>
+                        <button class="btn btn-secondary farmbutton" type="submit">Save</button>
+                    </div>
+                </div> 
             </div>
             </form>
         </div>
