@@ -14,9 +14,9 @@ export class DialogService {
   constructor(private dialog: MatDialog) { 
   }
 
-  open(component: any){
+  open(component: any) : Observable<Boolean>{
     this.closeAll();
-    this.dialog.open(component)
+    return this.dialog.open(component).afterClosed();
   }
 
   showConfirmDialog(data: confirmdialogdata): Observable<Boolean> {

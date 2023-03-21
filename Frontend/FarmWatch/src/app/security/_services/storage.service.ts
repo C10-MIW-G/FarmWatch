@@ -33,6 +33,13 @@ export class StorageService {
     }
   }
 
+  public getUserEmail(): any {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    if (user) {
+      return JSON.parse(user).email;
+    }
+  }
+
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
