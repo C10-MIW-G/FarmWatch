@@ -5,6 +5,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { StorageService } from '../../security/_services/storage.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { Sort } from '@angular/material/sort';
+import { DialogService } from 'src/app/service/dialog.service';
+import { AddAnimalComponent } from '../add-animal/add-animal.component';
 
 @Component({
   selector: 'app-animal',
@@ -19,7 +21,9 @@ export class AnimalOverviewComponent implements OnInit{
 
   constructor(private animalOverviewService : AnimalOverviewService, 
     private storageService: StorageService,
-    private toast: ToastService) {this.sortedData = this.animals.slice();}
+    private toast: ToastService,
+    private dialog: DialogService) 
+    {this.sortedData = this.animals.slice();}
 
   ngOnInit(): void {
     this.getAnimals(); 
@@ -35,7 +39,6 @@ export class AnimalOverviewComponent implements OnInit{
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
         this.animals = response;
-        this.sortedData = this.animals.slice();
         this.sortData({ active: 'name', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
@@ -71,11 +74,11 @@ export class AnimalOverviewComponent implements OnInit{
   sortData(sort: Sort) {
     const data = this.animals.slice();
     if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
+      this.animals = data;
       return;
     }
 
-    this.sortedData = data.sort((a, b) => {
+    this.animals = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'name':
@@ -93,5 +96,8 @@ export class AnimalOverviewComponent implements OnInit{
     }
   }
   
-  
+  openAddAnimalDialog(){
+    this.dialog.open(AddAnimalComponent);
+  }
+
 }

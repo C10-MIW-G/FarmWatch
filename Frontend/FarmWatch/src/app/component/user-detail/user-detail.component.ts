@@ -8,6 +8,9 @@ import { Location } from '@angular/common';
 import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from 'src/app/security/_services/auth.service';
+import { DialogService } from 'src/app/service/dialog.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -27,8 +30,9 @@ export class UserDetailComponent {
     private route: ActivatedRoute, 
     private storageService: StorageService,
     private location: Location,
-    private dialog: MatDialog,
-    private toast: ToastService) {
+    private dialog: DialogService,
+    private toast: ToastService,
+    private auth: AuthService) {
       const pathArray = location.path().split('/');
       this.currentPath = pathArray.pop()!;
       if(this.currentPath === this.userPagePath){
@@ -77,7 +81,22 @@ export class UserDetailComponent {
 
   passwordReset(){
     this.dialog.closeAll();
-    this.dialog.open(ForgotPasswordComponent);
+    this.dialog.showConfirmDialog({'title': "Reset Password", 'message': "Are you sure you want to reset your password?", 
+                                      'confirmButton': "Reset password", 'cancelButton': "Cancel"}).subscribe(
+      (response: Boolean) => {
+        if(response){
+          this.auth.forgotPassword(this.storageService.getUserEmail()).subscribe(
+            (confirmResponse: Boolean) =>{
+              if(confirmResponse){
+                this.toast.ShowSucces("New Notification", "Password reset. Please check your email!")
+              } else {
+                this.toast.ShowError("New Notification", "Failed to reset password")
+              }
+            }
+          )
+        }
+      }
+    )
   }
 
 }

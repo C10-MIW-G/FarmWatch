@@ -149,6 +149,15 @@ h3{
     
 }
 
+.textLink{
+    background-color: #febb26;
+    color:#fff;
+    padding:5px;
+    cursor: pointer;
+    border-radius:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
 /* TABLES */
 
 
@@ -366,6 +375,7 @@ mat-form-field {
     width: 100%;
     border-radius:5px;
     transform: translate(0,3px);
+    border: 4px dashed #009578;
 }
 
 .image-preview-container{

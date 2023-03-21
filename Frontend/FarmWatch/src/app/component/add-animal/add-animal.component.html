@@ -1,19 +1,12 @@
-<mat-sidenav-container class="sidenav-container" id="top">
-  <mat-sidenav mode="side" opened class="sidenav-left" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    
-  </mat-sidenav>
-<mat-sidenav-content class="sidenav-content">
- 
-<div class="container" style="height:1300px">
-    
-  <div class="col-md-6 offset-md-3 formshadow">
-    <br>
+<div mat-dialog-content>
     <h3 class="card-title" >Add animal</h3>
     <form class="" (ngSubmit) = "onSubmit()">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <img src={{getAnimalImage()}} class="animal-image-preview">
+                <label for="file"><span class="textLink" (click)="openImageUploadAction()">Select your file</span></label>
+                
             </div>
         </div>
         <div class="col-md-6">
@@ -22,7 +15,7 @@
                 <input type="text" class ="form-control" id = "name"
                     [(ngModel)] = "form.name" name = "name" placeholder="Animal name">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="padding-top: 10px;">
                 <label>Date of birth:</label>
                 <div class="input-group">
                   <input
@@ -69,7 +62,7 @@
 
         <div class="form-group">
             <input type="text" class ="form-control" id = "imageFileName" hidden
-                [(ngModel)] = "form.imageFileName" name = "imageFileName" placeholder="Enter an image URL">
+                [(ngModel)] = "form.imageFileName" name = "imageFileName">
         </div>
         <button class = "btn btn-secondary farmbutton" type ="submit" style="float: right;">Save</button>
         </div>
@@ -78,16 +71,4 @@
         
     
     </form>
-    
-</div> 
 </div>
-
-
-</mat-sidenav-content> 
-<mat-sidenav mode="side" opened position="end" class="sidenav-right" [fixedInViewport]="true" [fixedTopGap]="56" [fixedBottomGap]="0">
-    <div>
-    <button class="btn btn-secondary tooltips btn-block farmbutton" 
-      (click)="openImageUploadAction()">Upload new Image</button>
-        </div>
-</mat-sidenav>
-</mat-sidenav-container>
