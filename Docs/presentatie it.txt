@@ -1,0 +1,79 @@
+Eelke algemene opening + voorstellen (een persoon?
+Meent voorstellen
+Berend voorstellen
+Dave voorstellen
+
+Eelke inleiding/aanleiding/noodzaak-> welk probleem? + Visitor
+Meent: User
+Berend: Caretaker
+Dave: Admin + John bekijkt zijn message
+
+Eelke: persoonlijke ervaring
+Meent: persoonlijke ervaring
+Berend: persoonlijke ervaring
+Dave:  persoonlijke ervaring + afsluiting + heb je nog vragen
+
++wisselen (zorg ervoor dat dit soepel gaat, wie kan het best op de knoppen drukken?)
+
+
+
+0. algemene opening (hoe lang duurt het, wat kun je verwachten, wanneer vragen?)
+- namens de teapot troopers heet ik jullie welkom bij de eindpresentatie van ons product "farmwatch"
+- na voorstelronde, demo, en daarna onze eigen ervaring.
+- ruimte voor vragen op het einde. 
+1. Welkom en voorstelrondje met daarin per persoon: wie was je voor MIW (opleiding, werk etc.)?
+- Eelke Mulder 32 jaar
+- oorspronkelijk uit Huizen
+- Laatste paar jaar als psycholoog gewerkt
+- administratie
+- creatief, sociaal, denken
+- zo uitgekomen bij make it work
+- ga aan de slag bij dynamics4healthcare -> wat ga je doen?
+
+2. Inleiding, aanleiding en noodzaak applicatie -> welk probleem willen jullie oplossen?
+- Stel je voor je loopt door het park, om 9 uur 's avonds
+- je ziet een dier vast zitten in een hek
+- je belt de dierenambulance, die zeggen dat het niet onder hun verantwoordelijiheid valt. 
+- wat doe je nu?
+- Farmwatch
+3. Functionele demo -> gehele applicatie laten zien, niet in de code duiken.
+
+A. visitor (vader John/Cor/Johan met kleinkind Liam)
+	0. intro praatje (zie punt 2)
+	1. openen pagina
+	2. dieren bekijken (carousel)
+	3. op dieren klikken
+	4. account aanmaken (misschien niet doen, nog wel modal openen)
+B. User (wachtwoord vergeten, ) (Ingelogde grootvader)
+	5. inloggen
+	6. nieuwe knopjes/kopjes laten zien
+	8. report aanmaken met dier
+	9. oude reports bekijken
+C. Caretaker (Caretaker Dennis)
+	10. reports bekijken en sorteren
+	11. reports toewijzen aan collega's
+	12. report toewijzen aan jezelf
+	12b. schrijft een message aan john, en eentje aan collega's. 
+	13. report aan een dier koppelen (er staat al een report aan die unasigned is)
+	14. nieuw dier toevoegen
+	15. foutje gemaakt, dier updaten
+D. Admin (Laura)
+	14. dier deleten (verhuisd naar een andere boerderij)
+	15. user op caretaker zetten
+	16. user op admin zetten (hoeft niet perse)
+	17. wat hadden we verder nog toe willen voegen?
+E. John returns!
+	18. John checkt zijn ticket en kijkt of er iets meegedaan
+	
+4. Persoonlijke ervaring MIW -> per persoon een issue bespreken uit het project wat bijdraagt aan het grote geheel. Kies iets uit het project waar je aan gewerkt hebt. Laat zien waar je tegenaan liep, hoe je dat opgelost hebt en wat het resultaat is. Wat is je grootste leermoment in deze 5 maanden en waar ben je het meest trots op? 
+Issue: design website
+Waar liep ik tegenaan?: Het was er niet, klant had er niet om gevraagd, vertical slices waren niet af. 
+Hoe opgelost?: verantwoordelijkheid genomen, contact met de klant gezocht, design gemaakt, werk erin gestoken. 
+Resultaat: prachtige website, mogelijk voor andere team-genoten om dit over te nemen. 
+
+Grootste leermoment: Niet te hard werken, Vertical slicen, en iets is pas af als het af is (inclusief design & maintenance). Rustig werken, reserveer tijd als iets "af" is.
+Meest trots: dat ik kan programmeren na 5 maanden. Vooral vanaf het moment dat we angular gingen gebruiken. 
+
+
+5. Afronding
+laatste persoon bedankt, en vraagt of er vragen zijn?

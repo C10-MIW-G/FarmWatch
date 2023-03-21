@@ -32,4 +32,7 @@ kleur accent in navbar
 seeder beter verhaal in maken (realistische data, niet te veel tickets, meerdere tickets bij een dier. zorg dat het bruikbaar is in de demo)
 17. 
 18. 
-
+tekst open/in_progress vriendelijker maken (hoofdletters) 
+Gaat de website op f11? Of niet?
+cancel knop op add-animal modal
+seed-fixen zodat je bij add-animal plaatje in juist formaat ziet
