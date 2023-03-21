@@ -12,21 +12,19 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit{
-
   public users: User[] = [];
-  public sortedData: User[];
+ 
 
 
   constructor (private adminDashboardService : AdminDashboardService,
     private storageService: StorageService,
-    private toast: ToastService){this.sortedData = this.users.slice();}
+    private toast: ToastService){}
   
   ngOnInit(): void {
     this.adminDashboardService.getUsers().subscribe(
       (response: User[]) => {
         this.users = response;
-        this.sortedData = this.users.slice();
-        this.sortData({ active: 'username', direction: 'asc' });
+        this.sortData({ active: 'role', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
@@ -39,13 +37,13 @@ export class AdminDashboardComponent implements OnInit{
   }
 
   sortData(sort: Sort) {
-    const data = this.users.slice();
+    const data = this.users;
     if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
+      this.users = data;
       return;
     }
 
-    this.sortedData = data.sort((a, b) => {
+    this.users = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'username':

@@ -14,7 +14,6 @@ import { StorageService } from 'src/app/security/_services/storage.service';
 export class TicketOverviewComponent implements OnInit {
   public tickets: Ticket [] = [];
   public isAuthorized: boolean = false; 
-  sortedData: Ticket[];
   filterValue: string;
   loggedInUsername: string;
   showFilterCheckBox: boolean = false;
@@ -24,7 +23,6 @@ export class TicketOverviewComponent implements OnInit {
     private toast: ToastService,
     private storageService: StorageService,
     ) {
-      this.sortedData = this.tickets.slice();
       this.filterValue = '';
       this.canCheckBoxBeShown();
       this.roleUser = this.storageService.getRole()
@@ -45,8 +43,7 @@ export class TicketOverviewComponent implements OnInit {
     this.ticketOverviewService.getTickets().subscribe(
       (response: Ticket[]) => {
         this.tickets = response;
-        this.sortedData = this.tickets.slice();
-        this.sortData({ active: 'status', direction: 'desc' });
+        this.sortData({ active: 'created_on', direction: 'desc' });
         
       },
       (error: HttpErrorResponse) => {
@@ -63,11 +60,11 @@ export class TicketOverviewComponent implements OnInit {
   sortData(sort: Sort) {
     const data = this.tickets.slice();
     if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
+      this.tickets = data;
       return;
     }
 
-    this.sortedData = data.sort((a, b) => {
+    this.tickets = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'summary':

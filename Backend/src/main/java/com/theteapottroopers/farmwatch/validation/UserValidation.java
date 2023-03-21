@@ -30,7 +30,7 @@ public class UserValidation {
     }
 
     private void lastAdmin(UserDto userDto, User user) {
-        if (userRepository.countByRole(Role.ROLE_ADMIN) == 1 &&
+        if (userRepository.countByRole(Role.ROLE_ADMIN) == 1L &&
                 user.getRole().equals(Role.ROLE_ADMIN) &&
                 !userDto.getRole().equals(Role.ROLE_ADMIN)) {
             throw new LastAdminDeletionException("This user is the last admin");

@@ -39,8 +39,7 @@ export class AnimalOverviewComponent implements OnInit{
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
         this.animals = response;
-        this.sortedData = this.animals.slice();
-        this.sortData({ active: 'reports', direction: 'desc' });
+        this.sortData({ active: 'name', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
         if(error.error.message != null){
@@ -75,11 +74,11 @@ export class AnimalOverviewComponent implements OnInit{
   sortData(sort: Sort) {
     const data = this.animals.slice();
     if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
+      this.animals = data;
       return;
     }
 
-    this.sortedData = data.sort((a, b) => {
+    this.animals = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'name':

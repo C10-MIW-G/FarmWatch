@@ -194,6 +194,7 @@ table tr:first-child th:first-child {
   /* top-right border-radius */
   table tr:first-child th:last-child {
     border-top-right-radius: 5px;
+    
   }
   
   /* bottom-left border-radius */
@@ -212,6 +213,9 @@ table tr:first-child th:first-child {
     
 }
 
+.table thead th{
+    border-bottom: none;
+}
 
 
 .tableurl{
@@ -231,10 +235,7 @@ td{
     line-height: 15px;
 }
 
-th{
-    line-height: 15px;
-    background-color: #407353;
-}
+
 
 tr{
     text-align: left;
@@ -253,6 +254,10 @@ tr{
 
 mat-form-field {
     width: 100%;
+}
+
+.mat-calendar-body-selected{
+    background-color: #38905e;
 }
 
 .formshadow{
@@ -438,6 +443,8 @@ textarea {
     display: flex;
     justify-content: space-evenly;
 }
+
+
 
 
 

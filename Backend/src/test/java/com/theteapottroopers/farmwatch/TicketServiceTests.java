@@ -7,15 +7,11 @@ import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.repository.TicketMessageRepository;
 import com.theteapottroopers.farmwatch.repository.TicketRepository;
-import com.theteapottroopers.farmwatch.security.user.Role;
-import com.theteapottroopers.farmwatch.security.user.User;
 import com.theteapottroopers.farmwatch.service.TicketService;
 import com.theteapottroopers.farmwatch.validation.TicketValidation;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Spy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
@@ -128,3 +124,7 @@ public class TicketServiceTests {
 
     }
 }
+
+
+
+
