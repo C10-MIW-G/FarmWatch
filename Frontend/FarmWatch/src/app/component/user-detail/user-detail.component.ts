@@ -81,7 +81,8 @@ export class UserDetailComponent {
 
   passwordReset(){
     this.dialog.closeAll();
-    this.dialog.showConfirmDialog({'title': "Reset Password", 'message': "Are you sure you want to reset your password?"}).subscribe(
+    this.dialog.showConfirmDialog({'title': "Reset Password", 'message': "Are you sure you want to reset your password?", 
+                                      'confirmButton': "Reset password", 'cancelButton': "Cancel"}).subscribe(
       (response: Boolean) => {
         if(response){
           this.auth.forgotPassword(this.storageService.getUserEmail()).subscribe(
