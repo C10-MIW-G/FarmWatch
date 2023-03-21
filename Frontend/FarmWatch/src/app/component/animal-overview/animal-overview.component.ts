@@ -13,13 +13,12 @@ import { Sort } from '@angular/material/sort';
 })
 export class AnimalOverviewComponent implements OnInit{
   public animals: AnimalOverview[] = [];
-  sortedData: AnimalOverview[];
   public deleteAnimal!: AnimalOverview;
   public isAuthorized: boolean = false; 
 
   constructor(private animalOverviewService : AnimalOverviewService, 
     private storageService: StorageService,
-    private toast: ToastService) {this.sortedData = this.animals.slice();}
+    private toast: ToastService) {}
 
   ngOnInit(): void {
     this.getAnimals(); 
@@ -35,7 +34,6 @@ export class AnimalOverviewComponent implements OnInit{
     this.animalOverviewService.getAnimals().subscribe(
       (response: AnimalOverview[]) => {
         this.animals = response;
-        this.sortedData = this.animals.slice();
         this.sortData({ active: 'name', direction: 'asc' });
       },
       (error: HttpErrorResponse) => {
@@ -71,11 +69,11 @@ export class AnimalOverviewComponent implements OnInit{
   sortData(sort: Sort) {
     const data = this.animals.slice();
     if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
+      this.animals = data;
       return;
     }
 
-    this.sortedData = data.sort((a, b) => {
+    this.animals = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'name':

@@ -27,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="tablebody">
-                                    <tr *ngFor="let animal of sortedData">
+                                    <tr *ngFor="let animal of animals">
                                         <td><span><a class="tableurl" routerLink="/animal/{{animal.id}}"><b>{{animal.name}}</b></a></span>
                                         </td>
                                         <td><span>{{animal.commonName}}</span></td>
