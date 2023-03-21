@@ -61,6 +61,7 @@ export class TicketOverviewComponent implements OnInit {
     const data = this.tickets.slice();
     if (!sort.active || sort.direction === '') {
       this.tickets = data;
+      this.sortData({ active: 'created_on', direction: 'desc' });
       return;
     }
 
@@ -85,7 +86,7 @@ export class TicketOverviewComponent implements OnInit {
         case 'created_by':
           return compare(a.reportedByUser.username, b.reportedByUser.username, isAsc);
         default:
-          return 0;
+          return compare(a.reportDateTime, b.reportDateTime, isAsc);
       }
     });
   

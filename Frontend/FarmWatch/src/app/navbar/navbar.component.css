@@ -11,7 +11,15 @@
     margin-left: 20px;
     color: white;
 }
-  
+
+/* .fw-navbar-item.active{
+    color:#febb26;
+    text-decoration: underline;
+    text-decoration-color: #febb26;
+    
+} */
+
+
 .fw-dropdown-header{
     font-size: 16px;
 }
