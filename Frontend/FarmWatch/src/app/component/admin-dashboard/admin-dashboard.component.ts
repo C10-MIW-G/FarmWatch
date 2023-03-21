@@ -40,6 +40,7 @@ export class AdminDashboardComponent implements OnInit{
     const data = this.users;
     if (!sort.active || sort.direction === '') {
       this.users = data;
+      this.sortData({ active: 'role', direction: 'asc' });
       return;
     }
 

@@ -75,6 +75,7 @@ export class AnimalOverviewComponent implements OnInit{
     const data = this.animals.slice();
     if (!sort.active || sort.direction === '') {
       this.animals = data;
+      this.sortData({ active: 'name', direction: 'asc' });
       return;
     }
 

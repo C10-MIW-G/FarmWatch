@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/_services/auth.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { MatDialog } from '@angular/material/dialog';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from '../reset-password/custom-validators';
 
 @Component({
   selector: 'app-register',
@@ -10,13 +12,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class RegisterComponent implements OnInit {
-  form: any = {
-    fullname: null,
-    username: null,
-    email: null,
-    password: null,
-    captchaToken: null,
-  };
+  form = new FormGroup(
+    {
+      fullname: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      captchaToken: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    },
+    [CustomValidators.MatchValidator('password', 'confirmPassword')]
+  );
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -29,9 +35,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {    
-    const { fullname, email, username, password, captchaToken } = this.form;
+    let fullname = this.form.get('fullname')!.value;
+    let email = this.form.get('email')!.value;
+    let username = this.form.get('username')!.value;
+    let password = this.form.get('password')!.value;
+    let captchaToken = this.form.get('captchaToken')!.value;
 
-    this.authService.register(fullname, email, username, password, captchaToken).subscribe({
+    this.authService.register(fullname!, email!, username!, password!, captchaToken!).subscribe({
       next: data => {
         console.log(data);
         this.dialog.closeAll();
@@ -45,5 +55,12 @@ export class RegisterComponent implements OnInit {
         this.toast.ShowError("New Notification", this.errorMessage)
       }
     });
+  }
+
+  get passwordMatchError() {
+    return (
+      this.form.getError('mismatch') &&
+      this.form.get('confirmPassword')?.touched
+    );
   }
 }
