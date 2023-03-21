@@ -8,10 +8,7 @@ import { confirmdialogdata } from 'src/app/model/confirm-dialog-data';
   templateUrl: './confirmation-dialog.component.html',
   styleUrls: ['./confirmation-dialog.component.css']
 })
-export class ConfirmationDialogComponent {
-  confirmButtonText = "Yes";
-  cancelButtonText = "No";
-  
+export class ConfirmationDialogComponent {  
   constructor(@Inject(MAT_DIALOG_DATA) public data: confirmdialogdata) {}   
   
   hasMessage(): Boolean{
