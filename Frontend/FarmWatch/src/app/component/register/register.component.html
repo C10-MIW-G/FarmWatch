@@ -1,103 +1,55 @@
 <h1 mat-dialog-title>Sign Up</h1>
 <div mat-dialog-content>
-    <form
-      *ngIf="!isSuccessful"
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
-    >
-    <div class="form-group">
-      <label for="fullname" >Full name</label>
-      <input
-        type="text"
-        class="form-control"
-        name="fullname"
-        placeholder="Enter your full name"
-        [(ngModel)]="form.fullname"
-        required
-        fullname
-        #fullname="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && fullname.errors }"
-      />
-      <div class="invalid-feedback" *ngIf="fullname.errors && f.submitted">
-        <div *ngIf="fullname.errors['required']">Name is required</div>
-        <div *ngIf="fullname.errors['fullName']">
-          Name must be a valid name
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        name="email"
-        placeholder="Enter your email adress"
-        [(ngModel)]="form.email"
-        required
-        email
-        #email="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
-      />
-      <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
-        <div *ngIf="email.errors['required']">Email is required</div>
-        <div *ngIf="email.errors['email']">Email must be a valid email address</div>
-      </div>
-    </div>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          placeholder="Enter your username"
-          [(ngModel)]="form.username"
-          required
-          minlength="3"
-          maxlength="20"
-          #username="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
-        />
-        <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors['required']">Username is required</div>
-          <div *ngIf="username.errors['minlength']">
-            Username must be at least 3 characters
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [formGroup]="form" novalidate>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="fullname">Full name</label>
+                <input type="text" class="form-control" name="fullname" formControlName="fullname" required />
+                <div *ngIf="form.controls['fullname']?.touched">
+                  <mat-error *ngIf="form.controls['fullname'].errors?.['required']">Full name is required</mat-error>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" formControlName="username" required />
+                <div *ngIf="form.controls['username']?.touched">
+                  <mat-error *ngIf="form.controls['username'].errors?.['required']">Username is required</mat-error>
+                  <mat-error *ngIf="form.controls['username'].errors?.['minlength']">Username must be at least 3 characters</mat-error>
+                  <mat-error *ngIf="form.controls['username'].errors?.['maxLength']">Username must be at most 20 characters</mat-error>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" formControlName="email" required />
+                <div *ngIf="form.controls['email']?.touched">
+                  <mat-error *ngIf="form.controls['email'].errors?.['required']">Email is required</mat-error>
+                  <mat-error *ngIf="form.controls['email'].errors?.['email']">Email must be a valid email address</mat-error>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" formControlName="password" required minlength="6" />
+                <div *ngIf="form.controls['password']?.touched">
+                  <mat-error *ngIf="form.controls['password'].errors?.['required']">Password is required</mat-error>
+                  <mat-error *ngIf="form.controls['password'].errors?.['minlength']">Password must be atleast 6 characters in length</mat-error>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" name="password" formControlName="confirmPassword" required minlength="6" />
+                <mat-error *ngIf="passwordMatchError">Passwords do not match</mat-error>
+            </div>
+            <div class="recaptcha-center">
+                <re-captcha id="recaptcha" formControlName="captchaToken" name="recaptcha" required></re-captcha>
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-secondary btn-block farmbutton">Sign up</button>
+                <button class="btn btn-secondary btn-block" mat-dialog-close>Close</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed"> 
+              Signup failed!<br/>{{ errorMessage }}
+            </div>
           </div>
-          <div *ngIf="username.errors['maxlength']">
-            Username must be at most 20 characters
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          placeholder="Enter your password"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
-        />
-        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
-        </div>
-      </div>
-      <div class="recaptcha-center">
-        <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.captchaToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
-      </div>
-      <br>
-      <div class="form-group">
-        <button class="btn btn-secondary btn-block farmbutton">Sign up</button>
-        <button class="btn btn-secondary btn-block" mat-dialog-close>Close</button>
-      </div>
-
-      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
-      </div>
     </form>
-  </div>
+</div>
