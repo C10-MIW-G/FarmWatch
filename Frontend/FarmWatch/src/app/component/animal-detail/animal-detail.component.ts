@@ -92,7 +92,8 @@ export class AnimalDetailComponent implements OnInit {
   }
 
   confirmDeleteAction(AnimalDetailId: number): void {
-    this.dialog.showConfirmDialog({title: "Are you sure you want to delete " + this.animalDetail?.name + "?", message: ""}).subscribe(
+    this.dialog.showConfirmDialog({title: "Are you sure you want to delete " + this.animalDetail?.name + "?", message: "", 
+    'confirmButton': "Yes", 'cancelButton': "No"}).subscribe(
       (response: Boolean) => {
         console.log(response);
         if (response) {

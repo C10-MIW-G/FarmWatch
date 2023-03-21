@@ -132,7 +132,8 @@ export class TicketDetailComponent implements OnInit {
   }
 
   assignTicketToCurrentUser(ticket?: Ticket): void{
-    this.dialogService.showConfirmDialog({title: "Are you sure you want to assign this ticket to yourself?" , message: ""}).subscribe(
+    this.dialogService.showConfirmDialog({title: "Are you sure you want to assign this ticket to yourself?" , message: "", 
+                                          'confirmButton': "Yes", 'cancelButton': "No"}).subscribe(
       (response: Boolean) => {
         if(ticket && response){
           this.assignToMeTicket = {id: ticket.id, 
