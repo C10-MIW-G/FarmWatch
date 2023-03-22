@@ -31,36 +31,38 @@ Dave:  persoonlijke ervaring + afsluiting + heb je nog vragen
 - ga aan de slag bij dynamics4healthcare -> wat ga je doen?
 
 2. Inleiding, aanleiding en noodzaak applicatie -> welk probleem willen jullie oplossen?
-- Stel je voor je loopt door het park, om 9 uur 's avonds
+- Stel je voor je loopt door het park, om 9 uur 's avonds OF wie heeft hier een huisdier, dit jaar naar de dierenarts?
 - je ziet een dier vast zitten in een hek
 - je belt de dierenambulance, die zeggen dat het niet onder hun verantwoordelijiheid valt. 
 - wat doe je nu?
 - Farmwatch
 3. Functionele demo -> gehele applicatie laten zien, niet in de code duiken.
 
-A. visitor (vader John/Cor/Johan met kleinkind Liam)
+A. visitor (vader John met kind Liam)
 	0. intro praatje (zie punt 2)
 	1. openen pagina
 	2. dieren bekijken (carousel)
-	3. op dieren klikken
-	4. account aanmaken (misschien niet doen, nog wel modal openen)
-B. User (wachtwoord vergeten, ) (Ingelogde grootvader)
+	3. op dieren klikken (2 redenen, 1 voor de latijnse naam, 2 om meer te leren over favoriet dier (description). 
+	4. mogelijkheid om te registreren maar op dit moment geen zin. 
+B. User (Syb (komt vaker naar dierentuin, en heeft een account))
 	5. inloggen
 	6. nieuwe knopjes/kopjes laten zien
-	8. report aanmaken met dier
-	9. oude reports bekijken
+	7. oude reports bekijken
+	7b. messages bekijken?
+	8. report aanmaken met dier en foto (napoleon, zit vast in de modder).
 C. Caretaker (Caretaker Dennis)
 	10. reports bekijken en sorteren
 	11. reports toewijzen aan collega's
 	12. report toewijzen aan jezelf
-	12b. schrijft een message aan john, en eentje aan collega's. 
+	12b. schrijft een message aan Syb, en eentje aan collega's. 
 	13. report aan een dier koppelen (er staat al een report aan die unasigned is)
 	14. nieuw dier toevoegen
 	15. foutje gemaakt, dier updaten
-D. Admin (Laura)
+D. Admin (Admin Laura)
 	14. dier deleten (verhuisd naar een andere boerderij)
 	15. user op caretaker zetten
 	16. user op admin zetten (hoeft niet perse)
+	17. wachtwoord vervangen
 	17. wat hadden we verder nog toe willen voegen?
 E. John returns!
 	18. John checkt zijn ticket en kijkt of er iets meegedaan
@@ -73,7 +75,12 @@ Resultaat: prachtige website, mogelijk voor andere team-genoten om dit over te n
 
 Grootste leermoment: Niet te hard werken, Vertical slicen, en iets is pas af als het af is (inclusief design & maintenance). Rustig werken, reserveer tijd als iets "af" is.
 Meest trots: dat ik kan programmeren na 5 maanden. Vooral vanaf het moment dat we angular gingen gebruiken. 
+nuance ggz 
+
+
 
 
 5. Afronding
 laatste persoon bedankt, en vraagt of er vragen zijn?
+
+
