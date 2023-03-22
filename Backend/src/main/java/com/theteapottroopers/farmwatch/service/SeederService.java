@@ -1,9 +1,6 @@
 package com.theteapottroopers.farmwatch.service;
 
-import com.theteapottroopers.farmwatch.repository.AnimalRepository;
-import com.theteapottroopers.farmwatch.repository.StorageRepository;
-import com.theteapottroopers.farmwatch.repository.TicketRepository;
-import com.theteapottroopers.farmwatch.repository.UserRepository;
+import com.theteapottroopers.farmwatch.repository.*;
 import com.theteapottroopers.farmwatch.seeds.Seeder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,17 +23,20 @@ public class SeederService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final StorageRepository storageRepository;
+    private final TicketMessageRepository ticketMessageRepository;
 
     @Autowired
     public SeederService(AnimalRepository animalRepository,
                          TicketRepository ticketRepository,
                          UserRepository userRepository,
-                         PasswordEncoder passwordEncoder, StorageRepository storageRepository, FileStorageService fileStorageService) {
+                         PasswordEncoder passwordEncoder, StorageRepository storageRepository, FileStorageService fileStorageService, TicketMessageRepository ticketMessageRepository) {
         this.animalRepository = animalRepository;
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.storageRepository = storageRepository;;
+        this.storageRepository = storageRepository;
+        this.ticketMessageRepository = ticketMessageRepository;
+        ;
     }
 
     public void runSeeder() throws IOException {
@@ -44,7 +44,7 @@ public class SeederService {
                 animalRepository,
                 ticketRepository,
                 userRepository,
-                passwordEncoder, storageRepository);
+                passwordEncoder, storageRepository, ticketMessageRepository);
         animalSeeder.SeedAnimals();
     }
 }

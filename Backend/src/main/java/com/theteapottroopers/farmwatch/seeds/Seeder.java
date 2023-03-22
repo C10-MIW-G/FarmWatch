@@ -3,14 +3,11 @@ package com.theteapottroopers.farmwatch.seeds;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
+import com.theteapottroopers.farmwatch.model.ticket.TicketMessage;
 import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
-import com.theteapottroopers.farmwatch.repository.AnimalRepository;
-import com.theteapottroopers.farmwatch.repository.StorageRepository;
-import com.theteapottroopers.farmwatch.repository.TicketRepository;
-import com.theteapottroopers.farmwatch.repository.UserRepository;
+import com.theteapottroopers.farmwatch.repository.*;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
-import com.theteapottroopers.farmwatch.service.FileStorageService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.IOException;
@@ -31,13 +28,15 @@ public class Seeder {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final StorageRepository storageRepository;
+    private final TicketMessageRepository ticketMessageRepository;
 
-    public Seeder(AnimalRepository animalRepository, TicketRepository ticketRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, StorageRepository storageRepository) {
+    public Seeder(AnimalRepository animalRepository, TicketRepository ticketRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, StorageRepository storageRepository, TicketMessageRepository ticketMessageRepository) {
         this.animalRepository = animalRepository;
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.storageRepository = storageRepository;
+        this.ticketMessageRepository = ticketMessageRepository;
     }
 
     public void SeedAnimals() throws IOException {
@@ -287,18 +286,35 @@ public class Seeder {
                 .build();
         userRepository.save(user9);
 
+        User user10 = User.builder()
+                .fullName("Syb Postma")
+                .email("sybpostma@mail.com")
+                .username("Syb")
+                .password(passwordEncoder.encode("password"))
+                .role(Role.ROLE_USER)
+                .verified(true)
+                .build();
+        userRepository.save(user10);
+
+        User user11 = User.builder()
+                .fullName("Laura Smith")
+                .email("laurasmith@mail.com")
+                .username("Laura")
+                .password(passwordEncoder.encode("password"))
+                .role(Role.ROLE_ADMIN)
+                .verified(true)
+                .build();
+        userRepository.save(user11);
+
 
         Ticket ticket1 = new Ticket(null, "Broken wing", "I was walking through the park and noticed " +
-                "that one of the chickens had a broken wing!", TicketStatus.OPEN, null, user2, null,
+                "that one of the white fluffy chickens had a broken wing!", TicketStatus.OPEN, null, user2, null,
                 null, null);
         ticketRepository.save(ticket1);
 
-        Ticket ticket2 = new Ticket(null, "Limping hoof", "I was at the zoo and noticed that one " +
-                "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal25, user3, null, null, null);
-        ticketRepository.save(ticket2);
 
         Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
-                "infection in my neighborhood.", TicketStatus.IN_PROGRESS, animal18, user3, user8, null, null);
+                "infection at the petting zoo!.", TicketStatus.IN_PROGRESS, animal18, user3, user8, null, null);
         ticketRepository.save(ticket3);
 
         Ticket ticket4 = new Ticket(null, "Broken antler", "I was hiking and found a deer " +
@@ -307,12 +323,12 @@ public class Seeder {
 
         Ticket ticket5 = new Ticket(null, "Sheep stuck in fence", "I was visiting your " +
                 "beautiful park, and I think one of the sheep is stuck in the fence!.",
-                TicketStatus.CLOSED, animal21, user5, user8, null, null);
+                TicketStatus.CLOSED, animal21, user10, user8, null, null);
         ticketRepository.save(ticket5);
 
         Ticket ticket6 = new Ticket(null, "Limping leg", "I was in the park and saw " +
-                "a cow holding it's leg in a weird angle.", TicketStatus.CLOSED, animal27, user5,
-                null, null, null);
+                "a cow holding it's leg in a weird angle.", TicketStatus.CLOSED, animal27, user10,
+                user9, null, null);
         ticketRepository.save(ticket6);
 
         Ticket ticket7 = new Ticket(null, "Scratched eye", "I found a chicken with a " +
@@ -323,6 +339,103 @@ public class Seeder {
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
                 TicketStatus.CLOSED, animal15, user8, user7, null, null);
         ticketRepository.save(ticket8);
+
+        List<Ticket> ticketsToAddImagesTo = new ArrayList<>();
+        ticketsToAddImagesTo.add(ticket1);
+        ticketsToAddImagesTo.add(ticket3);
+        ticketsToAddImagesTo.add(ticket4);
+        ticketsToAddImagesTo.add(ticket5);
+        ticketsToAddImagesTo.add(ticket6);
+        ticketsToAddImagesTo.add(ticket7);
+        ticketsToAddImagesTo.add(ticket8);
+
+
+
+        for (Ticket ticket : ticketsToAddImagesTo) {
+            if(ticket.getAnimal() != null){
+                imageReader.saveImageDataFromPath("src/main/resources/images/injured/"
+                        + ticket.getAnimal().getName() + "injured.jpg");
+                Optional<ImageData> optionalImage = storageRepository.findByName(ticket.getAnimal().getName() + "injured.jpg");
+                ticket.setImage( optionalImage.get());
+                ticketRepository.save(ticket);
+            } else {
+                imageReader.saveImageDataFromPath("src/main/resources/images/injured/Snowballinjured.jpg");
+                Optional<ImageData> optionalImage = storageRepository.findByName( "Snowballinjured.jpg");
+                ticket.setImage( optionalImage.get());
+                ticketRepository.save(ticket);
+
+            }
+        }
+
+
+
+
+
+        TicketMessage message1 = new TicketMessage(null, user9, "Thank you for reporting this to us, we have" +
+                " immediately freed Washington from the fence and he's doing well!", ticket5, false);
+
+        ticketMessageRepository.save(message1);
+
+        List<TicketMessage> messagesTicket5 = new ArrayList<>();
+        messagesTicket5.add(message1);
+        ticket5.setTicketMessages(messagesTicket5);
+        ticketRepository.save(ticket5);
+
+        TicketMessage message2 = new TicketMessage(null, user9, "Thank you for reporting this to us,we have" +
+                "called the vet and we will keep you up to date.", ticket6, false);
+
+        TicketMessage message3 = new TicketMessage(null, user9, "According to the vet Brownie's leg is a " +
+                "little sprained, but she will recover in about 4 weeks.", ticket6, false);
+        TicketMessage message4 = new TicketMessage(null, user9, "Good news! According to the vet, Brownie's " +
+                "leg is as good as new! The report will be closed, and thanks for your troubles!", ticket6, false);
+
+        ticketMessageRepository.save(message2);
+        ticketMessageRepository.save(message3);
+        ticketMessageRepository.save(message4);
+
+        List<TicketMessage> messagesTicket6 = new ArrayList<>();
+        messagesTicket6.add(message2);
+        messagesTicket6.add(message3);
+        messagesTicket6.add(message4);
+        ticket6.setTicketMessages(messagesTicket6);
+        ticketRepository.save(ticket6);
+
+        TicketMessage message5 = new TicketMessage(null, user7, "Thanks for reporting this, just wanted to" +
+                " let you know we received your report!", ticket3, false);
+        TicketMessage message6 = new TicketMessage(null, user7, "The vet is coming tomorrow morning to " +
+                "have a look at Floppy.", ticket3, true);
+        TicketMessage message7 = new TicketMessage(null, user9, "The vet had a look at floppy, and we" +
+                " need to apply antibiotics creme to Floppy's eyes three times daily. Look at the schedule for more" +
+                "info!", ticket3, true);
+
+        ticketMessageRepository.save(message5);
+        ticketMessageRepository.save(message6);
+        ticketMessageRepository.save(message7);
+
+        List<TicketMessage> messagesTicket3 = new ArrayList<>();
+        messagesTicket3.add(message5);
+        messagesTicket3.add(message6);
+        messagesTicket3.add(message7);
+        ticket3.setTicketMessages(messagesTicket3);
+        ticketRepository.save(ticket3);
+
+        TicketMessage message8 = new TicketMessage(null, user7, "Thanks for reporting this, just wanted to" +
+                "let you know we received your report!", ticket4, false);
+        TicketMessage message9 = new TicketMessage(null, user7, "The vet is coming tomorrow morning to " +
+                "have a look at Peter.", ticket4, true);
+
+        ticketMessageRepository.save(message8);
+        ticketMessageRepository.save(message9);
+
+        List<TicketMessage> messagesTicket4 = new ArrayList<>();
+        messagesTicket4.add(message8);
+        messagesTicket4.add(message9);
+        ticket4.setTicketMessages(messagesTicket4);
+        ticketRepository.save(ticket4);
+
+
+
+
 
         List<TicketStatus> statuses = new ArrayList<>();
         statuses.add(TicketStatus.OPEN);
