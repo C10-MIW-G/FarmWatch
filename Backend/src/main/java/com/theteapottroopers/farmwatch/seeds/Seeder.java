@@ -277,41 +277,51 @@ public class Seeder {
                 .build();
         userRepository.save(user8);
 
+        User user9 = User.builder()
+                .fullName("Dennis Katz")
+                .email("denniskatz@mail.com")
+                .username("Dennis")
+                .password(passwordEncoder.encode("password"))
+                .role(Role.ROLE_CARETAKER)
+                .verified(true)
+                .build();
+        userRepository.save(user9);
+
 
         Ticket ticket1 = new Ticket(null, "Broken wing", "I was walking through the park and noticed " +
-                "that one of the chickens had a broken wing!", TicketStatus.OPEN, animal5, user2, user8,
+                "that one of the chickens had a broken wing!", TicketStatus.OPEN, null, user2, null,
                 null, null);
         ticketRepository.save(ticket1);
 
         Ticket ticket2 = new Ticket(null, "Limping hoof", "I was at the zoo and noticed that one " +
-                "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal25, user3, user7, null, null);
+                "of the donkeys had a limping hoof!", TicketStatus.OPEN, animal25, user3, null, null, null);
         ticketRepository.save(ticket2);
 
         Ticket ticket3 = new Ticket(null, "Eye infection", "I saw a rabbit with an eye " +
-                "infection in my neighborhood.", TicketStatus.OPEN, animal18, user3, user8, null, null);
+                "infection in my neighborhood.", TicketStatus.IN_PROGRESS, animal18, user3, user8, null, null);
         ticketRepository.save(ticket3);
 
         Ticket ticket4 = new Ticket(null, "Broken antler", "I was hiking and found a deer " +
-                "with a broken antler.", TicketStatus.OPEN, animal26, user4, user7, null, null);
+                "with a broken antler.", TicketStatus.IN_PROGRESS, animal26, user4, user7, null, null);
         ticketRepository.save(ticket4);
 
         Ticket ticket5 = new Ticket(null, "Sheep stuck in fence", "I was visiting your " +
                 "beautiful park, and I think one of the sheep is stuck in the fence!.",
-                TicketStatus.OPEN, animal21, user5, user8, null, null);
+                TicketStatus.CLOSED, animal21, user5, user8, null, null);
         ticketRepository.save(ticket5);
 
         Ticket ticket6 = new Ticket(null, "Limping leg", "I was in the park and saw " +
-                "a cow holding it's leg in a weird angle.", TicketStatus.OPEN, animal27, user5,
+                "a cow holding it's leg in a weird angle.", TicketStatus.CLOSED, animal27, user5,
                 null, null, null);
         ticketRepository.save(ticket6);
 
         Ticket ticket7 = new Ticket(null, "Scratched eye", "I found a chicken with a " +
-                "scratched eye on my balcony.", TicketStatus.OPEN, animal12, user7, user7, null, null);
+                "scratched eye on my balcony.", TicketStatus.CLOSED, animal12, user7, user7, null, null);
         ticketRepository.save(ticket7);
 
         Ticket ticket8 = new Ticket(null, "Bald spots", "I was walking through the park with " +
                 "my grandson, and we noticed that one of the horses had some bald spots, did you know that?",
-                TicketStatus.OPEN, animal15, user8, user7, null, null);
+                TicketStatus.CLOSED, animal15, user8, user7, null, null);
         ticketRepository.save(ticket8);
 
         List<TicketStatus> statuses = new ArrayList<>();

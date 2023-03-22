@@ -43,7 +43,7 @@ export class TicketOverviewComponent implements OnInit {
     this.ticketOverviewService.getTickets().subscribe(
       (response: Ticket[]) => {
         this.tickets = response;
-        this.sortData({ active: 'created_on', direction: 'desc' });
+        this.sortData({ active: 'status', direction: 'asc' });
         
       },
       (error: HttpErrorResponse) => {
@@ -61,7 +61,7 @@ export class TicketOverviewComponent implements OnInit {
     const data = this.tickets.slice();
     if (!sort.active || sort.direction === '') {
       this.tickets = data;
-      this.sortData({ active: 'created_on', direction: 'desc' });
+      this.sortData({ active: 'status', direction: 'asc' });
       return;
     }
 
@@ -77,7 +77,7 @@ export class TicketOverviewComponent implements OnInit {
         case 'status':
           const statusComparison = a.status.localeCompare(b.status);
           if (statusComparison !== 0) {
-            return (isAsc ? statusComparison : -statusComparison);
+            return (!isAsc ? statusComparison : -statusComparison);
           } else {
             return (isAsc ? compare(a.reportDateTime, b.reportDateTime, !isAsc) : compare(b.reportDateTime, a.reportDateTime, !isAsc));
           }
