@@ -50,7 +50,7 @@ export class UpdateAnimalComponent implements OnInit{
         if (response) {
           this.updateAnimalService.deleteAnimal(AnimalDetailId).subscribe(
             (response: void) => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/animal']);
                 this.toast.ShowSucces("New Notification", this.updateAnimal?.name + " deleted succesfully")
             },
             (error: HttpErrorResponse) => {
