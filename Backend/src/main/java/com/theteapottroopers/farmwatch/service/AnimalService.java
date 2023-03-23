@@ -103,7 +103,11 @@ public class AnimalService {
         existingAnimal.setSpecies(animalDetailDto.getSpecies());
         existingAnimal.setDescription(animalDetailDto.getDescription());
         existingAnimal.setDateOfBirth(animalDetailDto.getDateOfBirth());
-        existingAnimal.setImageData(fileStorageService.findImageDataByFileName(animalDetailDto.getImageFileName()));
+        if(animalDetailDto.getImageFileName() == null){
+            existingAnimal.setImageData(null);
+        } else {
+            existingAnimal.setImageData(fileStorageService.findImageDataByFileName(animalDetailDto.getImageFileName()));
+        }
     }
 
 

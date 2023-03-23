@@ -73,7 +73,7 @@ getAnimalImage(): String{
       alert(error.message);
     }
     if(this.storageService.getRole() == 'CARETAKER' || this.storageService.getRole() == 'ADMIN'){
-      window.location.href = 'http://localhost:4200/animal/table';
+      window.location.href = 'http://localhost:4200/animal';
     } else {
       this.router.navigate(['/']);
     }

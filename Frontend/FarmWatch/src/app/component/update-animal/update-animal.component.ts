@@ -50,7 +50,7 @@ export class UpdateAnimalComponent implements OnInit{
         if (response) {
           this.updateAnimalService.deleteAnimal(AnimalDetailId).subscribe(
             (response: void) => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/animal']);
                 this.toast.ShowSucces("New Notification", this.updateAnimal?.name + " deleted succesfully")
             },
             (error: HttpErrorResponse) => {
@@ -98,7 +98,7 @@ export class UpdateAnimalComponent implements OnInit{
 
   goToAnimalOverview(){
     if(this.storageService.getRole() == 'CARETAKER' || this.storageService.getRole() == 'ADMIN'){
-      window.location.href = 'http://localhost:4200/animal/table';
+      window.location.href = 'http://localhost:4200/animal';
     } else {
       this.router.navigate(['/']);
     }
