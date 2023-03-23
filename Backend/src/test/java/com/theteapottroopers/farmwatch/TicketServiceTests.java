@@ -121,7 +121,6 @@ public class TicketServiceTests {
 
         Ticket ticketFromService = ticketService.findTicketById(1L);
         assertTrue(ticketFromService.hasPrivateMessages());
-
     }
 }
 

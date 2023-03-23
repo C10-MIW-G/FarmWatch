@@ -42,7 +42,6 @@ public class AnimalResource {
     public ResponseEntity<List<AnimalOverviewDto>> getAllAnimals(){
         List<Animal> animals = animalService.findAllAnimals();
 
-
         List<AnimalOverviewDto> animalOverviewDtos = new ArrayList<>();
         for (Animal animal: animals) {
             animalOverviewDtos.add(animalMapper.toAnimalOverviewDto(animal));
@@ -75,5 +74,4 @@ public class AnimalResource {
         animalService.addAnimal(animalMapper.toAnimal(animalDetailDto));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }
