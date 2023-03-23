@@ -381,8 +381,8 @@ public class Seeder {
         ticket5.setTicketMessages(messagesTicket5);
         ticketRepository.save(ticket5);
 
-        TicketMessage message2 = new TicketMessage(null, user9, "Thank you for reporting this to us,we have" +
-                "called the vet and we will keep you up to date.", ticket6, false);
+        TicketMessage message2 = new TicketMessage(null, user9, "Thank you for reporting this to us, we have" +
+                " called the vet and we will keep you up to date.", ticket6, false);
 
         TicketMessage message3 = new TicketMessage(null, user9, "According to the vet Brownie's leg is a " +
                 "little sprained, but she will recover in about 4 weeks.", ticket6, false);
