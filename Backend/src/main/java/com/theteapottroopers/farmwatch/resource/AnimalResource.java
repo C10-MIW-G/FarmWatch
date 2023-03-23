@@ -29,19 +29,13 @@ public class AnimalResource {
     private final AnimalService animalService;
     private final TicketService ticketService;
     private final AnimalMapper animalMapper;
-    private final FileStorageService fileStorageService;
-    private final AnimalRepository animalRepository;
-    private final TicketRepository ticketRepository;
 
-    public AnimalResource(AnimalService animalService, TicketService ticketService, FileStorageService fileStorageService,
-                          AnimalRepository animalRepository,
-                          TicketRepository ticketRepository) {
+
+    public AnimalResource(AnimalService animalService, TicketService ticketService, FileStorageService fileStorageService) {
         this.animalService = animalService;
         this.ticketService = ticketService;
-        this.fileStorageService = fileStorageService;
         animalMapper = new AnimalMapper(fileStorageService);
-        this.animalRepository = animalRepository;
-        this.ticketRepository = ticketRepository;
+
     }
     
     @GetMapping()
