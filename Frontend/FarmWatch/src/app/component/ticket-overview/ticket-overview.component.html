@@ -20,7 +20,7 @@
                 <tr *ngFor="let ticket of tickets | personalTicketFilter: filterValue" >
                   <td><a class="tableurl" routerLink="/ticket/{{ticket.id}}"><b>{{ticket.summary}}</b></a></td>
                   <td>{{ticket.animal ? ticket.animal.name : "Not specified"}}</td>
-                  <td>{{ticket.status}}</td>
+                  <td>{{ticket.status == "IN_PROGRESS" ? "IN PROGRESS" : ticket.status}}</td>
                   <td>{{ticket.reportDateTime| date: "dd-MM-yyyy HH:mm"}}</td>
                   <td>{{ticket.reportedByUser.username}}</td>
                   <td *ngIf="tickets.length == 0"></td>
