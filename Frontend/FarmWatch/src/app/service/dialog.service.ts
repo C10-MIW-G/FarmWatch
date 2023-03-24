@@ -25,7 +25,6 @@ export class DialogService {
   }
 
   showUploadFile(): Observable<any> {
-    this.closeAll();
     return this.dialog.open(FileUploadComponent).afterClosed();
   }
 
