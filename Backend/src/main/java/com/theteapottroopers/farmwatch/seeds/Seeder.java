@@ -434,9 +434,6 @@ public class Seeder {
         ticketRepository.save(ticket4);
 
 
-
-
-
         List<TicketStatus> statuses = new ArrayList<>();
         statuses.add(TicketStatus.OPEN);
         statuses.add(TicketStatus.IN_PROGRESS);
@@ -446,6 +443,6 @@ public class Seeder {
             animalRepository.save(animal);
         }
 
-//
+
     }
 }
