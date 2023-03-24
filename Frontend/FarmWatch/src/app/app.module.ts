@@ -50,7 +50,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
-
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -115,12 +115,14 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     MatTabsModule,
     IvyCarouselModule,
     MatGridListModule,
+    MatMomentDateModule
   ],
   providers: [httpInterceptorProviders, AuthGuard , {
     provide: RECAPTCHA_SETTINGS,
     useValue: {
       siteKey: environment.recaptcha.siteKey,
-    } as RecaptchaSettings,}], 
+    } as RecaptchaSettings,},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}], 
     bootstrap: [AppComponent]
 })
 export class AppModule { }
