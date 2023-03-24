@@ -46,7 +46,7 @@ class FarmwatchApplicationTests {
 	AnimalValidation animalValidation;
 
 	@Test
-	@DisplayName("Validate if test images size does not exceed max of 2mb")
+	@DisplayName("Validate if test image size does not exceed max of 2mb")
 	void imageFileSizeValidationTest(){
 
 		Path smallFilePath = Paths.get("src/test/resources/images/test_image_1mb.jpg");
