@@ -24,6 +24,7 @@ public class SeederService {
     private final PasswordEncoder passwordEncoder;
     private final StorageRepository storageRepository;
     private final TicketMessageRepository ticketMessageRepository;
+    private final FileStorageService fileStorageService;
 
     @Autowired
     public SeederService(AnimalRepository animalRepository,
@@ -36,7 +37,7 @@ public class SeederService {
         this.passwordEncoder = passwordEncoder;
         this.storageRepository = storageRepository;
         this.ticketMessageRepository = ticketMessageRepository;
-        ;
+        this.fileStorageService = fileStorageService;
     }
 
     public void runSeeder() throws IOException {
@@ -44,7 +45,10 @@ public class SeederService {
                 animalRepository,
                 ticketRepository,
                 userRepository,
-                passwordEncoder, storageRepository, ticketMessageRepository);
+                passwordEncoder,
+                storageRepository,
+                ticketMessageRepository,
+                fileStorageService);
         animalSeeder.SeedAnimals();
     }
 }

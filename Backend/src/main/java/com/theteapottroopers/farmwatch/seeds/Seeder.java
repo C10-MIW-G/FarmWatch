@@ -1,5 +1,6 @@
 package com.theteapottroopers.farmwatch.seeds;
 
+import com.theteapottroopers.farmwatch.Utilities.ImageUtilities;
 import com.theteapottroopers.farmwatch.model.Animal;
 import com.theteapottroopers.farmwatch.model.ImageData;
 import com.theteapottroopers.farmwatch.model.ticket.Ticket;
@@ -8,9 +9,14 @@ import com.theteapottroopers.farmwatch.model.ticket.TicketStatus;
 import com.theteapottroopers.farmwatch.repository.*;
 import com.theteapottroopers.farmwatch.security.user.Role;
 import com.theteapottroopers.farmwatch.security.user.User;
+import com.theteapottroopers.farmwatch.service.FileStorageService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,18 +35,22 @@ public class Seeder {
     private final PasswordEncoder passwordEncoder;
     private final StorageRepository storageRepository;
     private final TicketMessageRepository ticketMessageRepository;
+    private final FileStorageService fileStorageService;
 
-    public Seeder(AnimalRepository animalRepository, TicketRepository ticketRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, StorageRepository storageRepository, TicketMessageRepository ticketMessageRepository) {
+    public Seeder(AnimalRepository animalRepository, TicketRepository ticketRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, StorageRepository storageRepository, TicketMessageRepository ticketMessageRepository, FileStorageService fileStorageService) {
         this.animalRepository = animalRepository;
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.storageRepository = storageRepository;
         this.ticketMessageRepository = ticketMessageRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     public void SeedAnimals() throws IOException {
         ImageReader imageReader = new ImageReader(storageRepository);
+        Path noImageFilePath = Paths.get("src/main/resources/images/noimage.jpg");
+        imageReader.saveImageDataFromPath(noImageFilePath.toString());
 
         List<Animal> animalsToSeed = new ArrayList<>();
         BiographyReader biographyReader = new BiographyReader();

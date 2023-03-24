@@ -63,7 +63,7 @@ export class AddAnimalComponent {
 getAnimalImage(): String{
   console.log(this.form.imageFileName == null);
   if(this.form.imageFileName == null){
-    return "http://localhost:8080/images/a59686ae-c324-4b44-9cd7-57c3aa6327df";
+    return "http://localhost:8080/images/noimage.jpg";
       }
   return "http://localhost:8080/images/" + this.form.imageFileName;
 }
