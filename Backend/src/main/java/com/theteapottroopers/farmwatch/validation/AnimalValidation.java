@@ -13,7 +13,7 @@ import java.time.LocalDate;
 /**
  * @Author: M.S. Pilat <pilat_m@msn.com>
  * <p>
- * this class validates date for Animal
+ * this class validates data for Animal
  */
 
 @Service
@@ -39,13 +39,13 @@ public class AnimalValidation {
         }
     }
 
-    public void dateMustBePresentOrPast(Animal animal) {
+    private void dateMustBePresentOrPast(Animal animal) {
         if (animal.getDateOfBirth().isAfter(LocalDate.now())) {
-            throw new DateTimeException("The date should be today or in the past");
+            throw new DateTimeException("The birthdate should be today or in the past");
         }
     }
 
-     public void descriptionToLong(Animal animal) {
+     private void descriptionToLong(Animal animal) {
         if (animal.getDescription() != null){
             if (animal.getDescription().length() > MAX_LENGTH_DESCRIPTION) {
                 throw new InputIsToLargeException("Your input is too long");

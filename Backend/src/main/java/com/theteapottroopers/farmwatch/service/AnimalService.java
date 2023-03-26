@@ -66,16 +66,16 @@ public class AnimalService {
         Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
         setAnimal(animalDetailDto, existingAnimal);
         animalValidation.instanceCheck(existingAnimal);
-        try {
-            Animal updatedAnimal = animalRepository.save(existingAnimal);
-            return updatedAnimal;
-        } catch (Exception exception) {
-            throw new SomethingWentWrongException(MESSAGE_FOR_UNKNOWN_EXCEPTION);
-        }
+        saveAnimalOrElseThrow(existingAnimal);
+        return existingAnimal;
     }
 
     public void addAnimal(Animal animal){
         animalValidation.instanceCheck(animal);
+        saveAnimalOrElseThrow(animal);
+    }
+
+    private void saveAnimalOrElseThrow(Animal animal) {
         try {
             animalRepository.save(animal);
         } catch (Exception exception) {
