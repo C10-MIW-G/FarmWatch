@@ -1,38 +1,14 @@
-1. change password knop in het dropdown menutje rechtsboven
-antwoord Vincent: ik wil een change password optie op de manage account pagina, de knop komt dan onder "edit".
-2. messages knop beter stylen
-3. no image laten zien op alle plekken
-antwoord Vincent: zorg vooral dat je seeder goed is.
-4. moet het niet mogelijk zijn om een dier up te loaden zonder image?
-antwoord Vincent: dat hoeft niet.
-9. logo moet klikbaar zijn
-10. add image knop bij upload foto (op twee plekken kunnen uplaoden) (onder invloed modal)
-antwoord Vincent: dat moet sowieso als we alles in een modal zetten. 
-11. kleur accenten in navbar
-antwoord vincent: ja leuk!
-14. "reports assigned to me" -> assigned to me (speel er even mee of korter beter is)
-15. Als je een lange summary intikt, dan versprint de tabel. Kijk hier naar en houdt er rekening mee tijdens de presentatie.
-16. als je inlogt, kom je nog niet op de juiste landingpage
+Eelke moet een plaatje hebben bij zijn persoonlijke stukje
+Berend moet een plaatje hebben bij zijn persoonlijke stukje
+Dave moet een plaatje hebben bij zijn persoonlijke stukje
 
-17. je kunt alleen een ticket assignen aan jezelf als er een dier bij staat. 
-18. zorg dat alles wat klikbaar zou kunnen zijn klikbaar is
-19. dropdown lijst van animals is niet alphabetisch (bij ticket aanmaken)
-20. bij edit ticket is het niet mogelijk om een photo toe te voegen (willen we dit?)
+uitlijning van een report-detail moet hetzelfde eruitzien als een animal-detail
+cijfers moeten goed uitgelijnd worden
+sorteren moet met de eerste klik de goede kant opgaan (ticket aantal)
+de foto's van de kippen moeten worden aangepast zodat er nog maar 1 witte kip overblijft
+bij de modals moet er meer padding rondom de submit knop (ik weet niet meer welk modal we laten zien tijdens de eindpresentatie)
+als je op edit klikt op de report-detail pagina, wil je in het dropdown de juiste caretaker zien
 
 
 
-----
 
-
-laatste dingen:
-
-Logo
-landingspage visitors
-kleur accent in navbar
-seeder beter verhaal in maken (realistische data, niet te veel tickets, meerdere tickets bij een dier. zorg dat het bruikbaar is in de demo)
-17. 
-18. 
-tekst open/in_progress vriendelijker maken (hoofdletters) 
-Gaat de website op f11? Of niet?
-cancel knop op add-animal modal
-seed-fixen zodat je bij add-animal plaatje in juist formaat ziet
