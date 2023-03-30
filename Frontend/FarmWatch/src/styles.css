@@ -183,7 +183,7 @@ h3{
 }
 
 .ticket-number-column{
-    text-align: right;
+    text-align: center;
 }
 
 /* top-left border-radius */
@@ -332,6 +332,7 @@ mat-form-field {
 }
 
 .animaldetailcard {
+    height:292.5px;
     padding-left: 0px;
     padding-right:0px;
     border-radius: 5px;

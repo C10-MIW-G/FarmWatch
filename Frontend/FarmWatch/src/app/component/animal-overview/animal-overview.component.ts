@@ -87,7 +87,7 @@ export class AnimalOverviewComponent implements OnInit{
         case 'animal':
           return compare(a.commonName, b.commonName, isAsc);
         case 'reports':
-          return compare(a.ticketAmount, b.ticketAmount, isAsc)
+          return compare(a.ticketAmount, b.ticketAmount, !isAsc)
         default:
           return 0;
       }
