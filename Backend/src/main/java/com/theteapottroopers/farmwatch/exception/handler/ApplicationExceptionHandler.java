@@ -36,8 +36,6 @@ public class ApplicationExceptionHandler {
                 .body("All the required fields should be filled in");
     }
 
-
-
     @ExceptionHandler(value = { FieldHasNoInputException.class })
     public ResponseEntity<Object> handleCustomException(FieldHasNoInputException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)

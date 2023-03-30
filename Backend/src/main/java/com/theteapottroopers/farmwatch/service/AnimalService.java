@@ -24,10 +24,8 @@ import java.util.Optional;
 @Service
 public class AnimalService {
 
-
     public static final String MESSAGE_FOR_UNKNOWN_EXCEPTION = "something went wrong while performing your request, " +
             "please contact web administrator to report a problem";
-
     private final AnimalRepository animalRepository;
     private final AnimalValidation animalValidation;
     private final FileStorageService fileStorageService;

@@ -64,7 +64,18 @@
             <input type="text" class ="form-control" id = "imageFileName" hidden
                 [(ngModel)] = "form.imageFileName" name = "imageFileName">
         </div>
-        <button class = "btn btn-secondary farmbutton" type ="submit" style="float: right;">Save</button>
+        <mat-dialog-actions>
+            <div class="actions">
+            <div class="row dialog-action">
+              <div class="">
+                <button class="btn btn-secondary btnshadow " [mat-dialog-close]="false">Cancel</button>
+              </div>
+              <div class="">
+                <button class="btn btn-secondary  farmbutton" type="submit" >Save</button>
+              </div>
+            </div>
+          </div>
+          </mat-dialog-actions>
         </div>
     
     
