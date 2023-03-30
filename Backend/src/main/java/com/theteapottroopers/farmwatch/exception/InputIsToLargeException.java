@@ -9,4 +9,5 @@ package com.theteapottroopers.farmwatch.exception;
 public class InputIsToLargeException extends RuntimeException{
 
     public InputIsToLargeException (String message) { super(message); }
+
 }

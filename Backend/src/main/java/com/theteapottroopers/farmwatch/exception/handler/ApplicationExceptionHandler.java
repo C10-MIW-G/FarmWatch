@@ -36,12 +36,6 @@ public class ApplicationExceptionHandler {
                 .body("All the required fields should be filled in");
     }
 
-    @ExceptionHandler(value = { InputIsToLargeException.class })
-    public ResponseEntity<Object> handleCustomException(InputIsToLargeException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
-    }
-
     @ExceptionHandler(value = { FieldHasNoInputException.class })
     public ResponseEntity<Object> handleCustomException(FieldHasNoInputException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -54,6 +48,17 @@ public class ApplicationExceptionHandler {
                 .body(exception.getMessage());
     }
 
+    @ExceptionHandler(value = { AnimalNotFoundException.class })
+    public ResponseEntity<Object> handleCustomException(AnimalNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(value = { InputIsToLargeException.class })
+    public ResponseEntity<Object> handleCustomException(InputIsToLargeException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
 
     @ExceptionHandler(value = { DateTimeException.class })
     public ResponseEntity<Object> handleCustomException(DateTimeException exception) {
@@ -63,7 +68,7 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(value = { SomethingWentWrongException.class })
     public ResponseEntity<Object> handleCustomException(SomethingWentWrongException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(exception.getMessage());
     }
 }

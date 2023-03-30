@@ -24,10 +24,8 @@ import java.util.Optional;
 @Service
 public class AnimalService {
 
-
     public static final String MESSAGE_FOR_UNKNOWN_EXCEPTION = "something went wrong while performing your request, " +
             "please contact web administrator to report a problem";
-
     private final AnimalRepository animalRepository;
     private final AnimalValidation animalValidation;
     private final FileStorageService fileStorageService;
@@ -66,16 +64,16 @@ public class AnimalService {
         Animal existingAnimal = animalRepository.findById(animalDetailDto.getId()).get();
         setAnimal(animalDetailDto, existingAnimal);
         animalValidation.instanceCheck(existingAnimal);
-        try {
-            Animal updatedAnimal = animalRepository.save(existingAnimal);
-            return updatedAnimal;
-        } catch (Exception exception) {
-            throw new SomethingWentWrongException(MESSAGE_FOR_UNKNOWN_EXCEPTION);
-        }
+        saveAnimalOrElseThrow(existingAnimal);
+        return existingAnimal;
     }
 
     public void addAnimal(Animal animal){
         animalValidation.instanceCheck(animal);
+        saveAnimalOrElseThrow(animal);
+    }
+
+    private void saveAnimalOrElseThrow(Animal animal) {
         try {
             animalRepository.save(animal);
         } catch (Exception exception) {
